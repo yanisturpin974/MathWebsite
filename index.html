@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Maths Academy</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <meta
+      name="description"
+      content="Personalized math tutoring to help you understand classes, gain confidence, and pass your exams. Book a free call today."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Calendly popup widget CSS -->
+    <link
+      href="https://assets.calendly.com/assets/external/widget.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Navigation -->
+      <nav>
+        <a href="index.html" class="logo">
+          <img src="assets/logo-icon.png" alt="Simple Maths Academy logo" class="logo-icon" />
+          <span class="logo-text">Simple Maths Academy</span>
+        </a>
+        <div style="display: flex; align-items: center; gap: 1.5rem">
+          <a
+            href="method.html"
+            style="
+              color: var(--text-main);
+              text-decoration: none;
+              font-weight: 500;
+              transition: color 0.2s;
+            "
+            >My Method</a
+          >
+          <div class="lang-switcher">
+            <span style="font-weight: 600; color: var(--primary)">EN</span>
+            <span
+              style="color: var(--text-muted); opacity: 0.5; margin: 0 0.25rem"
+              >|</span
+            >
+            <a
+              href="fr/index.html"
+              style="
+                color: var(--text-main);
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.2s;
+              "
+              >FR</a
+            >
+          </div>
+          <a
+            href="#"
+            onclick="
+              Calendly.initPopupWidget({
+                url: 'https://calendly.com/yanisturpin-maths/30min',
+              });
+              return false;
+            "
+            class="btn"
+            >Book a free call</a
+          >
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <section class="hero">
+        <h1>
+          Struggling with Math? <br />
+          <span style="color: var(--primary)"
+            >Catch up, understand the material, and ace your exams.</span
+          >
+        </h1>
+        <p style="font-size: 1.5rem; color: var(--text-main); font-weight: 500">
+          100% online tutoring to get clear explanations, build your confidence,
+          and watch your grades improve.
+        </p>
+        <div style="margin-top: 1rem">
+          <a
+            href="#"
+            onclick="
+              Calendly.initPopupWidget({
+                url: 'https://calendly.com/yanisturpin-maths/30min',
+              });
+              return false;
+            "
+            class="btn btn-large btn-pulse"
+            style="display: inline-flex; align-items: center; gap: 0.75rem"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            Book Your Free Call
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Features Grid (Problem) -->
+    <section class="section section-bg">
+      <div class="container">
+        <div class="section-header">
+          <h2 style="color: var(--primary)">Does this sound familiar?</h2>
+          <p>You're not alone, and it's not your fault.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div
+              class="icon-wrapper"
+              style="color: #ef4444; background: #fef2f2"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
+            </div>
+            <h3>Falling behind in class</h3>
+            <p>
+              The teacher is moving way too fast, and you leave every lecture
+              feeling completely overwhelmed and lost.
+            </p>
+          </div>
+          <div class="card">
+            <div
+              class="icon-wrapper"
+              style="color: #f59e0b; background: #fffbeb"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <h3>Panic before exams</h3>
+            <p>
+              The overwhelming stress of knowing you aren't prepared and the
+              constant fear of watching your grades slip away.
+            </p>
+          </div>
+          <div class="card">
+            <div
+              class="icon-wrapper"
+              style="color: #64748b; background: #f1f5f9"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 2v20" />
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
+            </div>
+            <h3>Studying without progress</h3>
+            <p>
+              You spend hours staring at your textbook or watching online
+              videos, but the concepts still just don't click.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section">
+      <div class="container center-text">
+        <div class="section-header">
+          <h2>A proven way to get your grades back on track.</h2>
+          <p>A structured approach to mastering complex technical subjects.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon-wrapper">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <h3>Expert 1-on-1 Support</h3>
+            <p>
+              Sessions specifically tailored for high school and university
+              curriculums to help you catch up during the semester.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon-wrapper">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg>
+            </div>
+            <h3>Crystal-Clear Explanations</h3>
+            <p>
+              Complex math formulas broken down into simple, logical steps that
+              finally make sense.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon-wrapper">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                <polyline points="17 6 23 6 23 12" />
+              </svg>
+            </div>
+            <h3>Real Results, Fast</h3>
+            <p>
+              Stop stressing and start passing. Gain the genuine understanding
+              needed to confidently walk into your next exam.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section section-bg">
+      <div class="container">
+        <div class="section-header">
+          <h2>How It Works</h2>
+          <p>A simple, frictionless path to achieving your academic goals.</p>
+        </div>
+
+        <div class="steps-wrapper">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Book a free call</h3>
+              <p>
+                Schedule a quick 15-minute consultation using the calendar
+                below. No pressure, no obligations.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>We analyze your situation</h3>
+              <p>
+                We'll discuss where you're currently struggling and what your
+                specific goals are for the semester.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>I propose a plan</h3>
+              <p>
+                I build a custom study roadmap and schedule regular sessions
+                designed perfectly around your needs.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>You start improving</h3>
+              <p>
+                We execute the plan together, mastering one concept at a time
+                until you pass your exams with confidence.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem">
+          <a
+            href="#"
+            onclick="
+              Calendly.initPopupWidget({
+                url: 'https://calendly.com/yanisturpin-maths/30min',
+              });
+              return false;
+            "
+            class="btn btn-large"
+            style="display: inline-flex; align-items: center; gap: 0.75rem"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            Start Step 1 Right Now
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="calendly-section">
+      <div class="container" style="max-width: 800px; padding: 4rem 2rem">
+        <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem">
+          Ready to catch up and ace your next exam?
+        </h2>
+        <p style="font-size: 1.25rem; margin-bottom: 3rem; color: #eef2ff">
+          Whether you're in high school or university, grab a time on my
+          calendar below. It's 100% free and there is zero commitment.
+        </p>
+
+        <a
+          href="#"
+          onclick="
+            Calendly.initPopupWidget({
+              url: 'https://calendly.com/yanisturpin-maths/30min',
+            });
+            return false;
+          "
+          class="btn btn-large btn-pulse"
+          style="
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background-color: var(--white);
+            color: var(--primary);
+          "
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          Book Your Free Call Now
+        </a>
+        <p style="font-size: 0.875rem; color: rgba(255,255,255,0.7); margin-top: 1rem;">
+          By booking, you agree to our <a href="conditions-generales.html" style="color: white; text-decoration: underline;">Terms</a> and <a href="politique-de-confidentialite.html" style="color: white; text-decoration: underline;">Privacy Policy</a>.
+        </p>
+      </div>
+    </section>
+
+    <footer style="margin-top: 4rem; border-top: 1px solid var(--border-color, #e5e7eb); padding: 2rem 0;">
+      <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center;">
+        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+          <a href="politique-de-confidentialite.html" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;">Privacy Policy</a>
+          <a href="conditions-generales.html" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;">Terms of Service</a>
+          <a href="politique-annulations.html" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;">Refund Policy</a>
+        </div>
+        <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;">&copy; 2024 Simple Maths Academy. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Calendly externals -->
+    <script
+      src="https://assets.calendly.com/assets/external/widget.js"
+      type="text/javascript"
+      async
+    ></script>
+  </body>
+</html>

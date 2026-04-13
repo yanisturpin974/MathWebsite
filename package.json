@@ -1,0 +1,8 @@
+{
+  "name": "mathsite",
+  "version": "1.0.0",
+  "description": "Math Site",
+  "scripts": {
+    "dev": "npx --yes live-server ."
+  }
+}

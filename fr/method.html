@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Maths Academy</title>
+    <link rel="icon" type="image/png" href="../assets/logo.png" />
+    <link rel="stylesheet" href="../styles.css" />
+    <!-- Calendly popup widget CSS -->
+    <link
+      href="https://assets.calendly.com/assets/external/widget.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Navigation -->
+      <nav>
+        <a href="index.html" class="logo">
+          <img src="../assets/logo-icon.png" alt="Simple Maths Academy logo" class="logo-icon" />
+          <span class="logo-text">Simple Maths Academy</span>
+        </a>
+        <div style="display: flex; align-items: center; gap: 1.5rem">
+          <a
+            href="method.html"
+            style="
+              color: var(--text-main);
+              text-decoration: none;
+              font-weight: 500;
+              transition: color 0.2s;
+            "
+            >Ma Méthode</a
+          >
+          <div class="lang-switcher" style="display: flex; align-items: center">
+            <a
+              href="../method.html"
+              style="
+                color: var(--text-main);
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.2s;
+              "
+              >EN</a
+            >
+            <span
+              style="color: var(--text-muted); opacity: 0.5; margin: 0 0.5rem"
+              >|</span
+            >
+            <span style="font-weight: 600; color: var(--primary)">FR</span>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <section class="hero" style="padding-top: 6rem; padding-bottom: 4rem; text-align: left; overflow: visible;">
+        <div class="container hero-split">
+          <div class="hero-split-image">
+            <div class="image-wrapper">
+              <img src="../assets/method-tablet.jpg" alt="Explications en direct sur tablette" class="styled-image" />
+              <div class="image-overlay"></div>
+            </div>
+          </div>
+          <div class="hero-split-text">
+            <h1 style="text-align: left;">Ma Méthode</h1>
+            <p class="hero-subtitle" style="font-size: 1.5rem; color: var(--text-main); font-weight: 500; text-align: left;">
+              Des séances qualitatives, 100% en ligne, conçues pour une clarté absolue.
+            </p>
+            <ul class="method-features">
+              <li>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span><strong>Explications pas-à-pas :</strong> Tout est rédigé clairement sur tablette.</span>
+              </li>
+              <li>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span><strong>Visibilité en temps réel :</strong> Vous voyez tout en direct sur votre écran.</span>
+              </li>
+              <li>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span><strong>Notes au format PDF :</strong> Les notes sont envoyées juste après la séance.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Method Grid Section -->
+      <section class="section" style="padding-top: 0">
+        <div class="grid-3">
+          <div class="card">
+            <div
+              class="icon-wrapper"
+              style="color: var(--primary); background: var(--accent-light)"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+            </div>
+            <h3>Écran reMarkable interactif</h3>
+            <p>
+              Nous nous connectons en ligne. Vous voyez l'écran de ma tablette
+              reMarkable en direct pendant que je décompose les concepts
+              complexes en schémas clairs.
+            </p>
+          </div>
+          <div class="card">
+            <div
+              class="icon-wrapper"
+              style="color: #10b981; background: #d1fae5"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" />
+              </svg>
+            </div>
+            <h3>100% de concentration</h3>
+            <p>
+              Pas de déplacements, pas de logistique compliquée. Concentrez-vous
+              entièrement sur la compréhension depuis votre bureau.
+            </p>
+          </div>
+          <div class="card">
+            <div
+              class="icon-wrapper"
+              style="color: #f59e0b; background: #fffbeb"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg>
+            </div>
+            <h3>Recevez le PDF complet</h3>
+            <p>
+              Après la séance, je vous envoie instantanément un PDF de tout ce
+              que j'ai écrit sur la tablette. Fini la prise de notes paniquée :
+              participez, c'est tout.
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 5rem">
+          <a
+            href="#"
+            onclick="
+              Calendly.initPopupWidget({
+                url: 'https://calendly.com/yanisturpin-maths/30min',
+              });
+              return false;
+            "
+            class="btn btn-large btn-pulse"
+            style="display: inline-flex; align-items: center; gap: 0.75rem"
+          >
+            <svg
+              width="24"
+        </a>
+        <div style="display: flex; align-items: center; gap: 1.5rem">
+          <a
+            href="method.html"
+            style="
+              color: var(--text-main);
+              text-decoration: none;
+              font-weight: 500;
+              transition: color 0.2s;
+            "
+            >Ma Méthode</a
+          >
+          <div class="lang-switcher" style="display: flex; align-items: center">
+            <a
+              href="../method.html"
+              style="
+                color: var(--text-main);
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.2s;
+              "
+              >EN</a
+            >
+            <span
+              style="color: var(--text-muted); opacity: 0.5; margin: 0 0.5rem"
+              >|</span
+            >
+            <span style="font-weight: 600; color: var(--primary)">FR</span>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <section class="hero" style="padding-top: 6rem; padding-bottom: 4rem; text-align: left; overflow: visible;">
+        <div class="container hero-split">
+          <div class="hero-split-image">
+            <div class="image-wrapper">
+              <img src="../assets/method-tablet.jpg" alt="Explications en direct sur tablette" class="styled-image" />
+              <div class="image-overlay"></div>
+            </div>
+          </div>
+          <div class="hero-split-text">
+            <h1 style="text-align: left;">Ma Méthode</h1>
+            <p class="hero-subtitle" style="font-size: 1.5rem; color: var(--text-main); font-weight: 500; text-align: left;">
+              Des séances qualitatives, 100% en ligne, conçues pour une clarté absolue.
+            </p>
+            <ul class="method-features">
+              <li>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span><strong>Explications pas-à-pas :</strong> Tout est rédigé clairement sur tablette.</span>
+              </li>
+              <li>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span><strong>Visibilité en temps réel :</strong> Vous voyez tout en direct sur votre écran.</span>
+              </li>
+              <li>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span><strong>Notes au format PDF :</strong> Les notes sont envoyées juste après la séance.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Method Grid Section -->
+      <section class="section" style="padding-top: 0">
+        <div class="grid-3">
+          <div class="card">
+            <div
+              class="icon-wrapper"
+              style="color: var(--primary); background: var(--accent-light)"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+            </div>
+            <h3>Écran reMarkable interactif</h3>
+            <p>
+              Nous nous connectons en ligne. Vous voyez l'écran de ma tablette
+              reMarkable en direct pendant que je décompose les concepts
+              complexes en schémas clairs.
+            </p>
+          </div>
+          <div class="card">
+            <div
+              class="icon-wrapper"
+              style="color: #10b981; background: #d1fae5"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" />
+              </svg>
+            </div>
+            <h3>100% de concentration</h3>
+            <p>
+              Pas de déplacements, pas de logistique compliquée. Concentrez-vous
+              entièrement sur la compréhension depuis votre bureau.
+            </p>
+          </div>
+          <div class="card">
+            <div
+              class="icon-wrapper"
+              style="color: #f59e0b; background: #fffbeb"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg>
+            </div>
+            <h3>Recevez le PDF complet</h3>
+            <p>
+              Après la séance, je vous envoie instantanément un PDF de tout ce
+              que j'ai écrit sur la tablette. Fini la prise de notes paniquée :
+              participez, c'est tout.
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 5rem">
+          <a
+            href="#"
+            onclick="
+              Calendly.initPopupWidget({
+                url: 'https://calendly.com/yanisturpin-maths/30min',
+              });
+              return false;
+            "
+            class="btn btn-large btn-pulse"
+            style="display: inline-flex; align-items: center; gap: 0.75rem"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            Réservez votre appel gratuit
+          </a>
+          <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 1rem;">
+            En réservant, vous acceptez nos <a href="../conditions-generales.html" style="color: var(--text-main); text-decoration: underline;">Conditions générales</a> et notre <a href="../politique-de-confidentialite.html" style="color: var(--text-main); text-decoration: underline;">Politique de confidentialité</a>.
+          </p>
+        </div>
+      </section>
+
+      <footer style="margin-top: 4rem; border-top: 1px solid var(--border-color, #e5e7eb); padding: 2rem 0;">
+        <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center;">
+          <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+            <a href="../politique-de-confidentialite.html" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;">Politique de confidentialité</a>
+            <a href="../conditions-generales.html" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;">Conditions générales</a>
+            <a href="../politique-annulations.html" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;">Politique de remboursement</a>
+          </div>
+          <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;">&copy; 2024 Simple Maths Academy. Tous droits réservés.</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Calendly externals -->
+    <script
+      src="https://assets.calendly.com/assets/external/widget.js"
+      type="text/javascript"
+      async
+    ></script>
+  </body>
+</html>
