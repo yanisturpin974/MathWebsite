@@ -1,429 +1,557 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simple Maths Academy</title>
-    <link rel="icon" type="image/png" href="assets/logo.png" />
-    <meta
-      name="description"
-      content="Personalized math tutoring to help you understand classes, gain confidence, and pass your exams. Book a free call today."
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <!-- Calendly popup widget CSS -->
-    <link
-      href="https://assets.calendly.com/assets/external/widget.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <!-- Navigation -->
-      <nav>
-        <a href="index.html" class="logo">
-          <img src="assets/logo-icon.png" alt="Simple Maths Academy logo" class="logo-icon" />
-          <span class="logo-text">Simple Maths Academy</span>
-        </a>
-        <div style="display: flex; align-items: center; gap: 1.5rem">
-          <a
-            href="method.html"
-            style="
-              color: var(--text-main);
-              text-decoration: none;
-              font-weight: 500;
-              transition: color 0.2s;
-            "
-            >My Method</a
-          >
-          <div class="lang-switcher">
-            <span style="font-weight: 600; color: var(--primary)">EN</span>
-            <span
-              style="color: var(--text-muted); opacity: 0.5; margin: 0 0.25rem"
-              >|</span
-            >
-            <a
-              href="fr/index.html"
-              style="
-                color: var(--text-main);
-                text-decoration: none;
-                font-weight: 500;
-                transition: color 0.2s;
-              "
-              >FR</a
-            >
-          </div>
-          <a
-            href="#"
-            onclick="
-              Calendly.initPopupWidget({
-                url: 'https://calendly.com/yanisturpin-maths/30min',
-              });
-              return false;
-            "
-            class="btn"
-            >Book a free call</a
-          >
-        </div>
-      </nav>
+<html lang="fr">
 
-      <!-- Hero Section -->
-      <section class="hero">
-        <h1>
-          Struggling with Math? <br />
-          <span style="color: var(--primary)"
-            >Catch up, understand the material, and ace your exams.</span
-          >
-        </h1>
-        <p style="font-size: 1.5rem; color: var(--text-main); font-weight: 500">
-          100% online tutoring to get clear explanations, build your confidence,
-          and watch your grades improve.
-        </p>
-        <div style="margin-top: 1rem">
-          <a
-            href="#"
-            onclick="
-              Calendly.initPopupWidget({
-                url: 'https://calendly.com/yanisturpin-maths/30min',
-              });
-              return false;
-            "
-            class="btn btn-large btn-pulse"
-            style="display: inline-flex; align-items: center; gap: 0.75rem"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-              <line x1="16" y1="2" x2="16" y2="6" />
-              <line x1="8" y1="2" x2="8" y2="6" />
-              <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>
-            Book Your Free Call
-          </a>
-        </div>
-      </section>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Maths Academy</title>
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <meta name="description"
+    content="Des cours de maths personnalisés pour maîtriser le programme, reprendre confiance et réussir vos examens." />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Calendly popup widget CSS -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+</head>
 
-    <!-- Features Grid (Problem) -->
-    <section class="section section-bg">
-      <div class="container">
-        <div class="section-header">
-          <h2 style="color: var(--primary)">Does this sound familiar?</h2>
-          <p>You're not alone, and it's not your fault.</p>
+<body>
+  <div class="container">
+    <!-- Navigation -->
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="assets/logo-icon.png" alt="Simple Maths Academy logo" class="logo-icon" />
+        <span class="logo-text">Simple Maths Academy</span>
+      </a>
+      <div style="display: flex; align-items: center; gap: 1.5rem">
+        <a href="#method"
+          style="color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s;"
+          data-i18n="navMethod">Ma Méthode</a>
+        <div class="lang-switcher">
+          <span id="lang-fr" onclick="setLanguage('fr')" class="lang-btn lang-active">FR</span>
+          <span style="color: var(--text-muted); opacity: 0.5; margin: 0 0.25rem">|</span>
+          <span id="lang-en" onclick="setLanguage('en')" class="lang-btn lang-inactive">EN</span>
         </div>
-
-        <div class="grid-3">
-          <div class="card">
-            <div
-              class="icon-wrapper"
-              style="color: #ef4444; background: #fef2f2"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <path d="m9 12 2 2 4-4" />
-              </svg>
-            </div>
-            <h3>Falling behind in class</h3>
-            <p>
-              The teacher is moving way too fast, and you leave every lecture
-              feeling completely overwhelmed and lost.
-            </p>
-          </div>
-          <div class="card">
-            <div
-              class="icon-wrapper"
-              style="color: #f59e0b; background: #fffbeb"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
-            </div>
-            <h3>Panic before exams</h3>
-            <p>
-              The overwhelming stress of knowing you aren't prepared and the
-              constant fear of watching your grades slip away.
-            </p>
-          </div>
-          <div class="card">
-            <div
-              class="icon-wrapper"
-              style="color: #64748b; background: #f1f5f9"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M12 2v20" />
-                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-              </svg>
-            </div>
-            <h3>Studying without progress</h3>
-            <p>
-              You spend hours staring at your textbook or watching online
-              videos, but the concepts still just don't click.
-            </p>
-          </div>
-        </div>
+        <a href="#"
+          onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
+          class="btn" data-i18n="navCta">Réserver mon bilan gratuit (15 min)</a>
       </div>
-    </section>
+    </nav>
 
-    <!-- Solution Section -->
-    <section class="section">
-      <div class="container center-text">
-        <div class="section-header">
-          <h2>A proven way to get your grades back on track.</h2>
-          <p>A structured approach to mastering complex technical subjects.</p>
-        </div>
-
-        <div class="grid-3">
-          <div class="card">
-            <div class="icon-wrapper">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-            </div>
-            <h3>Expert 1-on-1 Support</h3>
-            <p>
-              Sessions specifically tailored for high school and university
-              curriculums to help you catch up during the semester.
-            </p>
-          </div>
-          <div class="card">
-            <div class="icon-wrapper">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="16" y1="13" x2="8" y2="13" />
-                <line x1="16" y1="17" x2="8" y2="17" />
-                <polyline points="10 9 9 9 8 9" />
-              </svg>
-            </div>
-            <h3>Crystal-Clear Explanations</h3>
-            <p>
-              Complex math formulas broken down into simple, logical steps that
-              finally make sense.
-            </p>
-          </div>
-          <div class="card">
-            <div class="icon-wrapper">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                <polyline points="17 6 23 6 23 12" />
-              </svg>
-            </div>
-            <h3>Real Results, Fast</h3>
-            <p>
-              Stop stressing and start passing. Gain the genuine understanding
-              needed to confidently walk into your next exam.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="section section-bg">
-      <div class="container">
-        <div class="section-header">
-          <h2>How It Works</h2>
-          <p>A simple, frictionless path to achieving your academic goals.</p>
-        </div>
-
-        <div class="steps-wrapper">
-          <div class="step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h3>Book a free call</h3>
-              <p>
-                Schedule a quick 15-minute consultation using the calendar
-                below. No pressure, no obligations.
-              </p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h3>We analyze your situation</h3>
-              <p>
-                We'll discuss where you're currently struggling and what your
-                specific goals are for the semester.
-              </p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h3>I propose a plan</h3>
-              <p>
-                I build a custom study roadmap and schedule regular sessions
-                designed perfectly around your needs.
-              </p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-number">4</div>
-            <div class="step-content">
-              <h3>You start improving</h3>
-              <p>
-                We execute the plan together, mastering one concept at a time
-                until you pass your exams with confidence.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 4rem">
-          <a
-            href="#"
-            onclick="
-              Calendly.initPopupWidget({
-                url: 'https://calendly.com/yanisturpin-maths/30min',
-              });
-              return false;
-            "
-            class="btn btn-large"
-            style="display: inline-flex; align-items: center; gap: 0.75rem"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-              <line x1="16" y1="2" x2="16" y2="6" />
-              <line x1="8" y1="2" x2="8" y2="6" />
-              <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>
-            Start Step 1 Right Now
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="calendly-section">
-      <div class="container" style="max-width: 800px; padding: 4rem 2rem">
-        <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem">
-          Ready to catch up and ace your next exam?
-        </h2>
-        <p style="font-size: 1.25rem; margin-bottom: 3rem; color: #eef2ff">
-          Whether you're in high school or university, grab a time on my
-          calendar below. It's 100% free and there is zero commitment.
-        </p>
-
-        <a
-          href="#"
-          onclick="
-            Calendly.initPopupWidget({
-              url: 'https://calendly.com/yanisturpin-maths/30min',
-            });
-            return false;
-          "
-          class="btn btn-large btn-pulse"
-          style="
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background-color: var(--white);
-            color: var(--primary);
-          "
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1 data-i18n="heroTitle">
+        Réussissez vos Maths <br />
+        <span style="color: var(--primary)">à l'Université (L1/B1, L2/B2, L3/B3).</span>
+      </h1>
+      <p style="font-size: 1.5rem; color: var(--text-main); font-weight: 500" data-i18n="heroSubtitle">
+        Analyse, Algèbre, Stats. Un accompagnement ciblé pour vos partiels, votre Blocus et vos examens. 100% en ligne.
+      </p>
+      <div style="margin-top: 1rem">
+        <a href="#"
+          onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
+          class="btn btn-large btn-pulse" style="display: inline-flex; align-items: center; gap: 0.75rem">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
             <line x1="16" y1="2" x2="16" y2="6" />
             <line x1="8" y1="2" x2="8" y2="6" />
             <line x1="3" y1="10" x2="21" y2="10" />
           </svg>
-          Book Your Free Call Now
+          <span data-i18n="heroCta">Réserver mon bilan gratuit (15 min)</span>
         </a>
-        <p style="font-size: 0.875rem; color: rgba(255,255,255,0.7); margin-top: 1rem;">
-          By booking, you agree to our <a href="conditions-generales.html" style="color: white; text-decoration: underline;">Terms</a> and <a href="politique-de-confidentialite.html" style="color: white; text-decoration: underline;">Privacy Policy</a>.
-        </p>
       </div>
     </section>
+  </div>
 
-    <footer style="margin-top: 4rem; border-top: 1px solid var(--border-color, #e5e7eb); padding: 2rem 0;">
-      <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center;">
-        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-          <a href="politique-de-confidentialite.html" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;">Privacy Policy</a>
-          <a href="conditions-generales.html" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;">Terms of Service</a>
-          <a href="politique-annulations.html" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;">Refund Policy</a>
+  <!-- Social Proof / Bio -->
+  <section class="section section-bg">
+    <div class="container hero-split">
+      <div class="hero-split-image">
+        <div class="image-wrapper">
+          <img src="assets/profile.png" alt="Professeur de maths" class="styled-image" />
+          <div class="image-overlay"></div>
         </div>
-        <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;">&copy; 2024 Simple Maths Academy. All rights reserved.</p>
       </div>
-    </footer>
+      <div class="hero-split-text">
+        <h2 data-i18n="whyMe">Pourquoi me choisir ?</h2>
+        <p style="margin-bottom: 1.5rem; color: var(--text-main); font-size: 1.25rem;" data-i18n="whyMeDesc1">
+          Expert en mathématiques avec une expérience solide en tutorat universitaire.
+        </p>
+        <p style="font-size: 1.125rem;" data-i18n="whyMeDesc2">
+          J'aide les étudiants à simplifier les concepts complexes.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Calendly externals -->
-    <script
-      src="https://assets.calendly.com/assets/external/widget.js"
-      type="text/javascript"
-      async
-    ></script>
-  </body>
+
+  <!-- My Method Section -->
+  <section class="section" id="method">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 3rem;">
+        <h2 data-i18n="methodTitle"
+          style="font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: -0.02em;">Ma Méthode</h2>
+      </div>
+      <div class="grid-3" style="text-align: left;">
+        <div class="card" style="background: transparent; border: none; box-shadow: none; padding: 1.5rem 1rem;">
+          <div class="icon-wrapper" style="width: 48px; height: 48px; margin-bottom: 1.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <h3 data-i18n="methodS1Title" style="font-family: 'Inter', sans-serif; font-size: 1.25rem;">Évaluation</h3>
+          <p data-i18n="methodS1Desc" style="font-size: 1rem;">Nous identifions vos lacunes spécifiques et les exigences
+            de vos examens.</p>
+        </div>
+        <div class="card" style="background: transparent; border: none; box-shadow: none; padding: 1.5rem 1rem;">
+          <div class="icon-wrapper" style="width: 48px; height: 48px; margin-bottom: 1.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+          </div>
+          <h3 data-i18n="methodS2Title" style="font-family: 'Inter', sans-serif; font-size: 1.25rem;">Stratégie Ciblée
+          </h3>
+          <p data-i18n="methodS2Desc" style="font-size: 1rem;">Nous résolvons ensemble les problèmes d'examen à forte
+            probabilité.</p>
+        </div>
+        <div class="card" style="background: transparent; border: none; box-shadow: none; padding: 1.5rem 1rem;">
+          <div class="icon-wrapper" style="width: 48px; height: 48px; margin-bottom: 1.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+          <h3 data-i18n="methodS3Title" style="font-family: 'Inter', sans-serif; font-size: 1.25rem;">Autonomie</h3>
+          <p data-i18n="methodS3Desc" style="font-size: 1rem;">Je vous donne les outils et modèles mentaux pour résoudre
+            tout problème seul.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specialities Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-i18n="specTitle">Spécialités</h2>
+        <p data-i18n="specSubtitle">Un accompagnement adapté à votre niveau.</p>
+      </div>
+
+      <div class="grid-2" style="text-align: center;">
+        <div class="card center-text">
+          <div class="icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 14l9-5-9-5-9 5 9 5z" />
+              <path
+                d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+              <path d="M12 14v6" />
+            </svg>
+          </div>
+          <h3 data-i18n="specU">Université & Supérieur</h3>
+          <p data-i18n="specUDesc"><strong>Focus :</strong> Maths Pures & Appliquées, Économie, Gestion, Sciences,
+            Ingénieur.</p>
+        </div>
+        <div class="card center-text">
+          <div class="icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 016.5 2H20v20H6.5a2.5 2.5 0 01-2.5-2.5z" />
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+            </svg>
+          </div>
+          <h3 data-i18n="specL">Lycée & CESS</h3>
+          <p data-i18n="specLDesc"><strong>Focus :</strong> Préparation au Bac, CESS, et examens d'admission.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 4rem">
+        <a href="#"
+          onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
+          class="btn btn-large btn-pulse" style="display: inline-flex; align-items: center; gap: 0.75rem">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          <span data-i18n="specCta">Réserver mon bilan gratuit (15 min)</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section section-bg">
+    <div class="container center-text">
+      <div class="section-header">
+        <h2 data-i18n="pricingTitle">Tarifs</h2>
+        <p data-i18n="pricingSubtitle">Un investissement rentable pour l'avenir de votre enfant.</p>
+      </div>
+
+      <div
+        style="max-width: 500px; margin: 0 auto; background: var(--card-bg); border-radius: 24px; padding: 4rem 3rem; border: 2px solid var(--primary); position: relative; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);">
+        <div
+          style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 0.5rem 1.5rem; border-radius: 9999px; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; white-space: nowrap;"
+          data-i18n="pricingBadge">
+          OFFRE FONDATEUR
+        </div>
+        <h3 style="font-size: 2rem; margin-bottom: 1rem;" data-i18n="pricingPack">Pack de 5h</h3>
+        <p style="font-size: 1.25rem; color: var(--text-main); margin-bottom: 2rem;" data-i18n="pricingDesc1">Les 3
+          premiers étudiants inscrits bénéficient de -50% sur leur premier pack de 5 cours.</p>
+
+        <div
+          style="background: rgba(26, 43, 60, 0.4); padding: 1.5rem; border-radius: 16px; margin-bottom: 2rem; border: 1px solid rgba(255,255,255,0.05);">
+          <p style="font-size: 1.5rem; font-weight: 800; color: var(--primary); margin: 0;" data-i18n="pricingDesc2">
+            -50% sur votre premier pack !</p>
+        </div>
+
+        <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 3rem;" data-i18n="pricingLim">
+          Plus que <strong>3 places disponibles</strong>. (France & Belgique)
+        </p>
+
+        <a href="#"
+          onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
+          class="btn btn-large btn-pulse" style="width: 100%; display: flex; justify-content: center;"
+          data-i18n="pricingCta">
+          Réserver mon bilan gratuit (15 min)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA / Contact Section -->
+  <section class="section">
+    <div class="container center-text">
+      <h2 data-i18n="contactTitle" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem">Prêt à réussir ?
+      </h2>
+      <p data-i18n="contactSubtitle" style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 3rem">
+        Réservez votre bilan gratuit de 15 min ou posez-moi vos questions.
+      </p>
+
+      <div class="contact-container"
+        style="max-width: 600px; margin: 0 auto 3rem auto; background: var(--card-bg); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); text-align: left;">
+        <form id="contactForm" action="https://formspree.io/f/mnjlvwkq" method="POST" onsubmit="submitForm(event)">
+          <!-- Honeypot -->
+          <input type="text" name="_gotcha" style="display:none" />
+
+          <div style="margin-bottom: 1.5rem;">
+            <input type="text" id="name" name="name"
+              style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem;"
+              data-i18n-placeholder="formName" placeholder="Nom" required>
+          </div>
+          <div style="margin-bottom: 1.5rem;">
+            <input type="email" id="email" name="email"
+              style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem;"
+              data-i18n-placeholder="formEmail" placeholder="Email" required>
+          </div>
+          <div style="margin-bottom: 1.5rem;">
+            <select id="level" name="level"
+              style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem; appearance: auto;"
+              required>
+              <option value="" disabled selected data-i18n="levelOpt1">Choisissez votre niveau</option>
+              <option value="Bachelor 1 (L1/B1)" data-i18n="levelO1">L1 / B1 (Bachelier)</option>
+              <option value="Bachelor 2 (L2/B2)" data-i18n="levelO2">L2 / B2</option>
+              <option value="Bachelor 3 (L3/B3)" data-i18n="levelO3">L3 / B3</option>
+              <option value="Master" data-i18n="levelO4">Master</option>
+              <option value="High School (Lycee)" data-i18n="levelO5">Lycée / CESS</option>
+            </select>
+          </div>
+          <div style="margin-bottom: 1.5rem;">
+            <textarea id="message" name="message"
+              style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem; resize: vertical;"
+              data-i18n-placeholder="formMsg" placeholder="Décrivez vos difficultés en maths" rows="4"
+              required></textarea>
+          </div>
+          <button type="submit" id="submitBtn" class="btn btn-large"
+            style="width: 100%; border-radius: 12px; border: none; font-size: 1.125rem;"
+            data-i18n="formSubmit">Envoyer</button>
+          <p id="formStatusMsg" style="color: #ef4444; margin-top: 1rem; display: none; text-align: center;"></p>
+        </form>
+
+        <div id="successMsg" style="display: none; padding: 3rem 1rem; text-align: center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
+            style="margin-bottom: 1rem;">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <h3 id="successMsgText" data-i18n="formSuccess" style="font-size: 1.5rem; color: var(--text-main);">Message
+            envoyé !</h3>
+        </div>
+      </div>
+
+      <a href="#"
+        onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
+        class="btn btn-pulse" style="display: inline-flex; align-items: center; gap: 0.75rem">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+        </svg>
+        <span data-i18n="finalCta">Réserver mon Bilan de 15 min Gratuit</span>
+      </a>
+    </div>
+  </section>
+
+  <footer style="margin-top: 4rem; border-top: 1px solid var(--border-color, #e5e7eb); padding: 2rem 0;">
+    <div class="container"
+      style="display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center;">
+      <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+        <a href="politique-de-confidentialite.html"
+          style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;"
+          data-i18n="footerPrivacy">Politique de confidentialité</a>
+        <a href="conditions-generales.html"
+          style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;"
+          data-i18n="footerTerms">Conditions d'utilisation</a>
+        <a href="politique-annulations.html"
+          style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;"
+          data-i18n="footerRefund">Politique d'annulation</a>
+      </div>
+      <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;" data-i18n="footerRights">&copy; 2024 Simple
+        Maths Academy. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <!-- Calendly externals -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+  <!-- WhatsApp Floating Button -->
+  <div class="whatsapp-container">
+    <div class="whatsapp-tooltip" data-i18n="whatsappTooltip">Des questions ? Discutons !</div>
+    <a href="https://wa.me/32490219347?text=Bonjour%2C%20j%27ai%20vu%20votre%20site%20Simple%20Maths%20Academy..."
+      target="_blank" class="whatsapp-float">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M12.004 0C5.385 0 0 5.385 0 12.004c0 2.115.553 4.167 1.603 5.967L0 24l6.196-1.583A11.942 11.942 0 0012.004 24c6.618 0 12.004-5.385 12.004-12.004S18.622 0 12.004 0zm0 21.986c-1.803 0-3.571-.486-5.116-1.405l-.367-.217-3.8.971.996-3.705-.238-.378A9.973 9.973 0 012.023 12.004c0-5.503 4.48-9.982 9.981-9.982 5.5 0 9.98 4.479 9.98 9.982s-4.48 9.982-9.98 9.982zM17.485 14.5c-.302-.152-1.785-.881-2.062-.981-.277-.101-.48-.152-.68.152-.202.304-.781.981-.958 1.182-.178.202-.355.228-.657.076-1.403-.708-2.618-1.554-3.585-2.83-.245-.325.244-.306.828-1.472.101-.202.05-.38-.026-.531-.075-.152-.68-1.642-.931-2.247-.245-.589-.494-.509-.68-.518-.178-.009-.382-.012-.582-.012-.202 0-.53.076-.806.38-.277.304-1.058 1.035-1.058 2.523s1.083 2.924 1.235 3.125c.152.202 2.122 3.238 5.143 4.542.72.308 1.282.493 1.723.631.724.23 1.385.198 1.9.12.576-.088 1.785-.73 2.036-1.436.252-.707.252-1.314.178-1.436-.077-.123-.277-.2-.58-.352z" />
+      </svg>
+    </a>
+  </div>
+
+  <!-- Language Switcher Logic -->
+  <script>
+    let currentLang = localStorage.getItem('lang') || 'fr';
+
+    const translations = {
+      fr: {
+        navMethod: "Ma Méthode",
+        navCta: "Réserver mon bilan gratuit (15 min)",
+        heroTitle: "Réussissez vos Maths <br />\n          <span style='color: var(--primary)'>à l'Université (L1/B1, L2/B2, L3/B3).</span>",
+        heroSubtitle: "Analyse, Algèbre, Stats. Un accompagnement ciblé pour vos partiels, votre Blocus et vos examens. 100% en ligne.",
+        heroCta: "Réserver mon bilan gratuit (15 min)",
+        whyMe: "Pourquoi me choisir ?",
+        whyMeDesc1: "Expert en mathématiques avec une expérience solide en tutorat universitaire.",
+
+        whyMeDesc2: "J'aide les étudiants à simplifier les concepts complexes.",
+        methodTitle: "Ma Méthode",
+        methodS1Title: "Évaluation",
+        methodS1Desc: "Nous identifions vos lacunes spécifiques et les exigences de vos examens.",
+        methodS2Title: "Stratégie Ciblée",
+        methodS2Desc: "Nous résolvons ensemble les problèmes d'examen à forte probabilité.",
+        methodS3Title: "Autonomie",
+        methodS3Desc: "Je vous donne les outils et modèles mentaux pour résoudre tout problème seul.",
+
+        specTitle: "Spécialités",
+        specSubtitle: "Un accompagnement adapté à votre niveau.",
+        specU: "Université & Supérieur",
+        specUDesc: "<strong>Focus :</strong> Maths Pures & Appliquées, Économie, Gestion, Sciences, Ingénieur.",
+        specL: "Lycée & CESS",
+        specLDesc: "<strong>Focus :</strong> Préparation au Bac, CESS, et examens d'admission.",
+        specCta: "Réserver mon bilan gratuit (15 min)",
+        pricingTitle: "Tarifs",
+        pricingSubtitle: "Un investissement rentable pour l'avenir de votre enfant.",
+        pricingBadge: "OFFRE FONDATEUR",
+        pricingPack: "Pack de 5h",
+        pricingDesc1: "Les 3 premiers étudiants inscrits bénéficient de -50% sur leur premier pack de 5 cours.",
+        pricingDesc2: "-50% sur votre premier pack !",
+        pricingLim: "Plus que <strong>3 places disponibles</strong>. (France & Belgique) (France & Belgique)",
+        pricingCta: "Réserver mon bilan gratuit (15 min)",
+        finalTitle: "Prêt à maîtriser les maths et réussir vos examens ?",
+        finalSubtitle: "Réservez votre créneau dès maintenant. C'est 100% gratuit et sans aucun engagement de votre part.",
+        finalCta: "Réserver mon bilan gratuit (15 min)",
+
+        finalTerms: "En réservant, vous acceptez nos <a href='conditions-generales.html' style='color: white; text-decoration: underline;'>Conditions</a> et notre <a href='politique-de-confidentialite.html' style='color: white; text-decoration: underline;'>Politique de confidentialité</a>.",
+        contactTitle: "Prêt à réussir ?",
+        contactSubtitle: "Réservez votre bilan gratuit de 15 min ou posez-moi vos questions.",
+        formName: "Nom",
+        formEmail: "Email",
+        levelOpt1: "Choisissez votre niveau",
+        levelO1: "Lycée / Secondaire",
+        levelO2: "L1 / B1 (Bachelier)",
+        levelO3: "L2 / B2",
+        levelO4: "L3 / B3",
+        levelO5: "Master",
+        formMsg: "Décrivez vos difficultés en maths",
+        formSubmit: "Envoyer",
+        formSending: "Envoi en cours...",
+        formSuccess: "Message envoyé !",
+        formError: "Oops ! Un problème est survenu. Veuillez réessayer.",
+
+        footerPrivacy: "Politique de confidentialité",
+        footerTerms: "Conditions d'utilisation",
+        footerRefund: "Politique d'annulation",
+        footerRights: "&copy; 2024 Simple Maths Academy. Tous droits réservés.",
+        whatsappTooltip: "Des questions ? Discutons !"
+      },
+      en: {
+        navMethod: "My Method",
+        navCta: "Book my free 15-min assessment",
+        heroTitle: "Master University <br />\n          <span style='color: var(--primary)'>Mathematics (Years 1, 2, 3).</span>",
+        heroSubtitle: "Calculus, Algebra, Stats. Targeted coaching for your exams and competitive finals. 100% online.",
+        heroCta: "Book my free 15-min assessment",
+        whyMe: "Why me?",
+        whyMeDesc1: "Expert in mathematics with solid experience in university tutoring.",
+
+        whyMeDesc2: "I help students simplify complex concepts.",
+        methodTitle: "My Method",
+        methodS1Title: "Assessment",
+        methodS1Desc: "We identify your specific gaps and exam requirements.",
+        methodS2Title: "Targeted Strategy",
+        methodS2Desc: "We solve high-probability exam problems together.",
+        methodS3Title: "Autonomy",
+        methodS3Desc: "I give you the tools and mental models to solve any problem alone.",
+
+        specTitle: "Expertise",
+        specSubtitle: "Coaching adapted to your level.",
+        specU: "University & Higher Ed",
+        specUDesc: "<strong>Focus :</strong> Pure & Applied Mathematics, Economics, Business, STEM, Engineering.",
+        specL: "High School Diploma",
+        specLDesc: "<strong>Focus :</strong> IB, A-Levels, and University Entrance Exams.",
+        specCta: "Book my free 15-min assessment",
+        pricingTitle: "Pricing",
+        pricingSubtitle: "A profitable investment for your future and studies.",
+        pricingBadge: "FOUNDER'S SPECIAL",
+        pricingPack: "5-Hour Pack",
+        pricingDesc1: "The first 3 students get 50% OFF their first 5-lesson pack.",
+        pricingDesc2: "50% OFF your first pack!",
+        pricingLim: "Only <strong>3 spots left</strong>. (France & Belgium)",
+        pricingCta: "Book my free 15-min assessment",
+        finalTitle: "Ready to master math and ace your exams?",
+        finalSubtitle: "Book your slot now. It's 100% free and with zero commitment.",
+        finalCta: "Book my free 15-min assessment",
+
+        finalTerms: "By booking, you agree to our <a href='conditions-generales.html' style='color: white; text-decoration: underline;'>Terms</a> and <a href='politique-de-confidentialite.html' style='color: white; text-decoration: underline;'>Privacy Policy</a>.",
+        contactTitle: "Ready to succeed?",
+        contactSubtitle: "Book your free 15-min assessment or ask me anything.",
+        formName: "Name",
+        formEmail: "Email",
+        levelOpt1: "Select your level",
+        levelO1: "High School",
+        levelO2: "Bachelor Year 1",
+        levelO3: "Bachelor Year 2",
+        levelO4: "Bachelor Year 3",
+        levelO5: "Master's Degree",
+        formMsg: "Describe your math struggles",
+        formSubmit: "Send",
+        formSending: "Sending...",
+        formSuccess: "Message sent!",
+        formError: "Oops! There was a problem submitting your form. Please try again.",
+
+        footerPrivacy: "Privacy Policy",
+        footerTerms: "Terms of Service",
+        footerRefund: "Refund Policy",
+        footerRights: "&copy; 2024 Simple Maths Academy. All rights reserved.",
+        whatsappTooltip: "Questions? Chat with me!"
+      }
+    };
+
+    function updateUI(lang) {
+      // Update document title and lang tag
+      document.documentElement.lang = lang;
+
+      // Update switcher
+      const frBtn = document.getElementById('lang-fr');
+      const enBtn = document.getElementById('lang-en');
+      if (lang === 'fr') {
+        frBtn.className = 'lang-btn lang-active';
+        enBtn.className = 'lang-btn lang-inactive';
+      } else {
+        frBtn.className = 'lang-btn lang-inactive';
+        enBtn.className = 'lang-btn lang-active';
+      }
+
+      // Update dom texts (using data-i18n attributes)
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations['en'][key] && translations['fr'][key]) {
+          // Robust conditional rendering using ternary logic as specified
+          el.innerHTML = lang === 'en' ? translations['en'][key] : translations['fr'][key];
+        } else if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang][key]) {
+          el.placeholder = translations[lang][key];
+        }
+      });
+
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('lang', lang);
+      updateUI(lang);
+    }
+
+    function submitForm(event) {
+      event.preventDefault();
+
+      const form = event.target;
+      const submitBtn = document.getElementById('submitBtn');
+      const formStatusMsg = document.getElementById('formStatusMsg');
+      const successMsg = document.getElementById('successMsg');
+
+      // Use translation logic to determine messages
+      const isEng = document.documentElement.lang === 'en';
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = isEng ? translations.en.formSending : translations.fr.formSending;
+      formStatusMsg.style.display = 'none';
+
+      const data = new FormData(form);
+
+      fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+        } else {
+          response.json().then(data => {
+            if (Object.hasOwn(data, 'errors')) {
+              formStatusMsg.innerText = data["errors"].map(error => error["message"]).join(", ");
+            } else {
+              formStatusMsg.innerText = isEng ? translations.en.formError : translations.fr.formError;
+            }
+            formStatusMsg.style.display = 'block';
+            submitBtn.disabled = false;
+            submitBtn.innerText = isEng ? translations.en.formSubmit : translations.fr.formSubmit;
+          })
+        }
+      }).catch(error => {
+        formStatusMsg.innerText = isEng ? translations.en.formError : translations.fr.formError;
+        formStatusMsg.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.innerText = isEng ? translations.en.formSubmit : translations.fr.formSubmit;
+      });
+    }
+
+    // Init on load
+    document.addEventListener('DOMContentLoaded', () => {
+      updateUI(currentLang);
+    });
+  </script>
+</body>
+
 </html>

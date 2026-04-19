@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Maths Academy</title>
+    <link rel="icon" type="image/png" href="../assets/logo.png" />
+    <meta
+      name="description"
+      content="Tailored coaching to ace your exams and reach academic excellence. 100% Online."
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <!-- Calendly popup widget CSS -->
+    <link
+      href="https://assets.calendly.com/assets/external/widget.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Navigation -->
+      <nav>
+        <a href="../index.html" class="logo">
+          <img src="../assets/logo-icon.png" alt="Simple Maths Academy logo" class="logo-icon" />
+          <span class="logo-text">Simple Maths Academy</span>
+        </a>
+        <div style="display: flex; align-items: center; gap: 1.5rem">
+          <a
+            href="../method.html"
+            style="
+              color: var(--text-main);
+              text-decoration: none;
+              font-weight: 500;
+              transition: color 0.2s;
+            "
+            >My Method</a
+          >
+          <div class="lang-switcher">
+            <span style="font-weight: 800; color: var(--primary)">FR</span>
+            <span
+              style="color: var(--text-muted); opacity: 0.5; margin: 0 0.25rem"
+              >|</span
+            >
+            <a
+              href="en/index.html"
+              style="
+                color: var(--text-main);
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.2s;
+              "
+              >FR</a
+            >
+          </div>
+          <a
+            href="#"
+            onclick="
+              Calendly.initPopupWidget({
+                url: 'https://calendly.com/yanisturpin-maths/30min',
+              });
+              return false;
+            "
+            class="btn"
+            >Book my free 15-min discovery call</a
+          >
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <section class="hero">
+        <h1>
+          Master University <br />
+          <span style="color: var(--primary)"
+            >Math.</span
+          >
+        </h1>
+        <p style="font-size: 1.5rem; color: var(--text-main); font-weight: 500">
+          Calculus, Linear Algebra, Stats. Tailored coaching to ace your exams and reach academic excellence. 100% Online.
+        </p>
+        <div style="margin-top: 1rem">
+          <a
+            href="#"
+            onclick="
+              Calendly.initPopupWidget({
+                url: 'https://calendly.com/yanisturpin-maths/30min',
+              });
+              return false;
+            "
+            class="btn btn-large btn-pulse"
+            style="display: inline-flex; align-items: center; gap: 0.75rem"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            Book my free 15-min discovery call
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Social Proof / Bio -->
+    <section class="section section-bg">
+      <div class="container hero-split">
+        <div class="hero-split-image">
+           <div class="image-wrapper">
+             <img src="../assets/profile.png" alt="Professeur de maths" class="styled-image" />
+             <div class="image-overlay"></div>
+           </div>
+        </div>
+        <div class="hero-split-text">
+           <h2>Why me?</h2>
+           <p style="margin-bottom: 1.5rem; color: var(--text-main); font-size: 1.25rem;">
+             Expert in mathematics with solid experience in university tutoring.
+           </p>
+           <p style="font-size: 1.125rem;">
+             I help students simplify complex concepts.
+           </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specialities Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Expertise</h2>
+          <p>Coaching adapted to your level.</p>
+        </div>
+
+        <div class="grid-2" style="text-align: center;">
+          <div class="card center-text">
+            <div class="icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                <path d="M12 14v6" />
+              </svg>
+            </div>
+            <h3>University & Higher Ed</h3>
+            <p><strong>Focus :</strong> Pure & Applied Mathematics, Economics, Business, STEM, Engineering.</p>
+          </div>
+          <div class="card center-text">
+            <div class="icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5v-15A2.5 2.5 0 016.5 2H20v20H6.5a2.5 2.5 0 01-2.5-2.5z" />
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+              </svg>
+            </div>
+            <h3>High School Diploma</h3>
+            <p><strong>Focus :</strong> IB, A-Levels, and University Entrance Exams.</p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem">
+          <a
+            href="#"
+            onclick="
+              Calendly.initPopupWidget({
+                url: 'https://calendly.com/yanisturpin-maths/30min',
+              });
+              return false;
+            "
+            class="btn btn-large btn-pulse"
+            style="display: inline-flex; align-items: center; gap: 0.75rem"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            Book my free 15-min discovery call
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section section-bg">
+      <div class="container center-text">
+        <div class="section-header">
+          <h2>Pricing</h2>
+          <p>Un investissement rentable pour l'avenir de votre enfant.</p>
+        </div>
+
+        <div style="max-width: 500px; margin: 0 auto; background: var(--card-bg); border-radius: 24px; padding: 4rem 3rem; border: 2px solid var(--primary); position: relative; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);">
+          <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 0.5rem 1.5rem; border-radius: 9999px; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; white-space: nowrap;">
+            LAUNCH SPECIAL
+          </div>
+          <h3 style="font-size: 2rem; margin-bottom: 1rem;">5-Hour Pack</h3>
+          <p style="font-size: 1.25rem; color: var(--text-main); margin-bottom: 2rem;">Ideal for intense revision.</p>
+          
+          <div style="background: rgba(26, 43, 60, 0.4); padding: 1.5rem; border-radius: 16px; margin-bottom: 2rem; border: 1px solid rgba(255,255,255,0.05);">
+            <p style="font-size: 1.5rem; font-weight: 800; color: var(--primary); margin: 0;">50% OFF your first pack!</p>
+          </div>
+          
+          <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 3rem;">
+            Only 3 spots available.
+          </p>
+
+          <a
+            href="#"
+            onclick="
+              Calendly.initPopupWidget({
+                url: 'https://calendly.com/yanisturpin-maths/30min',
+              });
+              return false;
+            "
+            class="btn btn-large btn-pulse"
+            style="width: 100%; display: flex; justify-content: center;"
+          >
+            Book my free discovery call
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA / Contact Section -->
+    <section class="section">
+      <div class="container center-text">
+        <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem">Ready to succeed?</h2>
+        <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 3rem">
+          Book your free 15-min assessment or ask me anything.
+        </p>
+
+        <div class="contact-container" style="max-width: 600px; margin: 0 auto 3rem auto; background: var(--card-bg); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); text-align: left;">
+           <form id="contactForm" action="https://formspree.io/f/mnjlvwkq" method="POST" onsubmit="submitForm(event)">
+             <!-- Honeypot -->
+             <input type="text" name="_gotcha" style="display:none" />
+
+             <div style="margin-bottom: 1.5rem;">
+               <input type="text" id="name" name="name" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem;" placeholder="Name" required>
+             </div>
+             <div style="margin-bottom: 1.5rem;">
+               <input type="email" id="email" name="email" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem;" placeholder="Email" required>
+             </div>
+             <div style="margin-bottom: 1.5rem;">
+               <select id="level" name="level" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem; appearance: auto;" required>
+                 <option value="" disabled selected>Select your level</option>
+                 <option value="Bachelor Year 1">Bachelor Year 1</option>
+                 <option value="Bachelor Year 2">Bachelor Year 2</option>
+                 <option value="Bachelor Year 3">Bachelor Year 3</option>
+                 <option value="Master's Degree">Master's Degree</option>
+                 <option value="High School">High School</option>
+               </select>
+             </div>
+             <div style="margin-bottom: 1.5rem;">
+               <textarea id="message" name="message" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem; resize: vertical;" placeholder="Describe your math struggles" rows="4" required></textarea>
+             </div>
+             <button type="submit" id="submitBtn" class="btn btn-large" style="width: 100%; border-radius: 12px; border: none; font-size: 1.125rem;">Send</button>
+             <p id="formStatusMsg" style="color: #ef4444; margin-top: 1rem; display: none; text-align: center;"></p>
+           </form>
+
+           <div id="successMsg" style="display: none; padding: 3rem 1rem; text-align: center;">
+             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="margin-bottom: 1rem;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+             <h3 style="font-size: 1.5rem; color: var(--text-main);">Message sent!</h3>
+           </div>
+        </div>
+
+        <a
+          href="#"
+          onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
+          class="btn btn-pulse"
+          style="display: inline-flex; align-items: center; gap: 0.75rem"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          <span>Book my free 15-min assessment</span>
+        </a>
+      </div>
+    </section>
+
+    <footer style="margin-top: 4rem; border-top: 1px solid var(--border-color, #e5e7eb); padding: 2rem 0;">
+      <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center;">
+        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+          <a href="../politique-de-confidentialite.html" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;">Privacy Policy</a>
+          <a href="../conditions-generales.html" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;">Terms of Service</a>
+          <a href="../politique-annulations.html" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;">Refund Policy</a>
+        </div>
+        <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;">&copy; 2024 Simple Maths Academy. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Calendly externals -->
+    <script
+      src="https://assets.calendly.com/assets/external/widget.js"
+      type="text/javascript"
+      async
+    ></script>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-container">
+      <div class="whatsapp-tooltip">Questions? Chat with me!</div>
+      <a href="https://wa.me/32490219347?text=Bonjour%2C%20j%27ai%20vu%20votre%20site%20Simple%20Maths%20Academy..." target="_blank" class="whatsapp-float">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.004 0C5.385 0 0 5.385 0 12.004c0 2.115.553 4.167 1.603 5.967L0 24l6.196-1.583A11.942 11.942 0 0012.004 24c6.618 0 12.004-5.385 12.004-12.004S18.622 0 12.004 0zm0 21.986c-1.803 0-3.571-.486-5.116-1.405l-.367-.217-3.8.971.996-3.705-.238-.378A9.973 9.973 0 012.023 12.004c0-5.503 4.48-9.982 9.981-9.982 5.5 0 9.98 4.479 9.98 9.982s-4.48 9.982-9.98 9.982zM17.485 14.5c-.302-.152-1.785-.881-2.062-.981-.277-.101-.48-.152-.68.152-.202.304-.781.981-.958 1.182-.178.202-.355.228-.657.076-1.403-.708-2.618-1.554-3.585-2.83-.245-.325.244-.306.828-1.472.101-.202.05-.38-.026-.531-.075-.152-.68-1.642-.931-2.247-.245-.589-.494-.509-.68-.518-.178-.009-.382-.012-.582-.012-.202 0-.53.076-.806.38-.277.304-1.058 1.035-1.058 2.523s1.083 2.924 1.235 3.125c.152.202 2.122 3.238 5.143 4.542.72.308 1.282.493 1.723.631.724.23 1.385.198 1.9.12.576-.088 1.785-.73 2.036-1.436.252-.707.252-1.314.178-1.436-.077-.123-.277-.2-.58-.352z"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Formspree AJAX Handler -->
+    <script>
+      function submitForm(event) {
+        event.preventDefault();
+        
+        const form = event.target;
+        const submitBtn = document.getElementById('submitBtn');
+        const formStatusMsg = document.getElementById('formStatusMsg');
+        const successMsg = document.getElementById('successMsg');
+        
+        submitBtn.disabled = true;
+        submitBtn.innerText = "Sending...";
+        formStatusMsg.style.display = 'none';
+        
+        const data = new FormData(form);
+        
+        fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: {
+              'Accept': 'application/json'
+          }
+        }).then(response => {
+          if (response.ok) {
+            form.style.display = 'none';
+            successMsg.style.display = 'block';
+          } else {
+            response.json().then(data => {
+              if (Object.hasOwn(data, 'errors')) {
+                formStatusMsg.innerText = data["errors"].map(error => error["message"]).join(", ");
+              } else {
+                formStatusMsg.innerText = "Oops! There was a problem submitting your form. Please try again.";
+              }
+              formStatusMsg.style.display = 'block';
+              submitBtn.disabled = false;
+              submitBtn.innerText = "Send";
+            })
+          }
+        }).catch(error => {
+          formStatusMsg.innerText = "Oops! There was a problem submitting your form. Please try again.";
+          formStatusMsg.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Send";
+        });
+      }
+    </script>
+  </body>
+</html>

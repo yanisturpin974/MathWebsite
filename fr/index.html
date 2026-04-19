@@ -364,54 +364,257 @@
       </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="calendly-section">
-      <div class="container" style="max-width: 800px; padding: 4rem 2rem">
-        <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem">
-          Prêt à rattraper votre retard et réussir votre prochain examen ?
-        </h2>
-        <p style="font-size: 1.25rem; margin-bottom: 3rem; color: #eef2ff">
-          Que vous soyez au lycée ou à l'université, choisissez un créneau
-          ci-dessous. C'est 100% gratuit et sans aucun engagement.
+    <!-- Final CTA / Contact Section -->
+    <section class="section">
+      <div class="container center-text">
+        <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem">Prêt à réussir ?</h2>
+        <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 3rem">
+          Réservez votre bilan gratuit de 15 min ou posez-moi vos questions.
         </p>
+
+        <div class="contact-container" style="max-width: 600px; margin: 0 auto 3rem auto; background: var(--card-bg); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); text-align: left;">
+           <form id="contactForm" action="https://formspree.io/f/mnjlvwkq" method="POST" onsubmit="submitForm(event)">
+             <!-- Honeypot -->
+             <input type="text" name="_gotcha" style="display:none" />
+
+             <div style="margin-bottom: 1.5rem;">
+               <input type="text" id="name" name="name" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem;" placeholder="Nom" required>
+             </div>
+             <div style="margin-bottom: 1.5rem;">
+               <input type="email" id="email" name="email" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem;" placeholder="Email" required>
+             </div>
+             <div style="margin-bottom: 1.5rem;">
+               <select id="level" name="level" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem; appearance: auto;" required>
+                 <option value="" disabled selected>Choisissez votre niveau</option>
+                 <option value="Bachelor 1 (L1/B1)">L1 / B1 (Bachelier)</option>
+                 <option value="Bachelor 2 (L2/B2)">L2 / B2</option>
+                 <option value="Bachelor 3 (L3/B3)">L3 / B3</option>
+                 <option value="Master">Master</option>
+                 <option value="High School (Lycee)">Lycée / CESS</option>
+               </select>
+             </div>
+             <div style="margin-bottom: 1.5rem;">
+               <textarea id="message" name="message" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem; resize: vertical;" placeholder="Décrivez vos difficultés en maths" rows="4" required></textarea>
+             </div>
+             <button type="submit" id="submitBtn" class="btn btn-large" style="width: 100%; border-radius: 12px; border: none; font-size: 1.125rem;">Envoyer</button>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon-wrapper">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <h3>Accompagnement 100% Personnalisé</h3>
+            <p>
+              Des séances sur-mesure pour les élèves du lycée à l'université,
+              idéales pour rattraper son retard en cours d'année.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon-wrapper">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg>
+            </div>
+            <h3>Des Explications Limpides</h3>
+            <p>
+              Les formules mathématiques complexes décomposées en étapes simples
+              et logiques qui font enfin sens.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon-wrapper">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                <polyline points="17 6 23 6 23 12" />
+              </svg>
+            </div>
+            <h3>Des Résultats Concrets</h3>
+            <p>
+              Transformez le stress en réussite. Acquérez la vraie compréhension
+              nécessaire pour aborder vos examens sereinement.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section section-bg">
+      <div class="container">
+        <div class="section-header">
+          <h2>Comment ça marche</h2>
+          <p>
+            Un parcours simple et sans friction pour atteindre vos objectifs
+            académiques.
+          </p>
+        </div>
+
+        <div class="steps-wrapper">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Réservez un appel gratuit</h3>
+              <p>
+                Planifiez une courte consultation de 15 minutes en utilisant le
+                calendrier ci-dessous. Sans pression ni engagement.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Nous analysons votre situation</h3>
+              <p>
+                Nous discuterons de vos difficultés actuelles et de vos
+                objectifs spécifiques pour le semestre.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Je propose un plan</h3>
+              <p>
+                Je conçois un programme sur-mesure et planifie des séances
+                régulières parfaitement adaptées à vos besoins.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>Vous progressez</h3>
+              <p>
+                Nous appliquons le plan ensemble, en maîtrisant chaque concept
+                un par un jusqu'à ce que vous réussissiez vos examens en toute
+                confiance.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem">
+          <a
+            href="#"
+            onclick="
+              Calendly.initPopupWidget({
+                url: 'https://calendly.com/yanisturpin-maths/30min',
+              });
+              return false;
+            "
+            class="btn btn-large"
+            style="display: inline-flex; align-items: center; gap: 0.75rem"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            Commencer l'étape 1 dès maintenant
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA / Contact Section -->
+    <section class="section">
+      <div class="container center-text">
+        <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem">Prêt à réussir ?</h2>
+        <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 3rem">
+          Réservez votre bilan gratuit de 15 min ou posez-moi vos questions.
+        </p>
+
+        <div class="contact-container" style="max-width: 600px; margin: 0 auto 3rem auto; background: var(--card-bg); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); text-align: left;">
+           <form id="contactForm" action="https://formspree.io/f/mnjlvwkq" method="POST" onsubmit="submitForm(event)">
+             <!-- Honeypot -->
+             <input type="text" name="_gotcha" style="display:none" />
+
+             <div style="margin-bottom: 1.5rem;">
+               <input type="text" id="name" name="name" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem;" placeholder="Nom" required>
+             </div>
+             <div style="margin-bottom: 1.5rem;">
+               <input type="email" id="email" name="email" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem;" placeholder="Email" required>
+             </div>
+             <div style="margin-bottom: 1.5rem;">
+               <select id="level" name="level" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem; appearance: auto;" required>
+                 <option value="" disabled selected>Choisissez votre niveau</option>
+                 <option value="Bachelor 1 (L1/B1)">L1 / B1 (Bachelier)</option>
+                 <option value="Bachelor 2 (L2/B2)">L2 / B2</option>
+                 <option value="Bachelor 3 (L3/B3)">L3 / B3</option>
+                 <option value="Master">Master</option>
+                 <option value="High School (Lycee)">Lycée / CESS</option>
+               </select>
+             </div>
+             <div style="margin-bottom: 1.5rem;">
+               <textarea id="message" name="message" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem; resize: vertical;" placeholder="Décrivez vos difficultés en maths" rows="4" required></textarea>
+             </div>
+             <button type="submit" id="submitBtn" class="btn btn-large" style="width: 100%; border-radius: 12px; border: none; font-size: 1.125rem;">Envoyer</button>
+             <p id="formStatusMsg" style="color: #ef4444; margin-top: 1rem; display: none; text-align: center;"></p>
+           </form>
+
+           <div id="successMsg" style="display: none; padding: 3rem 1rem; text-align: center;">
+             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="margin-bottom: 1rem;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+             <h3 style="font-size: 1.5rem; color: var(--text-main);">Message envoyé !</h3>
+           </div>
+        </div>
 
         <a
           href="#"
-          onclick="
-            Calendly.initPopupWidget({
-              url: 'https://calendly.com/yanisturpin-maths/30min',
-            });
-            return false;
-          "
-          class="btn btn-large btn-pulse"
-          style="
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background-color: var(--white);
-            color: var(--primary);
-          "
+          onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
+          class="btn btn-pulse"
+          style="display: inline-flex; align-items: center; gap: 0.75rem"
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
             <line x1="16" y1="2" x2="16" y2="6" />
             <line x1="8" y1="2" x2="8" y2="6" />
             <line x1="3" y1="10" x2="21" y2="10" />
           </svg>
-          Réservez votre appel gratuit
+          <span>Réserver mon Bilan de 15 min Gratuit</span>
         </a>
-        <p style="font-size: 0.875rem; color: rgba(255,255,255,0.7); margin-top: 1rem;">
-          En réservant, vous acceptez nos <a href="../conditions-generales.html" style="color: white; text-decoration: underline;">Conditions générales</a> et notre <a href="../politique-de-confidentialite.html" style="color: white; text-decoration: underline;">Politique de confidentialité</a>.
-        </p>
       </div>
     </section>
 
@@ -432,5 +635,62 @@
       type="text/javascript"
       async
     ></script>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-container">
+      <div class="whatsapp-tooltip">Des questions ? Discutons !</div>
+      <a href="https://wa.me/32490219347?text=Bonjour%2C%20j%27ai%20vu%20votre%20site%20Simple%20Maths%20Academy..." target="_blank" class="whatsapp-float">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.004 0C5.385 0 0 5.385 0 12.004c0 2.115.553 4.167 1.603 5.967L0 24l6.196-1.583A11.942 11.942 0 0012.004 24c6.618 0 12.004-5.385 12.004-12.004S18.622 0 12.004 0zm0 21.986c-1.803 0-3.571-.486-5.116-1.405l-.367-.217-3.8.971.996-3.705-.238-.378A9.973 9.973 0 012.023 12.004c0-5.503 4.48-9.982 9.981-9.982 5.5 0 9.98 4.479 9.98 9.982s-4.48 9.982-9.98 9.982zM17.485 14.5c-.302-.152-1.785-.881-2.062-.981-.277-.101-.48-.152-.68.152-.202.304-.781.981-.958 1.182-.178.202-.355.228-.657.076-1.403-.708-2.618-1.554-3.585-2.83-.245-.325.244-.306.828-1.472.101-.202.05-.38-.026-.531-.075-.152-.68-1.642-.931-2.247-.245-.589-.494-.509-.68-.518-.178-.009-.382-.012-.582-.012-.202 0-.53.076-.806.38-.277.304-1.058 1.035-1.058 2.523s1.083 2.924 1.235 3.125c.152.202 2.122 3.238 5.143 4.542.72.308 1.282.493 1.723.631.724.23 1.385.198 1.9.12.576-.088 1.785-.73 2.036-1.436.252-.707.252-1.314.178-1.436-.077-.123-.277-.2-.58-.352z"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Formspree AJAX Handler -->
+    <script>
+      function submitForm(event) {
+        event.preventDefault();
+        
+        const form = event.target;
+        const submitBtn = document.getElementById('submitBtn');
+        const formStatusMsg = document.getElementById('formStatusMsg');
+        const successMsg = document.getElementById('successMsg');
+        
+        submitBtn.disabled = true;
+        submitBtn.innerText = "Envoi en cours...";
+        formStatusMsg.style.display = 'none';
+        
+        const data = new FormData(form);
+        
+        fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: {
+              'Accept': 'application/json'
+          }
+        }).then(response => {
+          if (response.ok) {
+            form.style.display = 'none';
+            successMsg.style.display = 'block';
+          } else {
+            response.json().then(data => {
+              if (Object.hasOwn(data, 'errors')) {
+                formStatusMsg.innerText = data["errors"].map(error => error["message"]).join(", ");
+              } else {
+                formStatusMsg.innerText = "Oops ! Un problème est survenu. Veuillez réessayer.";
+              }
+              formStatusMsg.style.display = 'block';
+              submitBtn.disabled = false;
+              submitBtn.innerText = "Envoyer";
+            })
+          }
+        }).catch(error => {
+          formStatusMsg.innerText = "Oops ! Un problème est survenu. Veuillez réessayer.";
+          formStatusMsg.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Envoyer";
+        });
+      }
+    </script>
   </body>
 </html>
