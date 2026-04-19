@@ -25,6 +25,8 @@
 
 html {
   scroll-behavior: smooth;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
@@ -34,6 +36,8 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* Typography */
@@ -69,7 +73,7 @@ p {
 
 /* Navigation */
 nav {
-  padding: 1.5rem 0;
+  padding: 0.75rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -79,6 +83,8 @@ nav {
   top: 0;
   z-index: 100;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .logo {
@@ -340,12 +346,40 @@ footer {
   }
 
   nav {
-    flex-direction: column;
-    gap: 1.5rem;
+    /* Stay in a single row — no column stacking */
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 0.75rem 1rem;
+    gap: 0;
+  }
+
+  /* Hide the CTA button in the header — hero has a big one already */
+  .nav-cta {
+    display: none;
+  }
+
+  .logo {
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .logo-icon {
+    height: 44px;
+    width: 44px;
   }
 
   .logo-text {
-    display: none; /* Keep a minimal icon-only header on mobile */
+    display: none; /* icon-only on mobile */
+  }
+
+  /* Nav right side: keep method link + lang switcher compact */
+  nav > div {
+    gap: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .lang-switcher {
+    font-size: 0.875rem;
   }
 
   h1 {
