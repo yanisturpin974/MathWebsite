@@ -7,7 +7,7 @@
   <title>Simple Maths Academy</title>
   <link rel="icon" type="image/png" href="assets/logo.png" />
   <meta name="description"
-    content="Des cours de maths personnalisés pour maîtriser le programme, reprendre confiance et réussir vos examens." />
+    content="Coaching mathématiques premium pour Polytechnique, Médecine, Solvay et réussite universitaire (B1/L1 à Master). Diagnostic gratuit 15 min." />
   <link rel="stylesheet" href="styles.css" />
   <!-- Calendly popup widget CSS -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
@@ -38,14 +38,21 @@
 
     <!-- Hero Section -->
     <section class="hero">
+      <div class="hero-badge" data-i18n="heroBadge">🎓 Académie de Coaching Premium</div>
       <h1 data-i18n="heroTitle">
-        Réussissez vos Maths <br />
-        <span style="color: var(--primary)">à l'Université (L1/B1, L2/B2, L3/B3).</span>
+        L'Excellence Mathématique <br />
+        <span style="color: var(--primary)">pour le Supérieur &amp; les Concours.</span>
       </h1>
-      <p style="font-size: 1.5rem; color: var(--text-main); font-weight: 500" data-i18n="heroSubtitle">
-        Analyse, Algèbre, Stats. Un accompagnement ciblé pour vos partiels, votre Blocus et vos examens. 100% en ligne.
+      <p style="font-size: 1.35rem; color: var(--text-main); font-weight: 400; max-width: 700px; margin: 0 auto 2rem;" data-i18n="heroSubtitle">
+        Spécialiste de la transition Rhéto-Université. Préparation intensive pour <strong>Polytechnique</strong>, <strong>Médecine</strong>, <strong>Solvay</strong> et réussite de vos partiels (B1/L1 à Master).
       </p>
-      <div style="margin-top: 1rem">
+      <div class="hero-tags">
+        <span class="path-tag">Polytechnique</span>
+        <span class="path-tag">Médecine / Dentaire</span>
+        <span class="path-tag">Solvay / LSM</span>
+        <span class="path-tag">VUB · ULB · UCLouvain</span>
+      </div>
+      <div style="margin-top: 2rem">
         <a href="#"
           onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
           class="btn btn-large btn-pulse" style="display: inline-flex; align-items: center; gap: 0.75rem">
@@ -56,7 +63,7 @@
             <line x1="8" y1="2" x2="8" y2="6" />
             <line x1="3" y1="10" x2="21" y2="10" />
           </svg>
-          <span data-i18n="heroCta">Réserver mon bilan gratuit (15 min)</span>
+          <span data-i18n="heroCta">Diagnostic Gratuit — 15 min</span>
         </a>
       </div>
     </section>
@@ -131,39 +138,62 @@
     </div>
   </section>
 
-  <!-- Specialities Section -->
+    <!-- Specialized Path Cards (3 columns) -->
   <section class="section">
     <div class="container">
       <div class="section-header">
-        <h2 data-i18n="specTitle">Spécialités</h2>
-        <p data-i18n="specSubtitle">Un accompagnement adapté à votre niveau.</p>
+        <h2 data-i18n="specTitle">Parcours Spécialisés</h2>
+        <p data-i18n="specSubtitle">Un programme taillé pour vos objectifs précis.</p>
       </div>
 
-      <div class="grid-2" style="text-align: center;">
-        <div class="card center-text">
+      <div class="grid-3" style="text-align: left;">
+        <!-- Card 1: Admissions & Concours -->
+        <div class="card path-card">
           <div class="icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M12 14l9-5-9-5-9 5 9 5z" />
-              <path
-                d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-              <path d="M12 14v6" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
             </svg>
           </div>
-          <h3 data-i18n="specU">Université & Supérieur</h3>
-          <p data-i18n="specUDesc"><strong>Focus :</strong> Maths Pures & Appliquées, Économie, Gestion, Sciences,
-            Ingénieur.</p>
+          <h3 data-i18n="spec1Title">Admissions &amp; Concours</h3>
+          <p data-i18n="spec1Desc" style="margin-bottom: 1.5rem;">Préparation intensive aux examens d'entrée les plus sélectifs.</p>
+          <div class="path-tags">
+            <span class="path-tag">Polytechnique</span>
+            <span class="path-tag">Médecine / Dentaire</span>
+            <span class="path-tag">Solvay / LSM</span>
+          </div>
         </div>
-        <div class="card center-text">
+        <!-- Card 2: Transition & Secondaire -->
+        <div class="card path-card">
           <div class="icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M4 19.5v-15A2.5 2.5 0 016.5 2H20v20H6.5a2.5 2.5 0 01-2.5-2.5z" />
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
             </svg>
           </div>
-          <h3 data-i18n="specL">Lycée & CESS</h3>
-          <p data-i18n="specLDesc"><strong>Focus :</strong> Préparation au Bac, CESS, et examens d'admission.</p>
+          <h3 data-i18n="spec2Title">Transition &amp; Secondaire</h3>
+          <p data-i18n="spec2Desc" style="margin-bottom: 1.5rem;">Réussite du CESS/Bac et préparation intensive aux études scientifiques et économiques.</p>
+          <div class="path-tags">
+            <span class="path-tag">CESS / Bac</span>
+            <span class="path-tag">Sciences</span>
+            <span class="path-tag">Économie</span>
+          </div>
+        </div>
+        <!-- Card 3: Réussite Universitaire -->
+        <div class="card path-card">
+          <div class="icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 016.5 2H20v20H6.5a2.5 2.5 0 01-2.5-2.5z"/>
+              <line x1="9" y1="7" x2="15" y2="7"/>
+              <line x1="9" y1="11" x2="15" y2="11"/>
+              <line x1="9" y1="15" x2="13" y2="15"/>
+            </svg>
+          </div>
+          <h3 data-i18n="spec3Title">Réussite Universitaire</h3>
+          <p data-i18n="spec3Desc" style="margin-bottom: 1.5rem;">Support complet de la B1 au Master : Analyse, Algèbre Linéaire, Statistiques avancées.</p>
+          <div class="path-tags">
+            <span class="path-tag">B1 → Master</span>
+            <span class="path-tag">Analyse</span>
+            <span class="path-tag">Algèbre Linéaire</span>
+          </div>
         </div>
       </div>
 
@@ -178,48 +208,137 @@
             <line x1="8" y1="2" x2="8" y2="6" />
             <line x1="3" y1="10" x2="21" y2="10" />
           </svg>
-          <span data-i18n="specCta">Réserver mon bilan gratuit (15 min)</span>
+          <span data-i18n="specCta">Diagnostic Gratuit — 15 min</span>
         </a>
       </div>
     </div>
   </section>
 
+  <!-- Expertise / Why Us Section -->
+  <section class="section section-bg" id="expertise">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-i18n="expertTitle">Pourquoi nous choisir ?</h2>
+        <p data-i18n="expertSubtitle">Une méthode construite pour les exigences du Supérieur.</p>
+      </div>
+      <div class="grid-3" style="text-align: left;">
+        <div class="card" style="background: transparent; border: 1px solid rgba(0,122,255,0.2); box-shadow: none; padding: 2rem 1.5rem;">
+          <div class="icon-wrapper" style="width: 48px; height: 48px; margin-bottom: 1.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
+          <h3 data-i18n="expert1Title" style="font-size: 1.25rem; margin-bottom: 0.75rem;">Méthode Ciblée</h3>
+          <p data-i18n="expert1Desc">Focus exclusif sur les questions d'examens des années précédentes pour maximiser votre score.</p>
+        </div>
+        <div class="card" style="background: transparent; border: 1px solid rgba(0,122,255,0.2); box-shadow: none; padding: 2rem 1.5rem;">
+          <div class="icon-wrapper" style="width: 48px; height: 48px; margin-bottom: 1.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>
+            </svg>
+          </div>
+          <h3 data-i18n="expert2Title" style="font-size: 1.25rem; margin-bottom: 0.75rem;">Outils Interactifs</h3>
+          <p data-i18n="expert2Desc">Tableau blanc numérique pour une clarté maximale — comme si vous étiez en présentiel.</p>
+        </div>
+        <div class="card" style="background: transparent; border: 1px solid rgba(0,122,255,0.2); box-shadow: none; padding: 2rem 1.5rem;">
+          <div class="icon-wrapper" style="width: 48px; height: 48px; margin-bottom: 1.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 data-i18n="expert3Title" style="font-size: 1.25rem; margin-bottom: 0.75rem;">Expertise Supérieure</h3>
+          <p data-i18n="expert3Desc">Maîtrise totale des programmes <strong>VUB</strong>, <strong>ULB</strong>, <strong>UCLouvain</strong> et <strong>Sorbonne</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Pricing Section -->
-  <section class="section section-bg">
+  <section class="section section-bg" id="pricing">
     <div class="container center-text">
       <div class="section-header">
         <h2 data-i18n="pricingTitle">Tarifs</h2>
-        <p data-i18n="pricingSubtitle">Un investissement rentable pour l'avenir de votre enfant.</p>
+        <p data-i18n="pricingSubtitle">Un investissement rentable pour votre réussite.</p>
       </div>
 
-      <div
-        style="max-width: 500px; margin: 0 auto; background: var(--card-bg); border-radius: 24px; padding: 4rem 3rem; border: 2px solid var(--primary); position: relative; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);">
-        <div
-          style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 0.5rem 1.5rem; border-radius: 9999px; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.05em; white-space: nowrap;"
-          data-i18n="pricingBadge">
-          OFFRE FONDATEUR
-        </div>
-        <h3 style="font-size: 2rem; margin-bottom: 1rem;" data-i18n="pricingPack">Pack de 5h</h3>
-        <p style="font-size: 1.25rem; color: var(--text-main); margin-bottom: 2rem;" data-i18n="pricingDesc1">Les 3
-          premiers étudiants inscrits bénéficient de -50% sur leur premier pack de 5 cours.</p>
-
-        <div
-          style="background: rgba(26, 43, 60, 0.4); padding: 1.5rem; border-radius: 16px; margin-bottom: 2rem; border: 1px solid rgba(255,255,255,0.05);">
-          <p style="font-size: 1.5rem; font-weight: 800; color: var(--primary); margin: 0;" data-i18n="pricingDesc2">
-            -50% sur votre premier pack !</p>
-        </div>
-
-        <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 3rem;" data-i18n="pricingLim">
-          Plus que <strong>3 places disponibles</strong>.
-        </p>
-
-        <a href="#"
-          onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
-          class="btn btn-large btn-pulse" style="width: 100%; display: flex; justify-content: center;"
-          data-i18n="pricingCta">
-          Réserver mon bilan gratuit (15 min)
-        </a>
+      <!-- Sold-out notice -->
+      <div class="pricing-notice" data-i18n="pricingNotice">
+        😔 Désolé, les places à tarif réduit ont toutes été réservées. Inscrivez-vous pour un bilan gratuit de 15 min pour discuter de votre plan de réussite aux tarifs standards.
       </div>
+
+      <!-- Two-column layout: sold-out card + promo rates -->
+      <div class="pricing-grid">
+
+        <!-- Sold-out Founder card -->
+        <div class="pricing-card pricing-soldout">
+          <div class="pricing-badge pricing-badge-soldout" data-i18n="pricingBadge">OFFRE FONDATEUR</div>
+          <div class="soldout-overlay">
+            <span class="soldout-label" data-i18n="soldOutLabel">SOLD OUT<br><span style="font-size:0.75rem; font-weight:600; letter-spacing:0.05em;">PROMO TERMINÉE</span></span>
+          </div>
+          <h3 data-i18n="pricingPack" style="font-size: 1.6rem; margin-bottom: 0.5rem; opacity: 0.5;">Pack Fondateur 5h</h3>
+          <div class="pricing-amount" style="opacity: 0.4; margin-bottom: 0.5rem;">
+            <span class="price-crossed" data-i18n="pricingOldPrice">250€</span>
+            <span style="font-size: 2rem; font-weight: 800; color: var(--text-muted); margin-left: 0.5rem;">→ 100€</span>
+          </div>
+          <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0.5rem 0 1.5rem; opacity: 0.5;" data-i18n="pricingDesc1">4h + 1h offerte · 20€/h</p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 2rem; opacity: 0.45;" data-i18n="pricingDesc2">Les 3 premiers étudiants bénéficiaient de cette offre exceptionnelle.</p>
+          <button class="btn btn-large btn-soldout" disabled data-i18n="soldOutBtn">Complet — Plus disponible</button>
+        </div>
+
+        <!-- Exam Session Promo card -->
+        <div class="pricing-card pricing-standard">
+          <div class="pricing-badge pricing-badge-promo" data-i18n="stdBadge">PROMO SESSION EXAMENS</div>
+          <div class="promo-limited-tag" data-i18n="promoLimited">⏳ Offre limitée</div>
+
+          <!-- Option 1 — Single session with anchor price -->
+          <div class="price-row">
+            <div class="price-row-info">
+              <span class="price-row-name" data-i18n="std1Name">Séance individuelle</span>
+              <span class="price-row-detail">
+                <span class="anchor-price" data-i18n="anchorPrice">50€/h</span>
+                <span data-i18n="std1Detail"> · Cours unique, sans engagement</span>
+              </span>
+            </div>
+            <div class="price-row-amount">
+              <span class="price-main">40€</span>
+              <span class="price-per" data-i18n="perHour">/h</span>
+            </div>
+          </div>
+
+          <!-- Option 2 — Best Seller -->
+          <div class="price-row price-row-featured">
+            <div class="price-row-popular" data-i18n="mostPopular">⭐ Le Plus Populaire</div>
+            <div class="price-row-info">
+              <span class="price-row-name">Pack <em>Réussite</em> — 5h</span>
+              <span class="price-row-detail" data-i18n="std2Detail">35€/h · Économisez 75€ sur le tarif plein</span>
+            </div>
+            <div class="price-row-amount">
+              <span class="price-main">175€</span>
+            </div>
+          </div>
+
+          <!-- Option 3 -->
+          <div class="price-row">
+            <div class="price-row-info">
+              <span class="price-row-name">Pack <em>Excellence</em> — 10h</span>
+              <span class="price-row-detail" data-i18n="std3Detail">30€/h · Économisez 200€ sur le tarif plein</span>
+            </div>
+            <div class="price-row-amount">
+              <span class="price-main">300€</span>
+            </div>
+          </div>
+
+          <a href="#"
+            onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
+            class="btn btn-large btn-pulse btn-cta-blue"
+            style="width: 100%; display: flex; justify-content: center; margin-top: 2rem;"
+            data-i18n="pricingCta">
+            Diagnostic Gratuit — 15 min
+          </a>
+        </div>
+
+      </div><!-- /pricing-grid -->
+
     </div>
   </section>
 
@@ -339,14 +458,14 @@
     const translations = {
       fr: {
         navMethod: "Ma Méthode",
-        navCta: "Réserver mon bilan gratuit (15 min)",
-        heroTitle: "Réussissez vos Maths <br />\n          <span style='color: var(--primary)'>à l'Université (L1/B1, L2/B2, L3/B3).</span>",
-        heroSubtitle: "Analyse, Algèbre, Stats. Un accompagnement ciblé pour vos partiels, votre Blocus et vos examens. 100% en ligne.",
-        heroCta: "Réserver mon bilan gratuit (15 min)",
-        whyMe: "Pourquoi me choisir ?",
-        whyMeDesc1: "Expert en mathématiques avec une expérience solide en tutorat universitaire.",
-
-        whyMeDesc2: "J'aide les étudiants à simplifier les concepts complexes.",
+        navCta: "Diagnostic Gratuit — 15 min",
+        heroBadge: "🎓 Académie de Coaching Premium",
+        heroTitle: "L'Excellence Mathématique <br /><span style='color: var(--primary)'>pour le Supérieur &amp; les Concours.</span>",
+        heroSubtitle: "Spécialiste de la transition Rhéto-Université. Préparation intensive pour <strong>Polytechnique</strong>, <strong>Médecine</strong>, <strong>Solvay</strong> et réussite de vos partiels (B1/L1 à Master).",
+        heroCta: "Diagnostic Gratuit — 15 min",
+        whyMe: "Notre Approche",
+        whyMeDesc1: "Expert en mathématiques spécialisé dans les concours d'entrée et le tutorat universitaire de haut niveau.",
+        whyMeDesc2: "Je transforme les concepts les plus complexes en méthodes claires et actionnables.",
         methodTitle: "Ma Méthode",
         methodS1Title: "Évaluation",
         methodS1Desc: "Nous identifions vos lacunes spécifiques et les exigences de vos examens.",
@@ -354,59 +473,78 @@
         methodS2Desc: "Nous résolvons ensemble les problèmes d'examen à forte probabilité.",
         methodS3Title: "Autonomie",
         methodS3Desc: "Je vous donne les outils et modèles mentaux pour résoudre tout problème seul.",
-
-        specTitle: "Spécialités",
-        specSubtitle: "Un accompagnement adapté à votre niveau.",
-        specU: "Université & Supérieur",
-        specUDesc: "<strong>Focus :</strong> Maths Pures & Appliquées, Économie, Gestion, Sciences, Ingénieur.",
-        specL: "Lycée & Secondaire",
-        specLDesc: "<strong>Focus :</strong> Préparation au Bac, CESS, et examens d'admission.",
-        specCta: "Réserver mon bilan gratuit (15 min)",
+        specTitle: "Parcours Spécialisés",
+        specSubtitle: "Un programme taillé pour vos objectifs précis.",
+        spec1Title: "Admissions &amp; Concours",
+        spec1Desc: "Préparation intensive aux examens d'entrée les plus sélectifs : Polytechnique, Médecine, Solvay.",
+        spec2Title: "Transition &amp; Secondaire",
+        spec2Desc: "Réussite du CESS/Bac et préparation intensive aux études scientifiques et économiques.",
+        spec3Title: "Réussite Universitaire",
+        spec3Desc: "Support complet de la B1 au Master : Analyse, Algèbre Linéaire, Statistiques avancées.",
+        specCta: "Diagnostic Gratuit — 15 min",
+        expertTitle: "Pourquoi nous choisir ?",
+        expertSubtitle: "Une méthode construite pour les exigences du Supérieur.",
+        expert1Title: "Méthode Ciblée",
+        expert1Desc: "Focus exclusif sur les questions d'examens des années précédentes pour maximiser votre score.",
+        expert2Title: "Outils Interactifs",
+        expert2Desc: "Tableau blanc numérique pour une clarté maximale — comme si vous étiez en présentiel.",
+        expert3Title: "Expertise Supérieure",
+        expert3Desc: "Maîtrise totale des programmes <strong>VUB</strong>, <strong>ULB</strong>, <strong>UCLouvain</strong> et <strong>Sorbonne</strong>.",
         pricingTitle: "Tarifs",
-        pricingSubtitle: "Un investissement rentable pour l'avenir de votre enfant.",
+        pricingSubtitle: "Choisissez la formule qui correspond à votre objectif.",
+        pricingNotice: "😔 Désolé, les places à tarif réduit ont toutes été réservées. Inscrivez-vous pour un bilan gratuit de 15 min pour discuter de votre plan de réussite aux tarifs standards.",
         pricingBadge: "OFFRE FONDATEUR",
-        pricingPack: "Pack de 5h",
-        pricingDesc1: "Les 3 premiers étudiants inscrits bénéficient de -50% sur leur premier pack de 5 cours.",
-        pricingDesc2: "-50% sur votre premier pack !",
-        pricingLim: "Plus que <strong>3 places disponibles</strong>.",
-        pricingCta: "Réserver mon bilan gratuit (15 min)",
-        finalTitle: "Prêt à maîtriser les maths et réussir vos examens ?",
-        finalSubtitle: "Réservez votre créneau dès maintenant. C'est 100% gratuit et sans aucun engagement de votre part.",
-        finalCta: "Réserver mon bilan gratuit (15 min)",
-
+        pricingPack: "Pack Fondateur 5h",
+        pricingOldPrice: "250€",
+        pricingDesc1: "4h + 1h offerte · 20€/h",
+        pricingDesc2: "Les 3 premiers étudiants bénéficiaient de cette offre exceptionnelle.",
+        soldOutLabel: "SOLD OUT<br><span style='font-size:0.75rem;font-weight:600;letter-spacing:0.05em;'>PROMO TERMINÉE</span>",
+        soldOutBtn: "Complet — Plus disponible",
+        stdBadge: "PROMO SESSION EXAMENS",
+        promoLimited: "⏳ Offre limitée",
+        anchorPrice: "50€/h",
+        std1Name: "Séance individuelle",
+        std1Detail: " · Cours unique, sans engagement",
+        std2Detail: "35€/h · Économisez 75€ sur le tarif plein",
+        std3Detail: "30€/h · Économisez 200€ sur le tarif plein",
+        mostPopular: "⭐ Le Plus Populaire",
+        perHour: "/h",
+        pricingCta: "Diagnostic Gratuit — 15 min",
+        finalTitle: "Prêt à intégrer les meilleures formations ?",
+        finalSubtitle: "Réservez votre diagnostic gratuit dès maintenant. 100% sans engagement.",
+        finalCta: "Diagnostic Gratuit — 15 min",
         finalTerms: "En réservant, vous acceptez nos <a href='conditions-generales.html' style='color: white; text-decoration: underline;'>Conditions</a> et notre <a href='politique-de-confidentialite.html' style='color: white; text-decoration: underline;'>Politique de confidentialité</a>.",
         contactTitle: "Prêt à réussir ?",
-        contactSubtitle: "Réservez votre bilan gratuit de 15 min ou posez-moi vos questions.",
+        contactSubtitle: "Réservez votre diagnostic gratuit de 15 min ou posez-moi vos questions.",
         formName: "Nom",
         formEmail: "Email",
-        levelOpt1: "Choisissez votre niveau",
-        levelO1: "Lycée / Secondaire",
-        levelO2: "L1 / B1 (Bachelier)",
-        levelO3: "L2 / B2",
-        levelO4: "L3 / B3",
+        levelOpt1: "Choisissez votre parcours",
+        levelO1: "Admissions & Concours (Polytechnique, Médecine, Solvay)",
+        levelO2: "Transition (CESS / Bac)",
+        levelO3: "L1 / B1 (Bachelier)",
+        levelO4: "L2 / B2 — L3 / B3",
         levelO5: "Master",
-        formMsg: "Décrivez vos difficultés en maths",
+        formMsg: "Décrivez vos objectifs et difficultés en maths",
         formSubmit: "Envoyer",
         formSending: "Envoi en cours...",
         formSuccess: "Message envoyé !",
         formError: "Oops ! Un problème est survenu. Veuillez réessayer.",
-
         footerPrivacy: "Politique de confidentialité",
         footerTerms: "Conditions d'utilisation",
         footerRefund: "Politique d'annulation",
-        footerRights: "&copy; 2024 Simple Maths Academy. Tous droits réservés.",
+        footerRights: "&copy; 2025 Simple Maths Academy. Tous droits réservés.",
         whatsappTooltip: "Des questions ? Discutons !"
       },
       en: {
         navMethod: "My Method",
-        navCta: "Book my free 15-min assessment",
-        heroTitle: "Master University <br />\n          <span style='color: var(--primary)'>Mathematics (Years 1, 2, 3).</span>",
-        heroSubtitle: "Calculus, Algebra, Stats. Targeted coaching for your exams and competitive finals. 100% online.",
-        heroCta: "Book my free 15-min assessment",
-        whyMe: "Why me?",
-        whyMeDesc1: "Expert in mathematics with solid experience in university tutoring.",
-
-        whyMeDesc2: "I help students simplify complex concepts.",
+        navCta: "Free 15-min Diagnostic",
+        heroBadge: "🎓 Premium Coaching Academy",
+        heroTitle: "Mathematical Excellence <br /><span style='color: var(--primary)'>for University &amp; Entrance Exams.</span>",
+        heroSubtitle: "Specialized coaching for University Entrance (Engineering, Business, Med) and Advanced Mathematics for Bachelor &amp; Master students.",
+        heroCta: "Free 15-min Diagnostic",
+        whyMe: "Our Approach",
+        whyMeDesc1: "Expert in mathematics specialized in competitive entrance exams and high-level university tutoring.",
+        whyMeDesc2: "I transform the most complex concepts into clear, actionable methods.",
         methodTitle: "My Method",
         methodS1Title: "Assessment",
         methodS1Desc: "We identify your specific gaps and exam requirements.",
@@ -414,47 +552,66 @@
         methodS2Desc: "We solve high-probability exam problems together.",
         methodS3Title: "Autonomy",
         methodS3Desc: "I give you the tools and mental models to solve any problem alone.",
-
-        specTitle: "Expertise",
-        specSubtitle: "Coaching adapted to your level.",
-        specU: "University & Higher Ed",
-        specUDesc: "<strong>Focus :</strong> Pure & Applied Mathematics, Economics, Business, STEM, Engineering.",
-        specL: "High School Diploma",
-        specLDesc: "<strong>Focus :</strong> IB, A-Levels, and University Entrance Exams.",
-        specCta: "Book my free 15-min assessment",
+        specTitle: "Specialized Tracks",
+        specSubtitle: "A programme tailored to your exact goals.",
+        spec1Title: "Admissions &amp; Entrance Exams",
+        spec1Desc: "Intensive preparation for the most selective university entrance exams: Engineering, Medicine, Business.",
+        spec2Title: "Transition &amp; Secondary",
+        spec2Desc: "High school diploma success and intensive preparation for scientific and economics degrees.",
+        spec3Title: "University Success",
+        spec3Desc: "Full support from Bachelor Year 1 to Master: Calculus, Linear Algebra, Advanced Statistics.",
+        specCta: "Free 15-min Diagnostic",
+        expertTitle: "Why us?",
+        expertSubtitle: "A method built for the demands of Higher Education.",
+        expert1Title: "Targeted Method",
+        expert1Desc: "Exclusive focus on past exam questions to maximise your score.",
+        expert2Title: "Interactive Tools",
+        expert2Desc: "Digital whiteboard for maximum clarity — as if you were face-to-face.",
+        expert3Title: "Superior Expertise",
+        expert3Desc: "Full mastery of <strong>VUB</strong>, <strong>ULB</strong>, <strong>UCLouvain</strong> and <strong>Sorbonne</strong> syllabuses.",
         pricingTitle: "Pricing",
-        pricingSubtitle: "A profitable investment for your future and studies.",
-        pricingBadge: "FOUNDER'S SPECIAL",
-        pricingPack: "5-Hour Pack",
-        pricingDesc1: "The first 3 students get 50% OFF their first 5-lesson pack.",
-        pricingDesc2: "50% OFF your first pack!",
-        pricingLim: "Only <strong>3 spots left</strong>.",
-        pricingCta: "Book my free 15-min assessment",
-        finalTitle: "Ready to master math and ace your exams?",
-        finalSubtitle: "Book your slot now. It's 100% free and with zero commitment.",
-        finalCta: "Book my free 15-min assessment",
-
+        pricingSubtitle: "Choose the plan that fits your goal.",
+        pricingNotice: "😔 Sorry, all discounted spots have been claimed. Book a free 15-min diagnostic to discuss your success plan at current rates.",
+        pricingBadge: "FOUNDER'S OFFER",
+        pricingPack: "Founder Pack 5h",
+        pricingOldPrice: "€250",
+        pricingDesc1: "4h + 1h free · €20/h",
+        pricingDesc2: "The first 3 students benefited from this exceptional offer.",
+        soldOutLabel: "SOLD OUT<br><span style='font-size:0.75rem;font-weight:600;letter-spacing:0.05em;'>OFFER ENDED</span>",
+        soldOutBtn: "Full — No Longer Available",
+        stdBadge: "EXAM SESSION PROMO",
+        promoLimited: "⏳ Limited Offer",
+        anchorPrice: "€50/h",
+        std1Name: "Single Session",
+        std1Detail: " · One-off lesson, no commitment",
+        std2Detail: "€35/h · Save €75 vs. full rate",
+        std3Detail: "€30/h · Save €200 vs. full rate",
+        mostPopular: "⭐ Most Popular",
+        perHour: "/h",
+        pricingCta: "Free 15-min Diagnostic",
+        finalTitle: "Ready to enter your dream programme?",
+        finalSubtitle: "Book your free diagnostic now. 100% free, zero commitment.",
+        finalCta: "Free 15-min Diagnostic",
         finalTerms: "By booking, you agree to our <a href='conditions-generales.html' style='color: white; text-decoration: underline;'>Terms</a> and <a href='politique-de-confidentialite.html' style='color: white; text-decoration: underline;'>Privacy Policy</a>.",
         contactTitle: "Ready to succeed?",
-        contactSubtitle: "Book your free 15-min assessment or ask me anything.",
+        contactSubtitle: "Book your free 15-min diagnostic or ask me anything.",
         formName: "Name",
         formEmail: "Email",
-        levelOpt1: "Select your level",
-        levelO1: "High School",
-        levelO2: "Bachelor Year 1",
-        levelO3: "Bachelor Year 2",
-        levelO4: "Bachelor Year 3",
+        levelOpt1: "Choose your track",
+        levelO1: "Admissions & Entrance Exams (Engineering, Med, Business)",
+        levelO2: "Secondary / High School",
+        levelO3: "Bachelor Year 1",
+        levelO4: "Bachelor Year 2–3",
         levelO5: "Master's Degree",
-        formMsg: "Describe your math struggles",
+        formMsg: "Describe your goals and math challenges",
         formSubmit: "Send",
         formSending: "Sending...",
         formSuccess: "Message sent!",
         formError: "Oops! There was a problem submitting your form. Please try again.",
-
         footerPrivacy: "Privacy Policy",
         footerTerms: "Terms of Service",
         footerRefund: "Refund Policy",
-        footerRights: "&copy; 2024 Simple Maths Academy. All rights reserved.",
+        footerRights: "&copy; 2025 Simple Maths Academy. All rights reserved.",
         whatsappTooltip: "Questions? Chat with me!"
       }
     };

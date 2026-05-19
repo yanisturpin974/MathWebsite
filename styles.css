@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap");
 
 :root {
@@ -180,8 +180,70 @@ nav {
 
 .hero p {
   font-size: 1.35rem;
-  max-width: 600px;
-  margin: 0 auto 2.5rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+/* Hero Badge */
+.hero-badge {
+  display: inline-block;
+  background: var(--accent-light);
+  color: var(--primary);
+  border: 1px solid rgba(0, 122, 255, 0.35);
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+/* Hero university name tags */
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.625rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Path / university pill tags */
+.path-tag {
+  display: inline-block;
+  background: rgba(0, 122, 255, 0.1);
+  color: var(--primary);
+  border: 1px solid rgba(0, 122, 255, 0.3);
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.path-tag:hover {
+  background: rgba(0, 122, 255, 0.2);
+  border-color: rgba(0, 122, 255, 0.5);
+}
+
+/* Path card tag row */
+.path-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+/* Path cards — stretch cards so tag rows align at bottom */
+.path-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.path-card p {
+  flex: 1;
 }
 
 /* Sections */
@@ -575,3 +637,326 @@ footer {
     display: none; /* Hide tooltip on mobile to prevent overlapping */
   }
 }
+
+/* ============================================================
+   PRICING SECTION
+   ============================================================ */
+
+/* Sold-out notice banner */
+.pricing-notice {
+  max-width: 780px;
+  margin: 0 auto 3rem;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #fca5a5;
+  padding: 1rem 1.5rem;
+  border-radius: 14px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* ── Two-card flex container ───────────────────────────────── */
+.pricing-grid {
+  display: flex;
+  align-items: stretch;        /* both cards same height */
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;             /* wraps on mobile */
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* ── Shared card base ──────────────────────────────────────── */
+.pricing-card {
+  background: var(--card-bg);
+  border-radius: 24px;
+  /* padding-top leaves room for the in-card header label */
+  padding: 40px 2rem 2rem;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;            /* keeps stamp clipped inside */
+  display: flex;
+  flex-direction: column;
+  min-width: 280px;
+}
+
+/* Left card fixed width, right card grows */
+.pricing-soldout  { flex: 0 0 320px; }
+.pricing-standard { flex: 1 1 420px; }
+
+/* ── In-card header label ──────────────────────────────────── */
+/*
+  Badge sits at the very top of the card (inside, not overflowing).
+  We use a full-width ribbon instead of a floating pill so it
+  never clips or overlaps the card border.
+*/
+.pricing-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0.55rem 1rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-radius: 24px 24px 0 0; /* matches card top corners */
+  line-height: 1;
+}
+
+.pricing-badge-soldout {
+  background: #374151;
+  color: #9ca3af;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.pricing-badge-promo {
+  background: linear-gradient(90deg, #d97706, #f59e0b);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(245,158,11,0.3);
+}
+
+/* ── "Offre limitée" sub-tag ───────────────────────────────── */
+.promo-limited-tag {
+  display: inline-block;
+  margin-bottom: 1rem;
+  background: rgba(245,158,11,0.12);
+  border: 1px solid rgba(245,158,11,0.35);
+  color: #fbbf24;
+  border-radius: 9999px;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ── SOLD-OUT CARD ─────────────────────────────────────────── */
+.pricing-soldout {
+  border-color: rgba(255,255,255,0.05);
+  background: rgba(17, 24, 39, 0.6); /* darker = visually disabled */
+  filter: saturate(0.3) brightness(0.85);
+}
+
+/* Diagonal "SOLD OUT" stamp — perfectly centred */
+.soldout-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.soldout-label {
+  background: rgba(10, 14, 26, 0.88);
+  border: 3px solid #ef4444;
+  color: #ef4444;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-align: center;
+  padding: 0.75rem 2rem;
+  border-radius: 10px;
+  /* centred + rotated as requested */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-10deg);
+  line-height: 1.4;
+  text-transform: uppercase;
+  box-shadow: 0 4px 24px rgba(239,68,68,0.35);
+  white-space: nowrap;
+}
+
+/* Crossed-out price on founder card */
+.pricing-amount {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.price-crossed {
+  font-size: 1.75rem;
+  font-weight: 800;
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+/* Disabled button */
+.btn-soldout {
+  display: block;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border-radius: 9999px;
+  background: #374151;
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border: none;
+  cursor: not-allowed;
+  font-family: 'Inter', sans-serif;
+  margin-top: auto;
+}
+
+/* ── ACTIVE (PROMO) CARD ───────────────────────────────────── */
+.pricing-standard {
+  border-color: rgba(0, 122, 255, 0.35);
+  box-shadow: 0 10px 40px -10px rgba(0, 122, 255, 0.25);
+}
+
+/* Individual price row */
+.price-row {
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 15px;          /* spacing between rows */
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+}
+
+.price-row:last-of-type { margin-bottom: 0; }
+
+.price-row:hover {
+  border-color: rgba(0, 122, 255, 0.3);
+  background: rgba(0, 122, 255, 0.04);
+}
+
+/* Featured row — Most Popular */
+.price-row-featured {
+  border: 2px solid var(--primary);
+  background: rgba(0, 122, 255, 0.08);
+  padding-top: 1.75rem; /* space for the "Most Popular" pill */
+}
+
+.price-row-featured:hover {
+  background: rgba(0, 122, 255, 0.13);
+  border-color: var(--primary);
+}
+
+.price-row-popular {
+  position: absolute;
+  top: -12px;
+  left: 1rem;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.8rem;
+  border-radius: 9999px;
+}
+
+.price-row-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0; /* allows text to shrink */
+}
+
+.price-row-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.price-row-detail {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Crossed-out 50€/h anchor — smaller than the main price */
+.anchor-price {
+  text-decoration: line-through;
+  color: #ef4444;
+  font-weight: 600;
+  font-size: 0.75rem;          /* smaller = main price stays dominant */
+  margin-right: 0.1rem;
+}
+
+.price-row-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 0.15rem;
+  flex-shrink: 0;
+}
+
+.price-main {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+}
+
+.price-per {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* CTA button — always at the bottom of the card */
+.btn-cta-blue {
+  background: var(--primary) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 20px rgba(0,122,255,0.45);
+  margin-top: auto !important;  /* pushes button to card bottom */
+}
+
+.btn-cta-blue:hover {
+  background: var(--primary-hover) !important;
+  box-shadow: 0 8px 28px rgba(0,122,255,0.55);
+}
+
+/* ── MOBILE ────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .pricing-grid {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+  }
+
+  /* Full width on mobile */
+  .pricing-soldout,
+  .pricing-standard {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .pricing-card {
+    padding: 40px 1.25rem 1.5rem;
+  }
+
+  /* Slightly smaller stamp on mobile */
+  .soldout-label {
+    font-size: 1.1rem;
+    padding: 0.6rem 1.5rem;
+  }
+
+  /* Keep badge text from overflowing */
+  .pricing-badge {
+    font-size: 0.65rem;
+    letter-spacing: 0.07em;
+  }
+
+  /* On mobile, wrap amount below info */
+  .price-row {
+    flex-wrap: wrap;
+  }
+
+  .price-row-amount {
+    margin-left: auto;
+  }
+}
+
