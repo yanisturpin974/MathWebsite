@@ -1453,3 +1453,139 @@ footer {
   }
 }
 
+@media (max-width: 600px) {
+  .nav-opt-text {
+    display: none;
+  }
+}
+
+/* Premium Minimalist Portal & Glassmorphism Styling */
+.portal-section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+.portal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.portal-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 28px;
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 380px;
+  position: relative;
+  overflow: hidden;
+}
+
+.portal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), rgba(255,255,255,0.06), transparent 40%);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.portal-card:hover::before {
+  opacity: 1;
+}
+
+.portal-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 122, 255, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), 
+              0 0 50px -10px rgba(0, 122, 255, 0.15);
+}
+
+.portal-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.portal-card h3 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.portal-card p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  max-width: 320px;
+}
+
+.portal-btn {
+  width: 100%;
+  padding: 1.15rem 2rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #007aff, #0056b3);
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.portal-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(0, 122, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Whitespace Enhancement */
+.section {
+  padding: 10rem 0 !important; /* Increased global spacing for premium feel */
+}
+
+.section-bg {
+  background-color: rgba(255, 255, 255, 0.01);
+}
+
+@media (max-width: 768px) {
+  .portal-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 0 1rem;
+  }
+  
+  .portal-card {
+    padding: 3rem 2rem;
+    min-height: auto;
+  }
+  
+  .section {
+    padding: 6rem 0 !important;
+  }
+}
+

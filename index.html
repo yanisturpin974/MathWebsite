@@ -96,28 +96,25 @@
         <span class="logo-text">Simple Maths Academy</span>
       </a>
       <div style="display: flex; align-items: center; gap: 1.5rem">
-        <a href="#method"
+        <a href="#contact"
           style="color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s;"
-          data-i18n="navMethod">Ma Méthode</a>
+          data-i18n="navContact">Contact</a>
         <div class="lang-switcher">
           <span id="lang-fr" onclick="setLanguage('fr')" class="lang-btn lang-active">FR</span>
           <span style="color: var(--text-muted); opacity: 0.5; margin: 0 0.25rem">|</span>
           <span id="lang-en" onclick="setLanguage('en')" class="lang-btn lang-inactive">EN</span>
         </div>
-        <a href="#"
-          onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
-          class="btn nav-cta" data-i18n="navCta">Réserver mon bilan (15 min) | 100% Gratuit</a>
       </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-      <div class="hero-badge" data-i18n="heroBadge">🎓 Préparation Polytechnique Belgique 2026</div>
+      <div class="hero-badge" data-i18n="heroBadge">🎓 Simple Maths Academy</div>
       <h1 data-i18n="heroTitle">
-        Objectif Polytechnique 2026 : Le Rush de Juin.
+        Simple Maths Academy | Visez l’Excellence.
       </h1>
-      <p style="font-size: 1.35rem; color: var(--text-main); font-weight: 400; max-width: 700px; margin: 0 auto 2rem;" data-i18n="heroSubtitle">
-        Cours via tableau blanc numérique interactif.
+      <p style="font-size: 1.35rem; color: var(--text-main); font-weight: 400; max-width: 750px; margin: 0 auto 2rem;" data-i18n="heroSubtitle">
+        Un accompagnement d’élite pour les concours les plus sélectifs de Belgique. 100% en ligne.
       </p>
       <div class="hero-tags">
         <span class="path-tag">Polytechnique</span>
@@ -135,12 +132,33 @@
             <line x1="8" y1="2" x2="8" y2="6" />
             <line x1="3" y1="10" x2="21" y2="10" />
           </svg>
-          <span data-i18n="heroCta">Réserver ma place</span>
+          <span data-i18n="heroCta">Réserver mon bilan (15 min) | 100% Gratuit</span>
         </a>
         <div class="spot-badge" data-i18n="spotBadge">🔒 Classes limitées à 5 élèves pour un suivi personnalisé.</div>
       </div>
     </section>
   </div>
+
+  <!-- Premium Minimalist Portal Section -->
+  <section class="portal-section">
+    <div class="portal-grid">
+      <!-- Card Left: Polytechnique -->
+      <div class="portal-card">
+        <div class="portal-card-icon">📐</div>
+        <h3 data-i18n="portalPolytechTitle">Objectif Polytechnique</h3>
+        <p data-i18n="portalPolytechDesc">Algèbre, Analyse, Géométrie. Préparation intensive à l'examen d'admission Ingénieur Civil.</p>
+        <a href="#programme" class="portal-btn" data-i18n="portalPolytechBtn">Voir le programme Polytech</a>
+      </div>
+      
+      <!-- Card Right: Médecine -->
+      <div class="portal-card">
+        <div class="portal-card-icon">🧬</div>
+        <h3 data-i18n="portalMedecineTitle">Objectif Médecine</h3>
+        <p data-i18n="portalMedecineDesc">Logique, Mathématiques, Physique. Réussissez le concours d’entrée EXMD.</p>
+        <a href="medecine.html" class="portal-btn" id="portal-medecine-link" data-i18n="portalMedecineBtn">Voir le programme Médecine</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Social Proof / Bio -->
   <section class="section section-bg">
@@ -664,10 +682,19 @@
     const translations = {
       fr: {
         navMethod: "Ma Méthode",
+        navPolytech: "<span class=\"nav-opt-text\">Objectif </span>Polytech",
+        navMedecine: "<span class=\"nav-opt-text\">Objectif </span>Médecine",
         navCta: "Réserver mon bilan (15 min) | 100% Gratuit",
-        heroBadge: "🎓 Préparation Polytechnique Belgique 2026",
-        heroTitle: "Objectif Polytechnique 2026 : Le Rush de Juin.",
-        heroSubtitle: "Cours via tableau blanc numérique interactif.",
+        navContact: "Contact",
+        portalPolytechTitle: "Objectif Polytechnique",
+        portalPolytechDesc: "Algèbre, Analyse, Géométrie. Préparation intensive à l'examen d'admission Ingénieur Civil.",
+        portalPolytechBtn: "Voir le programme Polytech",
+        portalMedecineTitle: "Objectif Médecine",
+        portalMedecineDesc: "Logique, Mathématiques, Physique. Réussissez le concours d’entrée EXMD.",
+        portalMedecineBtn: "Voir le programme Médecine",
+        heroBadge: "🎓 Simple Maths Academy",
+        heroTitle: "Simple Maths Academy | Visez l’Excellence.",
+        heroSubtitle: "Un accompagnement d’élite pour les concours les plus sélectifs de Belgique. 100% en ligne.",
         heroCta: "Réserver mon bilan (15 min) | 100% Gratuit",
         spotBadge: "🔒 Classes limitées à 5 élèves pour un suivi personnalisé.",
         whyMe: "Notre Approche",
@@ -780,10 +807,19 @@
       },
       en: {
         navMethod: "My Method",
+        navPolytech: "<span class=\"nav-opt-text\">Polytech </span>Prep",
+        navMedecine: "<span class=\"nav-opt-text\">Medicine </span>Prep",
         navCta: "Book my assessment (15 min) | 100% Free",
-        heroBadge: "🎓 Polytechnique Entrance Exam Prep 2026",
-        heroTitle: "Objective Polytechnique 2026: The June Rush.",
-        heroSubtitle: "Lessons via interactive digital whiteboard.",
+        navContact: "Contact",
+        portalPolytechTitle: "Objective Polytechnique",
+        portalPolytechDesc: "Algebra, Calculus, Geometry. Intensive preparation for the Civil Engineering entrance exam.",
+        portalPolytechBtn: "View Polytech Program",
+        portalMedecineTitle: "Objective Medicine",
+        portalMedecineDesc: "Logic, Mathematics, Physics. Pass the EXMD medical entrance exam.",
+        portalMedecineBtn: "View Medicine Program",
+        heroBadge: "🎓 Simple Maths Academy",
+        heroTitle: "Simple Maths Academy | Aim for Excellence.",
+        heroSubtitle: "Elite coaching for Belgium's most selective entrance exams. 100% online.",
         heroCta: "Book my assessment (15 min) | 100% Free",
         spotBadge: "🔒 Small groups (max 5) for personalized support.",
         whyMe: "Our Approach",
