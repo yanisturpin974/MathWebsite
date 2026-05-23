@@ -1,696 +1,994 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simple Maths Academy</title>
-    <link rel="icon" type="image/png" href="../assets/logo.png" />
-    <meta
-      name="description"
-      content="Soutien scolaire en maths personnalisé pour vous aider à comprendre les cours, gagner en confiance et réussir vos examens. Prenez un rendez-vous gratuit aujourd'hui."
-    />
-    <link rel="stylesheet" href="../styles.css" />
-    <!-- Calendly popup widget CSS -->
-    <link
-      href="https://assets.calendly.com/assets/external/widget.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <!-- Navigation -->
-      <nav>
-        <a href="index.html" class="logo">
-          <img src="../assets/logo-icon.png" alt="Simple Maths Academy logo" class="logo-icon" />
-          <span class="logo-text">Simple Maths Academy</span>
-        </a>
-        <div style="display: flex; align-items: center; gap: 1.5rem">
-          <a
-            href="method.html"
-            style="
-              color: var(--text-main);
-              text-decoration: none;
-              font-weight: 500;
-              transition: color 0.2s;
-            "
-            >Ma Méthode</a
-          >
-          <div class="lang-switcher">
-            <a
-              href="../index.html"
-              style="
-                color: var(--text-main);
-                text-decoration: none;
-                font-weight: 500;
-                transition: color 0.2s;
-              "
-              >EN</a
-            >
-            <span
-              style="color: var(--text-muted); opacity: 0.5; margin: 0 0.25rem"
-              >|</span
-            >
-            <span style="font-weight: 600; color: var(--primary)">FR</span>
-          </div>
-          <a
-            href="#"
-            onclick="
-              Calendly.initPopupWidget({
-                url: 'https://calendly.com/yanisturpin-maths/30min',
-              });
-              return false;
-            "
-            class="btn"
-            >Réservez un appel gratuit</a
-          >
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Préparation Polytechnique Belgique 2026 | Simple Maths Academy</title>
+  <link rel="icon" type="image/png" href="../assets/logo.png" />
+  <meta name="description"
+    content="Bootcamp intensif et coaching sur-mesure pour réussir l'examen d'admission Polytechnique (Ingénieur Civil) en Belgique 2026. Basé sur les annales de l'ULB, UCL, VUB et Liège." />
+  <meta name="keywords" content="Préparation Polytechnique Belgique 2026, Examen admission Polytechnique, Ingénieur civil Belgique, Examen Polytech Belgique, ULB, UCL, VUB, Liège, Cours de maths Polytechnique" />
+
+  <!-- Canonical & hreflang (avoid duplicate content with /en/) -->
+  <link rel="canonical" href="https://www.simplemathsacademy.com/fr/" />
+  <link rel="alternate" hreflang="fr" href="https://www.simplemathsacademy.com/" />
+  <link rel="alternate" hreflang="en" href="https://www.simplemathsacademy.com/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.simplemathsacademy.com/" />
+
+  <!-- Structured Data: LocalBusiness + Course -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Simple Maths Academy",
+      "description": "Bootcamp maths intensif en petits groupes pour réussir l'examen d'admission Polytechnique et Médecine en Belgique.",
+      "url": "https://www.simplemathsacademy.com/",
+      "telephone": "+32490219347",
+      "priceRange": "€€",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "BE"
+      },
+      "areaServed": [
+        {"@type": "City", "name": "Bruxelles"},
+        {"@type": "City", "name": "Liège"},
+        {"@type": "Country", "name": "Belgique"}
+      ],
+      "sameAs": [
+        "https://wa.me/32490219347",
+        "https://calendly.com/yanisturpin-maths"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Bootcamp Préparation Examen Admission Polytechnique & Médecine 2026",
+      "description": "Coaching maths intensif en petits groupes (max 5) pour les épreuves d'admission ingénieur civil (Polytech) et médecine en Belgique. Sessions de Juin, Juillet et Août 2026.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Simple Maths Academy",
+        "url": "https://www.simplemathsacademy.com/"
+      },
+      "courseMode": "online",
+      "inLanguage": ["fr", "en"],
+      "educationalLevel": "HighSchool",
+      "hasCourseInstance": [
+        {
+          "@type": "CourseInstance",
+          "name": "Le Rush de Juin 2026",
+          "startDate": "2026-06-15",
+          "endDate": "2026-06-26",
+          "courseMode": "online",
+          "courseWorkload": "PT18H"
+        },
+        {
+          "@type": "CourseInstance",
+          "name": "Le Marathon d'Été 2026",
+          "startDate": "2026-07-14",
+          "endDate": "2026-08-25",
+          "courseMode": "online"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "EUR",
+        "price": "70",
+        "availability": "https://schema.org/LimitedAvailability",
+        "validFrom": "2026-05-01"
+      }
+    }
+  ]
+  </script>
+
+  <link rel="stylesheet" href="../styles.css" />
+  <!-- Calendly popup widget CSS -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <!-- Navigation -->
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="../assets/logo-icon.png" alt="Simple Maths Academy logo" class="logo-icon" />
+        <span class="logo-text">Simple Maths Academy</span>
+      </a>
+      <div style="display: flex; align-items: center; gap: 1.5rem">
+        <a href="#method"
+          style="color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s;"
+          data-i18n="navMethod">Ma Méthode</a>
+        <div class="lang-switcher">
+          <span id="lang-fr" onclick="setLanguage('fr')" class="lang-btn lang-active">FR</span>
+          <span style="color: var(--text-muted); opacity: 0.5; margin: 0 0.25rem">|</span>
+          <span id="lang-en" onclick="setLanguage('en')" class="lang-btn lang-inactive">EN</span>
         </div>
-      </nav>
-
-      <!-- Hero Section -->
-      <section class="hero">
-        <h1>
-          Des difficultés en Maths ? <br />
-          <span style="color: var(--primary)"
-            >Rattrapez votre retard et réussissez vos examens.</span
-          >
-        </h1>
-        <p style="font-size: 1.5rem; color: var(--text-main); font-weight: 500">
-          Soutien 100% en ligne pour obtenir des explications claires, reprendre
-          confiance et voir vos notes décoller.
-        </p>
-        <div style="margin-top: 1rem">
-          <a
-            href="#"
-            onclick="
-              Calendly.initPopupWidget({
-                url: 'https://calendly.com/yanisturpin-maths/30min',
-              });
-              return false;
-            "
-            class="btn btn-large btn-pulse"
-            style="display: inline-flex; align-items: center; gap: 0.75rem"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-              <line x1="16" y1="2" x2="16" y2="6" />
-              <line x1="8" y1="2" x2="8" y2="6" />
-              <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>
-            Réservez votre appel gratuit
-          </a>
-        </div>
-      </section>
-    </div>
-
-    <!-- Features Grid (Problem) -->
-    <section class="section section-bg">
-      <div class="container">
-        <div class="section-header">
-          <h2 style="color: var(--primary)">Cela vous semble familier ?</h2>
-          <p>Vous n'êtes pas seul, et ce n'est pas de votre faute.</p>
-        </div>
-
-        <div class="grid-3">
-          <div class="card">
-            <div
-              class="icon-wrapper"
-              style="color: #ef4444; background: #fef2f2"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <path d="m9 12 2 2 4-4" />
-              </svg>
-            </div>
-            <h3>Prendre du retard en cours</h3>
-            <p>
-              Le professeur avance beaucoup trop vite, et vous sortez de chaque
-              cours en vous sentant complètement perdu.
-            </p>
-          </div>
-          <div class="card">
-            <div
-              class="icon-wrapper"
-              style="color: #f59e0b; background: #fffbeb"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
-            </div>
-            <h3>La panique avant l'examen</h3>
-            <p>
-              Ce stress écrasant en sachant que vous n'êtes pas au point, avec
-              la peur constante de voir votre moyenne chuter.
-            </p>
-          </div>
-          <div class="card">
-            <div
-              class="icon-wrapper"
-              style="color: #64748b; background: #f1f5f9"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M12 2v20" />
-                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-              </svg>
-            </div>
-            <h3>Travailler des heures sans résultat</h3>
-            <p>
-              Vous passez des soirées sur vos cahiers ou des vidéos en ligne,
-              mais les concepts restent totalement flous.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Solution Section -->
-    <section class="section">
-      <div class="container center-text">
-        <div class="section-header">
-          <h2>Une approche éprouvée pour faire décoller vos notes.</h2>
-          <p>
-            Une méthode structurée pour maîtriser les matières scientifiques les
-            plus complexes.
-          </p>
-        </div>
-
-        <div class="grid-3">
-          <div class="card">
-            <div class="icon-wrapper">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-            </div>
-            <h3>Accompagnement 100% Personnalisé</h3>
-            <p>
-              Des séances sur-mesure pour les élèves du lycée à l'université,
-              idéales pour rattraper son retard en cours d'année.
-            </p>
-          </div>
-          <div class="card">
-            <div class="icon-wrapper">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="16" y1="13" x2="8" y2="13" />
-                <line x1="16" y1="17" x2="8" y2="17" />
-                <polyline points="10 9 9 9 8 9" />
-              </svg>
-            </div>
-            <h3>Des Explications Limpides</h3>
-            <p>
-              Les formules mathématiques complexes décomposées en étapes simples
-              et logiques qui font enfin sens.
-            </p>
-          </div>
-          <div class="card">
-            <div class="icon-wrapper">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                <polyline points="17 6 23 6 23 12" />
-              </svg>
-            </div>
-            <h3>Des Résultats Concrets</h3>
-            <p>
-              Transformez le stress en réussite. Acquérez la vraie compréhension
-              nécessaire pour aborder vos examens sereinement.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="section section-bg">
-      <div class="container">
-        <div class="section-header">
-          <h2>Comment ça marche</h2>
-          <p>
-            Un parcours simple et sans friction pour atteindre vos objectifs
-            académiques.
-          </p>
-        </div>
-
-        <div class="steps-wrapper">
-          <div class="step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h3>Réservez un appel gratuit</h3>
-              <p>
-                Planifiez une courte consultation de 15 minutes en utilisant le
-                calendrier ci-dessous. Sans pression ni engagement.
-              </p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h3>Nous analysons votre situation</h3>
-              <p>
-                Nous discuterons de vos difficultés actuelles et de vos
-                objectifs spécifiques pour le semestre.
-              </p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h3>Je propose un plan</h3>
-              <p>
-                Je conçois un programme sur-mesure et planifie des séances
-                régulières parfaitement adaptées à vos besoins.
-              </p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-number">4</div>
-            <div class="step-content">
-              <h3>Vous progressez</h3>
-              <p>
-                Nous appliquons le plan ensemble, en maîtrisant chaque concept
-                un par un jusqu'à ce que vous réussissiez vos examens en toute
-                confiance.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 4rem">
-          <a
-            href="#"
-            onclick="
-              Calendly.initPopupWidget({
-                url: 'https://calendly.com/yanisturpin-maths/30min',
-              });
-              return false;
-            "
-            class="btn btn-large"
-            style="display: inline-flex; align-items: center; gap: 0.75rem"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-              <line x1="16" y1="2" x2="16" y2="6" />
-              <line x1="8" y1="2" x2="8" y2="6" />
-              <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>
-            Commencer l'étape 1 dès maintenant
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Final CTA / Contact Section -->
-    <section class="section">
-      <div class="container center-text">
-        <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem">Prêt à réussir ?</h2>
-        <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 3rem">
-          Réservez votre bilan gratuit de 15 min ou posez-moi vos questions.
-        </p>
-
-        <div class="contact-container" style="max-width: 600px; margin: 0 auto 3rem auto; background: var(--card-bg); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); text-align: left;">
-           <form id="contactForm" action="https://formspree.io/f/mnjlvwkq" method="POST" onsubmit="submitForm(event)">
-             <!-- Honeypot -->
-             <input type="text" name="_gotcha" style="display:none" />
-
-             <div style="margin-bottom: 1.5rem;">
-               <input type="text" id="name" name="name" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem;" placeholder="Nom" required>
-             </div>
-             <div style="margin-bottom: 1.5rem;">
-               <input type="email" id="email" name="email" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem;" placeholder="Email" required>
-             </div>
-             <div style="margin-bottom: 1.5rem;">
-               <select id="level" name="level" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem; appearance: auto;" required>
-                 <option value="" disabled selected>Choisissez votre niveau</option>
-                 <option value="Bachelor 1 (L1/B1)">L1 / B1 (Bachelier)</option>
-                 <option value="Bachelor 2 (L2/B2)">L2 / B2</option>
-                 <option value="Bachelor 3 (L3/B3)">L3 / B3</option>
-                 <option value="Master">Master</option>
-                 <option value="High School (Lycee)">Lycée / CESS</option>
-               </select>
-             </div>
-             <div style="margin-bottom: 1.5rem;">
-               <textarea id="message" name="message" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem; resize: vertical;" placeholder="Décrivez vos difficultés en maths" rows="4" required></textarea>
-             </div>
-             <button type="submit" id="submitBtn" class="btn btn-large" style="width: 100%; border-radius: 12px; border: none; font-size: 1.125rem;">Envoyer</button>
-        </div>
-
-        <div class="grid-3">
-          <div class="card">
-            <div class="icon-wrapper">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-            </div>
-            <h3>Accompagnement 100% Personnalisé</h3>
-            <p>
-              Des séances sur-mesure pour les élèves du lycée à l'université,
-              idéales pour rattraper son retard en cours d'année.
-            </p>
-          </div>
-          <div class="card">
-            <div class="icon-wrapper">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="16" y1="13" x2="8" y2="13" />
-                <line x1="16" y1="17" x2="8" y2="17" />
-                <polyline points="10 9 9 9 8 9" />
-              </svg>
-            </div>
-            <h3>Des Explications Limpides</h3>
-            <p>
-              Les formules mathématiques complexes décomposées en étapes simples
-              et logiques qui font enfin sens.
-            </p>
-          </div>
-          <div class="card">
-            <div class="icon-wrapper">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                <polyline points="17 6 23 6 23 12" />
-              </svg>
-            </div>
-            <h3>Des Résultats Concrets</h3>
-            <p>
-              Transformez le stress en réussite. Acquérez la vraie compréhension
-              nécessaire pour aborder vos examens sereinement.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="section section-bg">
-      <div class="container">
-        <div class="section-header">
-          <h2>Comment ça marche</h2>
-          <p>
-            Un parcours simple et sans friction pour atteindre vos objectifs
-            académiques.
-          </p>
-        </div>
-
-        <div class="steps-wrapper">
-          <div class="step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h3>Réservez un appel gratuit</h3>
-              <p>
-                Planifiez une courte consultation de 15 minutes en utilisant le
-                calendrier ci-dessous. Sans pression ni engagement.
-              </p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h3>Nous analysons votre situation</h3>
-              <p>
-                Nous discuterons de vos difficultés actuelles et de vos
-                objectifs spécifiques pour le semestre.
-              </p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h3>Je propose un plan</h3>
-              <p>
-                Je conçois un programme sur-mesure et planifie des séances
-                régulières parfaitement adaptées à vos besoins.
-              </p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-number">4</div>
-            <div class="step-content">
-              <h3>Vous progressez</h3>
-              <p>
-                Nous appliquons le plan ensemble, en maîtrisant chaque concept
-                un par un jusqu'à ce que vous réussissiez vos examens en toute
-                confiance.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 4rem">
-          <a
-            href="#"
-            onclick="
-              Calendly.initPopupWidget({
-                url: 'https://calendly.com/yanisturpin-maths/30min',
-              });
-              return false;
-            "
-            class="btn btn-large"
-            style="display: inline-flex; align-items: center; gap: 0.75rem"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-              <line x1="16" y1="2" x2="16" y2="6" />
-              <line x1="8" y1="2" x2="8" y2="6" />
-              <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>
-            Commencer l'étape 1 dès maintenant
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Final CTA / Contact Section -->
-    <section class="section">
-      <div class="container center-text">
-        <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem">Prêt à réussir ?</h2>
-        <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 3rem">
-          Réservez votre bilan gratuit de 15 min ou posez-moi vos questions.
-        </p>
-
-        <div class="contact-container" style="max-width: 600px; margin: 0 auto 3rem auto; background: var(--card-bg); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); text-align: left;">
-           <form id="contactForm" action="https://formspree.io/f/mnjlvwkq" method="POST" onsubmit="submitForm(event)">
-             <!-- Honeypot -->
-             <input type="text" name="_gotcha" style="display:none" />
-
-             <div style="margin-bottom: 1.5rem;">
-               <input type="text" id="name" name="name" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem;" placeholder="Nom" required>
-             </div>
-             <div style="margin-bottom: 1.5rem;">
-               <input type="email" id="email" name="email" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem;" placeholder="Email" required>
-             </div>
-             <div style="margin-bottom: 1.5rem;">
-               <select id="level" name="level" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem; appearance: auto;" required>
-                 <option value="" disabled selected>Choisissez votre niveau</option>
-                 <option value="Bachelor 1 (L1/B1)">L1 / B1 (Bachelier)</option>
-                 <option value="Bachelor 2 (L2/B2)">L2 / B2</option>
-                 <option value="Bachelor 3 (L3/B3)">L3 / B3</option>
-                 <option value="Master">Master</option>
-                 <option value="High School (Lycee)">Lycée / CESS</option>
-               </select>
-             </div>
-             <div style="margin-bottom: 1.5rem;">
-               <textarea id="message" name="message" style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem; resize: vertical;" placeholder="Décrivez vos difficultés en maths" rows="4" required></textarea>
-             </div>
-             <button type="submit" id="submitBtn" class="btn btn-large" style="width: 100%; border-radius: 12px; border: none; font-size: 1.125rem;">Envoyer</button>
-             <p id="formStatusMsg" style="color: #ef4444; margin-top: 1rem; display: none; text-align: center;"></p>
-           </form>
-
-           <div id="successMsg" style="display: none; padding: 3rem 1rem; text-align: center;">
-             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="margin-bottom: 1rem;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-             <h3 style="font-size: 1.5rem; color: var(--text-main);">Message envoyé !</h3>
-           </div>
-        </div>
-
-        <a
-          href="#"
+        <a href="#"
           onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
-          class="btn btn-pulse"
-          style="display: inline-flex; align-items: center; gap: 0.75rem"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          class="btn nav-cta" data-i18n="navCta">Réserver mon bilan (15 min) | 100% Gratuit</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-badge" data-i18n="heroBadge">🎓 Préparation Polytechnique Belgique 2026</div>
+      <h1 data-i18n="heroTitle">
+        Objectif Polytechnique 2026 : Le Rush de Juin.
+      </h1>
+      <p style="font-size: 1.35rem; color: var(--text-main); font-weight: 400; max-width: 700px; margin: 0 auto 2rem;" data-i18n="heroSubtitle">
+        Cours via tableau blanc numérique interactif.
+      </p>
+      <div class="hero-tags">
+        <span class="path-tag">Polytechnique</span>
+        <span class="path-tag">Médecine / Dentaire</span>
+        <span class="path-tag">ULB · UCL · VUB · Liège</span>
+      </div>
+      <div style="margin-top: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+        <a href="#"
+          onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
+          class="btn btn-large btn-pulse" style="display: inline-flex; align-items: center; gap: 0.75rem">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
             <line x1="16" y1="2" x2="16" y2="6" />
             <line x1="8" y1="2" x2="8" y2="6" />
             <line x1="3" y1="10" x2="21" y2="10" />
           </svg>
-          <span>Réserver mon Bilan de 15 min Gratuit</span>
+          <span data-i18n="heroCta">Réserver ma place</span>
         </a>
+        <div class="spot-badge" data-i18n="spotBadge">🔒 Classes limitées à 5 élèves pour un suivi personnalisé.</div>
       </div>
     </section>
+  </div>
 
-    <footer style="margin-top: 4rem; border-top: 1px solid var(--border-color, #e5e7eb); padding: 2rem 0;">
-      <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center;">
-        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-          <a href="../politique-de-confidentialite.html" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;">Politique de confidentialité</a>
-          <a href="../conditions-generales.html" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;">Conditions générales</a>
-          <a href="../politique-annulations.html" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;">Politique de remboursement</a>
+  <!-- Social Proof / Bio -->
+  <section class="section section-bg">
+    <div class="container hero-split">
+      <div class="hero-split-image">
+        <div class="image-wrapper">
+          <img src="../assets/profile.png" alt="Professeur de maths" class="styled-image" />
+          <div class="image-overlay"></div>
         </div>
-        <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;">&copy; 2024 Simple Maths Academy. Tous droits réservés.</p>
       </div>
-    </footer>
+      <div class="hero-split-text">
+        <h2 data-i18n="whyMe">Pourquoi me choisir ?</h2>
+        <p style="margin-bottom: 1.5rem; color: var(--text-main); font-size: 1.25rem;" data-i18n="whyMeDesc1">
+          Expert en mathématiques avec une expérience solide en tutorat universitaire.
+        </p>
+        <p style="font-size: 1.125rem;" data-i18n="whyMeDesc2">
+          J'aide les étudiants à simplifier les concepts complexes.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Calendly externals -->
-    <script
-      src="https://assets.calendly.com/assets/external/widget.js"
-      type="text/javascript"
-      async
-    ></script>
 
-    <!-- WhatsApp Floating Button -->
-    <div class="whatsapp-container">
-      <div class="whatsapp-tooltip">Des questions ? Discutons !</div>
-      <a href="https://wa.me/32490219347?text=Bonjour%2C%20j%27ai%20vu%20votre%20site%20Simple%20Maths%20Academy..." target="_blank" class="whatsapp-float">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12.004 0C5.385 0 0 5.385 0 12.004c0 2.115.553 4.167 1.603 5.967L0 24l6.196-1.583A11.942 11.942 0 0012.004 24c6.618 0 12.004-5.385 12.004-12.004S18.622 0 12.004 0zm0 21.986c-1.803 0-3.571-.486-5.116-1.405l-.367-.217-3.8.971.996-3.705-.238-.378A9.973 9.973 0 012.023 12.004c0-5.503 4.48-9.982 9.981-9.982 5.5 0 9.98 4.479 9.98 9.982s-4.48 9.982-9.98 9.982zM17.485 14.5c-.302-.152-1.785-.881-2.062-.981-.277-.101-.48-.152-.68.152-.202.304-.781.981-.958 1.182-.178.202-.355.228-.657.076-1.403-.708-2.618-1.554-3.585-2.83-.245-.325.244-.306.828-1.472.101-.202.05-.38-.026-.531-.075-.152-.68-1.642-.931-2.247-.245-.589-.494-.509-.68-.518-.178-.009-.382-.012-.582-.012-.202 0-.53.076-.806.38-.277.304-1.058 1.035-1.058 2.523s1.083 2.924 1.235 3.125c.152.202 2.122 3.238 5.143 4.542.72.308 1.282.493 1.723.631.724.23 1.385.198 1.9.12.576-.088 1.785-.73 2.036-1.436.252-.707.252-1.314.178-1.436-.077-.123-.277-.2-.58-.352z"/>
+  <!-- My Method Section -->
+  <section class="section" id="method">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 3rem;">
+        <h2 data-i18n="methodTitle"
+          style="font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: -0.02em;">Ma Méthode</h2>
+      </div>
+      <div class="grid-3" style="text-align: left;">
+        <div class="card" style="background: transparent; border: none; box-shadow: none; padding: 1.5rem 1rem;">
+          <div class="icon-wrapper" style="width: 48px; height: 48px; margin-bottom: 1.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <h3 data-i18n="methodS1Title" style="font-family: 'Inter', sans-serif; font-size: 1.25rem;">Évaluation</h3>
+          <p data-i18n="methodS1Desc" style="font-size: 1rem;">Nous identifions vos lacunes spécifiques et les exigences
+            de vos examens.</p>
+        </div>
+        <div class="card" style="background: transparent; border: none; box-shadow: none; padding: 1.5rem 1rem;">
+          <div class="icon-wrapper" style="width: 48px; height: 48px; margin-bottom: 1.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+          </div>
+          <h3 data-i18n="methodS2Title" style="font-family: 'Inter', sans-serif; font-size: 1.25rem;">Stratégie Ciblée
+          </h3>
+          <p data-i18n="methodS2Desc" style="font-size: 1rem;">Nous résolvons ensemble les problèmes d'examen à forte
+            probabilité.</p>
+        </div>
+        <div class="card" style="background: transparent; border: none; box-shadow: none; padding: 1.5rem 1rem;">
+          <div class="icon-wrapper" style="width: 48px; height: 48px; margin-bottom: 1.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+          <h3 data-i18n="methodS3Title" style="font-family: 'Inter', sans-serif; font-size: 1.25rem;">Autonomie</h3>
+          <p data-i18n="methodS3Desc" style="font-size: 1rem;">Je vous donne les outils et modèles mentaux pour résoudre
+            tout problème seul.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Expertise Cards (2 columns: Polytech + Médecine) -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-i18n="specTitle">Examens Ciblés</h2>
+        <p data-i18n="specSubtitle">Un programme taillé pour vos objectifs précis.</p>
+      </div>
+
+      <div class="grid-2" style="text-align: left; max-width: 900px; margin: 0 auto;">
+        <!-- Card 1: Polytechnique -->
+        <div class="card path-card">
+          <div class="icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <h3 data-i18n="spec1Title">Examen d'Admission Ingénieur Civil</h3>
+          <p data-i18n="spec1Desc" style="margin-bottom: 1.5rem;">Préparation intensive à l'examen Polytechnique. Maîtrise complète des chapitres tombés aux sessions précédentes.</p>
+          <div class="path-tags">
+            <span class="path-tag">Algèbre supérieure</span>
+            <span class="path-tag">Analyse</span>
+            <span class="path-tag">Géométrie spatiale</span>
+          </div>
+        </div>
+        <!-- Card 2: Médecine -->
+        <div class="card path-card">
+          <div class="icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <h3 data-i18n="spec2Title">Concours Médecine &amp; Dentaire</h3>
+          <p data-i18n="spec2Desc" style="margin-bottom: 1.5rem;">Entraînement intensif sur les thèmes mathématiques du concours médecine belge (ULB, UCL, VUB, Liège).</p>
+          <div class="path-tags">
+            <span class="path-tag">Trigonométrie</span>
+            <span class="path-tag">Fonctions</span>
+            <span class="path-tag">Problèmes logiques</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 4rem">
+        <a href="#"
+          onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
+          class="btn btn-large btn-pulse" style="display: inline-flex; align-items: center; gap: 0.75rem">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          <span data-i18n="specCta">Réserver ma place</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootcamp Calendar Section -->
+  <section class="section section-bg" id="programme">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-i18n="scheduleTitle">Calendrier des Bootcamps 2026</h2>
+        <p data-i18n="scheduleSubtitle">Deux modules intensifs pour maximiser vos chances avant l'examen.</p>
+      </div>
+
+      <div class="bootcamp-grid">
+
+        <!-- Module 1: Le Rush de Juin -->
+        <div class="bootcamp-card bootcamp-juin">
+          <div class="bootcamp-header">
+            <span class="bootcamp-tag tag-juin" data-i18n="mod1Tag">MODULE 1</span>
+            <h3 class="bootcamp-title" data-i18n="mod1Title">⚡ Le Rush de Juin</h3>
+            <p class="bootcamp-target" data-i18n="mod1Target">"10 Jours pour Réussir" (Prépa Juillet)</p>
+          </div>
+          <div class="bootcamp-body">
+            <div class="bootcamp-date-row">
+              <span class="bootcamp-date-icon">📅</span>
+              <span class="bootcamp-date-label" data-i18n="mod1Dates">Du 15 au 26 Juin 2026</span>
+            </div>
+            <div class="bootcamp-date-row">
+              <span class="bootcamp-date-icon">🎯</span>
+              <span class="bootcamp-date-label" data-i18n="mod1Focus">Sessions intensives quotidiennes (matin ou soir) pour valider votre examen de Juillet.</span>
+            </div>
+            <div class="bootcamp-date-row">
+              <span class="bootcamp-date-icon">🔹</span>
+              <span class="bootcamp-date-label">
+                <strong data-i18n="mod1Week1Title">Semaine 1 :</strong> <span data-i18n="mod1Week1Desc">Algèbre Supérieure • Nombres Complexes • Trigonométrie</span>
+              </span>
+            </div>
+            <div class="bootcamp-date-row">
+              <span class="bootcamp-date-icon">🔹</span>
+              <span class="bootcamp-date-label">
+                <strong data-i18n="mod1Week2Title">Semaine 2 :</strong> <span data-i18n="mod1Week2Desc">Analyse Complète • Calcul Intégral • Géométrie Spatiale</span>
+              </span>
+            </div>
+            <div class="bootcamp-subjects">
+              <span class="slot-subject slot-algebra" data-i18n="subjectAlgebra">Algèbre</span>
+              <span class="slot-subject slot-analysis" data-i18n="subjectAnalysis">Analyse</span>
+              <span class="slot-subject slot-geo" data-i18n="subjectGeoTrig">Géométrie &amp; Trigo</span>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-large btn-pulse bootcamp-cta" data-i18n="scheduleCta">Réserver ma place</a>
+        </div>
+
+        <!-- Module 2: Le Marathon d'Été -->
+        <div class="bootcamp-card bootcamp-aout">
+          <div class="bootcamp-header">
+            <span class="bootcamp-tag tag-aout" data-i18n="mod2Tag">MODULE 2</span>
+            <h3 class="bootcamp-title" data-i18n="mod2Title">🏃 Le Marathon d'Été</h3>
+            <p class="bootcamp-target" data-i18n="mod2Target">Prépa épreuves d'Août</p>
+          </div>
+          <div class="bootcamp-body">
+            <div class="bootcamp-date-row">
+              <span class="bootcamp-date-icon">📅</span>
+              <span class="bootcamp-date-label" data-i18n="mod2Dates">Dès le 14 Juillet jusqu'aux examens d'Août</span>
+            </div>
+            <div class="bootcamp-date-row">
+              <span class="bootcamp-date-icon">🎯</span>
+              <span class="bootcamp-date-label" data-i18n="mod2Focus">Ateliers hebdomadaires + Sprint final intensif avant les examens officiels.</span>
+            </div>
+            <div class="bootcamp-date-row">
+              <span class="bootcamp-date-icon">🔹</span>
+              <span class="bootcamp-date-label">
+                <strong data-i18n="mod2Week1Title">Juillet/Août :</strong> <span data-i18n="mod2Week1Desc">Ateliers thématiques hebdomadaires par chapitre.</span>
+              </span>
+            </div>
+            <div class="bootcamp-date-row">
+              <span class="bootcamp-date-icon">🔹</span>
+              <span class="bootcamp-date-label">
+                <strong data-i18n="mod2Week2Title">24 &amp; 25 Août :</strong> <span data-i18n="mod2Week2Desc">Sprint Final (Simulations d'examens réels basées sur les annales Polytech).</span>
+              </span>
+            </div>
+            <div class="bootcamp-subjects">
+              <span class="slot-subject slot-algebra" data-i18n="subjectAlgebra">Algèbre</span>
+              <span class="slot-subject slot-analysis" data-i18n="subjectAnalysis">Analyse</span>
+              <span class="slot-subject slot-geo" data-i18n="subjectGeoTrig">Géométrie &amp; Trigo</span>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-large btn-pulse bootcamp-cta" data-i18n="scheduleCta">Réserver ma place</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us Section -->
+  <section class="section section-bg" id="expertise">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-i18n="expertTitle">Pourquoi nous choisir ?</h2>
+        <p data-i18n="expertSubtitle">Une méthode construite spécifiquement pour les exigences de l'examen d'admission.</p>
+      </div>
+      <div class="grid-3" style="text-align: left;">
+        <div class="card" style="background: transparent; border: 1px solid rgba(0,122,255,0.2); box-shadow: none; padding: 2rem 1.5rem;">
+          <div class="icon-wrapper" style="width: 48px; height: 48px; margin-bottom: 1.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
+          <h3 data-i18n="expert1Title" style="font-size: 1.25rem; margin-bottom: 0.75rem;">Méthode Ciblée</h3>
+          <p data-i18n="expert1Desc">Focus exclusif sur les types de questions des examens d'admission Polytech et Médecine des années précédentes. Utilisation du syllabus officiel Polytech pour des exercices 100% réalistes.</p>
+        </div>
+        <div class="card" style="background: transparent; border: 1px solid rgba(0,122,255,0.2); box-shadow: none; padding: 2rem 1.5rem;">
+          <div class="icon-wrapper" style="width: 48px; height: 48px; margin-bottom: 1.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3 data-i18n="expert2Title" style="font-size: 1.25rem; margin-bottom: 0.75rem;">Petits Groupes (max 5)</h3>
+          <p data-i18n="expert2Desc">Maximum 5 élèves par session pour garantir un suivi personnalisé et des réponses à chaque question.</p>
+        </div>
+        <div class="card" style="background: transparent; border: 1px solid rgba(0,122,255,0.2); box-shadow: none; padding: 2rem 1.5rem;">
+          <div class="icon-wrapper" style="width: 48px; height: 48px; margin-bottom: 1.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <h3 data-i18n="expert3Title" style="font-size: 1.25rem; margin-bottom: 0.75rem;">100% En Ligne</h3>
+          <p data-i18n="expert3Desc">Cours via tableau blanc numérique interactif</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section section-bg" id="pricing">
+    <div class="container center-text">
+      <div class="section-header">
+        <h2 data-i18n="pricingTitle">Tarifs</h2>
+        <p data-i18n="pricingSubtitle">Un investissement rentable pour votre réussite.</p>
+      </div>
+
+      <!-- Urgency notice -->
+      <div class="pricing-notice pricing-notice-urgency" data-i18n="groupWarning">
+        ⚠️ Attention : Places limitées à 5 étudiants par session.
+      </div>
+
+      <!-- 2026 Pricing Grid: Group + Individual + Soldout -->
+      <div class="pricing-grid pricing-grid-2026">
+
+        <!-- Group Offers Card (FEATURED) -->
+        <div class="pricing-card pricing-group-featured">
+          <div class="pricing-badge pricing-badge-group" data-i18n="groupBadge">⚠️ PLACES LIMITÉES | 5 MAX</div>
+          <div class="promo-limited-tag" style="margin-bottom: 1.25rem;">🤝 BOOTCAMP POLYTECH 2026</div>
+
+          <!-- Option 1: Session Unique -->
+          <div class="price-row">
+            <div class="price-row-info">
+              <span class="price-row-name" data-i18n="grp1Name">Session Unique (3h)</span>
+              <span class="price-row-detail" data-i18n="grp1Detail">par élève | max 5 étudiants</span>
+            </div>
+            <div class="price-row-amount">
+              <span class="price-main">85€</span>
+            </div>
+          </div>
+
+          <!-- Option 2: Pack Module -->
+          <div class="price-row">
+            <div class="price-row-info">
+              <span class="price-row-name" data-i18n="grp2Name">Pack Module (10h)</span>
+              <span class="price-row-detail" data-i18n="grp2Detail">25€/h | Préparation intensive</span>
+            </div>
+            <div class="price-row-amount">
+              <span class="price-main">250€</span>
+            </div>
+          </div>
+
+          <!-- Option 3: Pack All-Access (FEATURED) -->
+          <div class="price-row price-row-featured">
+            <div class="price-row-popular" data-i18n="mostPopular">⭐ Le Plus Populaire</div>
+            <div class="price-row-info">
+              <span class="price-row-name" data-i18n="grp3Name">Pack All-Access (30h)</span>
+              <span class="price-row-detail" data-i18n="groupDetails">10 jours de préparation intensive | Max 5 étudiants</span>
+            </div>
+            <div class="price-row-amount">
+              <span class="price-main" style="color: #007aff; font-weight: 800;">750€</span>
+            </div>
+          </div>
+
+          <a href="#contact"
+            class="btn btn-large btn-pulse btn-cta-blue"
+            style="width: 100%; display: flex; justify-content: center; margin-top: auto;"
+            data-i18n="groupCta">
+            Réserver mon bilan (15 min)
+          </a>
+        </div>
+
+        <!-- Individual Sessions Card -->
+        <div class="pricing-card pricing-standard">
+          <div class="pricing-badge pricing-badge-promo" data-i18n="stdBadge">COURS INDIVIDUELS</div>
+          <div class="promo-limited-tag" data-i18n="promoLimited">⏳ Offre limitée</div>
+
+          <!-- Option 1 -->
+          <div class="price-row">
+            <div class="price-row-info">
+              <span class="price-row-name" data-i18n="std1Name">Séance individuelle</span>
+              <span class="price-row-detail">
+                <span class="anchor-price" data-i18n="anchorPrice">50€/h</span>
+                <span data-i18n="std1Detail"> | Cours unique, sans engagement</span>
+              </span>
+            </div>
+            <div class="price-row-amount">
+              <span class="price-main">40€</span>
+              <span class="price-per" data-i18n="perHour">/h</span>
+            </div>
+          </div>
+
+          <!-- Option 2 • Best Seller (Pack Réussite 5h) -->
+          <div class="price-row price-row-featured">
+            <div class="price-row-popular" data-i18n="mostPopular">⭐ Le Plus Populaire</div>
+            <div class="price-row-info">
+              <span class="price-row-name" data-i18n="std2Name">Pack Réussite | 5h</span>
+              <span class="price-row-detail" data-i18n="std2Detail">35€/h | Économisez 75€ sur le tarif plein</span>
+            </div>
+            <div class="price-row-amount">
+              <span class="price-main">175€</span>
+            </div>
+          </div>
+
+          <!-- Option 3 • Pack Excellence (10h) -->
+          <div class="price-row">
+            <div class="price-row-info">
+              <span class="price-row-name" data-i18n="std3Name">Pack Excellence | 10h</span>
+              <span class="price-row-detail" data-i18n="std3Detail">30€/h | Économisez 200€ sur le tarif plein</span>
+            </div>
+            <div class="price-row-amount">
+              <span class="price-main">300€</span>
+            </div>
+          </div>
+
+          <a href="#contact"
+            class="btn btn-large btn-pulse btn-cta-blue"
+            style="width: 100%; display: flex; justify-content: center; margin-top: auto;"
+            data-i18n="pricingCta">
+            Réserver mon bilan (15 min)
+          </a>
+        </div>
+
+        <!-- Sold-out Founder Offer Card -->
+        <div class="pricing-card pricing-soldout">
+          <div class="pricing-badge pricing-badge-soldout" data-i18n="pricingBadge">OFFRE FONDATEUR</div>
+          <div class="soldout-overlay">
+            <div class="soldout-label" data-i18n="soldOutLabel">ÉPUISÉ<br><span style="font-size:0.75rem;font-weight:600;letter-spacing:0.05em;">OFFRE TERMINÉE</span></div>
+          </div>
+          <div class="promo-limited-tag" style="background:#374151; border-color:#4b5563; color:#9ca3af;" data-i18n="promoLimited">⏳ Offre terminée</div>
+          <h3 style="font-size:1.5rem; margin-bottom:0.5rem;" data-i18n="pricingPack">Pack Fondateur 5h</h3>
+          <div class="pricing-amount">
+            <span class="price-crossed" data-i18n="pricingOldPrice">€250</span>
+            <span class="price-main">100€</span>
+          </div>
+          <p style="margin-bottom: 2rem; color:var(--text-muted);" data-i18n="pricingDesc2">Les 3 premiers étudiants inscrits ont bénéficié de cette offre exceptionnelle.</p>
+          <button class="btn-soldout" disabled data-i18n="soldOutBtn">Complet | Non Disponible</button>
+        </div>
+
+      </div><!-- /pricing-grid-2026 -->
+
+
+    </div>
+  </section>
+
+  <!-- Final CTA / Contact Section -->
+  <section class="section" id="contact">
+    <div class="container center-text">
+      <h2 data-i18n="contactTitle" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem">Prêt à réussir ?
+      </h2>
+      <p data-i18n="contactSubtitle" style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 3rem">
+        Réservez votre bilan gratuit de 15 min ou posez-moi vos questions.
+      </p>
+
+      <div class="contact-container"
+        style="max-width: 600px; margin: 0 auto 3rem auto; background: var(--card-bg); padding: 3rem; border-radius: 24px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); text-align: left;">
+        <form id="contactForm" action="https://formspree.io/f/mnjlvwkq" method="POST" onsubmit="submitForm(event)">
+          <!-- Honeypot -->
+          <input type="text" name="_gotcha" style="display:none" />
+
+          <div style="margin-bottom: 1.5rem;">
+            <input type="text" id="name" name="name"
+              style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem;"
+              data-i18n-placeholder="formName" placeholder="Nom" required>
+          </div>
+          <div style="margin-bottom: 1.5rem;">
+            <input type="email" id="email" name="email"
+              style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem;"
+              data-i18n-placeholder="formEmail" placeholder="Email" required>
+          </div>
+          <div style="margin-bottom: 1.5rem;">
+            <select id="level" name="level"
+              style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem; appearance: auto;"
+              required>
+              <option value="" disabled selected data-i18n="levelOpt1">Choisissez votre niveau</option>
+              <option value="Bachelor 1 (L1/B1)" data-i18n="levelO1">L1 / B1 (Bachelier)</option>
+              <option value="Bachelor 2 (L2/B2)" data-i18n="levelO2">L2 / B2</option>
+              <option value="Bachelor 3 (L3/B3)" data-i18n="levelO3">L3 / B3</option>
+              <option value="Master" data-i18n="levelO4">Master</option>
+              <option value="High School (Lycee)" data-i18n="levelO5">Lycée / CESS</option>
+            </select>
+          </div>
+          <div style="margin-bottom: 1.5rem;">
+            <textarea id="message" name="message"
+              style="width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: var(--surface); color: var(--text-main); font-family: inherit; font-size: 1rem; resize: vertical;"
+              data-i18n-placeholder="formMsg" placeholder="Décrivez vos difficultés en maths" rows="4"
+              required></textarea>
+          </div>
+          <button type="submit" id="submitBtn" class="btn btn-large"
+            style="width: 100%; border-radius: 12px; border: none; font-size: 1.125rem;"
+            data-i18n="formSubmit">Envoyer</button>
+          <p id="formStatusMsg" style="color: #ef4444; margin-top: 1rem; display: none; text-align: center;"></p>
+        </form>
+
+        <div id="successMsg" style="display: none; padding: 3rem 1rem; text-align: center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
+            style="margin-bottom: 1rem;">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <h3 id="successMsgText" data-i18n="formSuccess" style="font-size: 1.5rem; color: var(--text-main);">Message
+            envoyé !</h3>
+        </div>
+      </div>
+
+      <a href="#"
+        onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
+        class="btn btn-pulse" style="display: inline-flex; align-items: center; gap: 0.75rem">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
         </svg>
+        <span data-i18n="finalCta">Réserver mon Bilan de 15 min Gratuit</span>
       </a>
     </div>
+  </section>
 
-    <!-- Formspree AJAX Handler -->
-    <script>
-      function submitForm(event) {
-        event.preventDefault();
-        
-        const form = event.target;
-        const submitBtn = document.getElementById('submitBtn');
-        const formStatusMsg = document.getElementById('formStatusMsg');
-        const successMsg = document.getElementById('successMsg');
-        
-        submitBtn.disabled = true;
-        submitBtn.innerText = "Envoi en cours...";
-        formStatusMsg.style.display = 'none';
-        
-        const data = new FormData(form);
-        
-        fetch(form.action, {
-          method: form.method,
-          body: data,
-          headers: {
-              'Accept': 'application/json'
-          }
-        }).then(response => {
-          if (response.ok) {
-            form.style.display = 'none';
-            successMsg.style.display = 'block';
-          } else {
-            response.json().then(data => {
-              if (Object.hasOwn(data, 'errors')) {
-                formStatusMsg.innerText = data["errors"].map(error => error["message"]).join(", ");
-              } else {
-                formStatusMsg.innerText = "Oops ! Un problème est survenu. Veuillez réessayer.";
-              }
-              formStatusMsg.style.display = 'block';
-              submitBtn.disabled = false;
-              submitBtn.innerText = "Envoyer";
-            })
-          }
-        }).catch(error => {
-          formStatusMsg.innerText = "Oops ! Un problème est survenu. Veuillez réessayer.";
-          formStatusMsg.style.display = 'block';
-          submitBtn.disabled = false;
-          submitBtn.innerText = "Envoyer";
-        });
+  <!-- Prochainement / Coming Soon Section -->
+  <section class="section coming-soon-section">
+    <div class="container">
+      <div class="coming-soon-card">
+        <div class="coming-soon-icon">🔮</div>
+        <div class="coming-soon-text">
+          <h2 class="coming-soon-title" data-i18n="comingSoonTitle">Prochainement</h2>
+          <p class="coming-soon-desc" data-i18n="comingSoonDesc">
+            Accompagnement annuel B1/L1 et préparation aux examens de Janvier. Restez connectés.
+          </p>
+        </div>
+        <div class="coming-soon-badge" data-i18n="comingSoonBadge">Bientôt disponible</div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="margin-top: 4rem; border-top: 1px solid var(--border-color, #e5e7eb); padding: 2rem 0;">
+    <div class="container"
+      style="display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center;">
+      <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+        <a href="../politique-de-confidentialite.html"
+          style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;"
+          data-i18n="footerPrivacy">Politique de confidentialité</a>
+        <a href="../conditions-generales.html"
+          style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;"
+          data-i18n="footerTerms">Conditions d'utilisation</a>
+        <a href="../politique-annulations.html"
+          style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;"
+          data-i18n="footerRefund">Politique d'annulation</a>
+      </div>
+      <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;" data-i18n="footerRights">&copy; 2026 Simple
+        Maths Academy. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <!-- Calendly externals -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+  <!-- WhatsApp Floating Button -->
+  <div class="whatsapp-container">
+    <div class="whatsapp-tooltip" data-i18n="whatsappTooltip">Des questions ? Discutons !</div>
+    <a href="https://wa.me/32490219347?text=Bonjour%2C%20j%27ai%20vu%20votre%20site%20Simple%20Maths%20Academy..."
+      target="_blank" class="whatsapp-float">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M12.004 0C5.385 0 0 5.385 0 12.004c0 2.115.553 4.167 1.603 5.967L0 24l6.196-1.583A11.942 11.942 0 0012.004 24c6.618 0 12.004-5.385 12.004-12.004S18.622 0 12.004 0zm0 21.986c-1.803 0-3.571-.486-5.116-1.405l-.367-.217-3.8.971.996-3.705-.238-.378A9.973 9.973 0 012.023 12.004c0-5.503 4.48-9.982 9.981-9.982 5.5 0 9.98 4.479 9.98 9.982s-4.48 9.982-9.98 9.982zM17.485 14.5c-.302-.152-1.785-.881-2.062-.981-.277-.101-.48-.152-.68.152-.202.304-.781.981-.958 1.182-.178.202-.355.228-.657.076-1.403-.708-2.618-1.554-3.585-2.83-.245-.325.244-.306.828-1.472.101-.202.05-.38-.026-.531-.075-.152-.68-1.642-.931-2.247-.245-.589-.494-.509-.68-.518-.178-.009-.382-.012-.582-.012-.202 0-.53.076-.806.38-.277.304-1.058 1.035-1.058 2.523s1.083 2.924 1.235 3.125c.152.202 2.122 3.238 5.143 4.542.72.308 1.282.493 1.723.631.724.23 1.385.198 1.9.12.576-.088 1.785-.73 2.036-1.436.252-.707.252-1.314.178-1.436-.077-.123-.277-.2-.58-.352z" />
+      </svg>
+    </a>
+  </div>
+
+  <!-- Language Switcher Logic -->
+  <script>
+    let currentLang = 'fr';
+
+    const translations = {
+      fr: {
+        navMethod: "Ma Méthode",
+        navCta: "Réserver mon bilan (15 min) | 100% Gratuit",
+        heroBadge: "🎓 Préparation Polytechnique Belgique 2026",
+        heroTitle: "Objectif Polytechnique 2026 : Le Rush de Juin.",
+        heroSubtitle: "Cours via tableau blanc numérique interactif.",
+        heroCta: "Réserver mon bilan (15 min) | 100% Gratuit",
+        spotBadge: "🔒 Classes limitées à 5 élèves pour un suivi personnalisé.",
+        whyMe: "Notre Approche",
+        whyMeDesc1: "Expert en mathématiques spécialisé dans les examens d'admission Polytechnique en Belgique.",
+        whyMeDesc2: "Je transforme les concepts les plus complexes en méthodes claires et actionnables.",
+        methodTitle: "Ma Méthode",
+        methodS1Title: "Évaluation",
+        methodS1Desc: "Nous identifions vos lacunes spécifiques et les exigences de l'examen d'admission.",
+        methodS2Title: "Stratégie Ciblée",
+        methodS2Desc: "Nous résolvons ensemble les problèmes d'examen à forte probabilité de tomber.",
+        methodS3Title: "Autonomie",
+        methodS3Desc: "Je vous donne les outils et modèles mentaux pour résoudre tout problème seul le jour J.",
+        specTitle: "Examens Ciblés",
+        specSubtitle: "Un programme taillé pour vos objectifs précis.",
+        spec1Title: "Examen d'Admission Ingénieur Civil",
+        spec1Desc: "Préparation intensive à l'examen Polytechnique. Maîtrise complète des chapitres tombés aux sessions précédentes.",
+        spec2Title: "Concours Médecine &amp; Dentaire",
+        spec2Desc: "Entraînement intensif sur les thèmes mathématiques du concours médecine belge (ULB, UCL, VUB, Liège).",
+        specCta: "Réserver mon bilan (15 min) | 100% Gratuit",
+        scheduleTitle: "Calendrier des Bootcamps 2026",
+        scheduleSubtitle: "Deux modules intensifs pour maximiser vos chances avant l'examen.",
+        mod1Tag: "MODULE 1",
+        mod1Title: "⚡ Le Rush de Juin",
+        mod1Target: '"10 Jours pour Réussir" (Prépa Juillet)',
+        mod1Dates: "Du 15 au 26 Juin 2026",
+        mod1Focus: "Sessions intensives quotidiennes (matin ou soir) pour valider votre examen de Juillet.",
+        mod1Week1Title: "Semaine 1 :",
+        mod1Week1Desc: "Nombres Complexes, Polynômes, Algèbre Linéaire, Trigonométrie",
+        mod1Week2Title: "Semaine 2 :",
+        mod1Week2Desc: "Analyse (Dérivées/Limites), Calcul Intégral, Géométrie Analytique &amp; Synthétique",
+        mod2Tag: "MODULE 2",
+        mod2Title: "🏃 Le Marathon d'Été",
+        mod2Target: "Prépa épreuves d'Août",
+        mod2Dates: "Dès le 14 Juillet jusqu'aux examens d'Août",
+        mod2Focus: "Ateliers hebdomadaires + Sprint final intensif avant les examens officiels.",
+        mod2Week1Title: "Juillet/Août :",
+        mod2Week1Desc: "Ateliers thématiques hebdomadaires par chapitre.",
+        mod2Week2Title: "24 &amp; 25 Août :",
+        mod2Week2Desc: "Sprint Final (Simulations d'examens réels basées sur les annales Polytech).",
+        subjectAlgebra: "Algèbre",
+        subjectAnalysis: "Analyse",
+        subjectGeoTrig: "Géométrie &amp; Trigonométrie",
+        subjectAlgebraAnalysis: "Algèbre | Analyse",
+        scheduleCta: "Réserver mon bilan (15 min) | 100% Gratuit",
+        expertTitle: "Pourquoi nous choisir ?",
+        expertSubtitle: "Une méthode construite spécifiquement pour les exigences de l'examen d'admission.",
+        expert1Title: "Méthode Ciblée",
+        expert1Desc: "Focus exclusif sur les types de questions des examens d'admission Polytech et Médecine des années précédentes. Utilisation du syllabus officiel Polytech pour des exercices 100% réalistes.",
+        expert2Title: "Petits Groupes (max 5)",
+        expert2Desc: "Maximum 5 élèves par session pour garantir un suivi personnalisé et des réponses à chaque question.",
+        expert3Title: "100% En Ligne",
+        expert3Desc: "Cours via tableau blanc numérique interactif",
+        pricingTitle: "Tarifs Bootcamp 2026",
+        pricingSubtitle: "Choisissez la formule qui correspond à votre objectif.",
+
+        groupBadge: "⚠️ PLACES LIMITÉES | 5 MAX",
+        groupTitle: "BOOTCAMP POLYTECH 2026",
+        grp1Name: "Session Unique (3h)",
+        grp1Detail: "par élève | max 5 étudiants",
+        grp2Name: "Pack Module (10h)",
+        grp2Detail: "25€/h | Préparation intensive",
+        grp3Name: "Pack All-Access (30h)",
+        groupDetails: "10 jours de préparation intensive | Max 5 étudiants",
+        groupCta: "Réserver mon bilan (15 min) | 100% Gratuit",
+        stdBadge: "COURS INDIVIDUELS",
+        promoLimited: "⏳ Offre limitée",
+        anchorPrice: "50€/h",
+        std1Name: "Séance individuelle",
+        std1Detail: " | Cours unique, sans engagement",
+        std2Name: "Pack Réussite | 5h",
+        std2Detail: "35€/h | Économisez 75€ sur le tarif plein",
+        std3Name: "Pack Excellence | 10h",
+        std3Detail: "30€/h | Économisez 200€ sur le tarif plein",
+        mostPopular: "⭐ Le Plus Populaire",
+        perHour: "/h",
+        pricingCta: "Réserver mon bilan (15 min) | 100% Gratuit",
+        finalTitle: "Prêt à intégrer les meilleures formations ?",
+        finalSubtitle: "Réservez votre place au Bootcamp dès maintenant. 100% sans engagement.",
+        finalCta: "Réserver mon bilan (15 min) | 100% Gratuit",
+        contactTitle: "Prêt à réussir ?",
+        contactSubtitle: "Réservez votre place au Bootcamp ou posez-moi vos questions.",
+        formName: "Nom",
+        formEmail: "Email",
+        levelOpt1: "Choisissez votre parcours",
+        levelO1: "Bootcamp Juin 2026 (épreuves Juillet)",
+        levelO2: "Bootcamp Été 2026 (épreuves Août)",
+        levelO3: "Coaching individuel",
+        levelO4: "Les deux sessions",
+        levelO5: "Autre",
+        formMsg: "Décrivez vos objectifs et difficultés en maths",
+        formSubmit: "Envoyer",
+        formSending: "Envoi en cours...",
+        formSuccess: "Message envoyé !",
+        formError: "Oops ! Un problème est survenu. Veuillez réessayer.",
+        footerPrivacy: "Politique de confidentialité",
+        footerTerms: "Conditions d'utilisation",
+        footerRefund: "Politique d'annulation",
+        footerRights: "&copy; 2026 Simple Maths Academy. Tous droits réservés.",
+        whatsappTooltip: "Des questions ? Discutons !",
+        comingSoonTitle: "Prochainement",
+        comingSoonDesc: "Accompagnement annuel B1/L1 et préparation aux examens de Janvier. Restez connectés.",
+        comingSoonBadge: "Bientôt disponible",
+        pricingBadge: "OFFRE FONDATEUR",
+        pricingPack: "Pack Fondateur 5h",
+        pricingOldPrice: "€250",
+        pricingDesc2: "Les 3 premiers étudiants inscrits ont bénéficié de cette offre exceptionnelle.",
+        soldOutLabel: "ÉPUISÉ<br><span style='font-size:0.75rem;font-weight:600;letter-spacing:0.05em;'>OFFRE TERMINÉE</span>",
+        soldOutBtn: "Complet | Non Disponible",
+        qualityPromise: "Méthode basée sur les annales de l'ULB, UCL, VUB et Liège. Fiches de synthèse quotidiennes incluses."
+      },
+      en: {
+        navMethod: "My Method",
+        navCta: "Book my assessment (15 min) | 100% Free",
+        heroBadge: "🎓 Polytechnique Entrance Exam Prep 2026",
+        heroTitle: "Objective Polytechnique 2026: The June Rush.",
+        heroSubtitle: "Lessons via interactive digital whiteboard.",
+        heroCta: "Book my assessment (15 min) | 100% Free",
+        spotBadge: "🔒 Small groups (max 5) for personalized support.",
+        whyMe: "Our Approach",
+        whyMeDesc1: "Expert in mathematics specialized in Belgian Polytechnique entrance exams.",
+        whyMeDesc2: "I transform the most complex concepts into clear, actionable methods.",
+        methodTitle: "My Method",
+        methodS1Title: "Assessment",
+        methodS1Desc: "We identify your specific gaps and the exact requirements of the entrance exam.",
+        methodS2Title: "Targeted Strategy",
+        methodS2Desc: "We solve high-probability exam problems together.",
+        methodS3Title: "Autonomy",
+        methodS3Desc: "I give you the tools and mental models to solve any problem alone on exam day.",
+        specTitle: "Targeted Exams",
+        specSubtitle: "A programme tailored to your exact goals.",
+        spec1Title: "Civil Engineering Entrance Exam",
+        spec1Desc: "Intensive preparation for the Polytechnique entrance exam. Full mastery of chapters from past sessions.",
+        spec2Title: "Medicine &amp; Dentistry Entrance Exam",
+        spec2Desc: "Intensive training on the math topics of the Belgian medicine entrance exam (ULB, UCL, VUB, Liège).",
+        specCta: "Book my assessment (15 min) | 100% Free",
+        scheduleTitle: "2026 Bootcamp Schedule",
+        scheduleSubtitle: "Two intensive modules to maximise your chances before the exam.",
+        mod1Tag: "MODULE 1",
+        mod1Title: "⚡ The June Rush",
+        mod1Target: '"10 Days to Succeed" (July Prep)',
+        mod1Dates: "From June 15 to 26, 2026",
+        mod1Focus: "Intensive daily sessions (morning or evening) to validate your July exam.",
+        mod1Week1Title: "Week 1:",
+        mod1Week1Desc: "Complex Numbers, Polynomials, Linear Algebra, Trigonometry",
+        mod1Week2Title: "Week 2:",
+        mod1Week2Desc: "Calculus (Derivatives/Limits), Integral Calculus, Analytic &amp; Synthetic Geometry",
+        mod2Tag: "MODULE 2",
+        mod2Title: "🏃 The Summer Marathon",
+        mod2Target: "Prep for August exams",
+        mod2Dates: "From July 14 until August exams",
+        mod2Focus: "Weekly workshops + Intensive final sprint before the official exams.",
+        mod2Week1Title: "July/August:",
+        mod2Week1Desc: "Weekly thematic workshops per chapter.",
+        mod2Week2Title: "August 24 &amp; 25:",
+        mod2Week2Desc: "Final Sprint (Real exam simulations based on past Polytech papers).",
+        subjectAlgebra: "Algebra",
+        subjectAnalysis: "Calculus",
+        subjectGeoTrig: "Geometry &amp; Trigonometry",
+        subjectAlgebraAnalysis: "Algebra | Calculus",
+        scheduleCta: "Book my assessment (15 min) | 100% Free",
+        expertTitle: "Why us?",
+        expertSubtitle: "A method built specifically for the demands of the entrance exam.",
+        expert1Title: "Targeted Method",
+        expert1Desc: "Exclusive focus on past Polytech and Medicine entrance exam question types. Uses the official Polytech syllabus for 100% realistic exercises.",
+        expert2Title: "Small Groups (max 5)",
+        expert2Desc: "Maximum 5 students per session to guarantee personalised support and answers to every question.",
+        expert3Title: "100% Online",
+        expert3Desc: "Lessons via interactive digital whiteboard",
+        pricingTitle: "2026 Bootcamp Pricing",
+        pricingSubtitle: "Choose the format that fits your goal.",
+
+        groupBadge: "⚠️ LIMITED SPOTS | 5 MAX",
+        groupTitle: "BOOTCAMP POLYTECH 2026",
+        grp1Name: "Single Session (3h)",
+        grp1Detail: "per student | max 5 students",
+        grp2Name: "Module Pack (10h)",
+        grp2Detail: "€25/h | Intensive preparation",
+        grp3Name: "All-Access Pack (30h)",
+        groupDetails: "10 days of intensive preparation | Max 5 students",
+        groupCta: "Book my assessment (15 min) | 100% Free",
+        stdBadge: "INDIVIDUAL COACHING",
+        promoLimited: "⏳ Limited Offer",
+        anchorPrice: "€50/h",
+        std1Name: "Single Session",
+        std1Detail: " | One-off lesson, no commitment",
+        std2Name: "Success Pack | 5h",
+        std2Detail: "€35/h | Save €75 vs. full rate",
+        std3Name: "Excellence Pack | 10h",
+        std3Detail: "€30/h | Save €200 vs. full rate",
+        mostPopular: "⭐ Most Popular",
+        perHour: "/h",
+        pricingCta: "Book my assessment (15 min) | 100% Free",
+        finalTitle: "Ready to pass your entrance exam?",
+        finalSubtitle: "Book your Bootcamp spot now. No commitment.",
+        finalCta: "Book my assessment (15 min) | 100% Free",
+        contactTitle: "Ready to succeed?",
+        contactSubtitle: "Reserve your Bootcamp spot or ask me anything.",
+        formName: "Name",
+        formEmail: "Email",
+        levelOpt1: "Choose your track",
+        levelO1: "June Bootcamp 2026 (July exams)",
+        levelO2: "Summer Bootcamp 2026 (August exams)",
+        levelO3: "Individual coaching",
+        levelO4: "Both sessions",
+        levelO5: "Other",
+        formMsg: "Describe your goals and math challenges",
+        formSubmit: "Send",
+        formSending: "Sending...",
+        formSuccess: "Message sent!",
+        formError: "Oops! There was a problem submitting your form. Please try again.",
+        footerPrivacy: "Privacy Policy",
+        footerTerms: "Terms of Service",
+        footerRefund: "Refund Policy",
+        footerRights: "&copy; 2026 Simple Maths Academy. All rights reserved.",
+        whatsappTooltip: "Questions? Chat with me!",
+        comingSoonTitle: "Coming Soon",
+        comingSoonDesc: "Annual B1/L1 coaching and preparation for January exams. Stay tuned.",
+        comingSoonBadge: "Coming soon",
+        pricingBadge: "FOUNDER'S OFFER",
+        pricingPack: "Founder Pack 5h",
+        pricingOldPrice: "€250",
+        pricingDesc2: "The first 3 students benefited from this exceptional offer.",
+        soldOutLabel: "SOLD OUT<br><span style='font-size:0.75rem;font-weight:600;letter-spacing:0.05em;'>OFFER ENDED</span>",
+        soldOutBtn: "Full | No Longer Available",
+        qualityPromise: "Method based on past papers from ULB, UCL, VUB, and Liège. Daily summary sheets included."
       }
-    </script>
-  </body>
+    };
+
+    function updateUI(lang) {
+      // Update document title and lang tag
+      document.documentElement.lang = lang;
+
+      // Update switcher
+      const frBtn = document.getElementById('lang-fr');
+      const enBtn = document.getElementById('lang-en');
+      if (lang === 'fr') {
+        frBtn.className = 'lang-btn lang-active';
+        enBtn.className = 'lang-btn lang-inactive';
+      } else {
+        frBtn.className = 'lang-btn lang-inactive';
+        enBtn.className = 'lang-btn lang-active';
+      }
+
+      // Update dom texts (using data-i18n attributes)
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations['en'][key] && translations['fr'][key]) {
+          // Robust conditional rendering using ternary logic as specified
+          el.innerHTML = lang === 'en' ? translations['en'][key] : translations['fr'][key];
+        } else if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang][key]) {
+          el.placeholder = translations[lang][key];
+        }
+      });
+
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('lang', lang);
+      updateUI(lang);
+    }
+
+    function submitForm(event) {
+      event.preventDefault();
+
+      const form = event.target;
+      const submitBtn = document.getElementById('submitBtn');
+      const formStatusMsg = document.getElementById('formStatusMsg');
+      const successMsg = document.getElementById('successMsg');
+
+      // Use translation logic to determine messages
+      const isEng = document.documentElement.lang === 'en';
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = isEng ? translations.en.formSending : translations.fr.formSending;
+      formStatusMsg.style.display = 'none';
+
+      const data = new FormData(form);
+
+      fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+        } else {
+          response.json().then(data => {
+            if (Object.hasOwn(data, 'errors')) {
+              formStatusMsg.innerText = data["errors"].map(error => error["message"]).join(", ");
+            } else {
+              formStatusMsg.innerText = isEng ? translations.en.formError : translations.fr.formError;
+            }
+            formStatusMsg.style.display = 'block';
+            submitBtn.disabled = false;
+            submitBtn.innerText = isEng ? translations.en.formSubmit : translations.fr.formSubmit;
+          })
+        }
+      }).catch(error => {
+        formStatusMsg.innerText = isEng ? translations.en.formError : translations.fr.formError;
+        formStatusMsg.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.innerText = isEng ? translations.en.formSubmit : translations.fr.formSubmit;
+      });
+    }
+
+    // Init on load
+    document.addEventListener('DOMContentLoaded', () => {
+      updateUI(currentLang);
+    });
+  </script>
+</body>
+
 </html>

@@ -4,10 +4,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simple Maths Academy</title>
+  <title>Préparation Polytechnique Belgique 2026 | Simple Maths Academy</title>
   <link rel="icon" type="image/png" href="assets/logo.png" />
   <meta name="description"
-    content="Coaching mathématiques premium pour Polytechnique, Médecine, Solvay et réussite universitaire (B1/L1 à Master). Diagnostic gratuit 15 min." />
+    content="Bootcamp intensif et coaching sur-mesure pour réussir l'examen d'admission Polytechnique (Ingénieur Civil) en Belgique 2026. Basé sur les annales de l'ULB, UCL, VUB et Liège." />
+  <meta name="keywords" content="Préparation Polytechnique Belgique 2026, Examen admission Polytechnique, Ingénieur civil Belgique, Examen Polytech Belgique, ULB, UCL, VUB, Liège, Cours de maths Polytechnique" />
+
+  <!-- Canonical & hreflang (avoid duplicate content with /en/) -->
+  <link rel="canonical" href="https://www.simplemathsacademy.com/" />
+  <link rel="alternate" hreflang="fr" href="https://www.simplemathsacademy.com/" />
+  <link rel="alternate" hreflang="en" href="https://www.simplemathsacademy.com/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.simplemathsacademy.com/" />
+
+  <!-- Structured Data: LocalBusiness + Course -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Simple Maths Academy",
+      "description": "Bootcamp maths intensif en petits groupes pour réussir l'examen d'admission Polytechnique et Médecine en Belgique.",
+      "url": "https://www.simplemathsacademy.com/",
+      "telephone": "+32490219347",
+      "priceRange": "€€",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "BE"
+      },
+      "areaServed": [
+        {"@type": "City", "name": "Bruxelles"},
+        {"@type": "City", "name": "Liège"},
+        {"@type": "Country", "name": "Belgique"}
+      ],
+      "sameAs": [
+        "https://wa.me/32490219347",
+        "https://calendly.com/yanisturpin-maths"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Bootcamp Préparation Examen Admission Polytechnique & Médecine 2026",
+      "description": "Coaching maths intensif en petits groupes (max 5) pour les épreuves d'admission ingénieur civil (Polytech) et médecine en Belgique. Sessions de Juin, Juillet et Août 2026.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Simple Maths Academy",
+        "url": "https://www.simplemathsacademy.com/"
+      },
+      "courseMode": "online",
+      "inLanguage": ["fr", "en"],
+      "educationalLevel": "HighSchool",
+      "hasCourseInstance": [
+        {
+          "@type": "CourseInstance",
+          "name": "Le Rush de Juin 2026",
+          "startDate": "2026-06-15",
+          "endDate": "2026-06-26",
+          "courseMode": "online",
+          "courseWorkload": "PT18H"
+        },
+        {
+          "@type": "CourseInstance",
+          "name": "Le Marathon d'Été 2026",
+          "startDate": "2026-07-14",
+          "endDate": "2026-08-25",
+          "courseMode": "online"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "EUR",
+        "price": "70",
+        "availability": "https://schema.org/LimitedAvailability",
+        "validFrom": "2026-05-01"
+      }
+    }
+  ]
+  </script>
+
   <link rel="stylesheet" href="styles.css" />
   <!-- Calendly popup widget CSS -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
@@ -32,27 +106,25 @@
         </div>
         <a href="#"
           onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
-          class="btn nav-cta" data-i18n="navCta">Réserver mon bilan gratuit (15 min)</a>
+          class="btn nav-cta" data-i18n="navCta">Réserver mon bilan (15 min) | 100% Gratuit</a>
       </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-      <div class="hero-badge" data-i18n="heroBadge">🎓 Académie de Coaching Premium</div>
+      <div class="hero-badge" data-i18n="heroBadge">🎓 Préparation Polytechnique Belgique 2026</div>
       <h1 data-i18n="heroTitle">
-        L'Excellence Mathématique <br />
-        <span style="color: var(--primary)">pour le Supérieur &amp; les Concours.</span>
+        Objectif Polytechnique 2026 : Le Rush de Juin.
       </h1>
       <p style="font-size: 1.35rem; color: var(--text-main); font-weight: 400; max-width: 700px; margin: 0 auto 2rem;" data-i18n="heroSubtitle">
-        Spécialiste de la transition Rhéto-Université. Préparation intensive pour <strong>Polytechnique</strong>, <strong>Médecine</strong>, <strong>Solvay</strong> et réussite de vos partiels (B1/L1 à Master).
+        Cours via tableau blanc numérique interactif.
       </p>
       <div class="hero-tags">
         <span class="path-tag">Polytechnique</span>
         <span class="path-tag">Médecine / Dentaire</span>
-        <span class="path-tag">Solvay / LSM</span>
-        <span class="path-tag">VUB · ULB · UCLouvain</span>
+        <span class="path-tag">ULB · UCL · VUB · Liège</span>
       </div>
-      <div style="margin-top: 2rem">
+      <div style="margin-top: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
         <a href="#"
           onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
           class="btn btn-large btn-pulse" style="display: inline-flex; align-items: center; gap: 0.75rem">
@@ -63,8 +135,9 @@
             <line x1="8" y1="2" x2="8" y2="6" />
             <line x1="3" y1="10" x2="21" y2="10" />
           </svg>
-          <span data-i18n="heroCta">Diagnostic Gratuit — 15 min</span>
+          <span data-i18n="heroCta">Réserver ma place</span>
         </a>
+        <div class="spot-badge" data-i18n="spotBadge">🔒 Classes limitées à 5 élèves pour un suivi personnalisé.</div>
       </div>
     </section>
   </div>
@@ -138,61 +211,43 @@
     </div>
   </section>
 
-    <!-- Specialized Path Cards (3 columns) -->
+    <!-- Expertise Cards (2 columns: Polytech + Médecine) -->
   <section class="section">
     <div class="container">
       <div class="section-header">
-        <h2 data-i18n="specTitle">Parcours Spécialisés</h2>
+        <h2 data-i18n="specTitle">Examens Ciblés</h2>
         <p data-i18n="specSubtitle">Un programme taillé pour vos objectifs précis.</p>
       </div>
 
-      <div class="grid-3" style="text-align: left;">
-        <!-- Card 1: Admissions & Concours -->
+      <div class="grid-2" style="text-align: left; max-width: 900px; margin: 0 auto;">
+        <!-- Card 1: Polytechnique -->
         <div class="card path-card">
           <div class="icon-wrapper">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
             </svg>
           </div>
-          <h3 data-i18n="spec1Title">Admissions &amp; Concours</h3>
-          <p data-i18n="spec1Desc" style="margin-bottom: 1.5rem;">Préparation intensive aux examens d'entrée les plus sélectifs.</p>
+          <h3 data-i18n="spec1Title">Examen d'Admission Ingénieur Civil</h3>
+          <p data-i18n="spec1Desc" style="margin-bottom: 1.5rem;">Préparation intensive à l'examen Polytechnique. Maîtrise complète des chapitres tombés aux sessions précédentes.</p>
           <div class="path-tags">
-            <span class="path-tag">Polytechnique</span>
-            <span class="path-tag">Médecine / Dentaire</span>
-            <span class="path-tag">Solvay / LSM</span>
-          </div>
-        </div>
-        <!-- Card 2: Transition & Secondaire -->
-        <div class="card path-card">
-          <div class="icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-          <h3 data-i18n="spec2Title">Transition &amp; Secondaire</h3>
-          <p data-i18n="spec2Desc" style="margin-bottom: 1.5rem;">Réussite du CESS/Bac et préparation intensive aux études scientifiques et économiques.</p>
-          <div class="path-tags">
-            <span class="path-tag">CESS / Bac</span>
-            <span class="path-tag">Sciences</span>
-            <span class="path-tag">Économie</span>
-          </div>
-        </div>
-        <!-- Card 3: Réussite Universitaire -->
-        <div class="card path-card">
-          <div class="icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 19.5v-15A2.5 2.5 0 016.5 2H20v20H6.5a2.5 2.5 0 01-2.5-2.5z"/>
-              <line x1="9" y1="7" x2="15" y2="7"/>
-              <line x1="9" y1="11" x2="15" y2="11"/>
-              <line x1="9" y1="15" x2="13" y2="15"/>
-            </svg>
-          </div>
-          <h3 data-i18n="spec3Title">Réussite Universitaire</h3>
-          <p data-i18n="spec3Desc" style="margin-bottom: 1.5rem;">Support complet de la B1 au Master : Analyse, Algèbre Linéaire, Statistiques avancées.</p>
-          <div class="path-tags">
-            <span class="path-tag">B1 → Master</span>
+            <span class="path-tag">Algèbre supérieure</span>
             <span class="path-tag">Analyse</span>
-            <span class="path-tag">Algèbre Linéaire</span>
+            <span class="path-tag">Géométrie spatiale</span>
+          </div>
+        </div>
+        <!-- Card 2: Médecine -->
+        <div class="card path-card">
+          <div class="icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <h3 data-i18n="spec2Title">Concours Médecine &amp; Dentaire</h3>
+          <p data-i18n="spec2Desc" style="margin-bottom: 1.5rem;">Entraînement intensif sur les thèmes mathématiques du concours médecine belge (ULB, UCL, VUB, Liège).</p>
+          <div class="path-tags">
+            <span class="path-tag">Trigonométrie</span>
+            <span class="path-tag">Fonctions</span>
+            <span class="path-tag">Problèmes logiques</span>
           </div>
         </div>
       </div>
@@ -208,18 +263,106 @@
             <line x1="8" y1="2" x2="8" y2="6" />
             <line x1="3" y1="10" x2="21" y2="10" />
           </svg>
-          <span data-i18n="specCta">Diagnostic Gratuit — 15 min</span>
+          <span data-i18n="specCta">Réserver ma place</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Expertise / Why Us Section -->
+  <!-- Bootcamp Calendar Section -->
+  <section class="section section-bg" id="programme">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-i18n="scheduleTitle">Calendrier des Bootcamps 2026</h2>
+        <p data-i18n="scheduleSubtitle">Deux modules intensifs pour maximiser vos chances avant l'examen.</p>
+      </div>
+
+      <div class="bootcamp-grid">
+
+        <!-- Module 1: Le Rush de Juin -->
+        <div class="bootcamp-card bootcamp-juin">
+          <div class="bootcamp-header">
+            <span class="bootcamp-tag tag-juin" data-i18n="mod1Tag">MODULE 1</span>
+            <h3 class="bootcamp-title" data-i18n="mod1Title">⚡ Le Rush de Juin</h3>
+            <p class="bootcamp-target" data-i18n="mod1Target">"10 Jours pour Réussir" (Prépa Juillet)</p>
+          </div>
+          <div class="bootcamp-body">
+            <div class="bootcamp-date-row">
+              <span class="bootcamp-date-icon">📅</span>
+              <span class="bootcamp-date-label" data-i18n="mod1Dates">Du 15 au 26 Juin 2026</span>
+            </div>
+            <div class="bootcamp-date-row">
+              <span class="bootcamp-date-icon">🎯</span>
+              <span class="bootcamp-date-label" data-i18n="mod1Focus">Sessions intensives quotidiennes (matin ou soir) pour valider votre examen de Juillet.</span>
+            </div>
+            <div class="bootcamp-date-row">
+              <span class="bootcamp-date-icon">🔹</span>
+              <span class="bootcamp-date-label">
+                <strong data-i18n="mod1Week1Title">Semaine 1 :</strong> <span data-i18n="mod1Week1Desc">Algèbre Supérieure • Nombres Complexes • Trigonométrie</span>
+              </span>
+            </div>
+            <div class="bootcamp-date-row">
+              <span class="bootcamp-date-icon">🔹</span>
+              <span class="bootcamp-date-label">
+                <strong data-i18n="mod1Week2Title">Semaine 2 :</strong> <span data-i18n="mod1Week2Desc">Analyse Complète • Calcul Intégral • Géométrie Spatiale</span>
+              </span>
+            </div>
+            <div class="bootcamp-subjects">
+              <span class="slot-subject slot-algebra" data-i18n="subjectAlgebra">Algèbre</span>
+              <span class="slot-subject slot-analysis" data-i18n="subjectAnalysis">Analyse</span>
+              <span class="slot-subject slot-geo" data-i18n="subjectGeoTrig">Géométrie &amp; Trigo</span>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-large btn-pulse bootcamp-cta" data-i18n="scheduleCta">Réserver ma place</a>
+        </div>
+
+        <!-- Module 2: Le Marathon d'Été -->
+        <div class="bootcamp-card bootcamp-aout">
+          <div class="bootcamp-header">
+            <span class="bootcamp-tag tag-aout" data-i18n="mod2Tag">MODULE 2</span>
+            <h3 class="bootcamp-title" data-i18n="mod2Title">🏃 Le Marathon d'Été</h3>
+            <p class="bootcamp-target" data-i18n="mod2Target">Prépa épreuves d'Août</p>
+          </div>
+          <div class="bootcamp-body">
+            <div class="bootcamp-date-row">
+              <span class="bootcamp-date-icon">📅</span>
+              <span class="bootcamp-date-label" data-i18n="mod2Dates">Dès le 14 Juillet jusqu'aux examens d'Août</span>
+            </div>
+            <div class="bootcamp-date-row">
+              <span class="bootcamp-date-icon">🎯</span>
+              <span class="bootcamp-date-label" data-i18n="mod2Focus">Ateliers hebdomadaires + Sprint final intensif avant les examens officiels.</span>
+            </div>
+            <div class="bootcamp-date-row">
+              <span class="bootcamp-date-icon">🔹</span>
+              <span class="bootcamp-date-label">
+                <strong data-i18n="mod2Week1Title">Juillet/Août :</strong> <span data-i18n="mod2Week1Desc">Ateliers thématiques hebdomadaires par chapitre.</span>
+              </span>
+            </div>
+            <div class="bootcamp-date-row">
+              <span class="bootcamp-date-icon">🔹</span>
+              <span class="bootcamp-date-label">
+                <strong data-i18n="mod2Week2Title">24 &amp; 25 Août :</strong> <span data-i18n="mod2Week2Desc">Sprint Final (Simulations d'examens réels basées sur les annales Polytech).</span>
+              </span>
+            </div>
+            <div class="bootcamp-subjects">
+              <span class="slot-subject slot-algebra" data-i18n="subjectAlgebra">Algèbre</span>
+              <span class="slot-subject slot-analysis" data-i18n="subjectAnalysis">Analyse</span>
+              <span class="slot-subject slot-geo" data-i18n="subjectGeoTrig">Géométrie &amp; Trigo</span>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-large btn-pulse bootcamp-cta" data-i18n="scheduleCta">Réserver ma place</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us Section -->
   <section class="section section-bg" id="expertise">
     <div class="container">
       <div class="section-header">
         <h2 data-i18n="expertTitle">Pourquoi nous choisir ?</h2>
-        <p data-i18n="expertSubtitle">Une méthode construite pour les exigences du Supérieur.</p>
+        <p data-i18n="expertSubtitle">Une méthode construite spécifiquement pour les exigences de l'examen d'admission.</p>
       </div>
       <div class="grid-3" style="text-align: left;">
         <div class="card" style="background: transparent; border: 1px solid rgba(0,122,255,0.2); box-shadow: none; padding: 2rem 1.5rem;">
@@ -229,25 +372,25 @@
             </svg>
           </div>
           <h3 data-i18n="expert1Title" style="font-size: 1.25rem; margin-bottom: 0.75rem;">Méthode Ciblée</h3>
-          <p data-i18n="expert1Desc">Focus exclusif sur les questions d'examens des années précédentes pour maximiser votre score.</p>
+          <p data-i18n="expert1Desc">Focus exclusif sur les types de questions des examens d'admission Polytech et Médecine des années précédentes. Utilisation du syllabus officiel Polytech pour des exercices 100% réalistes.</p>
         </div>
         <div class="card" style="background: transparent; border: 1px solid rgba(0,122,255,0.2); box-shadow: none; padding: 2rem 1.5rem;">
           <div class="icon-wrapper" style="width: 48px; height: 48px; margin-bottom: 1.5rem;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
             </svg>
           </div>
-          <h3 data-i18n="expert2Title" style="font-size: 1.25rem; margin-bottom: 0.75rem;">Outils Interactifs</h3>
-          <p data-i18n="expert2Desc">Tableau blanc numérique pour une clarté maximale — comme si vous étiez en présentiel.</p>
+          <h3 data-i18n="expert2Title" style="font-size: 1.25rem; margin-bottom: 0.75rem;">Petits Groupes (max 5)</h3>
+          <p data-i18n="expert2Desc">Maximum 5 élèves par session pour garantir un suivi personnalisé et des réponses à chaque question.</p>
         </div>
         <div class="card" style="background: transparent; border: 1px solid rgba(0,122,255,0.2); box-shadow: none; padding: 2rem 1.5rem;">
           <div class="icon-wrapper" style="width: 48px; height: 48px; margin-bottom: 1.5rem;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
             </svg>
           </div>
-          <h3 data-i18n="expert3Title" style="font-size: 1.25rem; margin-bottom: 0.75rem;">Expertise Supérieure</h3>
-          <p data-i18n="expert3Desc">Maîtrise totale des programmes <strong>VUB</strong>, <strong>ULB</strong>, <strong>UCLouvain</strong> et <strong>Sorbonne</strong>.</p>
+          <h3 data-i18n="expert3Title" style="font-size: 1.25rem; margin-bottom: 0.75rem;">100% En Ligne</h3>
+          <p data-i18n="expert3Desc">Cours via tableau blanc numérique interactif</p>
         </div>
       </div>
     </div>
@@ -261,42 +404,73 @@
         <p data-i18n="pricingSubtitle">Un investissement rentable pour votre réussite.</p>
       </div>
 
-      <!-- Sold-out notice -->
-      <div class="pricing-notice" data-i18n="pricingNotice">
-        😔 Désolé, les places à tarif réduit ont toutes été réservées. Inscrivez-vous pour un bilan gratuit de 15 min pour discuter de votre plan de réussite aux tarifs standards.
+      <!-- Urgency notice -->
+      <div class="pricing-notice pricing-notice-urgency" data-i18n="groupWarning">
+        ⚠️ Attention : Places limitées à 5 étudiants par session.
       </div>
 
-      <!-- Two-column layout: sold-out card + promo rates -->
-      <div class="pricing-grid">
+      <!-- 2026 Pricing Grid: Group + Individual + Soldout -->
+      <div class="pricing-grid pricing-grid-2026">
 
-        <!-- Sold-out Founder card -->
-        <div class="pricing-card pricing-soldout">
-          <div class="pricing-badge pricing-badge-soldout" data-i18n="pricingBadge">OFFRE FONDATEUR</div>
-          <div class="soldout-overlay">
-            <span class="soldout-label" data-i18n="soldOutLabel">SOLD OUT<br><span style="font-size:0.75rem; font-weight:600; letter-spacing:0.05em;">PROMO TERMINÉE</span></span>
+        <!-- Group Offers Card (FEATURED) -->
+        <div class="pricing-card pricing-group-featured">
+          <div class="pricing-badge pricing-badge-group" data-i18n="groupBadge">⚠️ PLACES LIMITÉES | 5 MAX</div>
+          <div class="promo-limited-tag" style="margin-bottom: 1.25rem;">🤝 BOOTCAMP POLYTECH 2026</div>
+
+          <!-- Option 1: Session Unique -->
+          <div class="price-row">
+            <div class="price-row-info">
+              <span class="price-row-name" data-i18n="grp1Name">Session Unique (3h)</span>
+              <span class="price-row-detail" data-i18n="grp1Detail">par élève | max 5 étudiants</span>
+            </div>
+            <div class="price-row-amount">
+              <span class="price-main">85€</span>
+            </div>
           </div>
-          <h3 data-i18n="pricingPack" style="font-size: 1.6rem; margin-bottom: 0.5rem; opacity: 0.5;">Pack Fondateur 5h</h3>
-          <div class="pricing-amount" style="opacity: 0.4; margin-bottom: 0.5rem;">
-            <span class="price-crossed" data-i18n="pricingOldPrice">250€</span>
-            <span style="font-size: 2rem; font-weight: 800; color: var(--text-muted); margin-left: 0.5rem;">→ 100€</span>
+
+          <!-- Option 2: Pack Module -->
+          <div class="price-row">
+            <div class="price-row-info">
+              <span class="price-row-name" data-i18n="grp2Name">Pack Module (10h)</span>
+              <span class="price-row-detail" data-i18n="grp2Detail">25€/h | Préparation intensive</span>
+            </div>
+            <div class="price-row-amount">
+              <span class="price-main">250€</span>
+            </div>
           </div>
-          <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0.5rem 0 1.5rem; opacity: 0.5;" data-i18n="pricingDesc1">4h + 1h offerte · 20€/h</p>
-          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 2rem; opacity: 0.45;" data-i18n="pricingDesc2">Les 3 premiers étudiants bénéficiaient de cette offre exceptionnelle.</p>
-          <button class="btn btn-large btn-soldout" disabled data-i18n="soldOutBtn">Complet — Plus disponible</button>
+
+          <!-- Option 3: Pack All-Access (FEATURED) -->
+          <div class="price-row price-row-featured">
+            <div class="price-row-popular" data-i18n="mostPopular">⭐ Le Plus Populaire</div>
+            <div class="price-row-info">
+              <span class="price-row-name" data-i18n="grp3Name">Pack All-Access (30h)</span>
+              <span class="price-row-detail" data-i18n="groupDetails">10 jours de préparation intensive | Max 5 étudiants</span>
+            </div>
+            <div class="price-row-amount">
+              <span class="price-main" style="color: #007aff; font-weight: 800;">750€</span>
+            </div>
+          </div>
+
+          <a href="#contact"
+            class="btn btn-large btn-pulse btn-cta-blue"
+            style="width: 100%; display: flex; justify-content: center; margin-top: auto;"
+            data-i18n="groupCta">
+            Réserver mon bilan (15 min)
+          </a>
         </div>
 
-        <!-- Exam Session Promo card -->
+        <!-- Individual Sessions Card -->
         <div class="pricing-card pricing-standard">
-          <div class="pricing-badge pricing-badge-promo" data-i18n="stdBadge">PROMO SESSION EXAMENS</div>
+          <div class="pricing-badge pricing-badge-promo" data-i18n="stdBadge">COURS INDIVIDUELS</div>
           <div class="promo-limited-tag" data-i18n="promoLimited">⏳ Offre limitée</div>
 
-          <!-- Option 1 — Single session with anchor price -->
+          <!-- Option 1 -->
           <div class="price-row">
             <div class="price-row-info">
               <span class="price-row-name" data-i18n="std1Name">Séance individuelle</span>
               <span class="price-row-detail">
                 <span class="anchor-price" data-i18n="anchorPrice">50€/h</span>
-                <span data-i18n="std1Detail"> · Cours unique, sans engagement</span>
+                <span data-i18n="std1Detail"> | Cours unique, sans engagement</span>
               </span>
             </div>
             <div class="price-row-amount">
@@ -305,45 +479,61 @@
             </div>
           </div>
 
-          <!-- Option 2 — Best Seller -->
+          <!-- Option 2 • Best Seller (Pack Réussite 5h) -->
           <div class="price-row price-row-featured">
             <div class="price-row-popular" data-i18n="mostPopular">⭐ Le Plus Populaire</div>
             <div class="price-row-info">
-              <span class="price-row-name">Pack <em>Réussite</em> — 5h</span>
-              <span class="price-row-detail" data-i18n="std2Detail">35€/h · Économisez 75€ sur le tarif plein</span>
+              <span class="price-row-name" data-i18n="std2Name">Pack Réussite | 5h</span>
+              <span class="price-row-detail" data-i18n="std2Detail">35€/h | Économisez 75€ sur le tarif plein</span>
             </div>
             <div class="price-row-amount">
               <span class="price-main">175€</span>
             </div>
           </div>
 
-          <!-- Option 3 -->
+          <!-- Option 3 • Pack Excellence (10h) -->
           <div class="price-row">
             <div class="price-row-info">
-              <span class="price-row-name">Pack <em>Excellence</em> — 10h</span>
-              <span class="price-row-detail" data-i18n="std3Detail">30€/h · Économisez 200€ sur le tarif plein</span>
+              <span class="price-row-name" data-i18n="std3Name">Pack Excellence | 10h</span>
+              <span class="price-row-detail" data-i18n="std3Detail">30€/h | Économisez 200€ sur le tarif plein</span>
             </div>
             <div class="price-row-amount">
               <span class="price-main">300€</span>
             </div>
           </div>
 
-          <a href="#"
-            onclick="Calendly.initPopupWidget({url: 'https://calendly.com/yanisturpin-maths/30min'}); return false;"
+          <a href="#contact"
             class="btn btn-large btn-pulse btn-cta-blue"
-            style="width: 100%; display: flex; justify-content: center; margin-top: 2rem;"
+            style="width: 100%; display: flex; justify-content: center; margin-top: auto;"
             data-i18n="pricingCta">
-            Diagnostic Gratuit — 15 min
+            Réserver mon bilan (15 min)
           </a>
         </div>
 
-      </div><!-- /pricing-grid -->
+        <!-- Sold-out Founder Offer Card -->
+        <div class="pricing-card pricing-soldout">
+          <div class="pricing-badge pricing-badge-soldout" data-i18n="pricingBadge">OFFRE FONDATEUR</div>
+          <div class="soldout-overlay">
+            <div class="soldout-label" data-i18n="soldOutLabel">ÉPUISÉ<br><span style="font-size:0.75rem;font-weight:600;letter-spacing:0.05em;">OFFRE TERMINÉE</span></div>
+          </div>
+          <div class="promo-limited-tag" style="background:#374151; border-color:#4b5563; color:#9ca3af;" data-i18n="promoLimited">⏳ Offre terminée</div>
+          <h3 style="font-size:1.5rem; margin-bottom:0.5rem;" data-i18n="pricingPack">Pack Fondateur 5h</h3>
+          <div class="pricing-amount">
+            <span class="price-crossed" data-i18n="pricingOldPrice">€250</span>
+            <span class="price-main">100€</span>
+          </div>
+          <p style="margin-bottom: 2rem; color:var(--text-muted);" data-i18n="pricingDesc2">Les 3 premiers étudiants inscrits ont bénéficié de cette offre exceptionnelle.</p>
+          <button class="btn-soldout" disabled data-i18n="soldOutBtn">Complet | Non Disponible</button>
+        </div>
+
+      </div><!-- /pricing-grid-2026 -->
+
 
     </div>
   </section>
 
   <!-- Final CTA / Contact Section -->
-  <section class="section">
+  <section class="section" id="contact">
     <div class="container center-text">
       <h2 data-i18n="contactTitle" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem">Prêt à réussir ?
       </h2>
@@ -417,6 +607,22 @@
     </div>
   </section>
 
+  <!-- Prochainement / Coming Soon Section -->
+  <section class="section coming-soon-section">
+    <div class="container">
+      <div class="coming-soon-card">
+        <div class="coming-soon-icon">🔮</div>
+        <div class="coming-soon-text">
+          <h2 class="coming-soon-title" data-i18n="comingSoonTitle">Prochainement</h2>
+          <p class="coming-soon-desc" data-i18n="comingSoonDesc">
+            Accompagnement annuel B1/L1 et préparation aux examens de Janvier. Restez connectés.
+          </p>
+        </div>
+        <div class="coming-soon-badge" data-i18n="comingSoonBadge">Bientôt disponible</div>
+      </div>
+    </div>
+  </section>
+
   <footer style="margin-top: 4rem; border-top: 1px solid var(--border-color, #e5e7eb); padding: 2rem 0;">
     <div class="container"
       style="display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center;">
@@ -431,7 +637,7 @@
           style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s;"
           data-i18n="footerRefund">Politique d'annulation</a>
       </div>
-      <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;" data-i18n="footerRights">&copy; 2024 Simple
+      <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;" data-i18n="footerRights">&copy; 2026 Simple
         Maths Academy. Tous droits réservés.</p>
     </div>
   </footer>
@@ -458,72 +664,99 @@
     const translations = {
       fr: {
         navMethod: "Ma Méthode",
-        navCta: "Diagnostic Gratuit — 15 min",
-        heroBadge: "🎓 Académie de Coaching Premium",
-        heroTitle: "L'Excellence Mathématique <br /><span style='color: var(--primary)'>pour le Supérieur &amp; les Concours.</span>",
-        heroSubtitle: "Spécialiste de la transition Rhéto-Université. Préparation intensive pour <strong>Polytechnique</strong>, <strong>Médecine</strong>, <strong>Solvay</strong> et réussite de vos partiels (B1/L1 à Master).",
-        heroCta: "Diagnostic Gratuit — 15 min",
+        navCta: "Réserver mon bilan (15 min) | 100% Gratuit",
+        heroBadge: "🎓 Préparation Polytechnique Belgique 2026",
+        heroTitle: "Objectif Polytechnique 2026 : Le Rush de Juin.",
+        heroSubtitle: "Cours via tableau blanc numérique interactif.",
+        heroCta: "Réserver mon bilan (15 min) | 100% Gratuit",
+        spotBadge: "🔒 Classes limitées à 5 élèves pour un suivi personnalisé.",
         whyMe: "Notre Approche",
-        whyMeDesc1: "Expert en mathématiques spécialisé dans les concours d'entrée et le tutorat universitaire de haut niveau.",
+        whyMeDesc1: "Expert en mathématiques spécialisé dans les examens d'admission Polytechnique en Belgique.",
         whyMeDesc2: "Je transforme les concepts les plus complexes en méthodes claires et actionnables.",
         methodTitle: "Ma Méthode",
         methodS1Title: "Évaluation",
-        methodS1Desc: "Nous identifions vos lacunes spécifiques et les exigences de vos examens.",
+        methodS1Desc: "Nous identifions vos lacunes spécifiques et les exigences de l'examen d'admission.",
         methodS2Title: "Stratégie Ciblée",
-        methodS2Desc: "Nous résolvons ensemble les problèmes d'examen à forte probabilité.",
+        methodS2Desc: "Nous résolvons ensemble les problèmes d'examen à forte probabilité de tomber.",
         methodS3Title: "Autonomie",
-        methodS3Desc: "Je vous donne les outils et modèles mentaux pour résoudre tout problème seul.",
-        specTitle: "Parcours Spécialisés",
+        methodS3Desc: "Je vous donne les outils et modèles mentaux pour résoudre tout problème seul le jour J.",
+        specTitle: "Examens Ciblés",
         specSubtitle: "Un programme taillé pour vos objectifs précis.",
-        spec1Title: "Admissions &amp; Concours",
-        spec1Desc: "Préparation intensive aux examens d'entrée les plus sélectifs : Polytechnique, Médecine, Solvay.",
-        spec2Title: "Transition &amp; Secondaire",
-        spec2Desc: "Réussite du CESS/Bac et préparation intensive aux études scientifiques et économiques.",
-        spec3Title: "Réussite Universitaire",
-        spec3Desc: "Support complet de la B1 au Master : Analyse, Algèbre Linéaire, Statistiques avancées.",
-        specCta: "Diagnostic Gratuit — 15 min",
+        spec1Title: "Examen d'Admission Ingénieur Civil",
+        spec1Desc: "Préparation intensive à l'examen Polytechnique. Maîtrise complète des chapitres tombés aux sessions précédentes.",
+        spec2Title: "Concours Médecine &amp; Dentaire",
+        spec2Desc: "Entraînement intensif sur les thèmes mathématiques du concours médecine belge (ULB, UCL, VUB, Liège).",
+        specCta: "Réserver mon bilan (15 min) | 100% Gratuit",
+        scheduleTitle: "Calendrier des Bootcamps 2026",
+        scheduleSubtitle: "Deux modules intensifs pour maximiser vos chances avant l'examen.",
+        mod1Tag: "MODULE 1",
+        mod1Title: "⚡ Le Rush de Juin",
+        mod1Target: '"10 Jours pour Réussir" (Prépa Juillet)',
+        mod1Dates: "Du 15 au 26 Juin 2026",
+        mod1Focus: "Sessions intensives quotidiennes (matin ou soir) pour valider votre examen de Juillet.",
+        mod1Week1Title: "Semaine 1 :",
+        mod1Week1Desc: "Nombres Complexes, Polynômes, Algèbre Linéaire, Trigonométrie",
+        mod1Week2Title: "Semaine 2 :",
+        mod1Week2Desc: "Analyse (Dérivées/Limites), Calcul Intégral, Géométrie Analytique &amp; Synthétique",
+        mod2Tag: "MODULE 2",
+        mod2Title: "🏃 Le Marathon d'Été",
+        mod2Target: "Prépa épreuves d'Août",
+        mod2Dates: "Dès le 14 Juillet jusqu'aux examens d'Août",
+        mod2Focus: "Ateliers hebdomadaires + Sprint final intensif avant les examens officiels.",
+        mod2Week1Title: "Juillet/Août :",
+        mod2Week1Desc: "Ateliers thématiques hebdomadaires par chapitre.",
+        mod2Week2Title: "24 &amp; 25 Août :",
+        mod2Week2Desc: "Sprint Final (Simulations d'examens réels basées sur les annales Polytech).",
+        subjectAlgebra: "Algèbre",
+        subjectAnalysis: "Analyse",
+        subjectGeoTrig: "Géométrie &amp; Trigonométrie",
+        subjectAlgebraAnalysis: "Algèbre | Analyse",
+        scheduleCta: "Réserver mon bilan (15 min) | 100% Gratuit",
         expertTitle: "Pourquoi nous choisir ?",
-        expertSubtitle: "Une méthode construite pour les exigences du Supérieur.",
+        expertSubtitle: "Une méthode construite spécifiquement pour les exigences de l'examen d'admission.",
         expert1Title: "Méthode Ciblée",
-        expert1Desc: "Focus exclusif sur les questions d'examens des années précédentes pour maximiser votre score.",
-        expert2Title: "Outils Interactifs",
-        expert2Desc: "Tableau blanc numérique pour une clarté maximale — comme si vous étiez en présentiel.",
-        expert3Title: "Expertise Supérieure",
-        expert3Desc: "Maîtrise totale des programmes <strong>VUB</strong>, <strong>ULB</strong>, <strong>UCLouvain</strong> et <strong>Sorbonne</strong>.",
-        pricingTitle: "Tarifs",
+        expert1Desc: "Focus exclusif sur les types de questions des examens d'admission Polytech et Médecine des années précédentes. Utilisation du syllabus officiel Polytech pour des exercices 100% réalistes.",
+        expert2Title: "Petits Groupes (max 5)",
+        expert2Desc: "Maximum 5 élèves par session pour garantir un suivi personnalisé et des réponses à chaque question.",
+        expert3Title: "100% En Ligne",
+        expert3Desc: "Cours via tableau blanc numérique interactif",
+        pricingTitle: "Tarifs Bootcamp 2026",
         pricingSubtitle: "Choisissez la formule qui correspond à votre objectif.",
-        pricingNotice: "😔 Désolé, les places à tarif réduit ont toutes été réservées. Inscrivez-vous pour un bilan gratuit de 15 min pour discuter de votre plan de réussite aux tarifs standards.",
-        pricingBadge: "OFFRE FONDATEUR",
-        pricingPack: "Pack Fondateur 5h",
-        pricingOldPrice: "250€",
-        pricingDesc1: "4h + 1h offerte · 20€/h",
-        pricingDesc2: "Les 3 premiers étudiants bénéficiaient de cette offre exceptionnelle.",
-        soldOutLabel: "SOLD OUT<br><span style='font-size:0.75rem;font-weight:600;letter-spacing:0.05em;'>PROMO TERMINÉE</span>",
-        soldOutBtn: "Complet — Plus disponible",
-        stdBadge: "PROMO SESSION EXAMENS",
+
+        groupBadge: "⚠️ PLACES LIMITÉES | 5 MAX",
+        groupTitle: "BOOTCAMP POLYTECH 2026",
+        grp1Name: "Session Unique (3h)",
+        grp1Detail: "par élève | max 5 étudiants",
+        grp2Name: "Pack Module (10h)",
+        grp2Detail: "25€/h | Préparation intensive",
+        grp3Name: "Pack All-Access (30h)",
+        groupDetails: "10 jours de préparation intensive | Max 5 étudiants",
+        groupCta: "Réserver mon bilan (15 min) | 100% Gratuit",
+        stdBadge: "COURS INDIVIDUELS",
         promoLimited: "⏳ Offre limitée",
         anchorPrice: "50€/h",
         std1Name: "Séance individuelle",
-        std1Detail: " · Cours unique, sans engagement",
-        std2Detail: "35€/h · Économisez 75€ sur le tarif plein",
-        std3Detail: "30€/h · Économisez 200€ sur le tarif plein",
+        std1Detail: " | Cours unique, sans engagement",
+        std2Name: "Pack Réussite | 5h",
+        std2Detail: "35€/h | Économisez 75€ sur le tarif plein",
+        std3Name: "Pack Excellence | 10h",
+        std3Detail: "30€/h | Économisez 200€ sur le tarif plein",
         mostPopular: "⭐ Le Plus Populaire",
         perHour: "/h",
-        pricingCta: "Diagnostic Gratuit — 15 min",
+        pricingCta: "Réserver mon bilan (15 min) | 100% Gratuit",
         finalTitle: "Prêt à intégrer les meilleures formations ?",
-        finalSubtitle: "Réservez votre diagnostic gratuit dès maintenant. 100% sans engagement.",
-        finalCta: "Diagnostic Gratuit — 15 min",
-        finalTerms: "En réservant, vous acceptez nos <a href='conditions-generales.html' style='color: white; text-decoration: underline;'>Conditions</a> et notre <a href='politique-de-confidentialite.html' style='color: white; text-decoration: underline;'>Politique de confidentialité</a>.",
+        finalSubtitle: "Réservez votre place au Bootcamp dès maintenant. 100% sans engagement.",
+        finalCta: "Réserver mon bilan (15 min) | 100% Gratuit",
         contactTitle: "Prêt à réussir ?",
-        contactSubtitle: "Réservez votre diagnostic gratuit de 15 min ou posez-moi vos questions.",
+        contactSubtitle: "Réservez votre place au Bootcamp ou posez-moi vos questions.",
         formName: "Nom",
         formEmail: "Email",
         levelOpt1: "Choisissez votre parcours",
-        levelO1: "Admissions & Concours (Polytechnique, Médecine, Solvay)",
-        levelO2: "Transition (CESS / Bac)",
-        levelO3: "L1 / B1 (Bachelier)",
-        levelO4: "L2 / B2 — L3 / B3",
-        levelO5: "Master",
+        levelO1: "Bootcamp Juin 2026 (épreuves Juillet)",
+        levelO2: "Bootcamp Été 2026 (épreuves Août)",
+        levelO3: "Coaching individuel",
+        levelO4: "Les deux sessions",
+        levelO5: "Autre",
         formMsg: "Décrivez vos objectifs et difficultés en maths",
         formSubmit: "Envoyer",
         formSending: "Envoi en cours...",
@@ -532,77 +765,114 @@
         footerPrivacy: "Politique de confidentialité",
         footerTerms: "Conditions d'utilisation",
         footerRefund: "Politique d'annulation",
-        footerRights: "&copy; 2025 Simple Maths Academy. Tous droits réservés.",
-        whatsappTooltip: "Des questions ? Discutons !"
+        footerRights: "&copy; 2026 Simple Maths Academy. Tous droits réservés.",
+        whatsappTooltip: "Des questions ? Discutons !",
+        comingSoonTitle: "Prochainement",
+        comingSoonDesc: "Accompagnement annuel B1/L1 et préparation aux examens de Janvier. Restez connectés.",
+        comingSoonBadge: "Bientôt disponible",
+        pricingBadge: "OFFRE FONDATEUR",
+        pricingPack: "Pack Fondateur 5h",
+        pricingOldPrice: "€250",
+        pricingDesc2: "Les 3 premiers étudiants inscrits ont bénéficié de cette offre exceptionnelle.",
+        soldOutLabel: "ÉPUISÉ<br><span style='font-size:0.75rem;font-weight:600;letter-spacing:0.05em;'>OFFRE TERMINÉE</span>",
+        soldOutBtn: "Complet | Non Disponible",
+        qualityPromise: "Méthode basée sur les annales de l'ULB, UCL, VUB et Liège. Fiches de synthèse quotidiennes incluses."
       },
       en: {
         navMethod: "My Method",
-        navCta: "Free 15-min Diagnostic",
-        heroBadge: "🎓 Premium Coaching Academy",
-        heroTitle: "Mathematical Excellence <br /><span style='color: var(--primary)'>for University &amp; Entrance Exams.</span>",
-        heroSubtitle: "Specialized coaching for University Entrance (Engineering, Business, Med) and Advanced Mathematics for Bachelor &amp; Master students.",
-        heroCta: "Free 15-min Diagnostic",
+        navCta: "Book my assessment (15 min) | 100% Free",
+        heroBadge: "🎓 Polytechnique Entrance Exam Prep 2026",
+        heroTitle: "Objective Polytechnique 2026: The June Rush.",
+        heroSubtitle: "Lessons via interactive digital whiteboard.",
+        heroCta: "Book my assessment (15 min) | 100% Free",
+        spotBadge: "🔒 Small groups (max 5) for personalized support.",
         whyMe: "Our Approach",
-        whyMeDesc1: "Expert in mathematics specialized in competitive entrance exams and high-level university tutoring.",
+        whyMeDesc1: "Expert in mathematics specialized in Belgian Polytechnique entrance exams.",
         whyMeDesc2: "I transform the most complex concepts into clear, actionable methods.",
         methodTitle: "My Method",
         methodS1Title: "Assessment",
-        methodS1Desc: "We identify your specific gaps and exam requirements.",
+        methodS1Desc: "We identify your specific gaps and the exact requirements of the entrance exam.",
         methodS2Title: "Targeted Strategy",
         methodS2Desc: "We solve high-probability exam problems together.",
         methodS3Title: "Autonomy",
-        methodS3Desc: "I give you the tools and mental models to solve any problem alone.",
-        specTitle: "Specialized Tracks",
+        methodS3Desc: "I give you the tools and mental models to solve any problem alone on exam day.",
+        specTitle: "Targeted Exams",
         specSubtitle: "A programme tailored to your exact goals.",
-        spec1Title: "Admissions &amp; Entrance Exams",
-        spec1Desc: "Intensive preparation for the most selective university entrance exams: Engineering, Medicine, Business.",
-        spec2Title: "Transition &amp; Secondary",
-        spec2Desc: "High school diploma success and intensive preparation for scientific and economics degrees.",
-        spec3Title: "University Success",
-        spec3Desc: "Full support from Bachelor Year 1 to Master: Calculus, Linear Algebra, Advanced Statistics.",
-        specCta: "Free 15-min Diagnostic",
+        spec1Title: "Civil Engineering Entrance Exam",
+        spec1Desc: "Intensive preparation for the Polytechnique entrance exam. Full mastery of chapters from past sessions.",
+        spec2Title: "Medicine &amp; Dentistry Entrance Exam",
+        spec2Desc: "Intensive training on the math topics of the Belgian medicine entrance exam (ULB, UCL, VUB, Liège).",
+        specCta: "Book my assessment (15 min) | 100% Free",
+        scheduleTitle: "2026 Bootcamp Schedule",
+        scheduleSubtitle: "Two intensive modules to maximise your chances before the exam.",
+        mod1Tag: "MODULE 1",
+        mod1Title: "⚡ The June Rush",
+        mod1Target: '"10 Days to Succeed" (July Prep)',
+        mod1Dates: "From June 15 to 26, 2026",
+        mod1Focus: "Intensive daily sessions (morning or evening) to validate your July exam.",
+        mod1Week1Title: "Week 1:",
+        mod1Week1Desc: "Complex Numbers, Polynomials, Linear Algebra, Trigonometry",
+        mod1Week2Title: "Week 2:",
+        mod1Week2Desc: "Calculus (Derivatives/Limits), Integral Calculus, Analytic &amp; Synthetic Geometry",
+        mod2Tag: "MODULE 2",
+        mod2Title: "🏃 The Summer Marathon",
+        mod2Target: "Prep for August exams",
+        mod2Dates: "From July 14 until August exams",
+        mod2Focus: "Weekly workshops + Intensive final sprint before the official exams.",
+        mod2Week1Title: "July/August:",
+        mod2Week1Desc: "Weekly thematic workshops per chapter.",
+        mod2Week2Title: "August 24 &amp; 25:",
+        mod2Week2Desc: "Final Sprint (Real exam simulations based on past Polytech papers).",
+        subjectAlgebra: "Algebra",
+        subjectAnalysis: "Calculus",
+        subjectGeoTrig: "Geometry &amp; Trigonometry",
+        subjectAlgebraAnalysis: "Algebra | Calculus",
+        scheduleCta: "Book my assessment (15 min) | 100% Free",
         expertTitle: "Why us?",
-        expertSubtitle: "A method built for the demands of Higher Education.",
+        expertSubtitle: "A method built specifically for the demands of the entrance exam.",
         expert1Title: "Targeted Method",
-        expert1Desc: "Exclusive focus on past exam questions to maximise your score.",
-        expert2Title: "Interactive Tools",
-        expert2Desc: "Digital whiteboard for maximum clarity — as if you were face-to-face.",
-        expert3Title: "Superior Expertise",
-        expert3Desc: "Full mastery of <strong>VUB</strong>, <strong>ULB</strong>, <strong>UCLouvain</strong> and <strong>Sorbonne</strong> syllabuses.",
-        pricingTitle: "Pricing",
-        pricingSubtitle: "Choose the plan that fits your goal.",
-        pricingNotice: "😔 Sorry, all discounted spots have been claimed. Book a free 15-min diagnostic to discuss your success plan at current rates.",
-        pricingBadge: "FOUNDER'S OFFER",
-        pricingPack: "Founder Pack 5h",
-        pricingOldPrice: "€250",
-        pricingDesc1: "4h + 1h free · €20/h",
-        pricingDesc2: "The first 3 students benefited from this exceptional offer.",
-        soldOutLabel: "SOLD OUT<br><span style='font-size:0.75rem;font-weight:600;letter-spacing:0.05em;'>OFFER ENDED</span>",
-        soldOutBtn: "Full — No Longer Available",
-        stdBadge: "EXAM SESSION PROMO",
+        expert1Desc: "Exclusive focus on past Polytech and Medicine entrance exam question types. Uses the official Polytech syllabus for 100% realistic exercises.",
+        expert2Title: "Small Groups (max 5)",
+        expert2Desc: "Maximum 5 students per session to guarantee personalised support and answers to every question.",
+        expert3Title: "100% Online",
+        expert3Desc: "Lessons via interactive digital whiteboard",
+        pricingTitle: "2026 Bootcamp Pricing",
+        pricingSubtitle: "Choose the format that fits your goal.",
+
+        groupBadge: "⚠️ LIMITED SPOTS | 5 MAX",
+        groupTitle: "BOOTCAMP POLYTECH 2026",
+        grp1Name: "Single Session (3h)",
+        grp1Detail: "per student | max 5 students",
+        grp2Name: "Module Pack (10h)",
+        grp2Detail: "€25/h | Intensive preparation",
+        grp3Name: "All-Access Pack (30h)",
+        groupDetails: "10 days of intensive preparation | Max 5 students",
+        groupCta: "Book my assessment (15 min) | 100% Free",
+        stdBadge: "INDIVIDUAL COACHING",
         promoLimited: "⏳ Limited Offer",
         anchorPrice: "€50/h",
         std1Name: "Single Session",
-        std1Detail: " · One-off lesson, no commitment",
-        std2Detail: "€35/h · Save €75 vs. full rate",
-        std3Detail: "€30/h · Save €200 vs. full rate",
+        std1Detail: " | One-off lesson, no commitment",
+        std2Name: "Success Pack | 5h",
+        std2Detail: "€35/h | Save €75 vs. full rate",
+        std3Name: "Excellence Pack | 10h",
+        std3Detail: "€30/h | Save €200 vs. full rate",
         mostPopular: "⭐ Most Popular",
         perHour: "/h",
-        pricingCta: "Free 15-min Diagnostic",
-        finalTitle: "Ready to enter your dream programme?",
-        finalSubtitle: "Book your free diagnostic now. 100% free, zero commitment.",
-        finalCta: "Free 15-min Diagnostic",
-        finalTerms: "By booking, you agree to our <a href='conditions-generales.html' style='color: white; text-decoration: underline;'>Terms</a> and <a href='politique-de-confidentialite.html' style='color: white; text-decoration: underline;'>Privacy Policy</a>.",
+        pricingCta: "Book my assessment (15 min) | 100% Free",
+        finalTitle: "Ready to pass your entrance exam?",
+        finalSubtitle: "Book your Bootcamp spot now. No commitment.",
+        finalCta: "Book my assessment (15 min) | 100% Free",
         contactTitle: "Ready to succeed?",
-        contactSubtitle: "Book your free 15-min diagnostic or ask me anything.",
+        contactSubtitle: "Reserve your Bootcamp spot or ask me anything.",
         formName: "Name",
         formEmail: "Email",
         levelOpt1: "Choose your track",
-        levelO1: "Admissions & Entrance Exams (Engineering, Med, Business)",
-        levelO2: "Secondary / High School",
-        levelO3: "Bachelor Year 1",
-        levelO4: "Bachelor Year 2–3",
-        levelO5: "Master's Degree",
+        levelO1: "June Bootcamp 2026 (July exams)",
+        levelO2: "Summer Bootcamp 2026 (August exams)",
+        levelO3: "Individual coaching",
+        levelO4: "Both sessions",
+        levelO5: "Other",
         formMsg: "Describe your goals and math challenges",
         formSubmit: "Send",
         formSending: "Sending...",
@@ -611,8 +881,18 @@
         footerPrivacy: "Privacy Policy",
         footerTerms: "Terms of Service",
         footerRefund: "Refund Policy",
-        footerRights: "&copy; 2025 Simple Maths Academy. All rights reserved.",
-        whatsappTooltip: "Questions? Chat with me!"
+        footerRights: "&copy; 2026 Simple Maths Academy. All rights reserved.",
+        whatsappTooltip: "Questions? Chat with me!",
+        comingSoonTitle: "Coming Soon",
+        comingSoonDesc: "Annual B1/L1 coaching and preparation for January exams. Stay tuned.",
+        comingSoonBadge: "Coming soon",
+        pricingBadge: "FOUNDER'S OFFER",
+        pricingPack: "Founder Pack 5h",
+        pricingOldPrice: "€250",
+        pricingDesc2: "The first 3 students benefited from this exceptional offer.",
+        soldOutLabel: "SOLD OUT<br><span style='font-size:0.75rem;font-weight:600;letter-spacing:0.05em;'>OFFER ENDED</span>",
+        soldOutBtn: "Full | No Longer Available",
+        qualityPromise: "Method based on past papers from ULB, UCL, VUB, and Liège. Daily summary sheets included."
       }
     };
 
