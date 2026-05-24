@@ -1589,3 +1589,86 @@ footer {
   }
 }
 
+/* ============================================================
+   SERVICE DESCRIPTION ACCORDION (SEO SECTION)
+   ============================================================ */
+.service-description {
+  margin: 6rem auto 0;
+  max-width: 900px;
+  padding: 0 1.5rem 4rem;
+}
+
+.seo-details {
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.seo-details[open] {
+  background: rgba(30, 41, 59, 0.7);
+  border-color: rgba(0, 122, 255, 0.2);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 
+              0 0 30px rgba(0, 122, 255, 0.05);
+}
+
+.seo-summary {
+  padding: 1.25rem 1.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none; /* Hide default triangle */
+  outline: none;
+  transition: color 0.2s ease;
+}
+
+.seo-summary:hover {
+  color: var(--primary);
+}
+
+.seo-summary::-webkit-details-marker {
+  display: none; /* Hide default triangle in Safari */
+}
+
+.seo-summary::after {
+  content: '+';
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--primary);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.seo-details[open] .seo-summary::after {
+  content: '−';
+  transform: rotate(180deg);
+}
+
+.seo-content {
+  padding: 0 1.75rem 1.75rem;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.seo-content p {
+  font-size: 0.9375rem;
+  margin-bottom: 1.25rem;
+}
+
+.seo-content p:last-child {
+  margin-bottom: 0;
+}
+
+.seo-content strong {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+
