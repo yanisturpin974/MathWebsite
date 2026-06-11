@@ -1455,7 +1455,7 @@ footer {
 
 @media (max-width: 600px) {
   .nav-opt-text {
-    display: none;
+    display: inline;
   }
 }
 
@@ -1670,5 +1670,37 @@ footer {
   color: var(--text-main);
   font-weight: 600;
 }
+
+/* Vacation message styling under CTA */
+.vacation-box {
+  background: rgba(245, 158, 11, 0.05);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  color: var(--text-main);
+  padding: 0.85rem 1.25rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  max-width: 650px;
+  margin: 0.5rem auto 1rem;
+  line-height: 1.5;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.6s ease 0.3s both;
+}
+
+.vacation-box strong {
+  color: #fbbf24;
+}
+
+/* Summer Bootcamp notice badge styling */
+.pricing-notice-summer {
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.08), rgba(0, 122, 255, 0.08)) !important;
+  border: 1px solid rgba(0, 122, 255, 0.3) !important;
+  color: #60a5fa !important;
+  font-weight: 700;
+  box-shadow: 0 0 15px rgba(0, 122, 255, 0.1);
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
 
 
