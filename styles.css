@@ -12,7 +12,7 @@
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --accent-light: rgba(0, 122, 255, 0.15); /* #007AFF with opacity */
-  --spacing-section: 120px;
+  --spacing-section: 60px;
   --btn-bg: #007AFF;
   --btn-hover: #005ce6;
 }
@@ -404,7 +404,7 @@ footer {
 /* Responsive */
 @media (max-width: 768px) {
   :root {
-    --spacing-section: 80px;
+    --spacing-section: 40px;
   }
 
   nav {
@@ -673,7 +673,7 @@ footer {
   background: var(--card-bg);
   border-radius: 24px;
   /* generous padding: top badge | sides | generous bottom breathing room */
-  padding: 40px 30px 40px;
+  padding: 30px 24px 30px;
   box-sizing: border-box;
   border: 1px solid rgba(255,255,255,0.06);
   box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
@@ -682,7 +682,7 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* pushes button to bottom */
-  min-height: 700px;
+  min-height: 660px;
   min-width: 0;
   flex: 1 1 300px;
 }
@@ -821,12 +821,12 @@ footer {
 .price-row {
   border: 1px solid rgba(255,255,255,0.07);
   border-radius: 16px;
-  padding: 0.75rem 1rem;
+  padding: 0.65rem 0.95rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  margin-bottom: 10px;          /* tightened from 15px */
+  margin-bottom: 8px;          /* tightened from 10px */
   transition: border-color 0.2s, background 0.2s;
   position: relative;
 }
@@ -1701,6 +1701,130 @@ footer {
   margin-top: 1rem;
   margin-bottom: 2rem;
 }
+
+.center-text {
+  text-align: center;
+}
+
+/* ── Free Resources Section ────────────────────────────────── */
+.resources-section {
+  padding: var(--spacing-section) 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resources-card-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.resources-card {
+  background: rgba(17, 24, 39, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 122, 255, 0.4);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  max-width: 680px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 122, 255, 0.25), 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+}
+
+.resources-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 122, 255, 0.65);
+  box-shadow: 0 0 35px rgba(0, 122, 255, 0.4), 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.resources-card-header {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.resources-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--primary); /* Electric Blue */
+  flex-shrink: 0;
+}
+
+.resources-card h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--text-main);
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+}
+
+.resources-description {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  margin-bottom: 2.25rem;
+  line-height: 1.6;
+}
+
+.resources-cta-wrapper {
+  margin-bottom: 1rem;
+}
+
+.resources-subtext {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  opacity: 0.85;
+}
+
+/* ── Specific Overrides for Compact Visual Flow ────────────── */
+#expertise {
+  padding-bottom: calc(var(--spacing-section) / 2);
+}
+
+#free-resources {
+  padding-top: calc(var(--spacing-section) / 2);
+  padding-bottom: calc(var(--spacing-section) / 2);
+}
+
+#pricing {
+  padding-top: calc(var(--spacing-section) / 2);
+}
+
+/* Pricing Header & Banner compacting */
+#pricing .section-header {
+  margin-bottom: 2rem;
+}
+
+.pricing-notice {
+  margin-bottom: 1.25rem;
+}
+
+.pricing-notice-summer {
+  margin-top: 0 !important;
+  margin-bottom: 2.5rem !important;
+}
+
+/* Pricing card saving text styles */
+.price-saving {
+  font-weight: 300;
+  font-size: 0.75rem;
+  opacity: 0.95;
+}
+
+.price-saving-blue {
+  color: var(--primary); /* Electric Blue */
+  font-weight: 500;
+  opacity: 1;
+}
+
+
+
 
 
 

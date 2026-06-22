@@ -145,7 +145,7 @@
       },
       "offers": {
         "@type": "Offer",
-        "price": "750",
+        "price": "720",
         "priceCurrency": "EUR",
         "url": "https://www.simplemathsacademy.com/medecine.html#pricing",
         "availability": "https://schema.org/LimitedAvailability",
@@ -536,6 +536,41 @@
     </div>
   </section>
 
+  <!-- Free Resources Section -->
+  <section class="section resources-section" id="free-resources">
+    <div class="container">
+      <div class="section-header center-text">
+        <h2 data-i18n="resourcesTitle">Ressources Gratuites</h2>
+      </div>
+      <div class="resources-card-wrapper">
+        <div class="resources-card">
+          <div class="resources-card-header">
+            <!-- Minimalist PDF Document Icon (SVG) -->
+            <svg class="resources-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <h3 data-i18n="resourcesHeadline">Guide de Réussite EXMD</h3>
+          </div>
+          <p class="resources-description" data-i18n="resourcesDesc">Maîtriser la partie logique et physique du concours | Checklist des pièges classiques et astuces QCM.</p>
+          <div class="resources-cta-wrapper">
+            <a href="https://wa.me/32490219347?text=Bonjour%20Simple%20Maths%20Academy%2C%20je%20souhaiterais%20recevoir%20le%20Guide%20de%20R%C3%A9ussite%20M%C3%A9decine%20gratuitement." 
+               class="btn btn-large btn-pulse resources-btn" 
+               id="resources-cta-link"
+               data-i18n="resourcesCta"
+               data-i18n-href="resourcesCtaLink"
+               target="_blank"
+               rel="noopener noreferrer">Recevoir le PDF Gratuit</a>
+          </div>
+          <span class="resources-subtext" data-i18n="resourcesSubtext">Le kit vous sera envoyé instantanément sur WhatsApp.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Pricing Section -->
   <section class="section section-bg" id="pricing">
     <div class="container center-text">
@@ -589,10 +624,10 @@
             <div class="price-row-popular" data-i18n="mostPopular">⭐ Le Plus Populaire</div>
             <div class="price-row-info">
               <span class="price-row-name" data-i18n="grp3Name">Pack All-Access (30h)</span>
-              <span class="price-row-detail" data-i18n="groupDetails">10 jours de préparation intensive | Max 5 étudiants</span>
+              <span class="price-row-detail" data-i18n="groupDetails">10 jours de préparation intensive | <span class="price-saving price-saving-blue">Économisez 480€</span></span>
             </div>
             <div class="price-row-amount">
-              <span class="price-main" style="color: #007aff; font-weight: 800;">750€</span>
+              <span class="price-main" style="color: #007aff; font-weight: 800;">720€</span>
             </div>
           </div>
 
@@ -895,9 +930,9 @@
         grp1Name: "Session Unique (3h)",
         grp1Detail: "par élève | max 5 étudiants",
         grp2Name: "Pack Module (10h)",
-        grp2Detail: "25€/h | Préparation intensive",
+        grp2Detail: "25€/h | <span class=\"price-saving\">Économisez 33€</span>",
         grp3Name: "Pack All-Access (30h)",
-        groupDetails: "10 jours de préparation intensive | Max 5 étudiants",
+        groupDetails: "10 jours de préparation intensive | <span class=\"price-saving price-saving-blue\">Économisez 480€</span><br><span style=\"font-size:0.75rem;opacity:0.85;\">Soit 24€/h | Excellence & Vitesse QCM</span>",
         groupCta: "Réserver mon bilan (15 min) | 100% Gratuit",
         stdBadge: "COURS INDIVIDUELS",
         promoLimited: "⏳ Offre limitée",
@@ -905,9 +940,9 @@
         std1Name: "Séance individuelle",
         std1Detail: " | Cours unique, sans engagement",
         std2Name: "Pack Réussite | 5h",
-        std2Detail: "35€/h | Économisez 75€ sur le tarif plein",
+        std2Detail: "35€/h | <span class=\"price-saving\">Économisez 25€</span>",
         std3Name: "Pack Excellence | 10h",
-        std3Detail: "30€/h | Économisez 200€ sur le tarif plein",
+        std3Detail: "30€/h | <span class=\"price-saving\">Économisez 100€</span>",
         mostPopular: "⭐ Le Plus Populaire",
         perHour: "/h",
         pricingCta: "Réserver mon bilan (15 min) | 100% Gratuit",
@@ -951,7 +986,13 @@
           <p><strong>Simple Maths Academy</strong> offre une préparation intensive et spécialisée de haut niveau pour le concours d'entrée en Médecine et Dentisterie (EXMD) en Belgique. Conçu pour répondre aux exigences strictes fixées par les universités belges | l'Université Libre de Bruxelles (<strong>ULB</strong>), l'Université Catholique de Louvain (<strong>UCL</strong>), l'Université de Liège (<strong>ULiège</strong>), l'Université de Mons (<strong>UMons</strong>), et la Vrije Universiteit Brussel (<strong>VUB</strong>) | , notre programme garantit une maîtrise complète de la partie mathématique et logique de l'examen.</p>
           <p>Notre programme rigoureux aborde systématiquement toutes les thématiques clés du concours. En <strong>Algèbre supérieure</strong>, nous travaillons en profondeur les équations, les systèmes d'équations du second degré, les polynômes, les suites numériques et la règle de trois. En <strong>Analyse (Calculus)</strong>, nous assurons la maîtrise parfaite de l'étude de fonctions, des limites, des dérivées, du calcul intégral, ainsi que des fonctions exponentielles et logarithmiques. La <strong>Trigonométrie</strong> inclut l'étude complète du cercle trigonométrique, des identités et des équations trigonométriques. En <strong>Géométrie</strong>, nous étudions les vecteurs, la géométrie analytique plane et la géométrie spatiale. Enfin, un accent tout particulier est mis sur la <strong>Logique et le Raisonnement</strong>, ainsi que sur les notions essentielles de <strong>Statistique et de Probabilités</strong> (moyenne, écart-type, lois de probabilité).</p>
           <p>Grâce à notre simulateur interactif et à l'analyse rigoureuse des questions des années précédentes des universités de l'ULB, UCL, ULiège, UMons et VUB, nos étudiants apprennent à résoudre rapidement et sans erreur les QCM du concours. Les cours en petits groupes limités à 5 participants se déroulent en ligne sur un tableau blanc virtuel, assurant une interactivité maximale et un encadrement d'élite. Simple Maths Academy est le tremplin idéal pour surmonter le numerus clausus et réussir vos études de médecine.</p>
-        `
+        `,
+        resourcesTitle: "Ressources Gratuites",
+        resourcesHeadline: "Guide de Réussite EXMD",
+        resourcesDesc: "Maîtriser la partie logique et physique du concours | Checklist des pièges classiques et astuces QCM.",
+        resourcesCta: "Recevoir le PDF Gratuit",
+        resourcesCtaLink: "https://wa.me/32490219347?text=Bonjour%20Simple%20Maths%20Academy%2C%20je%20souhaiterais%20recevoir%20le%20Guide%20de%20R%C3%A9ussite%20M%C3%A9decine%20gratuitement.",
+        resourcesSubtext: "Le kit vous sera envoyé instantanément sur WhatsApp."
       },
       en: {
         logoText: "Simple Maths Academy | Visez l’Excellence.",
@@ -1029,9 +1070,9 @@
         grp1Name: "Single Session (3h)",
         grp1Detail: "per student | max 5 students",
         grp2Name: "Module Pack (10h)",
-        grp2Detail: "€25/h | Intensive preparation",
+        grp2Detail: "€25/h | <span class=\"price-saving\">Save €33</span>",
         grp3Name: "All-Access Pack (30h)",
-        groupDetails: "10 days of intensive preparation | Max 5 students",
+        groupDetails: "10 days of intensive preparation | <span class=\"price-saving price-saving-blue\">Save €480</span><br><span style=\"font-size:0.75rem;opacity:0.85;\">Equivalent to 24€/h | Excellence & MCQ Speed</span>",
         groupCta: "Book my assessment (15 min) | 100% Free",
         stdBadge: "INDIVIDUAL COACHING",
         promoLimited: "⏳ Limited Offer",
@@ -1039,9 +1080,9 @@
         std1Name: "Single Session",
         std1Detail: " | One-off lesson, no commitment",
         std2Name: "Success Pack | 5h",
-        std2Detail: "€35/h | Save €75 vs. full rate",
+        std2Detail: "€35/h | <span class=\"price-saving\">Save €25</span>",
         std3Name: "Excellence Pack | 10h",
-        std3Detail: "€30/h | Save €200 vs. full rate",
+        std3Detail: "€30/h | <span class=\"price-saving\">Save €100</span>",
         mostPopular: "⭐ Most Popular",
         perHour: "/h",
         pricingCta: "Book my assessment (15 min) | 100% Free",
@@ -1085,7 +1126,13 @@
           <p><strong>Simple Maths Academy</strong> offers intensive and specialized high-level preparation for the Medicine and Dentistry entrance exam (EXMD) in Belgium. Designed to meet the strict standards set by Belgian universities | Université Libre de Bruxelles (<strong>ULB</strong>), Université Catholique de Louvain (<strong>UCL</strong>), Université de Liège (<strong>ULiège</strong>), Université de Mons (<strong>UMons</strong>), and Vrije Universiteit Brussel (<strong>VUB</strong>) | , our program guarantees a thorough mastery of the mathematical and logical parts of the exam.</p>
           <p>Our program rigorous program systematically covers all key themes of the competition. In <strong>Advanced Algebra</strong>, we work in depth on equations, second-degree equation systems, polynomials, numerical sequences, and the rule of three. In <strong>Calculus (Analysis)</strong>, we ensure perfect command of function studies, limits, derivatives, integral calculus, as well as exponential and logarithmic functions. <strong>Trigonometry</strong> includes the study of the trigonometric circle, identities, and trigonometric equations. In <strong>Geometry</strong>, we study vectors, plane analytic geometry, and spatial geometry. Finally, a special focus is placed on <strong>Logic and Reasoning</strong>, as well as essential concepts of **Statistics and Probability** (mean, standard deviation, probability distributions).</p>
           <p>Thanks to our interactive simulator and rigorous analysis of past questions from ULB, UCL, ULiège, UMons, and VUB universities, our students learn to solve the competition's multiple-choice questions quickly and without error. Classes in small groups limited to 5 participants take place online on a virtual whiteboard, ensuring maximum interactivity and elite coaching. Simple Maths Academy is the ideal springboard to overcome the numerus clausus and succeed in your medical studies.</p>
-        `
+        `,
+        resourcesTitle: "Free Resources",
+        resourcesHeadline: "EXMD Success Guide",
+        resourcesDesc: "Master the logic and physics part of the exam | Checklist of classic traps and MCQ tips.",
+        resourcesCta: "Get the Free PDF",
+        resourcesCtaLink: "https://wa.me/32490219347?text=Hello%20Simple%20Maths%20Academy%2C%20I%20would%20like%20to%20receive%20the%20free%20Medicine%20Success%20Guide.",
+        resourcesSubtext: "The kit will be sent to you instantly via WhatsApp."
       }
     };
 
@@ -1119,6 +1166,13 @@
         const key = el.getAttribute('data-i18n-placeholder');
         if (translations[lang][key]) {
           el.placeholder = translations[lang][key];
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-href]').forEach(el => {
+        const key = el.getAttribute('data-i18n-href');
+        if (translations[lang] && translations[lang][key]) {
+          el.href = translations[lang][key];
         }
       });
 
