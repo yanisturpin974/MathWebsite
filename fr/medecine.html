@@ -201,6 +201,11 @@
 </head>
 
 <body>
+  <!-- Vacation Banner (To activate on June 28th, change style="display: none;" to style="display: block;") -->
+  <div class="vacation-banner" style="display: none;" data-i18n="vacationBanner">
+    🌴 SESSION AOÛT : Je suis actuellement en préparation intensive (Off-grid) jusqu’au 10/07. Inscrivez-vous dès maintenant pour bloquer votre place pour le Bootcamp d’août !
+  </div>
+
   <div class="container">
     <!-- Navigation -->
     <nav>
@@ -299,6 +304,20 @@
         <p style="font-size: 1.125rem;" data-i18n="whyMeDesc2">
           J'aide les étudiants à simplifier les concepts complexes.
         </p>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-num">95%</div>
+            <div class="stat-label" data-i18n="statSuccess">de réussite</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" data-i18n="statDegreeVal">Master</div>
+            <div class="stat-label" data-i18n="statDegree">de mathématiques</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" data-i18n="statBoardVal">TBI</div>
+            <div class="stat-label" data-i18n="statBoard">Tableau Blanc Interactif</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -803,6 +822,36 @@
     </div>
   </section>
 
+  <!-- FAQ Section -->
+  <section class="section faq-section" id="faq">
+    <div class="container">
+      <div class="section-header center-text">
+        <h2 data-i18n="faqTitle">Questions Fréquentes</h2>
+        <p data-i18n="faqSubtitle">Tout ce que vous devez savoir pour démarrer sereinement.</p>
+      </div>
+      <div class="faq-accordion">
+        <details class="faq-item">
+          <summary data-i18n="faqQ1">Est-ce que les séances sont enregistrées ?</summary>
+          <div class="faq-answer" data-i18n="faqA1">
+            Oui, tous les cours de groupe sont enregistrés et disponibles en replay illimité.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faqQ2">Peut-on payer en plusieurs fois ?</summary>
+          <div class="faq-answer" data-i18n="faqA2">
+            Oui, nous proposons des facilités de paiement pour les packs de 10h et 30h.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faqQ3">Quel matériel est nécessaire ?</summary>
+          <div class="faq-answer" data-i18n="faqA3">
+            Un simple ordinateur avec micro et une connexion internet. Mon tableau blanc interactif gère le reste.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- Service Description Section for SEO bots -->
   <section class="service-description">
     <details class="seo-details">
@@ -850,7 +899,7 @@
 
   <!-- Language Switcher Logic -->
   <script>
-    let currentLang = 'fr';
+    let currentLang = localStorage.getItem('lang') || 'fr';
 
     const translations = {
       fr: {
@@ -991,7 +1040,21 @@
         resourcesDesc: "Maîtriser la partie logique et physique du concours | Checklist des pièges classiques et astuces QCM.",
         resourcesCta: "Recevoir le PDF Gratuit",
         resourcesCtaLink: "https://wa.me/32490219347?text=Bonjour%20Simple%20Maths%20Academy%2C%20je%20souhaiterais%20recevoir%20le%20Guide%20de%20R%C3%A9ussite%20M%C3%A9decine%20gratuitement.",
-        resourcesSubtext: "Le kit vous sera envoyé instantanément sur WhatsApp."
+        resourcesSubtext: "Le kit vous sera envoyé instantanément sur WhatsApp.",
+        vacationBanner: "🌴 SESSION AOÛT : Je suis actuellement en préparation intensive (Off-grid) jusqu’au 10/07. Inscrivez-vous dès maintenant pour bloquer votre place pour le Bootcamp d’août !",
+        statSuccess: "de réussite",
+        statDegreeVal: "Master",
+        statDegree: "de mathématiques",
+        statBoardVal: "TBI",
+        statBoard: "Tableau Blanc Interactif",
+        faqTitle: "Questions Fréquentes",
+        faqSubtitle: "Tout ce que vous devez savoir pour démarrer sereinement.",
+        faqQ1: "Est-ce que les séances sont enregistrées ?",
+        faqA1: "Oui, tous les cours de groupe sont enregistrés et disponibles en replay illimité.",
+        faqQ2: "Peut-on payer en plusieurs fois ?",
+        faqA2: "Oui, nous proposons des facilités de paiement pour les packs de 10h et 30h.",
+        faqQ3: "Quel matériel est nécessaire ?",
+        faqA3: "Un simple ordinateur avec micro et une connexion internet. Mon tableau blanc interactif gère le reste."
       },
       en: {
         logoText: "Simple Maths Academy | Visez l’Excellence.",
@@ -1131,7 +1194,21 @@
         resourcesDesc: "Master the logic and physics part of the exam | Checklist of classic traps and MCQ tips.",
         resourcesCta: "Get the Free PDF",
         resourcesCtaLink: "https://wa.me/32490219347?text=Hello%20Simple%20Maths%20Academy%2C%20I%20would%20like%20to%20receive%20the%20free%20Medicine%20Success%20Guide.",
-        resourcesSubtext: "The kit will be sent to you instantly via WhatsApp."
+        resourcesSubtext: "The kit will be sent to you instantly via WhatsApp.",
+        vacationBanner: "🌴 AUGUST SESSION: I am currently in intensive preparation (off-grid) until 07/10. Sign up now to secure your spot for the August Bootcamp!",
+        statSuccess: "Success Rate",
+        statDegreeVal: "Master's",
+        statDegree: "in Mathematics",
+        statBoardVal: "IWB",
+        statBoard: "Interactive Whiteboard",
+        faqTitle: "Frequently Asked Questions",
+        faqSubtitle: "Everything you need to know to get started smoothly.",
+        faqQ1: "Are the sessions recorded?",
+        faqA1: "Yes, all group sessions are recorded and available for unlimited replay.",
+        faqQ2: "Can I pay in installments?",
+        faqA2: "Yes, we offer flexible payment options for 10-hour and 30-hour packages.",
+        faqQ3: "What equipment is required?",
+        faqA3: "A simple computer with a microphone and an internet connection. My interactive whiteboard handles the rest."
       }
     };
 
