@@ -4,1763 +4,192 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SMA-Alpha | Professeur IA de Maths | Simple Maths Academy</title>
+  <title>SMA-Alpha | Maintenance de Sécurité | Simple Maths Academy</title>
   <link rel="icon" type="image/png" href="assets/logo-transparent.png" />
-  <meta name="description" content="Discutez avec SMA-Alpha, votre professeur de mathématiques virtuel alimenté par l'IA. Posez vos questions de maths et obtenez un guidage Socratique instantané." />
-  <meta name="robots" content="noindex, follow" />
+  <meta name="description" content="MAINTENANCE DE SÉCURITÉ : SMA-Alpha est actuellement hors-ligne pour calibrage. Accès suspendu jusqu'à demain matin." />
+  <meta name="robots" content="noindex, nofollow" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- KaTeX (math rendering) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathReady = true;"></script>
-
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-
   <style>
-    /* ============================================
-       DESIGN TOKENS — Match simplemathsacademy.com
-    ============================================ */
     :root {
-      --navy:        #0b1120;
-      --navy-deep:   #060c18;
-      --navy-mid:    #111827;
-      --navy-card:   #1e293b;
-      --blue:        #2563eb;
-      --blue-light:  #3b82f6;
-      --cyan:        #06b6d4;
-      --cyan-light:  #22d3ee;
-      --text-main:   #f8fafc;
-      --text-muted:  #94a3b8;
-      --text-dim:    #64748b;
-      --glass-bg:    rgba(30, 41, 59, 0.55);
-      --glass-border:rgba(99, 102, 241, 0.18);
-      --user-bubble: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
-      --border:      rgba(255,255,255,0.07);
-      --success:     #10b981;
+      --navy: #0b1120;
+      --navy-card: #1e293b;
+      --blue: #2563eb;
+      --cyan: #06b6d4;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --orange: #fb923c;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html, body {
-      height: 100%;
+    body {
+      min-height: 100vh;
       font-family: 'Inter', sans-serif;
       background-color: var(--navy);
       color: var(--text-main);
-      -webkit-font-smoothing: antialiased;
-      overflow: hidden;
-    }
-
-    /* ============================================
-       LAYOUT
-    ============================================ */
-    .app {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0;
-    }
-
-    /* ============================================
-       HEADER / NAV
-    ============================================ */
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.875rem 1.5rem;
-      background: rgba(11, 17, 32, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      flex-shrink: 0;
-      z-index: 50;
-    }
-
-    .header-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.875rem;
-      text-decoration: none;
-      color: var(--text-main);
-    }
-
-    .header-brand img {
-      width: 36px;
-      height: 36px;
-      object-fit: contain;
-    }
-
-    .header-brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.05rem;
-    }
-
-    .header-brand-name {
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      color: var(--text-main);
-      line-height: 1;
-    }
-
-    .header-brand-sub {
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      font-weight: 400;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-    }
-
-    .expert-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      background: linear-gradient(135deg, rgba(37,99,235,0.18) 0%, rgba(6,182,212,0.12) 100%);
-      border: 1px solid rgba(37,99,235,0.3);
-      border-radius: 10px;
-      padding: 0.12rem 0.45rem;
-      font-size: 0.58rem;
-      font-weight: 700;
-      color: var(--cyan-light);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-top: 0.15rem;
-    }
-
-    .header-badge {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      border-radius: 20px;
-      padding: 0.3rem 0.75rem;
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--success);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--success);
-      border-radius: 50%;
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
-    }
-
-    .back-link {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .back-link:hover { color: var(--text-main); }
-
-    /* ============================================
-       AI IDENTITY BANNER
-    ============================================ */
-    .ai-identity {
-      text-align: center;
-      padding: 1.5rem 1.5rem 1rem;
-      background: linear-gradient(180deg, rgba(37,99,235,0.06) 0%, transparent 100%);
-      border-bottom: 1px solid var(--border);
-      flex-shrink: 0;
-    }
-
-    .ai-avatar-wrapper {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 0.6rem;
-    }
-
-    .ai-avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
-      box-shadow: 0 0 0 3px rgba(37,99,235,0.2), 0 0 30px rgba(37,99,235,0.25);
-    }
-
-    .ai-avatar-ring {
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      border: 2px solid transparent;
-      background: linear-gradient(135deg, rgba(37,99,235,0.5), rgba(6,182,212,0.5)) border-box;
-      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: destination-out;
-      mask-composite: exclude;
-      animation: spin-ring 8s linear infinite;
-    }
-
-    @keyframes spin-ring {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .ai-name {
-      font-size: 1.1rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, var(--blue-light), var(--cyan-light));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -0.01em;
-    }
-
-    .ai-tagline {
-      font-size: 0.78rem;
-      color: var(--text-dim);
-      margin-top: 0.2rem;
-    }
-
-    /* ============================================
-       CHAT WINDOW
-    ============================================ */
-    .chat-window {
-      flex: 1;
-      overflow-y: auto;
-      padding: 1.5rem 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      scroll-behavior: smooth;
-    }
-
-    /* Custom scrollbar */
-    .chat-window::-webkit-scrollbar { width: 4px; }
-    .chat-window::-webkit-scrollbar-track { background: transparent; }
-    .chat-window::-webkit-scrollbar-thumb {
-      background: rgba(99,102,241,0.3);
-      border-radius: 4px;
-    }
-    .chat-window::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.5); }
-
-    /* ============================================
-       MESSAGES
-    ============================================ */
-    .message-row {
-      display: flex;
-      align-items: flex-end;
-      gap: 0.75rem;
-      animation: msg-in 0.3s ease both;
-    }
-
-    @keyframes msg-in {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .message-row.user { flex-direction: row-reverse; }
-    .message-row.user .message-avatar { display: none; }
-
-    .message-avatar {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      flex-shrink: 0;
-      box-shadow: 0 0 12px rgba(37,99,235,0.3);
-    }
-
-    /* AI message bubble */
-    .bubble {
-      max-width: 75%;
-      padding: 0.875rem 1.1rem;
-      border-radius: 1.2rem;
-      font-size: 0.93rem;
-      line-height: 1.65;
-      word-break: break-word;
-    }
-
-    .bubble.ai {
-      background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border);
-      border-bottom-left-radius: 0.3rem;
-      color: var(--text-main);
-    }
-
-    /* User message bubble */
-    .bubble.user {
-      background: var(--user-bubble);
-      border-bottom-right-radius: 0.3rem;
-      color: #fff;
-      box-shadow: 0 4px 20px rgba(37,99,235,0.35);
-    }
-
-    /* ============================================
-       TYPING INDICATOR
-    ============================================ */
-    .typing-row {
-      display: flex;
-      align-items: flex-end;
-      gap: 0.75rem;
-    }
-
-    .typing-bubble {
-      background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border);
-      border-radius: 1.2rem;
-      border-bottom-left-radius: 0.3rem;
-      padding: 0.75rem 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      animation: msg-in 0.3s ease both;
-    }
-
-    .typing-dots {
-      display: flex;
-      gap: 4px;
-    }
-
-    .typing-dots span {
-      width: 6px;
-      height: 6px;
-      background: var(--cyan);
-      border-radius: 50%;
-      animation: bounce-dot 1.2s ease-in-out infinite;
-    }
-
-    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
-
-    @keyframes bounce-dot {
-      0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
-      40% { transform: translateY(-6px); opacity: 1; }
-    }
-
-    /* ============================================
-       WELCOME CARD
-    ============================================ */
-    .welcome-card {
-      margin: 0.5rem auto;
-      max-width: 480px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border);
-      border-radius: 1.25rem;
       padding: 1.5rem;
-      text-align: center;
-      animation: msg-in 0.4s ease both;
+      position: relative;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .welcome-card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 0.5rem;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .welcome-card p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    .starter-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-
-    .chip {
-      background: rgba(37,99,235,0.12);
-      border: 1px solid rgba(37,99,235,0.25);
-      border-radius: 20px;
-      padding: 0.35rem 0.8rem;
-      font-size: 0.76rem;
-      color: var(--blue-light);
-      cursor: pointer;
-      transition: all 0.2s;
-      font-weight: 500;
-    }
-
-    .chip:hover {
-      background: rgba(37,99,235,0.22);
-      border-color: rgba(37,99,235,0.45);
-      transform: translateY(-1px);
-    }
-
-    /* ============================================
-       INPUT BAR
-    ============================================ */
-    .input-area {
-      padding: 0.875rem 1.25rem;
-      background: rgba(11, 17, 32, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-top: 1px solid var(--border);
-      flex-shrink: 0;
-    }
-
-    .input-row {
-      display: flex;
-      align-items: flex-end;
-      gap: 0.75rem;
-      background: var(--navy-card);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 1rem;
-      padding: 0.6rem 0.6rem 0.6rem 1rem;
-      transition: border-color 0.2s;
-    }
-
-    .input-row:focus-within {
-      border-color: rgba(37,99,235,0.5);
-      box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
-    }
-
-    #chat-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: var(--text-main);
-      font-size: 0.93rem;
-      font-family: 'Inter', sans-serif;
-      resize: none;
-      max-height: 120px;
-      min-height: 24px;
-      line-height: 1.5;
-      overflow-y: auto;
-    }
-
-    #chat-input::placeholder { color: var(--text-dim); }
-
-    #chat-input::-webkit-scrollbar { width: 3px; }
-    #chat-input::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.3); border-radius: 3px; }
-
-    #send-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: 0.6rem;
-      background: var(--user-bubble);
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: opacity 0.2s, transform 0.15s;
-      color: white;
-    }
-
-    #send-btn:hover { opacity: 0.85; transform: scale(1.05); }
-    #send-btn:active { transform: scale(0.95); }
-    #send-btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
-
-    .input-hint {
-      font-size: 0.68rem;
-      color: var(--text-dim);
-      text-align: center;
-      margin-top: 0.5rem;
-    }
-
-    /* ============================================
-       MATH RENDERING
-    ============================================ */
-    .katex { font-size: 1em !important; }
-    .katex-display { margin: 0.5rem 0 !important; overflow-x: auto; }
-
-    /* ============================================
-       ERROR STATE
-    ============================================ */
-    .error-bubble {
-      background: rgba(239, 68, 68, 0.1);
-      border: 1px solid rgba(239, 68, 68, 0.25);
-      color: #fca5a5;
-    }
-
-    /* ============================================
-       RESPONSIVE
-    ============================================ */
-    @media (max-width: 640px) {
-      .ai-identity { padding: 1rem 1rem 0.75rem; }
-      .ai-avatar { width: 52px; height: 52px; font-size: 1.3rem; }
-      .bubble { max-width: 88%; font-size: 0.88rem; }
-      .header-brand-name { font-size: 0.82rem; }
-      .header { padding: 0.75rem 1rem; }
-      .chat-window { padding: 1rem; }
-      .input-area { padding: 0.75rem 1rem; }
-      .welcome-card { max-width: 100%; }
-    }
-
-    /* ============================================
-       BACKGROUND EFFECTS
-    ============================================ */
+    /* Ambient radial glow background */
     body::before {
       content: '';
-      position: fixed;
-      top: -20%;
-      left: -10%;
-      width: 50%;
-      height: 60%;
-      background: radial-gradient(ellipse, rgba(37,99,235,0.09) 0%, transparent 70%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, rgba(6,182,212,0.06) 45%, transparent 70%);
       pointer-events: none;
-      z-index: 0;
     }
 
-    body::after {
-      content: '';
-      position: fixed;
-      bottom: -20%;
-      right: -10%;
-      width: 45%;
-      height: 55%;
-      background: radial-gradient(ellipse, rgba(6,182,212,0.07) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .app { position: relative; z-index: 1; }
-
-    /* ============================================
-       RATING BUTTONS
-    ============================================ */
-    .rating-bar {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 0.45rem;
-      padding-left: 0.25rem;
-      opacity: 0;
-      transform: translateY(4px);
-      transition: opacity 0.25s ease, transform 0.25s ease;
-    }
-
-    .message-row.ai:hover .rating-bar,
-    .rating-bar.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .rating-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 0.2rem 0.55rem;
-      font-size: 0.72rem;
-      cursor: pointer;
-      color: var(--text-dim);
-      transition: all 0.2s;
-      line-height: 1;
-    }
-
-    .rating-btn:hover {
-      border-color: rgba(255,255,255,0.25);
-      color: var(--text-muted);
-      background: rgba(255,255,255,0.05);
-    }
-
-    .rating-btn.active-up {
-      border-color: rgba(16,185,129,0.5);
-      color: var(--success);
-      background: rgba(16,185,129,0.08);
-    }
-
-    .rating-btn.active-down {
-      border-color: rgba(239,68,68,0.4);
-      color: #f87171;
-      background: rgba(239,68,68,0.07);
-    }
-
-    .rating-thanks {
-      font-size: 0.68rem;
-      color: var(--text-dim);
-      animation: thanks-in 0.3s ease both;
-    }
-
-    @keyframes thanks-in {
-      from { opacity: 0; transform: translateX(-4px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    /* ============================================
-       PDF EXPORT BUTTON
-    ============================================ */
-    .pdf-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(37,99,235,0.1);
-      border: 1px solid rgba(37,99,235,0.25);
-      border-radius: 8px;
-      padding: 0.35rem 0.75rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--blue-light);
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .pdf-btn:hover {
-      background: rgba(37,99,235,0.18);
-      border-color: rgba(37,99,235,0.45);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(37,99,235,0.2);
-    }
-
-    .pdf-btn:active { transform: translateY(0); }
-
-    .pdf-btn svg { flex-shrink: 0; }
-
-    /* ============================================
-       PRINT / PDF STYLES
-    ============================================ */
-    @media print {
-      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-
-      html, body {
-        height: auto;
-        overflow: visible;
-        background: #fff !important;
-        color: #111 !important;
-      }
-
-      .app {
-        height: auto;
-        max-width: 100%;
-        overflow: visible;
-      }
-
-      body::before, body::after { display: none !important; }
-
-      .header, .ai-identity, .input-area { display: none !important; }
-
-      .chat-window {
-        overflow: visible !important;
-        height: auto !important;
-        flex: none !important;
-        padding: 1rem !important;
-        gap: 1.25rem;
-        background: white !important;
-      }
-
-      .message-row {
-        page-break-inside: avoid;
-        break-inside: avoid;
-      }
-
-      .bubble.ai {
-        background: #f1f5f9 !important;
-        border: 1px solid #cbd5e1 !important;
-        color: #111 !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-      }
-
-      .bubble.user {
-        background: #2563eb !important;
-        color: #fff !important;
-        box-shadow: none !important;
-      }
-
-      .rating-bar, .welcome-card { display: none !important; }
-
-      .message-avatar {
-        background: #2563eb !important;
-        box-shadow: none !important;
-      }
-
-      /* Print header */
-      .chat-window::before {
-        content: 'Session SMA-Alpha — Simple Maths Academy';
-        display: block;
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: #111;
-        margin-bottom: 1.5rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 2px solid #2563eb;
-      }
-    }
-    /* ============================================
-       EMAIL GATE MODAL
-    ============================================ */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 300;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      background: rgba(6, 12, 24, 0.75);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      animation: fade-in 0.3s ease both;
-    }
-
-    @keyframes fade-in {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
-    .modal-card {
-      background: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(32px);
-      -webkit-backdrop-filter: blur(32px);
-      border: 1px solid rgba(37, 99, 235, 0.45);
-      border-radius: 1.5rem;
-      padding: 2.25rem 2rem 2rem;
-      max-width: 400px;
+    .maint-card {
+      background: rgba(17, 24, 39, 0.88);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(251, 146, 60, 0.35);
+      border-radius: 1.75rem;
+      padding: 3rem 2.5rem;
+      max-width: 480px;
       width: 100%;
       text-align: center;
       box-shadow:
-        0 0 0 1px rgba(37,99,235,0.15) inset,
-        0 0 60px rgba(37,99,235,0.2),
+        0 0 0 1px rgba(251, 146, 60, 0.1) inset,
+        0 0 60px rgba(251, 146, 60, 0.12),
         0 40px 100px rgba(0,0,0,0.7);
-      animation: modal-pop 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+      position: relative;
+      z-index: 10;
     }
 
-    @keyframes modal-pop {
-      from { opacity: 0; transform: translateY(20px) scale(0.95); }
-      to   { opacity: 1; transform: translateY(0) scale(1); }
+    .maint-logo {
+      display: inline-block;
+      margin-bottom: 1.5rem;
     }
 
-    .modal-brain {
-      font-size: 2.75rem;
+    .maint-logo img {
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .maint-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(251, 146, 60, 0.12);
+      border: 1px solid rgba(251, 146, 60, 0.3);
+      border-radius: 20px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--orange);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .brain-icon {
+      font-size: 4rem;
       display: block;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1.25rem;
       animation: brain-pulse 2s ease-in-out infinite;
     }
 
     @keyframes brain-pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.08); }
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(37,99,235,0.4)); }
+      50% { transform: scale(1.08); filter: drop-shadow(0 0 25px rgba(6,182,212,0.6)); }
     }
 
-    .modal-title {
-      font-size: 1.1rem;
-      font-weight: 700;
+    .maint-title {
+      font-size: 1.25rem;
+      font-weight: 800;
       color: var(--text-main);
-      line-height: 1.4;
-      margin-bottom: 0.5rem;
-      font-family: 'Inter', sans-serif;
+      line-height: 1.35;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
     }
 
-    .modal-desc {
-      font-size: 0.82rem;
+    .maint-text {
+      font-size: 0.9rem;
       color: var(--text-muted);
-      line-height: 1.65;
-      margin-bottom: 1.5rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
     }
 
-    .modal-input-row {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .modal-email-input {
-      flex: 1;
-      background: rgba(30, 41, 59, 0.7);
-      border: 1px solid rgba(37,99,235,0.35);
-      border-radius: 0.75rem;
-      padding: 0.7rem 1rem;
-      font-size: 0.88rem;
-      font-family: 'Inter', sans-serif;
-      color: var(--text-main);
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .modal-email-input::placeholder { color: var(--text-dim); }
-
-    .modal-email-input:focus {
-      border-color: rgba(37,99,235,0.7);
-      box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
-    }
-
-    .modal-submit-btn {
-      background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
-      border: none;
-      border-radius: 0.75rem;
-      padding: 0.7rem 1.2rem;
-      color: #fff;
-      font-size: 0.88rem;
-      font-weight: 700;
-      font-family: 'Inter', sans-serif;
-      cursor: pointer;
-      transition: opacity 0.2s, transform 0.15s;
-      white-space: nowrap;
-    }
-
-    .modal-submit-btn:hover { opacity: 0.88; transform: scale(1.03); }
-    .modal-submit-btn:active { transform: scale(0.97); }
-    .modal-submit-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
-
-    .modal-error {
-      font-size: 0.75rem;
-      color: #f87171;
-      margin-top: 0.25rem;
-      display: none;
-    }
-
-    .modal-privacy {
-      font-size: 0.68rem;
-      color: var(--text-dim);
-      margin-top: 0.5rem;
-    }
-
-    /* Lock input when modal is open */
-    .input-area.locked {
-      pointer-events: none;
-      opacity: 0.35;
-      filter: blur(1px);
-      user-select: none;
-    }
-
-    /* textarea hard-locked */
-    #chat-input.hard-locked {
-      color: var(--text-dim);
-      cursor: not-allowed;
-    }
-
-    /* ============================================
-       MESSAGE COUNTER BADGE
-    ============================================ */
-    .msg-counter {
-      display: flex;
+    .back-btn {
+      display: inline-flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 0.4rem;
-      padding: 0.35rem 1.25rem 0;
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      flex-shrink: 0;
-      transition: color 0.3s;
-    }
-
-    .msg-counter.warning { color: #fb923c; }
-    .msg-counter.danger  { color: #f87171; }
-
-    .msg-counter-pips { display: flex; gap: 3px; }
-
-    .msg-pip {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.12);
-      transition: background 0.35s;
-    }
-
-    .msg-pip.used { background: var(--blue); }
-    .msg-pip.warn { background: #fb923c; }
-    .msg-pip.last { background: #f87171; }
-
-    /* ============================================
-       PAYWALL MODAL
-    ============================================ */
-    .paywall-backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 400;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      background: rgba(4, 8, 20, 0.82);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      animation: fade-in 0.35s ease both;
-    }
-
-    .paywall-card {
-      background: rgba(11, 17, 32, 0.97);
-      backdrop-filter: blur(40px);
-      -webkit-backdrop-filter: blur(40px);
-      border: 1px solid rgba(37,99,235,0.55);
-      border-radius: 1.75rem;
-      padding: 2.5rem 2.25rem 2.25rem;
-      max-width: 430px;
-      width: 100%;
-      text-align: center;
-      box-shadow:
-        0 0 0 1px rgba(37,99,235,0.12) inset,
-        0 0 80px rgba(37,99,235,0.25),
-        0 50px 120px rgba(0,0,0,0.8);
-      animation: modal-pop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
-    }
-
-    .paywall-emoji {
-      font-size: 3rem;
-      display: block;
-      margin-bottom: 0.6rem;
-    }
-
-    .paywall-modal-title {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--text-main);
-      line-height: 1.3;
-      margin-bottom: 0.55rem;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .paywall-sub {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      margin-bottom: 1.4rem;
-    }
-
-    .paywall-offer-box {
-      background: linear-gradient(135deg, rgba(37,99,235,0.1) 0%, rgba(6,182,212,0.07) 100%);
-      border: 1px solid rgba(37,99,235,0.25);
-      border-radius: 1rem;
-      padding: 1rem 1.25rem;
-      margin-bottom: 1.4rem;
-      text-align: left;
-    }
-
-    .paywall-offer-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--cyan-light);
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      margin-bottom: 0.5rem;
-    }
-
-    .paywall-offer-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 0.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-
-    .paywall-offer-list li {
-      font-size: 0.83rem;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-
-    .paywall-offer-list li::before {
-      content: '✓';
-      color: var(--success);
-      font-weight: 800;
-    }
-
-    .paywall-price {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--text-main);
-      line-height: 1.2;
-    }
-
-    .paywall-price-sub {
-      font-size: 0.7rem;
-      font-weight: 400;
-      color: var(--text-dim);
-      display: block;
-      margin-top: 0.15rem;
-    }
-
-    .paywall-cta-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      width: 100%;
-      padding: 1rem 1.5rem;
+      gap: 0.55rem;
+      padding: 0.85rem 1.8rem;
       border-radius: 999px;
       background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
       color: #fff;
-      font-size: 1rem;
-      font-weight: 800;
+      font-size: 0.9rem;
+      font-weight: 600;
       text-decoration: none;
-      letter-spacing: -0.01em;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 8px 32px rgba(37,99,235,0.5);
-      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
-      margin-bottom: 0.9rem;
-      font-family: 'Inter', sans-serif;
+      box-shadow: 0 4px 20px rgba(37,99,235,0.35);
+      transition: opacity 0.2s, transform 0.2s;
     }
 
-    .paywall-cta-btn:hover {
+    .back-btn:hover {
       opacity: 0.9;
       transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(37,99,235,0.6);
     }
-
-    .paywall-alt-link {
-      font-size: 0.78rem;
-      color: var(--text-dim);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .paywall-alt-link:hover { color: var(--text-muted); text-decoration: underline; }
-
-    @media print {
-      .modal-backdrop, .paywall-backdrop { display: none !important; }
-    }
-
   </style>
 </head>
 
-
 <body>
-  <div class="app">
+  <div class="maint-card">
+    <a href="/index.html" class="maint-logo" aria-label="Simple Maths Academy">
+      <img src="assets/logo-transparent.png" alt="Logo Simple Maths Academy" />
+    </a>
 
-    <!-- ============================================================
-         MAINTENANCE OVERLAY — remove this block to re-enable the tutor
-    ============================================================ -->
-    <div id="maintenance-overlay" style="
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      background: rgba(6, 12, 24, 0.96);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-    ">
-      <div style="
-        background: rgba(17, 24, 39, 0.9);
-        border: 1px solid rgba(251, 146, 60, 0.35);
-        border-radius: 1.75rem;
-        padding: 3rem 2.5rem 2.75rem;
-        max-width: 440px;
-        width: 100%;
-        text-align: center;
-        box-shadow:
-          0 0 0 1px rgba(251,146,60,0.1) inset,
-          0 0 60px rgba(251,146,60,0.12),
-          0 40px 100px rgba(0,0,0,0.7);
-      ">
-        <!-- Logo -->
-        <a href="/index.html" style="display:inline-block;margin-bottom:1.5rem;">
-          <img src="assets/logo-transparent.png" alt="Simple Maths Academy" style="height:48px;object-fit:contain;" />
-        </a>
-
-        <!-- Pulsing orange dot -->
-        <div style="display:flex;align-items:center;justify-content:center;gap:0.5rem;margin-bottom:1.25rem;">
-          <span style="
-            width:10px;height:10px;border-radius:50%;
-            background:#fb923c;display:inline-block;
-            box-shadow:0 0 8px rgba(251,146,60,0.7);
-            animation:pulse-dot 1.5s ease-in-out infinite;
-          "></span>
-          <span style="font-size:0.72rem;font-weight:700;color:#fb923c;letter-spacing:0.1em;text-transform:uppercase;">Maintenance</span>
-        </div>
-
-        <!-- Brain emoji -->
-        <div style="font-size:3.5rem;margin-bottom:0.75rem;">🧠</div>
-
-        <!-- Title -->
-        <div style="font-size:1.15rem;font-weight:800;color:#f8fafc;line-height:1.35;margin-bottom:0.75rem;font-family:'Inter',sans-serif;" id="maint-title">
-          SMA-Alpha est en cours de maintenance.
-        </div>
-
-        <!-- Body text -->
-        <p style="font-size:0.875rem;color:#94a3b8;line-height:1.7;margin-bottom:2rem;" id="maint-body">
-          Nos ingénieurs calibrent le cerveau de l'IA pour le rush d'août.<br/>
-          <strong style="color:#f8fafc;">Retour en ligne demain matin.</strong>
-        </p>
-
-        <!-- Back to home CTA -->
-        <a href="/index.html" style="
-          display:inline-flex;
-          align-items:center;
-          gap:0.55rem;
-          padding:0.8rem 1.75rem;
-          border-radius:999px;
-          background:rgba(37,99,235,0.15);
-          border:1px solid rgba(37,99,235,0.35);
-          color:#93c5fd;
-          font-size:0.88rem;
-          font-weight:600;
-          text-decoration:none;
-          transition:background 0.2s;
-          font-family:'Inter',sans-serif;
-        " onmouseover="this.style.background='rgba(37,99,235,0.25)'" onmouseout="this.style.background='rgba(37,99,235,0.15)'">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-          Retour à l'accueil
-        </a>
-      </div>
-    </div>
-    <!-- END MAINTENANCE OVERLAY -->
-
-    <!-- HEADER -->
-
-    <header class="header">
-      <a href="/index.html" class="back-link" id="back-link" aria-label="Retour à l'accueil">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M19 12H5M12 5l-7 7 7 7"/>
-        </svg>
-        <span class="nav-opt-text">Accueil</span>
-      </a>
-
-      <a href="/index.html" class="header-brand" aria-label="Simple Maths Academy">
-        <img src="assets/logo-transparent.png" alt="Logo SMA" />
-        <div class="header-brand-text">
-          <span class="header-brand-name">SMA-Alpha</span>
-          <span class="header-brand-sub">Professeur IA</span>
-          <span class="expert-badge">⚡ Expert EXMD/Polytech</span>
-        </div>
-      </a>
-
-      <div class="header-badge">
-        <span class="status-dot"></span>
-        En ligne
-      </div>
-
-      <button id="pdf-btn" class="pdf-btn" onclick="exportToPDF()" title="Télécharger la leçon en PDF" aria-label="Télécharger la leçon en PDF">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/>
-          <line x1="12" y1="18" x2="12" y2="12"/>
-          <line x1="9" y1="15" x2="15" y2="15"/>
-        </svg>
-        <span class="nav-opt-text">Télécharger la leçon</span>
-      </button>
-    </header>
-
-    <!-- AI IDENTITY -->
-    <div class="ai-identity">
-      <div class="ai-avatar-wrapper">
-        <div class="ai-avatar">🧠</div>
-        <div class="ai-avatar-ring"></div>
-      </div>
-      <div class="ai-name">SMA-Alpha</div>
-      <div class="ai-tagline">Ton professeur de maths virtuel | Méthode Socratique | LaTeX natif</div>
-    </div>
-
-    <!-- MESSAGE COUNTER BADGE -->
-    <div class="msg-counter" id="msg-counter" aria-live="polite">
-      <span id="counter-text">Messages restants : 5 / 5</span>
-      <div class="msg-counter-pips" id="counter-pips"></div>
-    </div>
-
-    <!-- CHAT WINDOW -->
-    <div class="chat-window" id="chat-window" role="log" aria-live="polite" aria-label="Conversation avec SMA-Alpha">
-
-      <!-- Welcome Card -->
-      <div class="welcome-card" id="welcome-card">
-        <h3>👋 Bonjour ! Je suis SMA-Alpha.</h3>
-        <p>Je suis là pour te <strong>guider</strong> dans ta réflexion | pas pour te donner les réponses directement. Pose-moi ton problème de maths !</p>
-        <div class="starter-chips" id="starter-chips">
-          <button class="chip" onclick="sendChip(this)">Je bloque sur une intégrale</button>
-          <button class="chip" onclick="sendChip(this)">Aide-moi avec les limites</button>
-          <button class="chip" onclick="sendChip(this)">Problème de trigonométrie</button>
-          <button class="chip" onclick="sendChip(this)">Exercice de logique EXMD</button>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- INPUT AREA -->
-    <div class="input-area">
-      <div class="input-row">
-        <textarea
-          id="chat-input"
-          placeholder="Pose ta question de maths… (Shift+Enter pour saut de ligne)"
-          rows="1"
-          aria-label="Zone de saisie"
-        ></textarea>
-        <button id="send-btn" aria-label="Envoyer le message" disabled>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-          </svg>
-        </button>
-      </div>
-      <div class="input-hint">Entrée pour envoyer · Shift+Entrée pour nouvelle ligne · Réponses guidées par IA</div>
-    </div>
-
-    <!-- EMAIL GATE MODAL -->
-    <div id="email-modal" class="modal-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-label="Débloquer l'accès complet">
-      <div class="modal-card">
-        <span class="modal-brain">🧠</span>
-        <div class="modal-title">SMA-Alpha analyse tes besoins...</div>
-        <p class="modal-desc">Entre ton email pour débloquer ton accès gratuit et recevoir ton <strong>Kit de Survie PDF</strong> pour l'EXMD &amp; Polytech.</p>
-        <div class="modal-input-row">
-          <input
-            type="email"
-            id="modal-email"
-            class="modal-email-input"
-            placeholder="ton@email.com"
-            autocomplete="email"
-            aria-label="Adresse email"
-          />
-          <button id="modal-submit" class="modal-submit-btn" onclick="submitEmail()">
-            Accéder →
-          </button>
-        </div>
-        <div id="modal-error" class="modal-error">Merci d'entrer un email valide.</div>
-        <p class="modal-privacy">🔒 Aucun spam. Désinscription en 1 clic.</p>
+    <div>
+      <div class="maint-status-badge">
+        <span class="pulse-dot"></span>
+        Maintenance de Sécurité
       </div>
     </div>
 
-    <!-- PAYWALL MODAL (24h hard limit at 5 msgs) -->
-    <div id="paywall-modal" class="paywall-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-label="Summer Pass SMA-Alpha">
-      <div class="paywall-card">
-        <span class="paywall-emoji">🧠</span>
-        <div class="paywall-modal-title">SMA-Alpha a atteint sa limite quotidienne.</div>
-        <p class="paywall-sub">Tu es sérieux dans tes révisions&nbsp;! Pour réussir ton mois d'août, ne laisse aucune question sans réponse.</p>
-        <div class="paywall-offer-box">
-          <div class="paywall-offer-label">⚡ Summer Pass SMA-Alpha</div>
-          <ul class="paywall-offer-list">
-            <li>Accès illimité à l'IA (24h/24)</li>
-            <li>Support WhatsApp prioritaire</li>
-            <li>Kits de Survie PDF EXMD &amp; Polytech</li>
-          </ul>
-          <div class="paywall-price">
-            14,90€
-            <span class="paywall-price-sub">Paiement unique &mdash; Accès jusqu'au 31 août</span>
-          </div>
-        </div>
-        <a href="TON_LIEN_STRIPE_ICI" class="paywall-cta-btn" id="paywall-stripe-btn" target="_blank" rel="noopener noreferrer">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
-          Débloquer l'accès illimité
-        </a>
-        <a href="#"
-          onclick="if(typeof Calendly!=='undefined')Calendly.initPopupWidget({url:'https://calendly.com/yanisturpin-maths/30min'});return false;"
-          class="paywall-alt-link">
-          Je préfère un coach humain &mdash; Bilan 15 min offert
-        </a>
-      </div>
-    </div>
+    <span class="brain-icon">🧠</span>
 
+    <h1 class="maint-title">SMA-Alpha — Hors-Ligne</h1>
+
+    <p class="maint-text">
+      MAINTENANCE DE SÉCURITÉ : SMA-Alpha est actuellement hors-ligne pour calibrage. Accès suspendu jusqu'à demain matin.
+    </p>
+
+    <a href="/index.html" class="back-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 5l-7 7 7 7"/>
+      </svg>
+      Retour à l'accueil
+    </a>
   </div>
-
-  <script>
-    // ============================================
-    // STATE
-    // ============================================
-    let chatHistory = [];
-    let isLoading = false;
-    let renderMathReady = false;
-
-    // ============================================
-    // MESSAGE GATE + 24H ROLLING WINDOW
-    // ============================================
-    const EMAIL_GATE_THRESHOLD = 3;       // email capture after 3 sends
-    const HARD_LIMIT           = 5;       // paywall after 5 sends per 24h
-    const WINDOW_MS            = 86400000; // 24h in ms
-    const STORAGE_COUNT_KEY    = 'sma_msg_count';
-    const STORAGE_TIME_KEY     = 'sma_first_msg_time';
-    const STORAGE_EMAIL_KEY    = 'sma_email_unlocked';
-
-    // 24h reset: if window has expired, clear the counter
-    (function reset24h() {
-      const firstTime = parseInt(localStorage.getItem(STORAGE_TIME_KEY) || '0', 10);
-      if (firstTime && Date.now() - firstTime > WINDOW_MS) {
-        localStorage.removeItem(STORAGE_COUNT_KEY);
-        localStorage.removeItem(STORAGE_TIME_KEY);
-      }
-    })();
-
-    let messageCount  = parseInt(localStorage.getItem(STORAGE_COUNT_KEY) || '0', 10);
-    let emailUnlocked = localStorage.getItem(STORAGE_EMAIL_KEY) === 'true';
-
-    function isHardLimited() { return messageCount >= HARD_LIMIT; }
-    function isGateLocked()  { return messageCount >= EMAIL_GATE_THRESHOLD && !emailUnlocked; }
-
-    // ---- Counter badge UI ----
-    function updateCounter() {
-      const remaining = Math.max(0, HARD_LIMIT - messageCount);
-      const textEl  = document.getElementById('counter-text');
-      const pipsEl  = document.getElementById('counter-pips');
-      const wrapEl  = document.getElementById('msg-counter');
-      if (!textEl || !pipsEl) return;
-
-      textEl.textContent = `Messages restants\u00a0: ${remaining}\u00a0/\u00a0${HARD_LIMIT}`;
-
-      // Pip colours
-      pipsEl.innerHTML = '';
-      for (let i = 0; i < HARD_LIMIT; i++) {
-        const pip = document.createElement('span');
-        const used = i < messageCount;
-        if (!used) pip.className = 'msg-pip';
-        else if (i === HARD_LIMIT - 1) pip.className = 'msg-pip last';
-        else if (i >= HARD_LIMIT - 2) pip.className = 'msg-pip warn';
-        else pip.className = 'msg-pip used';
-        pipsEl.appendChild(pip);
-      }
-
-      // Badge colour tone
-      wrapEl.classList.remove('warning', 'danger');
-      if (remaining <= 0)     wrapEl.classList.add('danger');
-      else if (remaining <= 2) wrapEl.classList.add('warning');
-    }
-
-    const chatWindow = document.getElementById('chat-window');
-    const chatInput = document.getElementById('chat-input');
-    const sendBtn = document.getElementById('send-btn');
-
-    // ============================================
-    // LUCIDE ICONS INIT
-    // ============================================
-    if (typeof lucide !== 'undefined') lucide.createIcons();
-
-    // ============================================
-    // AUTO-RESIZE TEXTAREA
-    // ============================================
-    chatInput.addEventListener('input', () => {
-      chatInput.style.height = 'auto';
-      chatInput.style.height = Math.min(chatInput.scrollHeight, 120) + 'px';
-      sendBtn.disabled = chatInput.value.trim() === '' || isLoading;
-    });
-
-    // ============================================
-    // KEYBOARD: Enter to send, Shift+Enter newline
-    // ============================================
-    chatInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        if (!sendBtn.disabled) sendMessage();
-      }
-    });
-
-    sendBtn.addEventListener('click', sendMessage);
-
-    // ============================================
-    // STARTER CHIPS
-    // ============================================
-    function sendChip(btn) {
-      const text = btn.textContent.trim();
-      // Hide welcome card
-      const welcomeCard = document.getElementById('welcome-card');
-      if (welcomeCard) welcomeCard.remove();
-      chatInput.value = text;
-      sendMessage();
-    }
-
-    // ============================================
-    // SEND MESSAGE
-    // ============================================
-    async function sendMessage() {
-      const text = chatInput.value.trim();
-      if (!text || isLoading) return;
-
-      // Increment counter + stamp first-message time
-      messageCount++;
-      localStorage.setItem(STORAGE_COUNT_KEY, messageCount);
-      if (!localStorage.getItem(STORAGE_TIME_KEY)) {
-        localStorage.setItem(STORAGE_TIME_KEY, Date.now());
-      }
-      updateCounter();
-
-      // 1) HARD LIMIT (5/24h) — always wins, never let through
-      if (isHardLimited()) {
-        // undo the increment — this send was blocked
-        messageCount--;
-        localStorage.setItem(STORAGE_COUNT_KEY, messageCount);
-        updateCounter();
-        showPaywall();
-        return;
-      }
-
-      // 2) EMAIL GATE (3 msgs, one-time capture)
-      if (isGateLocked()) {
-        showEmailModal();
-        return;
-      }
-
-      // Remove welcome card if present
-      const welcomeCard = document.getElementById('welcome-card');
-      if (welcomeCard) welcomeCard.remove();
-
-      // Reset input
-      chatInput.value = '';
-      chatInput.style.height = 'auto';
-      sendBtn.disabled = true;
-
-      // Add user message to history & UI
-      chatHistory.push({ role: 'user', content: text });
-      appendMessage('user', text);
-
-      // Show typing indicator
-      isLoading = true;
-      const typingEl = appendTyping();
-
-      try {
-        const response = await fetch('/api/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ messages: chatHistory }),
-        });
-
-        const data = await response.json();
-
-        if (!response.ok || data.error) {
-          throw new Error(data.error || 'Erreur réseau');
-        }
-
-        const reply = data.reply;
-        chatHistory.push({ role: 'assistant', content: reply });
-
-        typingEl.remove();
-        appendMessage('ai', reply);
-
-      } catch (err) {
-        typingEl.remove();
-        appendMessage('ai', `❌ Désolé, une erreur est survenue : ${err.message}. Réessaie dans quelques secondes.`, true);
-      } finally {
-        isLoading = false;
-        sendBtn.disabled = chatInput.value.trim() === '';
-        chatInput.focus();
-      }
-    }
-
-    // ============================================
-    // APPEND MESSAGE
-    // ============================================
-    function appendMessage(role, content, isError = false) {
-      const row = document.createElement('div');
-      row.className = `message-row ${role}`;
-
-      if (role === 'ai') {
-        const avatar = document.createElement('div');
-        avatar.className = 'message-avatar';
-        avatar.textContent = '🧠';
-        row.appendChild(avatar);
-      }
-
-      const bubble = document.createElement('div');
-      bubble.className = `bubble ${role}${isError ? ' error-bubble' : ''}`;
-
-      // Render content — support basic markdown-like **bold** and line breaks
-      bubble.innerHTML = formatContent(content);
-
-      row.appendChild(bubble);
-
-      // Add rating bar for AI messages
-      if (role === 'ai' && !isError) {
-        const ratingBar = createRatingBar();
-        row.appendChild(ratingBar);
-      }
-
-      chatWindow.appendChild(row);
-
-      // Render LaTeX
-      renderLatex(bubble);
-
-      // Auto-scroll
-      scrollToBottom();
-
-      return row;
-    }
-
-    // ============================================
-    // FORMAT CONTENT (basic markdown)
-    // ============================================
-    function formatContent(text) {
-      return text
-        // Bold: **text**
-        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-        // Italic: *text*
-        .replace(/\*(.+?)\*/g, '<em>$1</em>')
-        // Line breaks
-        .replace(/\n/g, '<br>');
-    }
-
-    // ============================================
-    // TYPING INDICATOR
-    // ============================================
-    function appendTyping() {
-      const row = document.createElement('div');
-      row.className = 'typing-row';
-
-      const avatar = document.createElement('div');
-      avatar.className = 'message-avatar';
-      avatar.textContent = '🧠';
-
-      const bubble = document.createElement('div');
-      bubble.className = 'typing-bubble';
-      bubble.innerHTML = `
-        <span>SMA-Alpha réfléchit</span>
-        <div class="typing-dots">
-          <span></span><span></span><span></span>
-        </div>
-      `;
-
-      row.appendChild(avatar);
-      row.appendChild(bubble);
-      chatWindow.appendChild(row);
-      scrollToBottom();
-
-      return row;
-    }
-
-    // ============================================
-    // RENDER LATEX
-    // ============================================
-    function renderLatex(el) {
-      const tryRender = () => {
-        if (typeof renderMathInElement === 'function') {
-          try {
-            renderMathInElement(el, {
-              delimiters: [
-                { left: '$$', right: '$$', display: true },
-                { left: '$', right: '$', display: false },
-                { left: '\\[', right: '\\]', display: true },
-                { left: '\\(', right: '\\)', display: false },
-              ],
-              throwOnError: false,
-              errorColor: '#ef4444',
-            });
-          } catch (e) {
-            // silently ignore katex errors
-          }
-        }
-      };
-
-      if (renderMathReady || typeof renderMathInElement === 'function') {
-        tryRender();
-      } else {
-        // Wait for KaTeX auto-render to load
-        setTimeout(tryRender, 500);
-      }
-    }
-
-    // ============================================
-    // RATING BUTTONS
-    // ============================================
-    function createRatingBar() {
-      const bar = document.createElement('div');
-      bar.className = 'rating-bar';
-
-      const upBtn = document.createElement('button');
-      upBtn.className = 'rating-btn';
-      upBtn.setAttribute('aria-label', 'Réponse utile');
-      upBtn.innerHTML = `<span>&#128077;</span>`;
-
-      const downBtn = document.createElement('button');
-      downBtn.className = 'rating-btn';
-      downBtn.setAttribute('aria-label', 'Réponse à améliorer');
-      downBtn.innerHTML = `<span>&#128078;</span>`;
-
-      const thanks = document.createElement('span');
-      thanks.className = 'rating-thanks';
-      thanks.style.display = 'none';
-
-      function handleRating(isPositive) {
-        upBtn.disabled = true;
-        downBtn.disabled = true;
-        upBtn.style.pointerEvents = 'none';
-        downBtn.style.pointerEvents = 'none';
-        if (isPositive) upBtn.classList.add('active-up');
-        else downBtn.classList.add('active-down');
-        thanks.textContent = 'Merci pour votre retour !';
-        thanks.style.display = 'inline';
-        bar.classList.add('visible');
-      }
-
-      upBtn.addEventListener('click', () => handleRating(true));
-      downBtn.addEventListener('click', () => handleRating(false));
-      bar.appendChild(upBtn);
-      bar.appendChild(downBtn);
-      bar.appendChild(thanks);
-      return bar;
-    }
-
-    // ============================================
-    // EXPORT TO PDF
-    // ============================================
-    function exportToPDF() {
-      const messages = chatWindow.querySelectorAll('.message-row');
-      const btn = document.getElementById('pdf-btn');
-      if (!btn) return;
-      const original = btn.innerHTML;
-      if (messages.length === 0) {
-        btn.innerHTML = `<span>Aucun message à exporter</span>`;
-        btn.style.borderColor = 'rgba(239,68,68,0.4)';
-        btn.style.color = '#f87171';
-        setTimeout(() => { btn.innerHTML = original; btn.style.borderColor = ''; btn.style.color = ''; }, 2000);
-        return;
-      }
-      btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Préparation...</span>`;
-      setTimeout(() => { window.print(); btn.innerHTML = original; }, 150);
-    }
-
-    // ============================================
-    // AUTO-SCROLL
-    // ============================================
-    function scrollToBottom() {
-      requestAnimationFrame(() => {
-        chatWindow.scrollTop = chatWindow.scrollHeight;
-      });
-    }
-
-    // ============================================
-    // EMAIL GATE MODAL
-    // ============================================
-    function showEmailModal() {
-      const modal = document.getElementById('email-modal');
-      const inputArea = document.querySelector('.input-area');
-      modal.style.display = 'flex';
-      inputArea.classList.add('locked');
-      // Focus the email field
-      setTimeout(() => document.getElementById('modal-email').focus(), 100);
-      // Enter in email field submits
-      document.getElementById('modal-email').addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') submitEmail();
-      });
-    }
-
-    async function submitEmail() {
-      const emailInput = document.getElementById('modal-email');
-      const submitBtn  = document.getElementById('modal-submit');
-      const errorEl   = document.getElementById('modal-error');
-      const email = emailInput.value.trim();
-
-      // Validate
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        errorEl.style.display = 'block';
-        emailInput.focus();
-        return;
-      }
-      errorEl.style.display = 'none';
-
-      // Loading state
-      submitBtn.disabled = true;
-      submitBtn.textContent = '...';
-
-      try {
-        // Send to Formspree — replace YOUR_FORM_ID with your actual Formspree ID
-        await fetch('https://formspree.io/f/mlgqoakn', {
-          method: 'POST',
-          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email,
-            source: 'SMA-Alpha AI Tutor',
-            timestamp: new Date().toISOString(),
-          }),
-        });
-      } catch (_) {
-        // Fail silently — don't block the user if Formspree is unreachable
-      }
-
-      // Unlock regardless of Formspree result
-      emailUnlocked = true;
-      localStorage.setItem(STORAGE_EMAIL_KEY, 'true');
-
-      // Close modal, unlock input
-      const modal = document.getElementById('email-modal');
-      const inputArea = document.querySelector('.input-area');
-      modal.style.display = 'none';
-      inputArea.classList.remove('locked');
-
-      // Success feedback, then send the message
-      submitBtn.textContent = '✓ Accès ouvert !';
-      setTimeout(() => {
-        submitBtn.textContent = 'Accéder →';
-        submitBtn.disabled = false;
-        chatInput.focus();
-        // Re-decrement so the blocked message still goes through
-        messageCount--;
-        localStorage.setItem(STORAGE_COUNT_KEY, messageCount);
-        sendMessage();
-      }, 600);
-    }
-
-    // ============================================
-    // AUTO-SCROLL
-    // ============================================
-    function scrollToBottom() {
-      requestAnimationFrame(() => {
-        chatWindow.scrollTop = chatWindow.scrollHeight;
-      });
-    }
-
-    // ============================================
-    // SHOW PAYWALL (24h hard limit)
-    // ============================================
-    function showPaywall() {
-      // Lock the textarea visually
-      chatInput.disabled = true;
-      chatInput.classList.add('hard-locked');
-      chatInput.placeholder = 'Limite de messages atteinte. Débloque le Summer Pass pour continuer.';
-      sendBtn.disabled = true;
-      document.querySelector('.input-area').classList.add('locked');
-
-      // Show the modal
-      document.getElementById('paywall-modal').style.display = 'flex';
-      scrollToBottom();
-    }
-
-    // ============================================
-    // INIT
-    // ============================================
-    window.addEventListener('load', () => {
-      chatInput.focus();
-      if (typeof lucide !== 'undefined') lucide.createIcons();
-
-      // Draw counter on page load (reflects existing session count)
-      updateCounter();
-
-      // If already hard-limited (returning visitor same day)
-      if (isHardLimited()) {
-        showPaywall();
-        return;
-      }
-
-      // If email gate not yet passed
-      if (isGateLocked()) showEmailModal();
-    });
-  </script>
-
-  <!-- Calendly widget -->
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
-  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </body>
-</html>
 
+</html>
