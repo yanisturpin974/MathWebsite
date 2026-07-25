@@ -121,6 +121,22 @@
       text-transform: uppercase;
     }
 
+    .expert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: linear-gradient(135deg, rgba(37,99,235,0.18) 0%, rgba(6,182,212,0.12) 100%);
+      border: 1px solid rgba(37,99,235,0.3);
+      border-radius: 10px;
+      padding: 0.12rem 0.45rem;
+      font-size: 0.58rem;
+      font-weight: 700;
+      color: var(--cyan-light);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 0.15rem;
+    }
+
     .header-badge {
       display: flex;
       align-items: center;
@@ -704,140 +720,135 @@
       }
     }
     /* ============================================
-       PAYWALL OVERLAY
+       EMAIL GATE MODAL
     ============================================ */
-    .paywall-overlay {
-      position: absolute;
+    .modal-backdrop {
+      position: fixed;
       inset: 0;
-      z-index: 200;
+      z-index: 300;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
-      padding-bottom: 5.5rem; /* sit above input bar */
-      background: linear-gradient(
-        to top,
-        rgba(6, 12, 24, 0.97) 0%,
-        rgba(6, 12, 24, 0.85) 50%,
-        transparent 100%
-      );
-      animation: overlay-in 0.45s ease both;
-      pointer-events: all;
+      padding: 1.5rem;
+      background: rgba(6, 12, 24, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      animation: fade-in 0.3s ease both;
     }
 
-    @keyframes overlay-in {
+    @keyframes fade-in {
       from { opacity: 0; }
       to   { opacity: 1; }
     }
 
-    .paywall-card {
-      background: rgba(17, 24, 39, 0.92);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(99, 102, 241, 0.28);
+    .modal-card {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(32px);
+      -webkit-backdrop-filter: blur(32px);
+      border: 1px solid rgba(37, 99, 235, 0.45);
       border-radius: 1.5rem;
-      padding: 2rem 2rem 1.75rem;
-      max-width: 420px;
-      width: calc(100% - 2.5rem);
+      padding: 2.25rem 2rem 2rem;
+      max-width: 400px;
+      width: 100%;
       text-align: center;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04) inset;
-      animation: card-in 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
-      animation-delay: 0.1s;
+      box-shadow:
+        0 0 0 1px rgba(37,99,235,0.15) inset,
+        0 0 60px rgba(37,99,235,0.2),
+        0 40px 100px rgba(0,0,0,0.7);
+      animation: modal-pop 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
     }
 
-    @keyframes card-in {
-      from { opacity: 0; transform: translateY(28px) scale(0.96); }
+    @keyframes modal-pop {
+      from { opacity: 0; transform: translateY(20px) scale(0.95); }
       to   { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    .paywall-icon {
-      font-size: 2.5rem;
-      margin-bottom: 0.75rem;
+    .modal-brain {
+      font-size: 2.75rem;
       display: block;
-      animation: icon-bounce 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
-      animation-delay: 0.25s;
+      margin-bottom: 0.75rem;
+      animation: brain-pulse 2s ease-in-out infinite;
     }
 
-    @keyframes icon-bounce {
-      from { transform: scale(0.5); opacity: 0; }
-      to   { transform: scale(1);   opacity: 1; }
+    @keyframes brain-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
     }
 
-    .paywall-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      background: rgba(239,68,68,0.12);
-      border: 1px solid rgba(239,68,68,0.28);
-      border-radius: 20px;
-      padding: 0.25rem 0.75rem;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: #f87171;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .paywall-title {
-      font-size: 1.15rem;
+    .modal-title {
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--text-main);
       line-height: 1.4;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
       font-family: 'Inter', sans-serif;
     }
 
-    .paywall-desc {
-      font-size: 0.85rem;
+    .modal-desc {
+      font-size: 0.82rem;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.65;
       margin-bottom: 1.5rem;
     }
 
-    .paywall-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      width: 100%;
-      padding: 0.9rem 1.5rem;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
-      color: #fff;
-      font-size: 0.95rem;
-      font-weight: 700;
-      text-decoration: none;
-      letter-spacing: -0.01em;
-      box-shadow: 0 6px 28px rgba(37,99,235,0.45);
-      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
-    }
-
-    .paywall-cta:hover {
-      opacity: 0.9;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 36px rgba(37,99,235,0.55);
-    }
-
-    .paywall-counter {
+    .modal-input-row {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.35rem;
-      margin-bottom: 1.25rem;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
     }
 
-    .paywall-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.15);
-      transition: background 0.3s;
+    .modal-email-input {
+      flex: 1;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(37,99,235,0.35);
+      border-radius: 0.75rem;
+      padding: 0.7rem 1rem;
+      font-size: 0.88rem;
+      font-family: 'Inter', sans-serif;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    .paywall-dot.used { background: #2563eb; }
-    .paywall-dot.last { background: #f87171; }
+    .modal-email-input::placeholder { color: var(--text-dim); }
 
-    /* Lock input area when paywall active */
+    .modal-email-input:focus {
+      border-color: rgba(37,99,235,0.7);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+    }
+
+    .modal-submit-btn {
+      background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+      border: none;
+      border-radius: 0.75rem;
+      padding: 0.7rem 1.2rem;
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .modal-submit-btn:hover { opacity: 0.88; transform: scale(1.03); }
+    .modal-submit-btn:active { transform: scale(0.97); }
+    .modal-submit-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+    .modal-error {
+      font-size: 0.75rem;
+      color: #f87171;
+      margin-top: 0.25rem;
+      display: none;
+    }
+
+    .modal-privacy {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      margin-top: 0.5rem;
+    }
+
+    /* Lock input when modal is open */
     .input-area.locked {
       pointer-events: none;
       opacity: 0.35;
@@ -846,7 +857,7 @@
     }
 
     @media print {
-      .paywall-overlay { display: none !important; }
+      .modal-backdrop { display: none !important; }
     }
 
   </style>
@@ -869,6 +880,7 @@
         <div class="header-brand-text">
           <span class="header-brand-name">SMA-Alpha</span>
           <span class="header-brand-sub">Professeur IA</span>
+          <span class="expert-badge">⚡ Expert EXMD/Polytech</span>
         </div>
       </a>
 
@@ -933,24 +945,27 @@
       <div class="input-hint">Entrée pour envoyer · Shift+Entrée pour nouvelle ligne · Réponses guidées par IA</div>
     </div>
 
-    <!-- PAYWALL OVERLAY (injected by JS when limit hit) -->
-    <div id="paywall-overlay" class="paywall-overlay" style="display:none;" role="dialog" aria-modal="true" aria-label="Limite de messages atteinte">
-      <div class="paywall-card">
-        <span class="paywall-icon">🔒</span>
-        <div class="paywall-badge">5 / 5 messages</div>
-        <div class="paywall-counter" id="paywall-dots"></div>
-        <div class="paywall-title" id="paywall-title">Limite atteinte.</div>
-        <p class="paywall-desc" id="paywall-desc">SMA-Alpha t'a aidé ? Imagine ce que tu peux accomplir avec 30h de coaching intensif.</p>
-        <a href="#" onclick="Calendly.initPopupWidget({url:'https://calendly.com/yanisturpin-maths/30min'}); return false;"
-          class="paywall-cta" id="paywall-cta">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-            <line x1="16" y1="2" x2="16" y2="6"/>
-            <line x1="8" y1="2" x2="8" y2="6"/>
-            <line x1="3" y1="10" x2="21" y2="10"/>
-          </svg>
-          Réserver mon bilan gratuit
-        </a>
+    <!-- EMAIL GATE MODAL -->
+    <div id="email-modal" class="modal-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-label="Débloquer l'accès complet">
+      <div class="modal-card">
+        <span class="modal-brain">🧠</span>
+        <div class="modal-title">SMA-Alpha analyse tes besoins...</div>
+        <p class="modal-desc">Entre ton email pour débloquer ton accès gratuit et recevoir ton <strong>Kit de Survie PDF</strong> pour l'EXMD &amp; Polytech.</p>
+        <div class="modal-input-row">
+          <input
+            type="email"
+            id="modal-email"
+            class="modal-email-input"
+            placeholder="ton@email.com"
+            autocomplete="email"
+            aria-label="Adresse email"
+          />
+          <button id="modal-submit" class="modal-submit-btn" onclick="submitEmail()">
+            Accéder →
+          </button>
+        </div>
+        <div id="modal-error" class="modal-error">Merci d'entrer un email valide.</div>
+        <p class="modal-privacy">🔒 Aucun spam. Désinscription en 1 clic.</p>
       </div>
     </div>
 
@@ -965,25 +980,17 @@
     let renderMathReady = false;
 
     // ============================================
-    // MESSAGE LIMIT (localStorage)
+    // MESSAGE GATE (localStorage)
     // ============================================
-    const MSG_LIMIT = 5;
-    const STORAGE_KEY = 'sma_alpha_msg_count';
-    // Detect page language (fr or en)
-    const pageLang = document.documentElement.lang || 'fr';
+    const EMAIL_GATE_THRESHOLD = 3;   // show modal after this many sends
+    const STORAGE_COUNT_KEY    = 'sma_msg_count';
+    const STORAGE_EMAIL_KEY    = 'sma_email_unlocked';
 
-    function getMsgCount() {
-      return parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
-    }
+    let messageCount = parseInt(localStorage.getItem(STORAGE_COUNT_KEY) || '0', 10);
+    let emailUnlocked = localStorage.getItem(STORAGE_EMAIL_KEY) === 'true';
 
-    function incrementMsgCount() {
-      const current = getMsgCount() + 1;
-      localStorage.setItem(STORAGE_KEY, current);
-      return current;
-    }
-
-    function isLimitReached() {
-      return getMsgCount() >= MSG_LIMIT;
+    function isGateLocked() {
+      return messageCount >= EMAIL_GATE_THRESHOLD && !emailUnlocked;
     }
 
     const chatWindow = document.getElementById('chat-window');
@@ -1035,9 +1042,13 @@
       const text = chatInput.value.trim();
       if (!text || isLoading) return;
 
-      // Check limit BEFORE sending
-      if (isLimitReached()) {
-        showPaywall();
+      // Increment BEFORE checking the gate
+      messageCount++;
+      localStorage.setItem(STORAGE_COUNT_KEY, messageCount);
+
+      // If gate is now locked, block and show modal
+      if (isGateLocked()) {
+        showEmailModal();
         return;
       }
 
@@ -1053,9 +1064,6 @@
       // Add user message to history & UI
       chatHistory.push({ role: 'user', content: text });
       appendMessage('user', text);
-
-      // Increment counter AFTER displaying user message
-      const newCount = incrementMsgCount();
 
       // Show typing indicator
       isLoading = true;
@@ -1080,17 +1088,12 @@
         typingEl.remove();
         appendMessage('ai', reply);
 
-        // Show paywall after AI responds if limit now reached
-        if (isLimitReached()) {
-          setTimeout(showPaywall, 600);
-        }
-
       } catch (err) {
         typingEl.remove();
         appendMessage('ai', `❌ Désolé, une erreur est survenue : ${err.message}. Réessaie dans quelques secondes.`, true);
       } finally {
         isLoading = false;
-        sendBtn.disabled = chatInput.value.trim() === '' || isLimitReached();
+        sendBtn.disabled = chatInput.value.trim() === '';
         chatInput.focus();
       }
     }
@@ -1207,15 +1210,6 @@
     }
 
     // ============================================
-    // AUTO-SCROLL
-    // ============================================
-    function scrollToBottom() {
-      requestAnimationFrame(() => {
-        chatWindow.scrollTo({ top: chatWindow.scrollHeight, behavior: 'smooth' });
-      });
-    }
-
-    // ============================================
     // RATING BUTTONS
     // ============================================
     function createRatingBar() {
@@ -1237,18 +1231,12 @@
       thanks.style.display = 'none';
 
       function handleRating(isPositive) {
-        // Prevent double-click
         upBtn.disabled = true;
         downBtn.disabled = true;
         upBtn.style.pointerEvents = 'none';
         downBtn.style.pointerEvents = 'none';
-
-        if (isPositive) {
-          upBtn.classList.add('active-up');
-        } else {
-          downBtn.classList.add('active-down');
-        }
-
+        if (isPositive) upBtn.classList.add('active-up');
+        else downBtn.classList.add('active-down');
         thanks.textContent = 'Merci pour votre retour !';
         thanks.style.display = 'inline';
         bar.classList.add('visible');
@@ -1256,11 +1244,9 @@
 
       upBtn.addEventListener('click', () => handleRating(true));
       downBtn.addEventListener('click', () => handleRating(false));
-
       bar.appendChild(upBtn);
       bar.appendChild(downBtn);
       bar.appendChild(thanks);
-
       return bar;
     }
 
@@ -1268,102 +1254,125 @@
     // EXPORT TO PDF
     // ============================================
     function exportToPDF() {
-      // If no messages yet, show a brief notice
       const messages = chatWindow.querySelectorAll('.message-row');
+      const btn = document.getElementById('pdf-btn');
+      if (!btn) return;
+      const original = btn.innerHTML;
       if (messages.length === 0) {
-        const btn = document.getElementById('pdf-btn');
-        const original = btn.innerHTML;
         btn.innerHTML = `<span>Aucun message à exporter</span>`;
         btn.style.borderColor = 'rgba(239,68,68,0.4)';
         btn.style.color = '#f87171';
-        setTimeout(() => {
-          btn.innerHTML = original;
-          btn.style.borderColor = '';
-          btn.style.color = '';
-        }, 2000);
+        setTimeout(() => { btn.innerHTML = original; btn.style.borderColor = ''; btn.style.color = ''; }, 2000);
         return;
       }
-
-      // Brief visual feedback
-      const btn = document.getElementById('pdf-btn');
-      const original = btn.innerHTML;
       btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Préparation...</span>`;
-
-      setTimeout(() => {
-        window.print();
-        btn.innerHTML = original;
-      }, 150);
+      setTimeout(() => { window.print(); btn.innerHTML = original; }, 150);
     }
 
     // ============================================
-    // PAYWALL
+    // AUTO-SCROLL
     // ============================================
-    function showPaywall() {
-      const overlay = document.getElementById('paywall-overlay');
+    function scrollToBottom() {
+      requestAnimationFrame(() => {
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+      });
+    }
+
+    // ============================================
+    // EMAIL GATE MODAL
+    // ============================================
+    function showEmailModal() {
+      const modal = document.getElementById('email-modal');
       const inputArea = document.querySelector('.input-area');
-      const titleEl = document.getElementById('paywall-title');
-      const descEl = document.getElementById('paywall-desc');
-      const ctaEl = document.getElementById('paywall-cta');
-      const dotsEl = document.getElementById('paywall-dots');
-
-      // Dots counter visualisation (5 dots, all filled = 5 used)
-      dotsEl.innerHTML = '';
-      for (let i = 0; i < MSG_LIMIT; i++) {
-        const dot = document.createElement('span');
-        dot.className = 'paywall-dot' + (i < MSG_LIMIT - 1 ? ' used' : ' last');
-        dotsEl.appendChild(dot);
-      }
-
-      // Bilingual content
-      const isEn = pageLang === 'en' ||
-        document.cookie.includes('lang=en') ||
-        (typeof currentLang !== 'undefined' && currentLang === 'en');
-
-      if (isEn) {
-        titleEl.textContent = 'Limit reached.';
-        descEl.textContent = 'Ready to go further? Join the Academy for unlimited support.';
-        ctaEl.innerHTML = `
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-            <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-          </svg>
-          Book free assessment`;
-      } else {
-        titleEl.textContent = 'Limite atteinte.';
-        descEl.textContent = 'SMA-Alpha t’a aidé ? Imagine ce que tu peux accomplir avec 30h de coaching intensif.';
-        ctaEl.innerHTML = `
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-            <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-          </svg>
-          Réserver mon bilan gratuit`;
-      }
-
-      // Show overlay, lock input
-      overlay.style.display = 'flex';
+      modal.style.display = 'flex';
       inputArea.classList.add('locked');
-      chatInput.disabled = true;
-      sendBtn.disabled = true;
+      // Focus the email field
+      setTimeout(() => document.getElementById('modal-email').focus(), 100);
+      // Enter in email field submits
+      document.getElementById('modal-email').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') submitEmail();
+      });
+    }
 
-      // Scroll to bottom so overlay is visible
-      scrollToBottom();
+    async function submitEmail() {
+      const emailInput = document.getElementById('modal-email');
+      const submitBtn  = document.getElementById('modal-submit');
+      const errorEl   = document.getElementById('modal-error');
+      const email = emailInput.value.trim();
+
+      // Validate
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        errorEl.style.display = 'block';
+        emailInput.focus();
+        return;
+      }
+      errorEl.style.display = 'none';
+
+      // Loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = '...';
+
+      try {
+        // Send to Formspree — replace YOUR_FORM_ID with your actual Formspree ID
+        await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            source: 'SMA-Alpha AI Tutor',
+            timestamp: new Date().toISOString(),
+          }),
+        });
+      } catch (_) {
+        // Fail silently — don't block the user if Formspree is unreachable
+      }
+
+      // Unlock regardless of Formspree result
+      emailUnlocked = true;
+      localStorage.setItem(STORAGE_EMAIL_KEY, 'true');
+
+      // Close modal, unlock input
+      const modal = document.getElementById('email-modal');
+      const inputArea = document.querySelector('.input-area');
+      modal.style.display = 'none';
+      inputArea.classList.remove('locked');
+
+      // Success feedback, then send the message
+      submitBtn.textContent = '✓ Accès ouvert !';
+      setTimeout(() => {
+        submitBtn.textContent = 'Accéder →';
+        submitBtn.disabled = false;
+        chatInput.focus();
+        // Re-decrement so the blocked message still goes through
+        messageCount--;
+        localStorage.setItem(STORAGE_COUNT_KEY, messageCount);
+        sendMessage();
+      }, 600);
     }
 
     // ============================================
-    // INIT: check limit on page load
+    // AUTO-SCROLL
+    // ============================================
+    function scrollToBottom() {
+      requestAnimationFrame(() => {
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+      });
+    }
+
+    // ============================================
+    // INIT
     // ============================================
     window.addEventListener('load', () => {
       chatInput.focus();
       if (typeof lucide !== 'undefined') lucide.createIcons();
 
-      // If limit already reached from a previous session, show paywall immediately
-      if (isLimitReached()) {
-        showPaywall();
-      }
+      // If the gate was already triggered in a previous visit and email not given
+      if (isGateLocked()) showEmailModal();
     });
   </script>
 
-  <!-- Calendly widget (needed for paywall CTA) -->
+  <!-- Calendly widget -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </body>
