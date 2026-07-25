@@ -1951,8 +1951,43 @@ footer {
   padding-top: 1rem;
 }
 
+/* Completed Module styling */
+.bootcamp-card.bootcamp-completed {
+  position: relative;
+}
 
+.bootcamp-completed .bootcamp-header,
+.bootcamp-completed .bootcamp-body {
+  opacity: 0.6;
+  filter: grayscale(80%);
+}
 
+.bootcamp-completed .completed-stamp {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  border: 3px solid rgba(220, 38, 38, 0.75);
+  color: rgba(220, 38, 38, 0.9);
+  background: rgba(17, 24, 39, 0.95);
+  padding: 0.5rem 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 6px;
+  z-index: 10;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
 
-
-
+.bootcamp-completed .bootcamp-cta {
+  pointer-events: none !important;
+  background: #374151 !important;
+  border-color: #374151 !important;
+  color: #9ca3af !important;
+  box-shadow: none !important;
+  animation: none !important;
+  opacity: 0.5 !important;
+  cursor: default !important;
+}

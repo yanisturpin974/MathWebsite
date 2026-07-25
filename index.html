@@ -209,15 +209,15 @@
   <div class="container">
     <!-- Navigation -->
     <nav>
-      <a href="/" class="logo">
+      <a href="/index.html" class="logo">
         <img src="assets/logo-transparent.png" alt="Logo Simple Maths Academy - Expert Polytechnique" class="logo-icon" />
         <span class="logo-text" data-i18n="logoText">Simple Maths Academy | Visez l’Excellence.</span>
       </a>
       <div style="display: flex; align-items: center; gap: 1.5rem">
-        <a href="/"
+        <a href="/index.html"
           style="color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s;"
           data-i18n="navPolytech"><span class="nav-opt-text">Objectif </span>Polytech</a>
-        <a href="/medecine"
+        <a href="/medecine.html"
           style="color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s;"
           data-i18n="navMedecine"><span class="nav-opt-text">Objectif </span>Médecine</a>
         <a href="#contact"
@@ -258,9 +258,7 @@
           </svg>
           <span data-i18n="heroCta">Réserver mon bilan (15 min) | 100% Gratuit</span>
         </a>
-        <div class="vacation-box" data-i18n="vacationMessage">
-          <strong>Note :</strong> Je serai en congé du 28/06 au 10/07. Inscrivez-vous dès maintenant via le formulaire pour bloquer votre place et être recontacté en priorité dès mon retour.
-        </div>
+
         <div class="spot-badge" data-i18n="spotBadge">🔒 Classes limitées à 5 élèves pour un suivi personnalisé.</div>
       </div>
     </section>
@@ -274,7 +272,7 @@
         <div class="portal-card-icon">📐</div>
         <h3 data-i18n="portalPolytechTitle">Objectif Polytechnique</h3>
         <p data-i18n="portalPolytechDesc">Algèbre, Analyse, Géométrie. Préparation intensive à l'examen d'admission Ingénieur Civil.</p>
-        <a href="/#polytech-section" class="portal-btn" data-i18n="portalPolytechBtn">Voir le programme Polytech</a>
+        <a href="/index.html#polytech-section" class="portal-btn" data-i18n="portalPolytechBtn">Voir le programme Polytech</a>
       </div>
       
       <!-- Card Right: Médecine -->
@@ -282,7 +280,7 @@
         <div class="portal-card-icon">🧬</div>
         <h3 data-i18n="portalMedecineTitle">Objectif Médecine</h3>
         <p data-i18n="portalMedecineDesc">Logique, Mathématiques, Physique. Réussissez le concours d’entrée EXMD.</p>
-        <a href="/medecine#medecine-section" class="portal-btn" id="portal-medecine-link" data-i18n="portalMedecineBtn">Voir le programme Médecine</a>
+        <a href="/medecine.html#medecine-section" class="portal-btn" id="portal-medecine-link" data-i18n="portalMedecineBtn">Voir le programme Médecine</a>
       </div>
     </div>
   </section>
@@ -439,7 +437,8 @@
       <div class="bootcamp-grid">
 
         <!-- Module 1: Le Rush de Juin -->
-        <div class="bootcamp-card bootcamp-juin">
+        <div class="bootcamp-card bootcamp-juin bootcamp-completed">
+          <div class="completed-stamp" data-i18n="completedStamp">SESSION TERMINÉE</div>
           <div class="bootcamp-header">
             <span class="bootcamp-tag tag-juin" data-i18n="mod1Tag">MODULE 1</span>
             <h3 class="bootcamp-title" data-i18n="mod1Title">⚡ Le Rush de Juin</h3>
@@ -1029,7 +1028,8 @@
         qualityPromise: "Méthode basée sur les annales de l'ULB, UCL, VUB et Liège. Fiches de synthèse quotidiennes incluses.",
         seoSummaryTitle: "Description du Service | Simple Maths Academy",
         summerBootcampBadge: "☀️ BOOTCAMP D'ÉTÉ : Inscriptions ouvertes pour la session du 14 Juillet au 25 Août.",
-        vacationMessage: "<strong>Note :</strong> Je serai en congé du 28/06 au 10/07. Inscrivez-vous dès maintenant via le formulaire pour bloquer votre place et être recontacté en priorité dès mon retour.",
+        vacationMessage: "",
+        completedStamp: "SESSION TERMINÉE",
         seoDescriptionText: `
           <p><strong>Simple Maths Academy</strong> propose une préparation d'élite aux concours d'admission et examens d'entrée les plus exigeants de Belgique. Notre programme intensif est spécifiquement conçu pour les étudiants visant la réussite de l'examen d'admission d'Ingénieur Civil (Polytechnique) auprès des plus grandes institutions belges : l'Université Libre de Bruxelles (<strong>ULB</strong>), l'Université Catholique de Louvain (<strong>UCL</strong>), la Vrije Universiteit Brussel (<strong>VUB</strong>), l'Université de Liège (<strong>ULiège</strong>), et l'Université de Mons (<strong>UMons</strong>).</p>
           <p>Notre accompagnement rigoureux couvre l'intégralité du syllabus officiel des examens d'admission. En <strong>Analyse (Calculus)</strong>, nous approfondissons la théorie des limites, le calcul différentiel et intégral, l'étude complète de fonctions complexes, ainsi que la résolution d'équations différentielles de base. En <strong>Algèbre</strong>, nous développons une maîtrise parfaite des systèmes d'équations linéaires, de l'algèbre matricielle, de la théorie des polynômes et des nombres complexes. Le programme intègre également la <strong>Trigonométrie</strong> (trigonométrie circulaire et résolution de triangles), la <strong>Géométrie analytique et synthétique</strong> (géométrie spatiale, vecteurs, droites et plans dans l'espace), ainsi que les principes de <strong>Statistique et Probabilités</strong>.</p>
@@ -1183,7 +1183,8 @@
         qualityPromise: "Method based on past papers from ULB, UCL, VUB, and Liège. Daily summary sheets included.",
         seoSummaryTitle: "Service Description | Simple Maths Academy",
         summerBootcampBadge: "☀️ SUMMER BOOTCAMP: Registration open for the session from July 14th to August 25th.",
-        vacationMessage: "<strong>Note:</strong> I will be away from June 28th to July 10th. Sign up now to secure your spot. I will contact you personally starting July 11th.",
+        vacationMessage: "",
+        completedStamp: "SESSION COMPLETED",
         seoDescriptionText: `
           <p><strong>Simple Maths Academy</strong> provides elite preparation for the most demanding entrance exams and admission contests in Belgium. Our intensive program is specifically designed for students aiming to pass the Civil Engineering (Polytechnique) entrance exam at leading Belgian institutions: Université Libre de Bruxelles (<strong>ULB</strong>), Université Catholique de Louvain (<strong>UCL</strong>), Vrije Universiteit Brussel (<strong>VUB</strong>), Université de Liège (<strong>ULiège</strong>), and Université de Mons (<strong>UMons</strong>).</p>
           <p>Our rigorous coaching covers the entire official syllabus of the admission exams. In <strong>Calculus (Analysis)</strong>, we delve deep into the theory of limits, differential and integral calculus, complete study of complex functions, and basic differential equations. In <strong>Algebra</strong>, we build complete mastery of systems of linear equations, matrix algebra, polynomial theory, and complex numbers. The program also integrates <strong>Trigonometry</strong> (circular trigonometry and triangle solving), <strong>Analytic and Synthetic Geometry</strong> (spatial geometry, vectors, lines, and planes in space), as well as <strong>Statistics and Probability</strong> principles.</p>
