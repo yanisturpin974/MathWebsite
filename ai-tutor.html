@@ -537,6 +537,172 @@
     }
 
     .app { position: relative; z-index: 1; }
+
+    /* ============================================
+       RATING BUTTONS
+    ============================================ */
+    .rating-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.45rem;
+      padding-left: 0.25rem;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .message-row.ai:hover .rating-bar,
+    .rating-bar.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .rating-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.72rem;
+      cursor: pointer;
+      color: var(--text-dim);
+      transition: all 0.2s;
+      line-height: 1;
+    }
+
+    .rating-btn:hover {
+      border-color: rgba(255,255,255,0.25);
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .rating-btn.active-up {
+      border-color: rgba(16,185,129,0.5);
+      color: var(--success);
+      background: rgba(16,185,129,0.08);
+    }
+
+    .rating-btn.active-down {
+      border-color: rgba(239,68,68,0.4);
+      color: #f87171;
+      background: rgba(239,68,68,0.07);
+    }
+
+    .rating-thanks {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      animation: thanks-in 0.3s ease both;
+    }
+
+    @keyframes thanks-in {
+      from { opacity: 0; transform: translateX(-4px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ============================================
+       PDF EXPORT BUTTON
+    ============================================ */
+    .pdf-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(37,99,235,0.1);
+      border: 1px solid rgba(37,99,235,0.25);
+      border-radius: 8px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--blue-light);
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .pdf-btn:hover {
+      background: rgba(37,99,235,0.18);
+      border-color: rgba(37,99,235,0.45);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37,99,235,0.2);
+    }
+
+    .pdf-btn:active { transform: translateY(0); }
+
+    .pdf-btn svg { flex-shrink: 0; }
+
+    /* ============================================
+       PRINT / PDF STYLES
+    ============================================ */
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+      html, body {
+        height: auto;
+        overflow: visible;
+        background: #fff !important;
+        color: #111 !important;
+      }
+
+      .app {
+        height: auto;
+        max-width: 100%;
+        overflow: visible;
+      }
+
+      body::before, body::after { display: none !important; }
+
+      .header, .ai-identity, .input-area { display: none !important; }
+
+      .chat-window {
+        overflow: visible !important;
+        height: auto !important;
+        flex: none !important;
+        padding: 1rem !important;
+        gap: 1.25rem;
+        background: white !important;
+      }
+
+      .message-row {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .bubble.ai {
+        background: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
+        color: #111 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+
+      .bubble.user {
+        background: #2563eb !important;
+        color: #fff !important;
+        box-shadow: none !important;
+      }
+
+      .rating-bar, .welcome-card { display: none !important; }
+
+      .message-avatar {
+        background: #2563eb !important;
+        box-shadow: none !important;
+      }
+
+      /* Print header */
+      .chat-window::before {
+        content: 'Session SMA-Alpha — Simple Maths Academy';
+        display: block;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid #2563eb;
+      }
+    }
   </style>
 </head>
 
@@ -564,6 +730,16 @@
         <span class="status-dot"></span>
         En ligne
       </div>
+
+      <button id="pdf-btn" class="pdf-btn" onclick="exportToPDF()" title="Télécharger la leçon en PDF" aria-label="Télécharger la leçon en PDF">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="12" y1="18" x2="12" y2="12"/>
+          <line x1="9" y1="15" x2="15" y2="15"/>
+        </svg>
+        <span class="nav-opt-text">Télécharger la leçon</span>
+      </button>
     </header>
 
     <!-- AI IDENTITY -->
@@ -737,6 +913,13 @@
       bubble.innerHTML = formatContent(content);
 
       row.appendChild(bubble);
+
+      // Add rating bar for AI messages
+      if (role === 'ai' && !isError) {
+        const ratingBar = createRatingBar();
+        row.appendChild(ratingBar);
+      }
+
       chatWindow.appendChild(row);
 
       // Render LaTeX
@@ -827,6 +1010,86 @@
       requestAnimationFrame(() => {
         chatWindow.scrollTo({ top: chatWindow.scrollHeight, behavior: 'smooth' });
       });
+    }
+
+    // ============================================
+    // RATING BUTTONS
+    // ============================================
+    function createRatingBar() {
+      const bar = document.createElement('div');
+      bar.className = 'rating-bar';
+
+      const upBtn = document.createElement('button');
+      upBtn.className = 'rating-btn';
+      upBtn.setAttribute('aria-label', 'Réponse utile');
+      upBtn.innerHTML = `<span>&#128077;</span>`;
+
+      const downBtn = document.createElement('button');
+      downBtn.className = 'rating-btn';
+      downBtn.setAttribute('aria-label', 'Réponse à améliorer');
+      downBtn.innerHTML = `<span>&#128078;</span>`;
+
+      const thanks = document.createElement('span');
+      thanks.className = 'rating-thanks';
+      thanks.style.display = 'none';
+
+      function handleRating(isPositive) {
+        // Prevent double-click
+        upBtn.disabled = true;
+        downBtn.disabled = true;
+        upBtn.style.pointerEvents = 'none';
+        downBtn.style.pointerEvents = 'none';
+
+        if (isPositive) {
+          upBtn.classList.add('active-up');
+        } else {
+          downBtn.classList.add('active-down');
+        }
+
+        thanks.textContent = 'Merci pour votre retour !';
+        thanks.style.display = 'inline';
+        bar.classList.add('visible');
+      }
+
+      upBtn.addEventListener('click', () => handleRating(true));
+      downBtn.addEventListener('click', () => handleRating(false));
+
+      bar.appendChild(upBtn);
+      bar.appendChild(downBtn);
+      bar.appendChild(thanks);
+
+      return bar;
+    }
+
+    // ============================================
+    // EXPORT TO PDF
+    // ============================================
+    function exportToPDF() {
+      // If no messages yet, show a brief notice
+      const messages = chatWindow.querySelectorAll('.message-row');
+      if (messages.length === 0) {
+        const btn = document.getElementById('pdf-btn');
+        const original = btn.innerHTML;
+        btn.innerHTML = `<span>Aucun message à exporter</span>`;
+        btn.style.borderColor = 'rgba(239,68,68,0.4)';
+        btn.style.color = '#f87171';
+        setTimeout(() => {
+          btn.innerHTML = original;
+          btn.style.borderColor = '';
+          btn.style.color = '';
+        }, 2000);
+        return;
+      }
+
+      // Brief visual feedback
+      const btn = document.getElementById('pdf-btn');
+      const original = btn.innerHTML;
+      btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Préparation...</span>`;
+
+      setTimeout(() => {
+        window.print();
+        btn.innerHTML = original;
+      }, 150);
     }
 
     // ============================================
