@@ -856,12 +856,200 @@
       user-select: none;
     }
 
+    /* textarea hard-locked */
+    #chat-input.hard-locked {
+      color: var(--text-dim);
+      cursor: not-allowed;
+    }
+
+    /* ============================================
+       MESSAGE COUNTER BADGE
+    ============================================ */
+    .msg-counter {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.4rem;
+      padding: 0.35rem 1.25rem 0;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      flex-shrink: 0;
+      transition: color 0.3s;
+    }
+
+    .msg-counter.warning { color: #fb923c; }
+    .msg-counter.danger  { color: #f87171; }
+
+    .msg-counter-pips { display: flex; gap: 3px; }
+
+    .msg-pip {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      transition: background 0.35s;
+    }
+
+    .msg-pip.used { background: var(--blue); }
+    .msg-pip.warn { background: #fb923c; }
+    .msg-pip.last { background: #f87171; }
+
+    /* ============================================
+       PAYWALL MODAL
+    ============================================ */
+    .paywall-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(4, 8, 20, 0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      animation: fade-in 0.35s ease both;
+    }
+
+    .paywall-card {
+      background: rgba(11, 17, 32, 0.97);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      border: 1px solid rgba(37,99,235,0.55);
+      border-radius: 1.75rem;
+      padding: 2.5rem 2.25rem 2.25rem;
+      max-width: 430px;
+      width: 100%;
+      text-align: center;
+      box-shadow:
+        0 0 0 1px rgba(37,99,235,0.12) inset,
+        0 0 80px rgba(37,99,235,0.25),
+        0 50px 120px rgba(0,0,0,0.8);
+      animation: modal-pop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+
+    .paywall-emoji {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    .paywall-modal-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.3;
+      margin-bottom: 0.55rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .paywall-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1.4rem;
+    }
+
+    .paywall-offer-box {
+      background: linear-gradient(135deg, rgba(37,99,235,0.1) 0%, rgba(6,182,212,0.07) 100%);
+      border: 1px solid rgba(37,99,235,0.25);
+      border-radius: 1rem;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.4rem;
+      text-align: left;
+    }
+
+    .paywall-offer-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--cyan-light);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 0.5rem;
+    }
+
+    .paywall-offer-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .paywall-offer-list li {
+      font-size: 0.83rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .paywall-offer-list li::before {
+      content: '✓';
+      color: var(--success);
+      font-weight: 800;
+    }
+
+    .paywall-price {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .paywall-price-sub {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: var(--text-dim);
+      display: block;
+      margin-top: 0.15rem;
+    }
+
+    .paywall-cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 32px rgba(37,99,235,0.5);
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+      margin-bottom: 0.9rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .paywall-cta-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(37,99,235,0.6);
+    }
+
+    .paywall-alt-link {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .paywall-alt-link:hover { color: var(--text-muted); text-decoration: underline; }
+
     @media print {
-      .modal-backdrop { display: none !important; }
+      .modal-backdrop, .paywall-backdrop { display: none !important; }
     }
 
   </style>
 </head>
+
 
 <body>
   <div class="app">
@@ -908,6 +1096,12 @@
       </div>
       <div class="ai-name">SMA-Alpha</div>
       <div class="ai-tagline">Ton professeur de maths virtuel | Méthode Socratique | LaTeX natif</div>
+    </div>
+
+    <!-- MESSAGE COUNTER BADGE -->
+    <div class="msg-counter" id="msg-counter" aria-live="polite">
+      <span id="counter-text">Messages restants : 5 / 5</span>
+      <div class="msg-counter-pips" id="counter-pips"></div>
     </div>
 
     <!-- CHAT WINDOW -->
@@ -969,6 +1163,38 @@
       </div>
     </div>
 
+    <!-- PAYWALL MODAL (24h hard limit at 5 msgs) -->
+    <div id="paywall-modal" class="paywall-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-label="Summer Pass SMA-Alpha">
+      <div class="paywall-card">
+        <span class="paywall-emoji">🧠</span>
+        <div class="paywall-modal-title">SMA-Alpha a atteint sa limite quotidienne.</div>
+        <p class="paywall-sub">Tu es sérieux dans tes révisions&nbsp;! Pour réussir ton mois d'août, ne laisse aucune question sans réponse.</p>
+        <div class="paywall-offer-box">
+          <div class="paywall-offer-label">⚡ Summer Pass SMA-Alpha</div>
+          <ul class="paywall-offer-list">
+            <li>Accès illimité à l'IA (24h/24)</li>
+            <li>Support WhatsApp prioritaire</li>
+            <li>Kits de Survie PDF EXMD &amp; Polytech</li>
+          </ul>
+          <div class="paywall-price">
+            14,90€
+            <span class="paywall-price-sub">Paiement unique &mdash; Accès jusqu'au 31 août</span>
+          </div>
+        </div>
+        <a href="TON_LIEN_STRIPE_ICI" class="paywall-cta-btn" id="paywall-stripe-btn" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          Débloquer l'accès illimité
+        </a>
+        <a href="#"
+          onclick="if(typeof Calendly!=='undefined')Calendly.initPopupWidget({url:'https://calendly.com/yanisturpin-maths/30min'});return false;"
+          class="paywall-alt-link">
+          Je préfère un coach humain &mdash; Bilan 15 min offert
+        </a>
+      </div>
+    </div>
+
   </div>
 
   <script>
@@ -980,17 +1206,56 @@
     let renderMathReady = false;
 
     // ============================================
-    // MESSAGE GATE (localStorage)
+    // MESSAGE GATE + 24H ROLLING WINDOW
     // ============================================
-    const EMAIL_GATE_THRESHOLD = 3;   // show modal after this many sends
+    const EMAIL_GATE_THRESHOLD = 3;       // email capture after 3 sends
+    const HARD_LIMIT           = 5;       // paywall after 5 sends per 24h
+    const WINDOW_MS            = 86400000; // 24h in ms
     const STORAGE_COUNT_KEY    = 'sma_msg_count';
+    const STORAGE_TIME_KEY     = 'sma_first_msg_time';
     const STORAGE_EMAIL_KEY    = 'sma_email_unlocked';
 
-    let messageCount = parseInt(localStorage.getItem(STORAGE_COUNT_KEY) || '0', 10);
+    // 24h reset: if window has expired, clear the counter
+    (function reset24h() {
+      const firstTime = parseInt(localStorage.getItem(STORAGE_TIME_KEY) || '0', 10);
+      if (firstTime && Date.now() - firstTime > WINDOW_MS) {
+        localStorage.removeItem(STORAGE_COUNT_KEY);
+        localStorage.removeItem(STORAGE_TIME_KEY);
+      }
+    })();
+
+    let messageCount  = parseInt(localStorage.getItem(STORAGE_COUNT_KEY) || '0', 10);
     let emailUnlocked = localStorage.getItem(STORAGE_EMAIL_KEY) === 'true';
 
-    function isGateLocked() {
-      return messageCount >= EMAIL_GATE_THRESHOLD && !emailUnlocked;
+    function isHardLimited() { return messageCount >= HARD_LIMIT; }
+    function isGateLocked()  { return messageCount >= EMAIL_GATE_THRESHOLD && !emailUnlocked; }
+
+    // ---- Counter badge UI ----
+    function updateCounter() {
+      const remaining = Math.max(0, HARD_LIMIT - messageCount);
+      const textEl  = document.getElementById('counter-text');
+      const pipsEl  = document.getElementById('counter-pips');
+      const wrapEl  = document.getElementById('msg-counter');
+      if (!textEl || !pipsEl) return;
+
+      textEl.textContent = `Messages restants\u00a0: ${remaining}\u00a0/\u00a0${HARD_LIMIT}`;
+
+      // Pip colours
+      pipsEl.innerHTML = '';
+      for (let i = 0; i < HARD_LIMIT; i++) {
+        const pip = document.createElement('span');
+        const used = i < messageCount;
+        if (!used) pip.className = 'msg-pip';
+        else if (i === HARD_LIMIT - 1) pip.className = 'msg-pip last';
+        else if (i >= HARD_LIMIT - 2) pip.className = 'msg-pip warn';
+        else pip.className = 'msg-pip used';
+        pipsEl.appendChild(pip);
+      }
+
+      // Badge colour tone
+      wrapEl.classList.remove('warning', 'danger');
+      if (remaining <= 0)     wrapEl.classList.add('danger');
+      else if (remaining <= 2) wrapEl.classList.add('warning');
     }
 
     const chatWindow = document.getElementById('chat-window');
@@ -1042,11 +1307,25 @@
       const text = chatInput.value.trim();
       if (!text || isLoading) return;
 
-      // Increment BEFORE checking the gate
+      // Increment counter + stamp first-message time
       messageCount++;
       localStorage.setItem(STORAGE_COUNT_KEY, messageCount);
+      if (!localStorage.getItem(STORAGE_TIME_KEY)) {
+        localStorage.setItem(STORAGE_TIME_KEY, Date.now());
+      }
+      updateCounter();
 
-      // If gate is now locked, block and show modal
+      // 1) HARD LIMIT (5/24h) — always wins, never let through
+      if (isHardLimited()) {
+        // undo the increment — this send was blocked
+        messageCount--;
+        localStorage.setItem(STORAGE_COUNT_KEY, messageCount);
+        updateCounter();
+        showPaywall();
+        return;
+      }
+
+      // 2) EMAIL GATE (3 msgs, one-time capture)
       if (isGateLocked()) {
         showEmailModal();
         return;
@@ -1361,13 +1640,38 @@
     }
 
     // ============================================
+    // SHOW PAYWALL (24h hard limit)
+    // ============================================
+    function showPaywall() {
+      // Lock the textarea visually
+      chatInput.disabled = true;
+      chatInput.classList.add('hard-locked');
+      chatInput.placeholder = 'Limite de messages atteinte. Débloque le Summer Pass pour continuer.';
+      sendBtn.disabled = true;
+      document.querySelector('.input-area').classList.add('locked');
+
+      // Show the modal
+      document.getElementById('paywall-modal').style.display = 'flex';
+      scrollToBottom();
+    }
+
+    // ============================================
     // INIT
     // ============================================
     window.addEventListener('load', () => {
       chatInput.focus();
       if (typeof lucide !== 'undefined') lucide.createIcons();
 
-      // If the gate was already triggered in a previous visit and email not given
+      // Draw counter on page load (reflects existing session count)
+      updateCounter();
+
+      // If already hard-limited (returning visitor same day)
+      if (isHardLimited()) {
+        showPaywall();
+        return;
+      }
+
+      // If email gate not yet passed
       if (isGateLocked()) showEmailModal();
     });
   </script>
@@ -1377,3 +1681,4 @@
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </body>
 </html>
+
