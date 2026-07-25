@@ -220,6 +220,11 @@
         <a href="/medecine.html"
           style="color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s;"
           data-i18n="navMedecine"><span class="nav-opt-text">Objectif </span>Médecine</a>
+        <a href="/ai-tutor.html"
+          style="color: var(--cyan, #06b6d4); text-decoration: none; font-weight: 600; transition: color 0.2s; display: inline-flex; align-items: center; gap: 0.35rem;"
+          title="SMA-Alpha | Professeur IA">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span class="nav-opt-text">Prof IA</span></a>
         <a href="#contact"
           style="color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s;"
           data-i18n="navContact">Contact</a>
@@ -257,6 +262,31 @@
             <line x1="3" y1="10" x2="21" y2="10" />
           </svg>
           <span data-i18n="heroCta">Réserver mon bilan (15 min) | 100% Gratuit</span>
+        </a>
+
+        <a href="/ai-tutor.html"
+          id="hero-ai-cta"
+          style="
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.85rem 2rem;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 24px rgba(37,99,235,0.35), 0 1px 0 rgba(255,255,255,0.12) inset;
+            transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+            letter-spacing: -0.01em;
+          "
+          onmouseover="this.style.opacity='0.9';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 32px rgba(37,99,235,0.5), 0 1px 0 rgba(255,255,255,0.12) inset';"
+          onmouseout="this.style.opacity='1';this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(37,99,235,0.35), 0 1px 0 rgba(255,255,255,0.12) inset';">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          Tester le Professeur IA (Gratuit)
         </a>
 
         <div class="spot-badge" data-i18n="spotBadge">🔒 Classes limitées à 5 élèves pour un suivi personnalisé.</div>

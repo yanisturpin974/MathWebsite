@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMA-Alpha | Professeur IA de Maths | Simple Maths Academy</title>
+  <link rel="icon" type="image/png" href="assets/logo-transparent.png" />
+  <meta name="description" content="Discutez avec SMA-Alpha, votre professeur de mathématiques virtuel alimenté par l'IA. Posez vos questions de maths et obtenez un guidage Socratique instantané." />
+  <meta name="robots" content="noindex, follow" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- KaTeX (math rendering) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathReady = true;"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <style>
+    /* ============================================
+       DESIGN TOKENS — Match simplemathsacademy.com
+    ============================================ */
+    :root {
+      --navy:        #0b1120;
+      --navy-deep:   #060c18;
+      --navy-mid:    #111827;
+      --navy-card:   #1e293b;
+      --blue:        #2563eb;
+      --blue-light:  #3b82f6;
+      --cyan:        #06b6d4;
+      --cyan-light:  #22d3ee;
+      --text-main:   #f8fafc;
+      --text-muted:  #94a3b8;
+      --text-dim:    #64748b;
+      --glass-bg:    rgba(30, 41, 59, 0.55);
+      --glass-border:rgba(99, 102, 241, 0.18);
+      --user-bubble: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+      --border:      rgba(255,255,255,0.07);
+      --success:     #10b981;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--navy);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+
+    /* ============================================
+       LAYOUT
+    ============================================ */
+    .app {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    /* ============================================
+       HEADER / NAV
+    ============================================ */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.875rem 1.5rem;
+      background: rgba(11, 17, 32, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      z-index: 50;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .header-brand img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .header-brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+    }
+
+    .header-brand-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
+      line-height: 1;
+    }
+
+    .header-brand-sub {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .header-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 20px;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--success);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--success);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .back-link {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--text-main); }
+
+    /* ============================================
+       AI IDENTITY BANNER
+    ============================================ */
+    .ai-identity {
+      text-align: center;
+      padding: 1.5rem 1.5rem 1rem;
+      background: linear-gradient(180deg, rgba(37,99,235,0.06) 0%, transparent 100%);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .ai-avatar-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 0.6rem;
+    }
+
+    .ai-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.2), 0 0 30px rgba(37,99,235,0.25);
+    }
+
+    .ai-avatar-ring {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      background: linear-gradient(135deg, rgba(37,99,235,0.5), rgba(6,182,212,0.5)) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      animation: spin-ring 8s linear infinite;
+    }
+
+    @keyframes spin-ring {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .ai-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--blue-light), var(--cyan-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.01em;
+    }
+
+    .ai-tagline {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      margin-top: 0.2rem;
+    }
+
+    /* ============================================
+       CHAT WINDOW
+    ============================================ */
+    .chat-window {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      scroll-behavior: smooth;
+    }
+
+    /* Custom scrollbar */
+    .chat-window::-webkit-scrollbar { width: 4px; }
+    .chat-window::-webkit-scrollbar-track { background: transparent; }
+    .chat-window::-webkit-scrollbar-thumb {
+      background: rgba(99,102,241,0.3);
+      border-radius: 4px;
+    }
+    .chat-window::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.5); }
+
+    /* ============================================
+       MESSAGES
+    ============================================ */
+    .message-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.75rem;
+      animation: msg-in 0.3s ease both;
+    }
+
+    @keyframes msg-in {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .message-row.user { flex-direction: row-reverse; }
+    .message-row.user .message-avatar { display: none; }
+
+    .message-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 12px rgba(37,99,235,0.3);
+    }
+
+    /* AI message bubble */
+    .bubble {
+      max-width: 75%;
+      padding: 0.875rem 1.1rem;
+      border-radius: 1.2rem;
+      font-size: 0.93rem;
+      line-height: 1.65;
+      word-break: break-word;
+    }
+
+    .bubble.ai {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-bottom-left-radius: 0.3rem;
+      color: var(--text-main);
+    }
+
+    /* User message bubble */
+    .bubble.user {
+      background: var(--user-bubble);
+      border-bottom-right-radius: 0.3rem;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(37,99,235,0.35);
+    }
+
+    /* ============================================
+       TYPING INDICATOR
+    ============================================ */
+    .typing-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.75rem;
+    }
+
+    .typing-bubble {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 1.2rem;
+      border-bottom-left-radius: 0.3rem;
+      padding: 0.75rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      animation: msg-in 0.3s ease both;
+    }
+
+    .typing-dots {
+      display: flex;
+      gap: 4px;
+    }
+
+    .typing-dots span {
+      width: 6px;
+      height: 6px;
+      background: var(--cyan);
+      border-radius: 50%;
+      animation: bounce-dot 1.2s ease-in-out infinite;
+    }
+
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes bounce-dot {
+      0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+      40% { transform: translateY(-6px); opacity: 1; }
+    }
+
+    /* ============================================
+       WELCOME CARD
+    ============================================ */
+    .welcome-card {
+      margin: 0.5rem auto;
+      max-width: 480px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      text-align: center;
+      animation: msg-in 0.4s ease both;
+    }
+
+    .welcome-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .welcome-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .starter-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .chip {
+      background: rgba(37,99,235,0.12);
+      border: 1px solid rgba(37,99,235,0.25);
+      border-radius: 20px;
+      padding: 0.35rem 0.8rem;
+      font-size: 0.76rem;
+      color: var(--blue-light);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+
+    .chip:hover {
+      background: rgba(37,99,235,0.22);
+      border-color: rgba(37,99,235,0.45);
+      transform: translateY(-1px);
+    }
+
+    /* ============================================
+       INPUT BAR
+    ============================================ */
+    .input-area {
+      padding: 0.875rem 1.25rem;
+      background: rgba(11, 17, 32, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .input-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.75rem;
+      background: var(--navy-card);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1rem;
+      padding: 0.6rem 0.6rem 0.6rem 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .input-row:focus-within {
+      border-color: rgba(37,99,235,0.5);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
+    }
+
+    #chat-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-main);
+      font-size: 0.93rem;
+      font-family: 'Inter', sans-serif;
+      resize: none;
+      max-height: 120px;
+      min-height: 24px;
+      line-height: 1.5;
+      overflow-y: auto;
+    }
+
+    #chat-input::placeholder { color: var(--text-dim); }
+
+    #chat-input::-webkit-scrollbar { width: 3px; }
+    #chat-input::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.3); border-radius: 3px; }
+
+    #send-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 0.6rem;
+      background: var(--user-bubble);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: opacity 0.2s, transform 0.15s;
+      color: white;
+    }
+
+    #send-btn:hover { opacity: 0.85; transform: scale(1.05); }
+    #send-btn:active { transform: scale(0.95); }
+    #send-btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+    .input-hint {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    /* ============================================
+       MATH RENDERING
+    ============================================ */
+    .katex { font-size: 1em !important; }
+    .katex-display { margin: 0.5rem 0 !important; overflow-x: auto; }
+
+    /* ============================================
+       ERROR STATE
+    ============================================ */
+    .error-bubble {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: #fca5a5;
+    }
+
+    /* ============================================
+       RESPONSIVE
+    ============================================ */
+    @media (max-width: 640px) {
+      .ai-identity { padding: 1rem 1rem 0.75rem; }
+      .ai-avatar { width: 52px; height: 52px; font-size: 1.3rem; }
+      .bubble { max-width: 88%; font-size: 0.88rem; }
+      .header-brand-name { font-size: 0.82rem; }
+      .header { padding: 0.75rem 1rem; }
+      .chat-window { padding: 1rem; }
+      .input-area { padding: 0.75rem 1rem; }
+      .welcome-card { max-width: 100%; }
+    }
+
+    /* ============================================
+       BACKGROUND EFFECTS
+    ============================================ */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -20%;
+      left: -10%;
+      width: 50%;
+      height: 60%;
+      background: radial-gradient(ellipse, rgba(37,99,235,0.09) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -20%;
+      right: -10%;
+      width: 45%;
+      height: 55%;
+      background: radial-gradient(ellipse, rgba(6,182,212,0.07) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .app { position: relative; z-index: 1; }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- HEADER -->
+    <header class="header">
+      <a href="/index.html" class="back-link" id="back-link" aria-label="Retour à l'accueil">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 5l-7 7 7 7"/>
+        </svg>
+        <span class="nav-opt-text">Accueil</span>
+      </a>
+
+      <a href="/index.html" class="header-brand" aria-label="Simple Maths Academy">
+        <img src="assets/logo-transparent.png" alt="Logo SMA" />
+        <div class="header-brand-text">
+          <span class="header-brand-name">SMA-Alpha</span>
+          <span class="header-brand-sub">Professeur IA</span>
+        </div>
+      </a>
+
+      <div class="header-badge">
+        <span class="status-dot"></span>
+        En ligne
+      </div>
+    </header>
+
+    <!-- AI IDENTITY -->
+    <div class="ai-identity">
+      <div class="ai-avatar-wrapper">
+        <div class="ai-avatar">🧠</div>
+        <div class="ai-avatar-ring"></div>
+      </div>
+      <div class="ai-name">SMA-Alpha</div>
+      <div class="ai-tagline">Ton professeur de maths virtuel | Méthode Socratique | LaTeX natif</div>
+    </div>
+
+    <!-- CHAT WINDOW -->
+    <div class="chat-window" id="chat-window" role="log" aria-live="polite" aria-label="Conversation avec SMA-Alpha">
+
+      <!-- Welcome Card -->
+      <div class="welcome-card" id="welcome-card">
+        <h3>👋 Bonjour ! Je suis SMA-Alpha.</h3>
+        <p>Je suis là pour te <strong>guider</strong> dans ta réflexion | pas pour te donner les réponses directement. Pose-moi ton problème de maths !</p>
+        <div class="starter-chips" id="starter-chips">
+          <button class="chip" onclick="sendChip(this)">Je bloque sur une intégrale</button>
+          <button class="chip" onclick="sendChip(this)">Aide-moi avec les limites</button>
+          <button class="chip" onclick="sendChip(this)">Problème de trigonométrie</button>
+          <button class="chip" onclick="sendChip(this)">Exercice de logique EXMD</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- INPUT AREA -->
+    <div class="input-area">
+      <div class="input-row">
+        <textarea
+          id="chat-input"
+          placeholder="Pose ta question de maths… (Shift+Enter pour saut de ligne)"
+          rows="1"
+          aria-label="Zone de saisie"
+        ></textarea>
+        <button id="send-btn" aria-label="Envoyer le message" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+      <div class="input-hint">Entrée pour envoyer · Shift+Entrée pour nouvelle ligne · Réponses guidées par IA</div>
+    </div>
+
+  </div>
+
+  <script>
+    // ============================================
+    // STATE
+    // ============================================
+    let chatHistory = [];
+    let isLoading = false;
+    let renderMathReady = false;
+
+    const chatWindow = document.getElementById('chat-window');
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+
+    // ============================================
+    // LUCIDE ICONS INIT
+    // ============================================
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+
+    // ============================================
+    // AUTO-RESIZE TEXTAREA
+    // ============================================
+    chatInput.addEventListener('input', () => {
+      chatInput.style.height = 'auto';
+      chatInput.style.height = Math.min(chatInput.scrollHeight, 120) + 'px';
+      sendBtn.disabled = chatInput.value.trim() === '' || isLoading;
+    });
+
+    // ============================================
+    // KEYBOARD: Enter to send, Shift+Enter newline
+    // ============================================
+    chatInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        if (!sendBtn.disabled) sendMessage();
+      }
+    });
+
+    sendBtn.addEventListener('click', sendMessage);
+
+    // ============================================
+    // STARTER CHIPS
+    // ============================================
+    function sendChip(btn) {
+      const text = btn.textContent.trim();
+      // Hide welcome card
+      const welcomeCard = document.getElementById('welcome-card');
+      if (welcomeCard) welcomeCard.remove();
+      chatInput.value = text;
+      sendMessage();
+    }
+
+    // ============================================
+    // SEND MESSAGE
+    // ============================================
+    async function sendMessage() {
+      const text = chatInput.value.trim();
+      if (!text || isLoading) return;
+
+      // Remove welcome card if present
+      const welcomeCard = document.getElementById('welcome-card');
+      if (welcomeCard) welcomeCard.remove();
+
+      // Reset input
+      chatInput.value = '';
+      chatInput.style.height = 'auto';
+      sendBtn.disabled = true;
+
+      // Add user message to history & UI
+      chatHistory.push({ role: 'user', content: text });
+      appendMessage('user', text);
+
+      // Show typing indicator
+      isLoading = true;
+      const typingEl = appendTyping();
+
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: chatHistory }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || data.error) {
+          throw new Error(data.error || 'Erreur réseau');
+        }
+
+        const reply = data.reply;
+        chatHistory.push({ role: 'assistant', content: reply });
+
+        typingEl.remove();
+        appendMessage('ai', reply);
+
+      } catch (err) {
+        typingEl.remove();
+        appendMessage('ai', `❌ Désolé, une erreur est survenue : ${err.message}. Réessaie dans quelques secondes.`, true);
+      } finally {
+        isLoading = false;
+        sendBtn.disabled = chatInput.value.trim() === '';
+        chatInput.focus();
+      }
+    }
+
+    // ============================================
+    // APPEND MESSAGE
+    // ============================================
+    function appendMessage(role, content, isError = false) {
+      const row = document.createElement('div');
+      row.className = `message-row ${role}`;
+
+      if (role === 'ai') {
+        const avatar = document.createElement('div');
+        avatar.className = 'message-avatar';
+        avatar.textContent = '🧠';
+        row.appendChild(avatar);
+      }
+
+      const bubble = document.createElement('div');
+      bubble.className = `bubble ${role}${isError ? ' error-bubble' : ''}`;
+
+      // Render content — support basic markdown-like **bold** and line breaks
+      bubble.innerHTML = formatContent(content);
+
+      row.appendChild(bubble);
+      chatWindow.appendChild(row);
+
+      // Render LaTeX
+      renderLatex(bubble);
+
+      // Auto-scroll
+      scrollToBottom();
+
+      return row;
+    }
+
+    // ============================================
+    // FORMAT CONTENT (basic markdown)
+    // ============================================
+    function formatContent(text) {
+      return text
+        // Bold: **text**
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        // Italic: *text*
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        // Line breaks
+        .replace(/\n/g, '<br>');
+    }
+
+    // ============================================
+    // TYPING INDICATOR
+    // ============================================
+    function appendTyping() {
+      const row = document.createElement('div');
+      row.className = 'typing-row';
+
+      const avatar = document.createElement('div');
+      avatar.className = 'message-avatar';
+      avatar.textContent = '🧠';
+
+      const bubble = document.createElement('div');
+      bubble.className = 'typing-bubble';
+      bubble.innerHTML = `
+        <span>SMA-Alpha réfléchit</span>
+        <div class="typing-dots">
+          <span></span><span></span><span></span>
+        </div>
+      `;
+
+      row.appendChild(avatar);
+      row.appendChild(bubble);
+      chatWindow.appendChild(row);
+      scrollToBottom();
+
+      return row;
+    }
+
+    // ============================================
+    // RENDER LATEX
+    // ============================================
+    function renderLatex(el) {
+      const tryRender = () => {
+        if (typeof renderMathInElement === 'function') {
+          try {
+            renderMathInElement(el, {
+              delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\[', right: '\\]', display: true },
+                { left: '\\(', right: '\\)', display: false },
+              ],
+              throwOnError: false,
+              errorColor: '#ef4444',
+            });
+          } catch (e) {
+            // silently ignore katex errors
+          }
+        }
+      };
+
+      if (renderMathReady || typeof renderMathInElement === 'function') {
+        tryRender();
+      } else {
+        // Wait for KaTeX auto-render to load
+        setTimeout(tryRender, 500);
+      }
+    }
+
+    // ============================================
+    // AUTO-SCROLL
+    // ============================================
+    function scrollToBottom() {
+      requestAnimationFrame(() => {
+        chatWindow.scrollTo({ top: chatWindow.scrollHeight, behavior: 'smooth' });
+      });
+    }
+
+    // ============================================
+    // FOCUS INPUT ON LOAD
+    // ============================================
+    window.addEventListener('load', () => {
+      chatInput.focus();
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
