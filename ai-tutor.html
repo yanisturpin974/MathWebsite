@@ -4,192 +4,2699 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SMA-Alpha | Maintenance de Sécurité | Simple Maths Academy</title>
+  <title>SMA-Alpha | Professeur IA de Maths | Simple Maths Academy</title>
   <link rel="icon" type="image/png" href="assets/logo-transparent.png" />
-  <meta name="description" content="MAINTENANCE DE SÉCURITÉ : SMA-Alpha est actuellement hors-ligne pour calibrage. Accès suspendu jusqu'à demain matin." />
-  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Discutez avec SMA-Alpha, votre professeur de mathématiques virtuel alimenté par l'IA. Posez vos questions de maths et obtenez un guidage Socratique instantané." />
+  <meta name="robots" content="noindex, follow" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
+  <!-- KaTeX (math rendering) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathReady = true;"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- Supabase JS Client SDK v2 -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <style>
+    /* ============================================
+       DESIGN TOKENS — Match simplemathsacademy.com
+    ============================================ */
     :root {
-      --navy: #0b1120;
-      --navy-card: #1e293b;
-      --blue: #2563eb;
-      --cyan: #06b6d4;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --orange: #fb923c;
+      --navy:        #0b1120;
+      --navy-deep:   #060c18;
+      --navy-mid:    #111827;
+      --navy-card:   #1e293b;
+      --blue:        #2563eb;
+      --blue-light:  #3b82f6;
+      --cyan:        #06b6d4;
+      --cyan-light:  #22d3ee;
+      --text-main:   #f8fafc;
+      --text-muted:  #94a3b8;
+      --text-dim:    #64748b;
+      --glass-bg:    rgba(30, 41, 59, 0.55);
+      --glass-border:rgba(99, 102, 241, 0.18);
+      --user-bubble: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+      --border:      rgba(255,255,255,0.07);
+      --success:     #10b981;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      min-height: 100vh;
+    html, body {
+      height: 100%;
       font-family: 'Inter', sans-serif;
       background-color: var(--navy);
       color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+
+    /* ============================================
+       LAYOUT
+    ============================================ */
+    .app {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    /* ============================================
+       HEADER / NAV
+    ============================================ */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.875rem 1.5rem;
+      background: rgba(11, 17, 32, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      z-index: 50;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .header-brand img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .header-brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+    }
+
+    .header-brand-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
+      line-height: 1;
+    }
+
+    .header-brand-sub {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .expert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: linear-gradient(135deg, rgba(37,99,235,0.18) 0%, rgba(6,182,212,0.12) 100%);
+      border: 1px solid rgba(37,99,235,0.3);
+      border-radius: 10px;
+      padding: 0.12rem 0.45rem;
+      font-size: 0.58rem;
+      font-weight: 700;
+      color: var(--cyan-light);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 0.15rem;
+    }
+
+    .header-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 20px;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--success);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--success);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .back-link {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--text-main); }
+
+    /* ============================================
+       AUTH & USER STATUS HEADER CONTROLS
+    ============================================ */
+    .auth-header-container {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .auth-header-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(37,99,235,0.2) 0%, rgba(6,182,212,0.15) 100%);
+      border: 1px solid rgba(37,99,235,0.4);
+      color: var(--text-main);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .auth-header-btn:hover {
+      background: linear-gradient(135deg, rgba(37,99,235,0.35) 0%, rgba(6,182,212,0.25) 100%);
+      border-color: rgba(6,182,212,0.6);
+      transform: translateY(-1px);
+    }
+
+    .user-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.76rem;
+      color: var(--text-main);
+    }
+
+    .user-email-text {
+      max-width: 140px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--text-muted);
+    }
+
+    .badge-premium-member {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: linear-gradient(135deg, rgba(234, 179, 8, 0.2) 0%, rgba(245, 158, 11, 0.15) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.5);
+      color: #fbbf24;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+    }
+
+    .badge-free-member {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: rgba(100, 116, 139, 0.2);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+    }
+
+    .logout-header-btn {
+      background: transparent;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #f87171;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .logout-header-btn:hover {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: rgba(239, 68, 68, 0.5);
+    }
+
+    .admin-trigger-btn {
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      color: #c084fc;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .admin-trigger-btn:hover {
+      background: rgba(168, 85, 247, 0.25);
+      border-color: rgba(168, 85, 247, 0.7);
+    }
+
+    /* ============================================
+       AUTH MODAL STYLES (GLASSMORPHISM)
+    ============================================ */
+    .auth-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 1.5rem;
-      position: relative;
-      overflow: hidden;
-      -webkit-font-smoothing: antialiased;
+      background: rgba(4, 8, 20, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      animation: fade-in 0.3s ease both;
     }
 
-    /* Ambient radial glow background */
+    .auth-card {
+      background: rgba(11, 17, 32, 0.96);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      border: 1px solid rgba(37, 99, 235, 0.45);
+      border-radius: 1.5rem;
+      padding: 2.25rem;
+      max-width: 420px;
+      width: 100%;
+      box-shadow:
+        0 0 0 1px rgba(37, 99, 235, 0.15) inset,
+        0 0 60px rgba(37, 99, 235, 0.25),
+        0 40px 100px rgba(0, 0, 0, 0.85);
+      animation: modal-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      position: relative;
+    }
+
+    .auth-tabs {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 999px;
+      padding: 0.3rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .auth-tab-btn {
+      flex: 1;
+      padding: 0.6rem 0.5rem;
+      border: none;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .auth-tab-btn.active {
+      background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
+    }
+
+    .auth-form-group {
+      margin-bottom: 1.1rem;
+      text-align: left;
+    }
+
+    .auth-form-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .auth-input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0.85rem;
+      color: #ffffff;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .auth-input:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+    }
+
+    .auth-submit-btn {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+      transition: all 0.2s ease;
+      margin-top: 0.5rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .auth-submit-btn:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.55);
+    }
+
+    .auth-submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .auth-msg-box {
+      font-size: 0.82rem;
+      padding: 0.65rem 0.85rem;
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+      display: none;
+      text-align: left;
+      line-height: 1.4;
+    }
+
+    .auth-msg-box.error {
+      display: block;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #fca5a5;
+    }
+
+    .auth-msg-box.success {
+      display: block;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #6ee7b7;
+    }
+
+    .auth-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: color 0.2s;
+      line-height: 1;
+    }
+
+    .auth-close-btn:hover { color: #ffffff; }
+
+    /* ============================================
+       AI IDENTITY BANNER
+    ============================================ */
+    .ai-identity {
+      text-align: center;
+      padding: 1.5rem 1.5rem 1rem;
+      background: linear-gradient(180deg, rgba(37,99,235,0.06) 0%, transparent 100%);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .ai-avatar-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 0.6rem;
+    }
+
+    .ai-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.2), 0 0 30px rgba(37,99,235,0.25);
+    }
+
+    .ai-avatar-ring {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      background: linear-gradient(135deg, rgba(37,99,235,0.5), rgba(6,182,212,0.5)) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      animation: spin-ring 8s linear infinite;
+    }
+
+    @keyframes spin-ring {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .ai-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--blue-light), var(--cyan-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.01em;
+    }
+
+    .ai-tagline {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      margin-top: 0.2rem;
+    }
+
+    /* ============================================
+       CHAT WINDOW
+    ============================================ */
+    .chat-window {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      scroll-behavior: smooth;
+    }
+
+    /* Custom scrollbar */
+    .chat-window::-webkit-scrollbar { width: 4px; }
+    .chat-window::-webkit-scrollbar-track { background: transparent; }
+    .chat-window::-webkit-scrollbar-thumb {
+      background: rgba(99,102,241,0.3);
+      border-radius: 4px;
+    }
+    .chat-window::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.5); }
+
+    /* ============================================
+       MESSAGES
+    ============================================ */
+    .message-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.75rem;
+      animation: msg-in 0.3s ease both;
+    }
+
+    @keyframes msg-in {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .message-row.user { flex-direction: row-reverse; }
+    .message-row.user .message-avatar { display: none; }
+
+    .message-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 12px rgba(37,99,235,0.3);
+    }
+
+    /* AI message bubble */
+    .bubble {
+      max-width: 75%;
+      padding: 0.875rem 1.1rem;
+      border-radius: 1.2rem;
+      font-size: 0.93rem;
+      line-height: 1.65;
+      word-break: break-word;
+    }
+
+    .bubble.ai {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-bottom-left-radius: 0.3rem;
+      color: var(--text-main);
+    }
+
+    /* User message bubble */
+    .bubble.user {
+      background: var(--user-bubble);
+      border-bottom-right-radius: 0.3rem;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(37,99,235,0.35);
+    }
+
+    /* ============================================
+       TYPING INDICATOR
+    ============================================ */
+    .typing-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.75rem;
+    }
+
+    .typing-bubble {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 1.2rem;
+      border-bottom-left-radius: 0.3rem;
+      padding: 0.75rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      animation: msg-in 0.3s ease both;
+    }
+
+    .typing-dots {
+      display: flex;
+      gap: 4px;
+    }
+
+    .typing-dots span {
+      width: 6px;
+      height: 6px;
+      background: var(--cyan);
+      border-radius: 50%;
+      animation: bounce-dot 1.2s ease-in-out infinite;
+    }
+
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes bounce-dot {
+      0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+      40% { transform: translateY(-6px); opacity: 1; }
+    }
+
+    /* ============================================
+       WELCOME CARD
+    ============================================ */
+    .welcome-card {
+      margin: 0.5rem auto;
+      max-width: 480px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      text-align: center;
+      animation: msg-in 0.4s ease both;
+    }
+
+    .welcome-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .welcome-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .starter-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .chip {
+      background: rgba(37,99,235,0.12);
+      border: 1px solid rgba(37,99,235,0.25);
+      border-radius: 20px;
+      padding: 0.35rem 0.8rem;
+      font-size: 0.76rem;
+      color: var(--blue-light);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+
+    .chip:hover {
+      background: rgba(37,99,235,0.22);
+      border-color: rgba(37,99,235,0.45);
+      transform: translateY(-1px);
+    }
+
+    /* ============================================
+       INPUT BAR
+    ============================================ */
+    .input-area {
+      padding: 0.875rem 1.25rem;
+      background: rgba(11, 17, 32, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .input-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.75rem;
+      background: var(--navy-card);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1rem;
+      padding: 0.6rem 0.6rem 0.6rem 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .input-row:focus-within {
+      border-color: rgba(37,99,235,0.5);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
+    }
+
+    #chat-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-main);
+      font-size: 0.93rem;
+      font-family: 'Inter', sans-serif;
+      resize: none;
+      max-height: 120px;
+      min-height: 24px;
+      line-height: 1.5;
+      overflow-y: auto;
+    }
+
+    #chat-input::placeholder { color: var(--text-dim); }
+
+    #chat-input::-webkit-scrollbar { width: 3px; }
+    #chat-input::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.3); border-radius: 3px; }
+
+    #send-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 0.6rem;
+      background: var(--user-bubble);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: opacity 0.2s, transform 0.15s;
+      color: white;
+    }
+
+    #send-btn:hover { opacity: 0.85; transform: scale(1.05); }
+    #send-btn:active { transform: scale(0.95); }
+    #send-btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+    .input-hint {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    /* ============================================
+       MATH RENDERING
+    ============================================ */
+    .katex { font-size: 1em !important; }
+    .katex-display { margin: 0.5rem 0 !important; overflow-x: auto; }
+
+    /* ============================================
+       ERROR STATE
+    ============================================ */
+    .error-bubble {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: #fca5a5;
+    }
+
+    /* ============================================
+       RESPONSIVE
+    ============================================ */
+    @media (max-width: 640px) {
+      .ai-identity { padding: 1rem 1rem 0.75rem; }
+      .ai-avatar { width: 52px; height: 52px; font-size: 1.3rem; }
+      .bubble { max-width: 88%; font-size: 0.88rem; }
+      .header-brand-name { font-size: 0.82rem; }
+      .header { padding: 0.75rem 1rem; }
+      .chat-window { padding: 1rem; }
+      .input-area { padding: 0.75rem 1rem; }
+      .welcome-card { max-width: 100%; }
+    }
+
+    /* ============================================
+       BACKGROUND EFFECTS
+    ============================================ */
     body::before {
       content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, rgba(6,182,212,0.06) 45%, transparent 70%);
+      position: fixed;
+      top: -20%;
+      left: -10%;
+      width: 50%;
+      height: 60%;
+      background: radial-gradient(ellipse, rgba(37,99,235,0.09) 0%, transparent 70%);
       pointer-events: none;
+      z-index: 0;
     }
 
-    .maint-card {
-      background: rgba(17, 24, 39, 0.88);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(251, 146, 60, 0.35);
-      border-radius: 1.75rem;
-      padding: 3rem 2.5rem;
-      max-width: 480px;
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -20%;
+      right: -10%;
+      width: 45%;
+      height: 55%;
+      background: radial-gradient(ellipse, rgba(6,182,212,0.07) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .app { position: relative; z-index: 1; }
+
+    /* ============================================
+       RATING BUTTONS
+    ============================================ */
+    .rating-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.45rem;
+      padding-left: 0.25rem;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .message-row.ai:hover .rating-bar,
+    .rating-bar.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .rating-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.72rem;
+      cursor: pointer;
+      color: var(--text-dim);
+      transition: all 0.2s;
+      line-height: 1;
+    }
+
+    .rating-btn:hover {
+      border-color: rgba(255,255,255,0.25);
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .rating-btn.active-up {
+      border-color: rgba(16,185,129,0.5);
+      color: var(--success);
+      background: rgba(16,185,129,0.08);
+    }
+
+    .rating-btn.active-down {
+      border-color: rgba(239,68,68,0.4);
+      color: #f87171;
+      background: rgba(239,68,68,0.07);
+    }
+
+    .rating-thanks {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      animation: thanks-in 0.3s ease both;
+    }
+
+    @keyframes thanks-in {
+      from { opacity: 0; transform: translateX(-4px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ============================================
+       PDF EXPORT BUTTON
+    ============================================ */
+    .pdf-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(37,99,235,0.1);
+      border: 1px solid rgba(37,99,235,0.25);
+      border-radius: 8px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--blue-light);
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .pdf-btn:hover {
+      background: rgba(37,99,235,0.18);
+      border-color: rgba(37,99,235,0.45);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37,99,235,0.2);
+    }
+
+    .pdf-btn:active { transform: translateY(0); }
+
+    .pdf-btn svg { flex-shrink: 0; }
+
+    /* ============================================
+       PRINT / PDF STYLES
+    ============================================ */
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+      html, body {
+        height: auto;
+        overflow: visible;
+        background: #fff !important;
+        color: #111 !important;
+      }
+
+      .app {
+        height: auto;
+        max-width: 100%;
+        overflow: visible;
+      }
+
+      body::before, body::after { display: none !important; }
+
+      .header, .ai-identity, .input-area { display: none !important; }
+
+      .chat-window {
+        overflow: visible !important;
+        height: auto !important;
+        flex: none !important;
+        padding: 1rem !important;
+        gap: 1.25rem;
+        background: white !important;
+      }
+
+      .message-row {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .bubble.ai {
+        background: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
+        color: #111 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+
+      .bubble.user {
+        background: #2563eb !important;
+        color: #fff !important;
+        box-shadow: none !important;
+      }
+
+      .rating-bar, .welcome-card { display: none !important; }
+
+      .message-avatar {
+        background: #2563eb !important;
+        box-shadow: none !important;
+      }
+
+      /* Print header */
+      .chat-window::before {
+        content: 'Session SMA-Alpha — Simple Maths Academy';
+        display: block;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid #2563eb;
+      }
+    }
+    /* ============================================
+       EMAIL GATE MODAL
+    ============================================ */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(6, 12, 24, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      animation: fade-in 0.3s ease both;
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .modal-card {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(32px);
+      -webkit-backdrop-filter: blur(32px);
+      border: 1px solid rgba(37, 99, 235, 0.45);
+      border-radius: 1.5rem;
+      padding: 2.25rem 2rem 2rem;
+      max-width: 400px;
       width: 100%;
       text-align: center;
       box-shadow:
-        0 0 0 1px rgba(251, 146, 60, 0.1) inset,
-        0 0 60px rgba(251, 146, 60, 0.12),
+        0 0 0 1px rgba(37,99,235,0.15) inset,
+        0 0 60px rgba(37,99,235,0.2),
         0 40px 100px rgba(0,0,0,0.7);
-      position: relative;
-      z-index: 10;
+      animation: modal-pop 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
     }
 
-    .maint-logo {
-      display: inline-block;
-      margin-bottom: 1.5rem;
+    @keyframes modal-pop {
+      from { opacity: 0; transform: translateY(20px) scale(0.95); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    .maint-logo img {
-      height: 44px;
-      object-fit: contain;
-    }
-
-    .maint-status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(251, 146, 60, 0.12);
-      border: 1px solid rgba(251, 146, 60, 0.3);
-      border-radius: 20px;
-      padding: 0.35rem 0.9rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--orange);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--orange);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--orange);
-      animation: pulse 1.5s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
-    }
-
-    .brain-icon {
-      font-size: 4rem;
+    .modal-brain {
+      font-size: 2.75rem;
       display: block;
-      margin-bottom: 1.25rem;
+      margin-bottom: 0.75rem;
       animation: brain-pulse 2s ease-in-out infinite;
     }
 
     @keyframes brain-pulse {
-      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(37,99,235,0.4)); }
-      50% { transform: scale(1.08); filter: drop-shadow(0 0 25px rgba(6,182,212,0.6)); }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
     }
 
-    .maint-title {
-      font-size: 1.25rem;
+    .modal-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .modal-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-input-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-email-input {
+      flex: 1;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(37,99,235,0.35);
+      border-radius: 0.75rem;
+      padding: 0.7rem 1rem;
+      font-size: 0.88rem;
+      font-family: 'Inter', sans-serif;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .modal-email-input::placeholder { color: var(--text-dim); }
+
+    .modal-email-input:focus {
+      border-color: rgba(37,99,235,0.7);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+    }
+
+    .modal-submit-btn {
+      background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+      border: none;
+      border-radius: 0.75rem;
+      padding: 0.7rem 1.2rem;
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .modal-submit-btn:hover { opacity: 0.88; transform: scale(1.03); }
+    .modal-submit-btn:active { transform: scale(0.97); }
+    .modal-submit-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+    .modal-error {
+      font-size: 0.75rem;
+      color: #f87171;
+      margin-top: 0.25rem;
+      display: none;
+    }
+
+    .modal-privacy {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      margin-top: 0.5rem;
+    }
+
+    /* Lock input when modal is open */
+    .input-area.locked {
+      pointer-events: none;
+      opacity: 0.35;
+      filter: blur(1px);
+      user-select: none;
+    }
+
+    /* textarea hard-locked */
+    #chat-input.hard-locked {
+      color: var(--text-dim);
+      cursor: not-allowed;
+    }
+
+    /* ============================================
+       MESSAGE COUNTER BADGE
+    ============================================ */
+    .msg-counter {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.4rem;
+      padding: 0.35rem 1.25rem 0;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      flex-shrink: 0;
+      transition: color 0.3s;
+    }
+
+    .msg-counter.warning { color: #fb923c; }
+    .msg-counter.danger  { color: #f87171; }
+
+    .msg-counter-pips { display: flex; gap: 3px; }
+
+    .msg-pip {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      transition: background 0.35s;
+    }
+
+    .msg-pip.used { background: var(--blue); }
+    .msg-pip.warn { background: #fb923c; }
+    .msg-pip.last { background: #f87171; }
+
+    /* ============================================
+       PAYWALL MODAL
+    ============================================ */
+    .paywall-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(4, 8, 20, 0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      animation: fade-in 0.35s ease both;
+    }
+
+    .paywall-card {
+      background: rgba(11, 17, 32, 0.96);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      border: 1px solid rgba(37,99,235,0.4);
+      border-radius: 1.75rem;
+      padding: 2.25rem 2rem 1.75rem;
+      max-width: 760px;
+      width: 100%;
+      text-align: center;
+      box-shadow:
+        0 0 0 1px rgba(37,99,235,0.12) inset,
+        0 0 80px rgba(37,99,235,0.25),
+        0 50px 120px rgba(0,0,0,0.85);
+      animation: modal-pop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .paywall-emoji {
+      font-size: 2.75rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .paywall-modal-title {
+      font-size: 1.35rem;
       font-weight: 800;
       color: var(--text-main);
-      line-height: 1.35;
-      margin-bottom: 1rem;
-      letter-spacing: -0.01em;
+      line-height: 1.3;
+      margin-bottom: 0.4rem;
+      font-family: 'Inter', sans-serif;
     }
 
-    .maint-text {
-      font-size: 0.9rem;
+    .paywall-sub {
+      font-size: 0.88rem;
       color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 2rem;
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      padding: 0.85rem 1.8rem;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
-      color: #fff;
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-decoration: none;
-      box-shadow: 0 4px 20px rgba(37,99,235,0.35);
-      transition: opacity 0.2s, transform 0.2s;
+    .paywall-plans-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin: 1.25rem 0;
+      text-align: left;
     }
 
-    .back-btn:hover {
-      opacity: 0.9;
+    @media (max-width: 768px) {
+      .paywall-plans-grid {
+        grid-template-columns: 1fr;
+        gap: 1.15rem;
+      }
+      .paywall-card {
+        padding: 1.75rem 1.25rem 1.25rem;
+      }
+    }
+
+    /* Card 1: Essentiel - Clean & Simple */
+    .paywall-plan-card {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .paywall-plan-card:hover {
+      border-color: rgba(255, 255, 255, 0.25);
       transform: translateY(-2px);
     }
+
+    /* Card 2: Expert - Glassmorphism + Border Glow (Most Popular) */
+    .paywall-plan-card.expert-plan {
+      background: linear-gradient(145deg, rgba(30, 58, 138, 0.45) 0%, rgba(6, 182, 212, 0.2) 100%);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 2px solid rgba(6, 182, 212, 0.75);
+      box-shadow:
+        0 0 30px rgba(6, 182, 212, 0.32),
+        0 0 65px rgba(37, 99, 235, 0.28),
+        inset 0 0 22px rgba(6, 182, 212, 0.16);
+      animation: glow-pulse 3s infinite alternate ease-in-out;
+      transform: scale(1.02);
+      z-index: 2;
+    }
+
+    @media (max-width: 640px) {
+      .paywall-plan-card.expert-plan {
+        transform: none;
+      }
+    }
+
+    @keyframes glow-pulse {
+      0% {
+        box-shadow: 0 0 20px rgba(6, 182, 212, 0.28), 0 0 45px rgba(37, 99, 235, 0.2), inset 0 0 15px rgba(6, 182, 212, 0.12);
+      }
+      100% {
+        box-shadow: 0 0 35px rgba(6, 182, 212, 0.55), 0 0 75px rgba(37, 99, 235, 0.42), inset 0 0 28px rgba(6, 182, 212, 0.25);
+      }
+    }
+
+    .paywall-plan-header {
+      margin-bottom: 0.85rem;
+    }
+
+    .paywall-badge-recommended {
+      position: absolute;
+      top: -12px;
+      right: 16px;
+      background: linear-gradient(135deg, #06b6d4 0%, #2563eb 100%);
+      color: #ffffff;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
+    }
+
+    .paywall-plan-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.2rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .paywall-plan-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .paywall-plan-price {
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1;
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .paywall-plan-price span {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .paywall-features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .paywall-features-list li {
+      font-size: 0.82rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.35;
+    }
+
+    .paywall-features-list li .check-icon {
+      color: #38bdf8;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .paywall-plan-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      box-sizing: border-box;
+    }
+
+    .paywall-plan-btn.btn-essentiel {
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--text-main);
+    }
+
+    .paywall-plan-btn.btn-essentiel:hover {
+      background: rgba(51, 65, 85, 0.9);
+      border-color: rgba(255, 255, 255, 0.4);
+      color: #fff;
+    }
+
+    .paywall-plan-btn.btn-featured {
+      background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+      color: #ffffff;
+      box-shadow: 0 6px 18px rgba(59, 130, 246, 0.35);
+    }
+
+    .paywall-plan-btn.btn-featured:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 22px rgba(59, 130, 246, 0.45);
+    }
+
+    .paywall-plan-btn.btn-expert {
+      background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+      color: #ffffff;
+      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.35);
+    }
+
+    .paywall-plan-btn.btn-expert:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5);
+    }
+
+    .paywall-guarantee-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .paywall-free-link {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      text-decoration: underline;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .paywall-free-link:hover { color: var(--text-muted); }
+
+    /* Billing Cycle Toggle Switch */
+    .paywall-billing-toggle-wrap {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      padding: 4px;
+      margin: 0.25rem auto 1.25rem;
+      gap: 4px;
+    }
+
+    .billing-toggle-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.55rem 1.15rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .billing-toggle-btn.active {
+      background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(6, 182, 212, 0.35);
+    }
+
+    .toggle-badge-glow {
+      background: rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+    }
+
+    .price-subtext {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+      font-weight: 600;
+    }
+
+    .paywall-alt-cycle-link {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 0.45rem;
+      display: inline-block;
+      transition: color 0.2s;
+    }
+
+    .paywall-alt-cycle-link:hover {
+      color: #38bdf8;
+    }
+
+    @media print {
+      .modal-backdrop, .paywall-backdrop { display: none !important; }
+    }
+
   </style>
 </head>
 
-<body>
-  <div class="maint-card">
-    <a href="/index.html" class="maint-logo" aria-label="Simple Maths Academy">
-      <img src="assets/logo-transparent.png" alt="Logo Simple Maths Academy" />
-    </a>
 
-    <div>
-      <div class="maint-status-badge">
-        <span class="pulse-dot"></span>
-        Maintenance de Sécurité
+<body>
+  <div class="app">
+
+    <!-- HEADER -->
+    <header class="header">
+      <a href="/index.html" class="back-link" id="back-link" aria-label="Retour à l'accueil">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 5l-7 7 7 7"/>
+        </svg>
+        <span class="nav-opt-text">Accueil</span>
+      </a>
+
+      <a href="/index.html" class="header-brand" aria-label="Simple Maths Academy">
+        <img src="assets/logo-transparent.png" alt="Logo SMA" />
+        <div class="header-brand-text">
+          <span class="header-brand-name">SMA-Alpha</span>
+          <span class="header-brand-sub">Professeur IA</span>
+          <span class="expert-badge">⚡ Expert EXMD/Polytech</span>
+        </div>
+      </a>
+
+      <div class="header-badge">
+        <span class="status-dot"></span>
+        En ligne
+      </div>
+
+      <!-- AUTH & USER CONTROLS -->
+      <div id="auth-header-container" class="auth-header-container"></div>
+
+      <button id="pdf-btn" class="pdf-btn" onclick="exportToPDF()" title="Télécharger la leçon en PDF" aria-label="Télécharger la leçon en PDF">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="12" y1="18" x2="12" y2="12"/>
+          <line x1="9" y1="15" x2="15" y2="15"/>
+        </svg>
+        <span class="nav-opt-text">Télécharger la leçon</span>
+      </button>
+    </header>
+
+    <!-- AI IDENTITY -->
+    <div class="ai-identity">
+      <div class="ai-avatar-wrapper">
+        <div class="ai-avatar">🧠</div>
+        <div class="ai-avatar-ring"></div>
+      </div>
+      <div class="ai-name">SMA-Alpha</div>
+      <div class="ai-tagline">Ton professeur de maths virtuel | Méthode Socratique | LaTeX natif</div>
+    </div>
+
+    <!-- MESSAGE COUNTER BADGE -->
+    <div class="msg-counter" id="msg-counter" aria-live="polite">
+      <span id="counter-text">Messages restants : 5 / 5</span>
+      <div class="msg-counter-pips" id="counter-pips"></div>
+    </div>
+
+    <!-- CHAT WINDOW -->
+    <div class="chat-window" id="chat-window" role="log" aria-live="polite" aria-label="Conversation avec SMA-Alpha">
+
+      <!-- Welcome Card -->
+      <div class="welcome-card" id="welcome-card">
+        <h3>👋 Bonjour ! Je suis SMA-Alpha.</h3>
+        <p>Je suis là pour te <strong>guider</strong> dans ta réflexion | pas pour te donner les réponses directement. Pose-moi ton problème de maths !</p>
+        <div class="starter-chips" id="starter-chips">
+          <button class="chip" onclick="sendChip(this)">Je bloque sur une intégrale</button>
+          <button class="chip" onclick="sendChip(this)">Aide-moi avec les limites</button>
+          <button class="chip" onclick="sendChip(this)">Problème de trigonométrie</button>
+          <button class="chip" onclick="sendChip(this)">Exercice de logique EXMD</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- INPUT AREA -->
+    <div class="input-area">
+      <div class="input-row">
+        <textarea
+          id="chat-input"
+          placeholder="Pose ta question de maths… (Shift+Enter pour saut de ligne)"
+          rows="1"
+          aria-label="Zone de saisie"
+        ></textarea>
+        <button id="send-btn" aria-label="Envoyer le message" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+      <div class="input-hint">Entrée pour envoyer · Shift+Entrée pour nouvelle ligne · Réponses guidées par IA</div>
+    </div>
+
+    <!-- EMAIL GATE MODAL -->
+    <div id="email-modal" class="modal-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-label="Débloquer l'accès complet">
+      <div class="modal-card">
+        <span class="modal-brain">🧠</span>
+        <div class="modal-title">SMA-Alpha analyse tes besoins...</div>
+        <p class="modal-desc">Entre ton email pour débloquer ton accès gratuit et recevoir ton <strong>Kit de Survie PDF</strong> pour l'EXMD &amp; Polytech.</p>
+        <div class="modal-input-row">
+          <input
+            type="email"
+            id="modal-email"
+            class="modal-email-input"
+            placeholder="ton@email.com"
+            autocomplete="email"
+            aria-label="Adresse email"
+          />
+          <button id="modal-submit" class="modal-submit-btn" onclick="submitEmail()">
+            Accéder →
+          </button>
+        </div>
+        <div id="modal-error" class="modal-error">Merci d'entrer un email valide.</div>
+        <p class="modal-privacy">🔒 Aucun spam. Désinscription en 1 clic.</p>
       </div>
     </div>
 
-    <span class="brain-icon">🧠</span>
+    <!-- PAYWALL MODAL (2-Card UI with Toggle Switch — Monthly Default) -->
+    <div id="paywall-modal" class="paywall-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-label="Tarifs SMA-Alpha">
+      <div class="paywall-card">
+        <span class="paywall-emoji">🧠</span>
+        <div class="paywall-modal-title">SMA-Alpha a atteint sa limite quotidienne</div>
+        <p class="paywall-sub">Quota quotidien atteint (10/10 msgs). Revenez dans 24h ou débloquez l'accès illimité&nbsp;!</p>
 
-    <h1 class="maint-title">SMA-Alpha — Hors-Ligne</h1>
+        <!-- BILLING TOGGLE SWITCH (MONTHLY DEFAULT) -->
+        <div class="paywall-billing-toggle-wrap">
+          <button type="button" class="billing-toggle-btn active" id="paywall-toggle-monthly" onclick="setPaywallCycle('monthly')">
+            Mensuel
+          </button>
+          <button type="button" class="billing-toggle-btn" id="paywall-toggle-annual" onclick="setPaywallCycle('annual')">
+            ⚡ Annuel <span class="toggle-badge-glow">Jusqu'à 4 mois offerts</span>
+          </button>
+        </div>
+        
+        <!-- SIDE-BY-SIDE PRICING CARDS -->
+        <div class="paywall-plans-grid">
+          <!-- CARD 1: PASS IA STANDARD -->
+          <div class="paywall-plan-card">
+            <div>
+              <div class="paywall-plan-header">
+                <div class="paywall-plan-name">Pass IA Standard</div>
+                <div class="paywall-plan-desc">Pour réviser 100% en autonomie avec l'IA</div>
+              </div>
 
-    <p class="maint-text">
-      MAINTENANCE DE SÉCURITÉ : SMA-Alpha est actuellement hors-ligne pour calibrage. Accès suspendu jusqu'à demain matin.
-    </p>
+              <!-- PRICE MONTHLY (DEFAULT VISIBLE) -->
+              <div class="paywall-price-box paywall-price-monthly">
+                <div class="paywall-plan-price">
+                  14,90€ <span>/ mois</span>
+                </div>
+                <div class="price-subtext">Pour réviser 100% en autonomie avec l'IA (Sans engagement)</div>
+              </div>
 
-    <a href="/index.html" class="back-btn">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M19 12H5M12 5l-7 7 7 7"/>
-      </svg>
-      Retour à l'accueil
-    </a>
+              <!-- PRICE ANNUAL (HIDDEN BY DEFAULT) -->
+              <div class="paywall-price-box paywall-price-annual" style="display:none;">
+                <div class="paywall-plan-price">
+                  119€ <span>/ an</span>
+                </div>
+                <div class="price-subtext">Soit ~9,91€/mois — 2 mois offerts</div>
+              </div>
+
+              <ul class="paywall-features-list" style="margin-top: 1rem;">
+                <li><span class="check-icon">✓</span> Accès IA SMA-Alpha 24h/24 &amp; Illimité</li>
+                <li><span class="check-icon">✓</span> Réponses socratiques &amp; Rendu KaTeX</li>
+                <li><span class="check-icon">✓</span> Annales EXMD, Polytech &amp; B1/BA1</li>
+                <li><span class="check-icon">✓</span> Support standard par e-mail</li>
+              </ul>
+            </div>
+
+            <div style="margin-top: 1rem;">
+              <!-- CTA MONTHLY (DEFAULT VISIBLE) -->
+              <div class="paywall-cta-monthly">
+                <a href="https://buy.stripe.com/fZu14h911bThf4f1xWafS00" class="paywall-plan-btn btn-essentiel" id="paywall-btn-standard-monthly" target="_blank" rel="noopener noreferrer">
+                  Débloquer Standard Mensuel (14,90€) →
+                </a>
+                <a href="#" onclick="setPaywallCycle('annual'); return false;" class="paywall-alt-cycle-link">
+                  Ou passer au tarif annuel (119€/an — 2 mois offerts)
+                </a>
+              </div>
+
+              <!-- CTA ANNUAL (HIDDEN BY DEFAULT) -->
+              <div class="paywall-cta-annual" style="display:none;">
+                <a href="https://buy.stripe.com/6oU7sF7WXe1p6xJb8wafS01" class="paywall-plan-btn btn-essentiel" id="paywall-btn-standard-annual" target="_blank" rel="noopener noreferrer">
+                  Débloquer Standard Annuel (119€) →
+                </a>
+                <a href="#" onclick="setPaywallCycle('monthly'); return false;" class="paywall-alt-cycle-link">
+                  Ou passer au tarif mensuel (14,90€/mois)
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 2: PASS IA VIP (MOST POPULAR) -->
+          <div class="paywall-plan-card expert-plan">
+            <span class="paywall-badge-recommended">🔥 RECOMMANDÉ — PASS VIP</span>
+            <div>
+              <div class="paywall-plan-header">
+                <div class="paywall-plan-name">Pass IA VIP</div>
+                <div class="paywall-plan-desc">Accompagnement IA + Coach Direct WhatsApp</div>
+              </div>
+
+              <!-- PRICE MONTHLY (DEFAULT VISIBLE) -->
+              <div class="paywall-price-box paywall-price-monthly">
+                <div class="paywall-plan-price" style="color: #00F0FF;">
+                  29,90€ <span>/ mois</span>
+                </div>
+                <div class="price-subtext" style="color: #38bdf8; font-weight: 700;">Accompagnement IA + Coach Direct WhatsApp</div>
+              </div>
+
+              <!-- PRICE ANNUAL (HIDDEN BY DEFAULT) -->
+              <div class="paywall-price-box paywall-price-annual" style="display:none;">
+                <div class="paywall-plan-price" style="color: #00F0FF;">
+                  239€ <span>/ an</span>
+                </div>
+                <div class="price-subtext" style="color: #38bdf8; font-weight: 700;">Soit ~19,91€/mois — 4 mois offerts ⚡</div>
+              </div>
+
+              <ul class="paywall-features-list" style="margin-top: 1rem;">
+                <li><span class="check-icon">✓</span> <strong>Accès IA SMA-Alpha</strong> illimité 24h/24</li>
+                <li><span class="check-icon">✓</span> <strong>Support WhatsApp Direct</strong> avec un Coach</li>
+                <li><span class="check-icon">✓</span> <strong>Kits PDF</strong> de Survie EXMD &amp; Polytech</li>
+                <li><span class="check-icon">✓</span> Conseils personnalisés &amp; méthodologie</li>
+              </ul>
+            </div>
+
+            <div style="margin-top: 1rem;">
+              <!-- CTA MONTHLY (DEFAULT VISIBLE) -->
+              <div class="paywall-cta-monthly">
+                <a href="https://buy.stripe.com/3cI3cp7WX8H5e0b5OcafS02" class="paywall-plan-btn btn-expert" id="paywall-btn-vip-monthly" target="_blank" rel="noopener noreferrer">
+                  Rejoindre le Pass VIP Mensuel ⚡
+                </a>
+                <a href="#" onclick="setPaywallCycle('annual'); return false;" class="paywall-alt-cycle-link">
+                  Ou VIP annuel à 239€/an — 4 mois offerts
+                </a>
+              </div>
+
+              <!-- CTA ANNUAL (HIDDEN BY DEFAULT) -->
+              <div class="paywall-cta-annual" style="display:none;">
+                <a href="https://buy.stripe.com/00w4gt1yz6yX4pBgsQafS03" class="paywall-plan-btn btn-expert" id="paywall-btn-vip-annual" target="_blank" rel="noopener noreferrer">
+                  Rejoindre le Pass VIP Annuel ⚡
+                </a>
+                <a href="#" onclick="setPaywallCycle('monthly'); return false;" class="paywall-alt-cycle-link">
+                  Ou VIP mensuel à 29,90€/mois
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GARANTIE DE RÉUSSITE -->
+        <div class="paywall-guarantee-note">
+          🛡️ <span>Garantie de réussite &nbsp;|&nbsp; Annulation simple &amp; sans engagement</span>
+        </div>
+
+        <!-- FREE OPTION LINK -->
+        <div style="margin-top: 0.6rem;">
+          <a href="#" onclick="document.getElementById('paywall-modal').style.display='none'; return false;" class="paywall-free-link">
+            Continuer en mode gratuit (limité à 10 messages/24h)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTH MODAL (GLASSMORPHISM) -->
+    <div id="auth-modal" class="auth-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-label="Authentification SMA-Alpha">
+      <div class="auth-card">
+        <button class="auth-close-btn" onclick="hideAuthModal()" aria-label="Fermer">&times;</button>
+        
+        <div class="auth-tabs">
+          <button id="tab-login" class="auth-tab-btn active" onclick="switchAuthTab('login')">Se connecter</button>
+          <button id="tab-signup" class="auth-tab-btn" onclick="switchAuthTab('signup')">Créer un compte</button>
+        </div>
+
+        <div id="auth-msg-box" class="auth-msg-box"></div>
+
+        <form id="auth-form" onsubmit="handleAuthSubmit(event)">
+          <div class="auth-form-group">
+            <label class="auth-form-label" for="auth-email">Adresse E-mail</label>
+            <input type="email" id="auth-email" class="auth-input" placeholder="ton@email.com" required autocomplete="email" />
+          </div>
+
+          <div class="auth-form-group">
+            <label class="auth-form-label" for="auth-password">Mot de passe</label>
+            <input type="password" id="auth-password" class="auth-input" placeholder="••••••••" required minlength="6" autocomplete="current-password" />
+          </div>
+
+          <button type="submit" id="auth-submit-btn" class="auth-submit-btn">
+            Se connecter →
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ADMIN UPGRADE MODAL -->
+    <div id="admin-modal" class="auth-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-label="Admin Upgrade Panel">
+      <div class="auth-card" style="border-color: rgba(168, 85, 247, 0.5);">
+        <button class="auth-close-btn" onclick="hideAdminModal()" aria-label="Fermer">&times;</button>
+        <div style="font-size: 1.15rem; font-weight: 800; color: #c084fc; margin-bottom: 0.5rem;">🔑 Admin Upgrade Panel</div>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.25rem; text-align: left;">
+          Passez un utilisateur en <strong>Membre Premium</strong> après réception d'un paiement Stripe.
+        </p>
+
+        <div id="admin-msg-box" class="auth-msg-box"></div>
+
+        <form onsubmit="handleAdminUpgradeSubmit(event)">
+          <div class="auth-form-group">
+            <label class="auth-form-label" for="admin-target-email">E-mail de l'élève à surclasser</label>
+            <input type="email" id="admin-target-email" class="auth-input" placeholder="eleve@email.com" required autocomplete="off" />
+          </div>
+          <button type="submit" id="admin-submit-btn" class="auth-submit-btn" style="background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);">
+            Activer l'accès Premium ⚡
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- EMAIL CONFIRMATION UX MODAL -->
+    <div id="confirm-email-modal" class="auth-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-label="Vérification Email">
+      <div class="auth-card" style="text-align: center; border-color: rgba(6, 182, 212, 0.6);">
+        <button class="auth-close-btn" onclick="closeConfirmModal()" aria-label="Fermer">&times;</button>
+        <div style="font-size: 3rem; margin-bottom: 0.5rem;">✉️</div>
+        <h2 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.35rem; font-weight: 800; font-family: 'Inter', sans-serif;">Vérifie ta boîte mail !</h2>
+        <p style="color: #94A3B8; margin-bottom: 1.25rem; line-height: 1.55; font-size: 0.88rem;">
+          Un lien de confirmation a été envoyé à :<br>
+          <strong id="user-email-target" style="color: #00F0FF; font-size: 1.05rem; word-break: break-all;"></strong>
+        </p>
+        <div style="background: rgba(0, 122, 255, 0.12); border: 1px solid rgba(0, 122, 255, 0.35); padding: 1rem; border-radius: 1rem; margin-bottom: 1.4rem; text-align: left; font-size: 0.85rem; color: #CBD5E1; line-height: 1.5;">
+          💡 <strong style="color: #ffffff;">Étape suivante :</strong><br>
+          1. Ouvre ton application e-mail.<br>
+          2. Clique sur le lien dans le mail de Simple Maths Academy.<br>
+          3. Reviens ici pour te connecter et utiliser l'IA !
+        </div>
+        <button onclick="closeConfirmModal()" class="auth-submit-btn" style="width: 100%;">J'ai compris →</button>
+      </div>
+    </div>
+
   </div>
-</body>
 
+  <script>
+    // ============================================
+    // SUPABASE SAAS INTEGRATION & STATE
+    // ============================================
+    const SUPABASE_URL = 'https://kyvarkbdbbawzlziltxg.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_DQiXV7UNzGqTWjRS79dMng_omcB6GME';
+    const _supabase = (typeof supabase !== 'undefined') ? supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+
+    let currentUser = null;
+    let userProfile = null;
+    let realtimeChannel = null;
+    let currentAuthTab = 'login';
+    let guestMessageCount = parseInt(localStorage.getItem('sma_guest_msgs') || '0', 10);
+
+    const HARD_LIMIT = 10;
+    const GUEST_TRIAL_LIMIT = 1;
+
+    const chatWindow = document.getElementById('chat-window');
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+    let chatHistory = [];
+    let isLoading = false;
+    let renderMathReady = false;
+
+    // Lock input immediately — unlocked only after session + quota check resolves
+    chatInput.disabled = true;
+    chatInput.placeholder = 'Chargement de votre session...';
+    if (sendBtn) sendBtn.disabled = true;
+
+    // ── 24-HOUR ROLLING RESET HELPER ─────────────────────────────
+    async function checkAndReset24hQuota(profile) {
+      if (!profile || profile.is_premium) return profile;
+
+      const now = new Date();
+      const lastMsgAt = profile.last_message_at ? new Date(profile.last_message_at) : null;
+
+      if (lastMsgAt) {
+        const hoursPassed = (now - lastMsgAt) / (1000 * 60 * 60);
+        if (hoursPassed >= 24) {
+          console.log(`24h écoulées depuis le dernier message (${hoursPassed.toFixed(1)}h). Reset quota.`);
+          profile.messages_sent = 0;
+          if (_supabase && profile.id) {
+            await _supabase
+              .from('profiles')
+              .update({ messages_sent: 0 })
+              .eq('id', profile.id);
+          }
+        }
+      }
+      return profile;
+    }
+
+    // ============================================
+    // INIT SESSION & QUOTA (Anti-refresh bypass)
+    // ============================================
+    async function initSessionAndQuota() {
+      if (!_supabase) {
+        unlockInputArea();
+        updateUIState();
+        return;
+      }
+
+      try {
+        const { data: { session } } = await _supabase.auth.getSession();
+
+        if (session && session.user) {
+          currentUser = session.user;
+
+          // Fetch profile fresh from DB — SINGLE source of truth on every page load
+          const { data: profile, error } = await _supabase
+            .from('profiles')
+            .select('messages_sent, last_message_at, is_premium, id, email')
+            .eq('id', session.user.id)
+            .single();
+
+          if (error || !profile) {
+            console.warn('Profil introuvable — upsert de récupération :', error?.message);
+            const { data: recovered } = await _supabase
+              .from('profiles')
+              .upsert(
+                { id: session.user.id, email: session.user.email || '', messages_sent: 0, is_premium: false },
+                { onConflict: 'id' }
+              )
+              .select('messages_sent, last_message_at, is_premium, id, email')
+              .single();
+            userProfile = recovered || { id: session.user.id, email: session.user.email, messages_sent: 0, is_premium: false };
+          } else {
+            console.log('Profil Supabase chargé :', profile);
+            userProfile = profile;
+            await checkAndReset24hQuota(userProfile);
+          }
+
+          // Lock input if quota reached, BUT NEVER pop up modal automatically on load!
+          if (!userProfile.is_premium && userProfile.messages_sent >= HARD_LIMIT) {
+            lockChatInput();
+          } else if (userProfile.is_premium) {
+            unlockInputArea();
+          }
+          // else: updateUIState() called below will unlock for free users under quota
+
+          // Setup Realtime channel
+          await syncRealtimeChannel();
+        } else {
+          currentUser = null;
+          userProfile = null;
+          if (guestMessageCount >= GUEST_TRIAL_LIMIT) {
+            lockGuestInput();
+          } else {
+            unlockInputArea();
+          }
+        }
+      } catch (err) {
+        console.error('Erreur initSessionAndQuota :', err);
+        if (!currentUser) unlockInputArea();
+      }
+
+      updateUIState();
+    }
+
+    // Attach Realtime listener — handles is_premium upgrade pushed from Supabase Dashboard
+    async function syncRealtimeChannel() {
+      if (!currentUser || !_supabase || realtimeChannel) return;
+      realtimeChannel = _supabase
+        .channel(`public:profiles:${currentUser.id}`)
+        .on('postgres_changes', {
+          event: 'UPDATE',
+          schema: 'public',
+          table: 'profiles',
+          filter: `id=eq.${currentUser.id}`
+        }, (payload) => {
+          if (!payload.new) return;
+          userProfile = payload.new;
+
+          // React immediately when is_premium flips to true
+          if (payload.new.is_premium) {
+            unlockInputArea();
+            hidePaywallModal();
+            updateHeaderBadge('💎 Membre Premium');
+          }
+
+          // Always refresh the full UI state
+          updateUIState();
+        })
+        .subscribe();
+    }
+
+    // Swap the header badge text without rebuilding the whole auth container
+    function updateHeaderBadge(label) {
+      const freeEl = document.querySelector('#auth-header-container .badge-free-member');
+      if (freeEl) {
+        freeEl.className = 'badge-premium-member';
+        freeEl.textContent = label;
+      }
+    }
+
+    // onAuthStateChange still handles login/logout events after initial load
+    if (_supabase) {
+      _supabase.auth.onAuthStateChange(async (event, session) => {
+        // Skip INITIAL_SESSION — handled by initSessionAndQuota()
+        if (event === 'INITIAL_SESSION') return;
+
+        if (session && session.user) {
+          currentUser = session.user;
+          await syncUserProfile();
+        } else {
+          currentUser = null;
+          userProfile = null;
+          if (realtimeChannel) {
+            _supabase.removeChannel(realtimeChannel);
+            realtimeChannel = null;
+          }
+        }
+        updateUIState();
+      });
+    }
+
+    // Sync profile from DB (used after login events)
+    async function syncUserProfile() {
+      if (!currentUser || !_supabase) return;
+      try {
+        const { data, error } = await _supabase
+          .from('profiles')
+          .select('messages_sent, last_message_at, is_premium, id, email')
+          .eq('id', currentUser.id)
+          .single();
+
+        if (error || !data) {
+          // Upsert new profile if missing
+          const { data: newProfile } = await _supabase
+            .from('profiles')
+            .upsert({
+              id: currentUser.id,
+              email: currentUser.email,
+              messages_sent: 0,
+              is_premium: false
+            })
+            .select()
+            .single();
+          userProfile = newProfile || { id: currentUser.id, email: currentUser.email, messages_sent: 0, is_premium: false };
+        } else {
+          console.log('Profil Supabase chargé :', data);
+          userProfile = data;
+          await checkAndReset24hQuota(userProfile);
+        }
+
+        await syncRealtimeChannel();
+      } catch (err) {
+        console.error('Erreur sync profil:', err);
+      }
+    }
+
+    // Update Header Auth Bar & Message Counter UI
+    function updateUIState() {
+      const authHeaderContainer = document.getElementById('auth-header-container');
+      const counterText = document.getElementById('counter-text');
+      const pipsEl = document.getElementById('counter-pips');
+      const wrapEl = document.getElementById('msg-counter');
+
+      // 1. Header Auth Controls
+      if (authHeaderContainer) {
+        if (currentUser) {
+          const isPremium = userProfile && userProfile.is_premium;
+          const sent = userProfile ? (userProfile.messages_sent || 0) : 0;
+          const badgeHtml = isPremium 
+            ? '<span class="badge-premium-member">💎 Membre Premium</span>' 
+            : `<span class="badge-free-member">${sent >= HARD_LIMIT ? 'Gratuit (10/10 msgs - Quota atteint)' : `Gratuit (${sent}/10 msgs)`}</span>`;
+          
+          authHeaderContainer.innerHTML = `
+            <div class="user-pill">
+              <span class="user-email-text" title="${currentUser.email}">👤 ${currentUser.email}</span>
+              ${badgeHtml}
+            </div>
+            <button onclick="handleLogout()" class="logout-header-btn" title="Déconnexion">Déconnexion</button>
+          `;
+        } else {
+          authHeaderContainer.innerHTML = `
+            <button onclick="showAuthModal('login')" class="auth-header-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+              <span>Se connecter / S'inscrire</span>
+            </button>
+          `;
+        }
+      }
+
+      // 2. Message Counter Badge & Input State
+      if (!counterText || !pipsEl || !wrapEl) return;
+
+      if (currentUser && userProfile && userProfile.is_premium) {
+        // PREMIUM UNLIMITED ACCESS
+        counterText.innerHTML = '💎 <strong>Accès Illimité Premium</strong>';
+        pipsEl.innerHTML = '';
+        wrapEl.classList.remove('warning', 'danger');
+        unlockInputArea();
+        hidePaywallModal();
+      } else if (currentUser) {
+        // LOGGED IN FREE USER (Limit = 10)
+        const sent = userProfile ? (userProfile.messages_sent || 0) : 0;
+        const remaining = Math.max(0, HARD_LIMIT - sent);
+        counterText.textContent = sent >= HARD_LIMIT
+          ? 'Quota quotidien atteint (10/10 msgs)'
+          : `Messages restants : ${remaining} / ${HARD_LIMIT}`;
+
+        pipsEl.innerHTML = '';
+        for (let i = 0; i < HARD_LIMIT; i++) {
+          const pip = document.createElement('span');
+          pip.className = (i < sent)
+            ? (i >= HARD_LIMIT - 2 ? 'msg-pip danger' : 'msg-pip used')
+            : 'msg-pip';
+          pipsEl.appendChild(pip);
+        }
+
+        wrapEl.classList.remove('warning', 'danger');
+        if (remaining <= 0) wrapEl.classList.add('danger');
+        else if (remaining <= 2) wrapEl.classList.add('warning');
+
+        if (sent >= HARD_LIMIT) {
+          // Lock input area without auto-opening modal on load
+          lockChatInput();
+        } else {
+          unlockInputArea();
+          hidePaywallModal();
+        }
+      } else {
+        // GUEST (Limit = 1 trial msg)
+        const remaining = Math.max(0, GUEST_TRIAL_LIMIT - guestMessageCount);
+        counterText.textContent = guestMessageCount >= GUEST_TRIAL_LIMIT
+          ? 'Essai gratuit terminé (1/1 msg)'
+          : `Essai gratuit : ${remaining} / ${GUEST_TRIAL_LIMIT} msg (Inscrivez-vous pour 10 msgs/24h)`;
+        
+        pipsEl.innerHTML = '';
+        for (let i = 0; i < GUEST_TRIAL_LIMIT; i++) {
+          const pip = document.createElement('span');
+          pip.className = (i < guestMessageCount) ? 'msg-pip used' : 'msg-pip';
+          pipsEl.appendChild(pip);
+        }
+
+        wrapEl.classList.remove('warning', 'danger');
+        if (remaining <= 0) wrapEl.classList.add('warning');
+        
+        if (guestMessageCount >= GUEST_TRIAL_LIMIT) {
+          lockGuestInput();
+        } else {
+          unlockInputArea();
+        }
+      }
+    }
+
+    function unlockInputArea() {
+      chatInput.disabled = false;
+      chatInput.classList.remove('hard-locked');
+      chatInput.placeholder = 'Pose ta question de maths… (Shift+Enter pour saut de ligne)';
+      const inputArea = document.querySelector('.input-area');
+      if (inputArea) inputArea.classList.remove('locked');
+      if (sendBtn) sendBtn.disabled = chatInput.value.trim() === '' || isLoading;
+    }
+
+    function hidePaywallModal() {
+      const modal = document.getElementById('paywall-modal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    // ============================================
+    // AUTH MODAL HANDLERS
+    // ============================================
+    function showAuthModal(tab = 'login', customMsg = '') {
+      switchAuthTab(tab);
+      const modal = document.getElementById('auth-modal');
+      const msgBox = document.getElementById('auth-msg-box');
+      if (customMsg) {
+        msgBox.className = 'auth-msg-box success';
+        msgBox.textContent = customMsg;
+      } else {
+        msgBox.style.display = 'none';
+      }
+      modal.style.display = 'flex';
+      setTimeout(() => document.getElementById('auth-email').focus(), 100);
+    }
+
+    function hideAuthModal() {
+      document.getElementById('auth-modal').style.display = 'none';
+    }
+
+    function openConfirmModal(email) {
+      document.getElementById('user-email-target').textContent = email;
+      document.getElementById('confirm-email-modal').style.display = 'flex';
+    }
+
+    function closeConfirmModal() {
+      document.getElementById('confirm-email-modal').style.display = 'none';
+    }
+
+    function switchAuthTab(tab) {
+      currentAuthTab = tab;
+      const loginTabBtn = document.getElementById('tab-login');
+      const signupTabBtn = document.getElementById('tab-signup');
+      const submitBtn = document.getElementById('auth-submit-btn');
+      const msgBox = document.getElementById('auth-msg-box');
+      msgBox.style.display = 'none';
+
+      if (tab === 'login') {
+        loginTabBtn.classList.add('active');
+        signupTabBtn.classList.remove('active');
+        submitBtn.textContent = 'Se connecter →';
+      } else {
+        signupTabBtn.classList.add('active');
+        loginTabBtn.classList.remove('active');
+        submitBtn.textContent = 'Créer mon compte →';
+      }
+    }
+
+    async function handleAuthSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('auth-email').value.trim();
+      const password = document.getElementById('auth-password').value;
+      const submitBtn = document.getElementById('auth-submit-btn');
+      const msgBox = document.getElementById('auth-msg-box');
+
+      if (!email || !password) return;
+      if (!_supabase) {
+        msgBox.className = 'auth-msg-box error';
+        msgBox.textContent = 'Service d\'authentification indisponible.';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Patientez...';
+      msgBox.style.display = 'none';
+
+      try {
+        if (currentAuthTab === 'login') {
+          const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
+
+          // Intercept unconfirmed email on login — show confirm modal instead of error
+          if (error) {
+            const msg = error.message || '';
+            if (msg.toLowerCase().includes('email not confirmed') || msg.toLowerCase().includes('not confirmed')) {
+              hideAuthModal();
+              openConfirmModal(email);
+              return;
+            }
+            throw error;
+          }
+
+          hideAuthModal();
+
+        } else {
+          const { data, error } = await _supabase.auth.signUp({ email, password });
+          if (error) throw error;
+
+          if (data && data.user) {
+            // Pre-create the profile row regardless of confirmation status
+            await _supabase.from('profiles').upsert(
+              { id: data.user.id, email: data.user.email || email, messages_sent: 0, is_premium: false },
+              { onConflict: 'id' }
+            );
+
+            hideAuthModal();
+
+            // data.session is null when Supabase requires email confirmation
+            if (!data.session) {
+              openConfirmModal(data.user.email || email);
+            }
+            // If session exists (email confirmations disabled), onAuthStateChange handles the rest
+          }
+        }
+      } catch (err) {
+        msgBox.className = 'auth-msg-box error';
+        msgBox.textContent = err.message || 'Erreur d\'authentification. Vérifiez vos identifiants.';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = currentAuthTab === 'login' ? 'Se connecter →' : 'Créer mon compte →';
+      }
+    }
+
+    async function handleLogout() {
+      if (_supabase) {
+        await _supabase.auth.signOut();
+      }
+      currentUser = null;
+      userProfile = null;
+      updateUIState();
+    }
+
+    // ============================================
+    // ADMIN UPGRADE TOOL HANDLERS
+    // ============================================
+    function openAdminModal() {
+      document.getElementById('admin-modal').style.display = 'flex';
+      const msgBox = document.getElementById('admin-msg-box');
+      msgBox.style.display = 'none';
+      setTimeout(() => document.getElementById('admin-target-email').focus(), 100);
+    }
+
+    function hideAdminModal() {
+      document.getElementById('admin-modal').style.display = 'none';
+    }
+
+    // Admin upgrades are managed via Supabase Dashboard — no frontend handler needed.
+
+    // ============================================
+    // LUCIDE ICONS INIT
+    // ============================================
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+
+    // ============================================
+    // AUTO-RESIZE TEXTAREA
+    // ============================================
+    chatInput.addEventListener('input', () => {
+      chatInput.style.height = 'auto';
+      chatInput.style.height = Math.min(chatInput.scrollHeight, 120) + 'px';
+      sendBtn.disabled = chatInput.value.trim() === '' || isLoading;
+    });
+
+    // ============================================
+    // KEYBOARD: Enter to send, Shift+Enter newline
+    // ============================================
+    chatInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        if (!sendBtn.disabled) sendMessage();
+      }
+    });
+
+    sendBtn.addEventListener('click', sendMessage);
+
+    // ============================================
+    // STARTER CHIPS
+    // ============================================
+    function sendChip(btn) {
+      const text = btn.textContent.trim();
+      const welcomeCard = document.getElementById('welcome-card');
+      if (welcomeCard) welcomeCard.remove();
+      chatInput.value = text;
+      sendMessage();
+    }
+
+    // ============================================
+    // SEND MESSAGE (GUEST / FREE / PREMIUM LOGIC)
+    // ============================================
+    async function sendMessage() {
+      const text = chatInput.value.trim();
+      if (!text || isLoading) return;
+
+      console.log('State Auth :', currentUser);
+
+      // ── 1. GUEST USER (1 message gratuit) ───────────────────────────
+      if (!currentUser || !currentUser.id) {
+        if (guestMessageCount >= GUEST_TRIAL_LIMIT) {
+          lockGuestInput();
+          showAuthModal('signup', 'Créez votre compte gratuit pour accéder à vos 10 messages quotidiens !');
+          return;
+        }
+
+        guestMessageCount++;
+        localStorage.setItem('sma_guest_msgs', guestMessageCount);
+        updateUIState();
+
+        return await _callAI(text);
+      }
+
+      // ── 2. LOGGED-IN PREMIUM (accès illimité) ───────────────────────
+      if (userProfile && userProfile.is_premium) {
+        return await _callAI(text);
+      }
+
+      // ── 3. LOGGED-IN FREE USER: 10 MSGS / 24H QUOTA ─────────────────
+      if (!currentUser.id) {
+        console.error('sendMessage: currentUser.id manquant — DB update annulé.');
+        return await _callAI(text);
+      }
+
+      // Check 24h reset before checking quota
+      await checkAndReset24hQuota(userProfile);
+
+      const currentCount = userProfile ? (userProfile.messages_sent || 0) : 0;
+
+      // Hard-block BEFORE calling AI if quota is already reached
+      if (currentCount >= HARD_LIMIT) {
+        lockChatInput();
+        showPaywall();
+        return;
+      }
+
+      const nextCount = currentCount + 1;
+      const nowIso = new Date().toISOString();
+
+      const updateFields = { messages_sent: nextCount };
+      if (nextCount === 1 || !userProfile.last_message_at) {
+        updateFields.last_message_at = nowIso;
+        userProfile.last_message_at = nowIso;
+      }
+
+      // SAUVEGARDE EXPLICITE SUPABASE
+      const { error: updateError } = await _supabase
+        .from('profiles')
+        .update(updateFields)
+        .eq('id', currentUser.id);
+
+      if (updateError) {
+        console.warn('LOG SAVE: Échec UPDATE quota en DB :', updateError.message);
+      } else {
+        console.log('LOG SAVE: Quota mis à jour en DB :', nextCount);
+      }
+
+      if (userProfile) userProfile.messages_sent = nextCount;
+      updateUIState();
+
+      // Show paywall modal after 10th message completes
+      if (nextCount >= HARD_LIMIT) {
+        lockChatInput();
+        setTimeout(() => {
+          showPaywall();
+        }, 400);
+      }
+
+      await _callAI(text);
+    }
+
+    // Internal helper — executes the actual fetch to /api/chat
+    async function _callAI(text) {
+      // Remove welcome card if present
+      const welcomeCard = document.getElementById('welcome-card');
+      if (welcomeCard) welcomeCard.remove();
+
+      chatInput.value = '';
+      chatInput.style.height = 'auto';
+      sendBtn.disabled = true;
+
+      chatHistory.push({ role: 'user', content: text });
+      appendMessage('user', text);
+
+      isLoading = true;
+      const typingEl = appendTyping();
+
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: chatHistory }),
+        });
+
+        // Check HTTP status BEFORE attempting to parse JSON
+        if (!response.ok) {
+          const errText = await response.text();
+          throw new Error(`HTTP ${response.status} — ${errText || 'Erreur serveur'}`);
+        }
+
+        const data = await response.json();
+        if (data.error) throw new Error(data.error);
+
+        chatHistory.push({ role: 'assistant', content: data.reply });
+        typingEl.remove();
+        appendMessage('ai', data.reply);
+
+      } catch (err) {
+        typingEl.remove();
+        appendMessage('ai', `❌ Désolé, une erreur est survenue : ${err.message}. Réessaie dans quelques secondes.`, true);
+      } finally {
+        isLoading = false;
+        // Re-enable send only if input is not locked by quota
+        if (!chatInput.disabled) {
+          sendBtn.disabled = chatInput.value.trim() === '';
+          chatInput.focus();
+        }
+      }
+    }
+
+    // ============================================
+    // APPEND MESSAGE
+    // ============================================
+    function appendMessage(role, content, isError = false) {
+      const row = document.createElement('div');
+      row.className = `message-row ${role}`;
+
+      if (role === 'ai') {
+        const avatar = document.createElement('div');
+        avatar.className = 'message-avatar';
+        avatar.textContent = '🧠';
+        row.appendChild(avatar);
+      }
+
+      const bubble = document.createElement('div');
+      bubble.className = `bubble ${role}${isError ? ' error-bubble' : ''}`;
+      bubble.innerHTML = formatContent(content);
+      row.appendChild(bubble);
+
+      if (role === 'ai' && !isError) {
+        const ratingBar = createRatingBar();
+        row.appendChild(ratingBar);
+      }
+
+      chatWindow.appendChild(row);
+      renderLatex(bubble);
+      scrollToBottom();
+      return row;
+    }
+
+    function formatContent(text) {
+      return text
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/\n/g, '<br>');
+    }
+
+    function appendTyping() {
+      const row = document.createElement('div');
+      row.className = 'typing-row';
+
+      const avatar = document.createElement('div');
+      avatar.className = 'message-avatar';
+      avatar.textContent = '🧠';
+
+      const bubble = document.createElement('div');
+      bubble.className = 'typing-bubble';
+      bubble.innerHTML = `
+        <span>SMA-Alpha réfléchit</span>
+        <div class="typing-dots">
+          <span></span><span></span><span></span>
+        </div>
+      `;
+
+      row.appendChild(avatar);
+      row.appendChild(bubble);
+      chatWindow.appendChild(row);
+      scrollToBottom();
+      return row;
+    }
+
+    function renderLatex(el) {
+      const tryRender = () => {
+        if (typeof renderMathInElement === 'function') {
+          try {
+            renderMathInElement(el, {
+              delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\[', right: '\\]', display: true },
+                { left: '\\(', right: '\\)', display: false },
+              ],
+              throwOnError: false,
+              errorColor: '#ef4444',
+            });
+          } catch (e) {}
+        }
+      };
+
+      if (renderMathReady || typeof renderMathInElement === 'function') {
+        tryRender();
+      } else {
+        setTimeout(tryRender, 500);
+      }
+    }
+
+    function createRatingBar() {
+      const bar = document.createElement('div');
+      bar.className = 'rating-bar';
+
+      const upBtn = document.createElement('button');
+      upBtn.className = 'rating-btn';
+      upBtn.setAttribute('aria-label', 'Réponse utile');
+      upBtn.innerHTML = `<span>&#128077;</span>`;
+
+      const downBtn = document.createElement('button');
+      downBtn.className = 'rating-btn';
+      downBtn.setAttribute('aria-label', 'Réponse à améliorer');
+      downBtn.innerHTML = `<span>&#128078;</span>`;
+
+      const thanks = document.createElement('span');
+      thanks.className = 'rating-thanks';
+      thanks.style.display = 'none';
+
+      function handleRating(isPositive) {
+        upBtn.disabled = true;
+        downBtn.disabled = true;
+        upBtn.style.pointerEvents = 'none';
+        downBtn.style.pointerEvents = 'none';
+        if (isPositive) upBtn.classList.add('active-up');
+        else downBtn.classList.add('active-down');
+        thanks.textContent = 'Merci pour votre retour !';
+        thanks.style.display = 'inline';
+        bar.classList.add('visible');
+      }
+
+      upBtn.addEventListener('click', () => handleRating(true));
+      downBtn.addEventListener('click', () => handleRating(false));
+      bar.appendChild(upBtn);
+      bar.appendChild(downBtn);
+      bar.appendChild(thanks);
+      return bar;
+    }
+
+    function exportToPDF() {
+      const messages = chatWindow.querySelectorAll('.message-row');
+      const btn = document.getElementById('pdf-btn');
+      if (!btn) return;
+      const original = btn.innerHTML;
+      if (messages.length === 0) {
+        btn.innerHTML = `<span>Aucun message à exporter</span>`;
+        btn.style.borderColor = 'rgba(239,68,68,0.4)';
+        btn.style.color = '#f87171';
+        setTimeout(() => { btn.innerHTML = original; btn.style.borderColor = ''; btn.style.color = ''; }, 2000);
+        return;
+      }
+      btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Préparation...</span>`;
+      setTimeout(() => { window.print(); btn.innerHTML = original; }, 150);
+    }
+
+    function scrollToBottom() {
+      requestAnimationFrame(() => {
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+      });
+    }
+
+    function lockChatInput() {
+      chatInput.disabled = true;
+      chatInput.classList.add('hard-locked');
+      chatInput.placeholder = 'Quota quotidien de 10 messages atteint. Revenez dans 24h ou débloquez l\'accès illimité.';
+      if (sendBtn) sendBtn.disabled = true;
+      const inputArea = document.querySelector('.input-area');
+      if (inputArea) inputArea.classList.add('locked');
+    }
+
+    function lockGuestInput() {
+      chatInput.disabled = true;
+      chatInput.classList.add('hard-locked');
+      chatInput.placeholder = 'Essai gratuit terminé (1/1 msg). Créez un compte gratuit pour 10 msgs / 24h.';
+      if (sendBtn) sendBtn.disabled = true;
+      const inputArea = document.querySelector('.input-area');
+      if (inputArea) inputArea.classList.add('locked');
+    }
+
+    function setPaywallCycle(cycle) {
+      const isMonthly = cycle === 'monthly';
+      const monthlyBtn = document.getElementById('paywall-toggle-monthly');
+      const annualBtn = document.getElementById('paywall-toggle-annual');
+
+      if (monthlyBtn) monthlyBtn.classList.toggle('active', isMonthly);
+      if (annualBtn) annualBtn.classList.toggle('active', !isMonthly);
+
+      document.querySelectorAll('.paywall-price-monthly').forEach(el => el.style.display = isMonthly ? 'block' : 'none');
+      document.querySelectorAll('.paywall-price-annual').forEach(el => el.style.display = isMonthly ? 'none' : 'block');
+
+      document.querySelectorAll('.paywall-cta-monthly').forEach(el => el.style.display = isMonthly ? 'block' : 'none');
+      document.querySelectorAll('.paywall-cta-annual').forEach(el => el.style.display = isMonthly ? 'none' : 'block');
+    }
+
+    function showPaywall() {
+      lockChatInput();
+      setPaywallCycle('monthly');
+      document.getElementById('paywall-modal').style.display = 'flex';
+      scrollToBottom();
+    }
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+      // Always resolve session from Supabase before enabling input
+      await initSessionAndQuota();
+      // Only focus if input was unlocked
+      if (!chatInput.disabled) chatInput.focus();
+
+      // Intercept click on locked input area to open appropriate modal
+      const inputAreaEl = document.querySelector('.input-area');
+      if (inputAreaEl) {
+        inputAreaEl.addEventListener('click', () => {
+          if (chatInput.disabled) {
+            if (currentUser && userProfile && !userProfile.is_premium && userProfile.messages_sent >= HARD_LIMIT) {
+              showPaywall();
+            } else if (!currentUser && guestMessageCount >= GUEST_TRIAL_LIMIT) {
+              showAuthModal('signup', 'Créez votre compte gratuit pour accéder à vos 10 messages quotidiens !');
+            }
+          }
+        });
+      }
+    });
+  </script>
+
+  <!-- Calendly widget -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+</body>
 </html>
+

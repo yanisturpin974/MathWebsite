@@ -4,5 +4,9 @@
   "description": "Math Site",
   "scripts": {
     "dev": "npx --yes live-server ."
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.111.0",
+    "stripe": "^22.3.2"
   }
 }
