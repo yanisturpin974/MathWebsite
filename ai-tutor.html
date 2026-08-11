@@ -2000,9 +2000,9 @@
       const diffHours = Math.floor(diffMs / 3600000);
       const diffDays  = Math.floor(diffMs / 86400000);
       if (diffMins < 1)   return "À l\'instant";
-      if (diffMins < 60)  return `Il y a \${diffMins}min`;
-      if (diffHours < 24) return `Il y a \${diffHours}h`;
-      if (diffDays < 7)   return `Il y a \${diffDays}j`;
+      if (diffMins < 60)  return `Il y a ${diffMins}min`;
+      if (diffHours < 24) return `Il y a ${diffHours}h`;
+      if (diffDays < 7)   return `Il y a ${diffDays}j`;
       return d.toLocaleDateString('fr-BE', { day:'2-digit', month:'2-digit' });
     }
 
@@ -2029,11 +2029,11 @@
       }
       el.innerHTML = `<div class="sidebar-section-label">Conversations</div>` +
         conversations.map(c => `
-          <div class="sidebar-conv-item \${c.id === currentConversationId ? 'active' : ''}"
-               onclick="loadConversation('\${c.id}')"
-               data-id="\${c.id}">
-            <span class="sidebar-conv-title">\${escapeHtml(c.title)}</span>
-            <span class="sidebar-conv-date">\${formatRelativeDate(c.updated_at)}</span>
+          <div class="sidebar-conv-item ${c.id === currentConversationId ? 'active' : ''}"
+               onclick="loadConversation('${c.id}')"
+               data-id="${c.id}">
+            <span class="sidebar-conv-title">${escapeHtml(c.title)}</span>
+            <span class="sidebar-conv-date">${formatRelativeDate(c.updated_at)}</span>
           </div>
         `).join('');
     }
@@ -2253,8 +2253,8 @@
     async function syncRealtimeChannel() {
       if (!currentUser || !_supabase || realtimeChannel) return;
       realtimeChannel = _supabase
-        .channel(`public:profiles:\${currentUser.id}`)
-        .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'profiles', filter: `id=eq.\${currentUser.id}` }, (payload) => {
+        .channel(`public:profiles:${currentUser.id}`)
+        .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'profiles', filter: `id=eq.${currentUser.id}` }, (payload) => {
           if (!payload.new) return;
           userProfile = payload.new;
           if (payload.new.is_premium) { unlockInputArea(); hidePaywallModal(); updateHeaderBadge('💎 Membre Premium'); }
@@ -2345,7 +2345,7 @@
         const remaining = Math.max(0, HARD_LIMIT - sent);
         counterText.textContent = sent >= HARD_LIMIT
           ? 'Quota quotidien atteint (10/10 msgs)'
-          : `Messages restants : \${remaining} / \${HARD_LIMIT}`;
+          : `Messages restants : ${remaining} / ${HARD_LIMIT}`;
         pipsEl.innerHTML = '';
         for (let i = 0; i < HARD_LIMIT; i++) {
           const pip = document.createElement('span');
@@ -2361,7 +2361,7 @@
         const remaining = Math.max(0, GUEST_TRIAL_LIMIT - guestMessageCount);
         counterText.textContent = guestMessageCount >= GUEST_TRIAL_LIMIT
           ? 'Essai gratuit terminé (1/1 msg)'
-          : `Essai gratuit : \${remaining} / \${GUEST_TRIAL_LIMIT} msg (Inscrivez-vous pour 10 msgs/24h)`;
+          : `Essai gratuit : ${remaining} / ${GUEST_TRIAL_LIMIT} msg (Inscrivez-vous pour 10 msgs/24h)`;
         pipsEl.innerHTML = '';
         for (let i = 0; i < GUEST_TRIAL_LIMIT; i++) {
           const pip = document.createElement('span');
@@ -2595,7 +2595,7 @@
 
         if (!response.ok) {
           const errText = await response.text();
-          throw new Error(`HTTP \${response.status} — \${errText || 'Erreur serveur'}`);
+          throw new Error(`HTTP ${response.status} — ${errText || 'Erreur serveur'}`);
         }
 
         const data = await response.json();
@@ -2612,7 +2612,7 @@
 
       } catch (err) {
         typingEl.remove();
-        appendMessage('ai', `❌ Désolé, une erreur est survenue : \${err.message}. Réessaie dans quelques secondes.`, true);
+        appendMessage('ai', `❌ Désolé, une erreur est survenue : ${err.message}. Réessaie dans quelques secondes.`, true);
       } finally {
         isLoading = false;
         if (!chatInput.disabled) {
@@ -2625,7 +2625,7 @@
     // ── APPEND MESSAGE ────────────────────────────────────────────
     function appendMessage(role, content, isError = false, imageBase64 = null) {
       const row = document.createElement('div');
-      row.className = `message-row \${role}`;
+      row.className = `message-row ${role}`;
 
       if (role === 'ai') {
         const avatar = document.createElement('div');
@@ -2635,11 +2635,11 @@
       }
 
       const bubble = document.createElement('div');
-      bubble.className = `bubble \${role}\${isError ? ' error-bubble' : ''}`;
+      bubble.className = `bubble ${role}${isError ? ' error-bubble' : ''}`;
 
       if (imageBase64 && role === 'user') {
         const imgEl = document.createElement('img');
-        imgEl.src   = `data:image/jpeg;base64,\${imageBase64}`;
+        imgEl.src   = `data:image/jpeg;base64,${imageBase64}`;
         imgEl.className = 'msg-image-thumb';
         bubble.appendChild(imgEl);
         if (content) {
