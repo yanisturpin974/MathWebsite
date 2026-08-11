@@ -1953,6 +1953,7 @@
     const sendBtn    = document.getElementById('send-btn');
     let chatHistory = [];
     let isLoading = false;
+    let isSendingMessage = false;
     let renderMathReady = false;
 
     // Lock input until session resolved
@@ -2502,69 +2503,80 @@
 
     // ── SEND MESSAGE ──────────────────────────────────────────────
     async function sendMessage() {
-      const text = chatInput.value.trim();
-      if (!text && !pendingImageBase64) return;
+      if (isSendingMessage) return;
       if (isLoading) return;
 
-      // ── 1. GUEST ────────────────────────────────────────────────
-      if (!currentUser || !currentUser.id) {
-        if (guestMessageCount >= GUEST_TRIAL_LIMIT) {
-          lockGuestInput();
-          showAuthModal('signup', 'Créez votre compte gratuit pour accéder à vos 10 messages quotidiens !');
+      const text = chatInput ? chatInput.value.trim() : '';
+      if (!text && !pendingImageBase64) return;
+
+      isSendingMessage = true;
+
+      try {
+        // ── 1. GUEST ────────────────────────────────────────────────
+        if (!currentUser || !currentUser.id) {
+          if (guestMessageCount >= GUEST_TRIAL_LIMIT) {
+            lockGuestInput();
+            showAuthModal('signup', 'Créez votre compte gratuit pour accéder à vos 10 messages quotidiens !');
+            return;
+          }
+          guestMessageCount++;
+          localStorage.setItem('sma_guest_msgs', guestMessageCount);
+          updateUIState();
+
+          const imgToSend = pendingImageBase64;
+          await _callAI(text, imgToSend);
+
+          // Auto-popup Auth Modal after 1st guest message response
+          setTimeout(() => {
+            showAuthModal('signup', '✨ Essai gratuit utilisé ! Créez un compte gratuit pour 10 messages / 24h.');
+          }, 800);
           return;
         }
-        guestMessageCount++;
-        localStorage.setItem('sma_guest_msgs', guestMessageCount);
+
+        // ── 2. PREMIUM ──────────────────────────────────────────────
+        if (userProfile && userProfile.is_premium) {
+          const imgToSend = pendingImageBase64;
+          if (!currentConversationId) await createConversation(text);
+          await _callAI(text, imgToSend);
+          return;
+        }
+
+        // ── 3. FREE LOGGED-IN ────────────────────────────────────────
+        await checkAndReset24hQuota(userProfile);
+        const currentCount = userProfile ? (userProfile.messages_sent || 0) : 0;
+
+        if (currentCount >= HARD_LIMIT) {
+          lockChatInput(); showPaywall(); return;
+        }
+
+        const nextCount = currentCount + 1;
+        const nowIso    = new Date().toISOString();
+        const updateFields = { messages_sent: nextCount };
+        if (nextCount === 1 || !userProfile.last_message_at) {
+          updateFields.last_message_at = nowIso;
+          userProfile.last_message_at  = nowIso;
+        }
+
+        const { error: updateError } = await _supabase
+          .from('profiles').update(updateFields).eq('id', currentUser.id);
+        if (updateError) console.warn('Quota update error:', updateError.message);
+
+        if (userProfile) userProfile.messages_sent = nextCount;
         updateUIState();
 
+        if (nextCount >= HARD_LIMIT) {
+          lockChatInput();
+          setTimeout(() => showPaywall(), 400);
+        }
+
+        if (!currentConversationId) await createConversation(text);
         const imgToSend = pendingImageBase64;
         await _callAI(text, imgToSend);
-
-        // Auto-popup Auth Modal after 1st guest message response
-        setTimeout(() => {
-          showAuthModal('signup', '✨ Essai gratuit utilisé ! Créez un compte gratuit pour 10 messages / 24h.');
-        }, 800);
-        return;
+      } catch (err) {
+        console.error("Erreur envoi :", err);
+      } finally {
+        isSendingMessage = false;
       }
-
-      // ── 2. PREMIUM ──────────────────────────────────────────────
-      if (userProfile && userProfile.is_premium) {
-        const imgToSend = pendingImageBase64;
-        if (!currentConversationId) await createConversation(text);
-        return await _callAI(text, imgToSend);
-      }
-
-      // ── 3. FREE LOGGED-IN ────────────────────────────────────────
-      await checkAndReset24hQuota(userProfile);
-      const currentCount = userProfile ? (userProfile.messages_sent || 0) : 0;
-
-      if (currentCount >= HARD_LIMIT) {
-        lockChatInput(); showPaywall(); return;
-      }
-
-      const nextCount = currentCount + 1;
-      const nowIso    = new Date().toISOString();
-      const updateFields = { messages_sent: nextCount };
-      if (nextCount === 1 || !userProfile.last_message_at) {
-        updateFields.last_message_at = nowIso;
-        userProfile.last_message_at  = nowIso;
-      }
-
-      const { error: updateError } = await _supabase
-        .from('profiles').update(updateFields).eq('id', currentUser.id);
-      if (updateError) console.warn('Quota update error:', updateError.message);
-
-      if (userProfile) userProfile.messages_sent = nextCount;
-      updateUIState();
-
-      if (nextCount >= HARD_LIMIT) {
-        lockChatInput();
-        setTimeout(() => showPaywall(), 400);
-      }
-
-      if (!currentConversationId) await createConversation(text);
-      const imgToSend = pendingImageBase64;
-      await _callAI(text, imgToSend);
     }
 
     // ── _CALL AI ──────────────────────────────────────────────────
