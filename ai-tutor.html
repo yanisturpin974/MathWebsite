@@ -1663,9 +1663,10 @@
             placeholder="Pose ta question de maths… (Shift+Entrée pour saut de ligne)"
             rows="1"
             aria-label="Zone de saisie"
+            onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"
           ></textarea>
 
-          <button id="send-btn" aria-label="Envoyer le message" disabled>
+          <button id="send-btn" aria-label="Envoyer le message" onclick="sendMessage()" disabled>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
             </svg>
@@ -1936,6 +1937,18 @@
     let sidebarCollapsed = window.innerWidth <= 768;
 
     const chatWindow = document.getElementById('chat-window');
+    // Alias for compatibility with any code using 'messages-container'
+    const messagesContainer = chatWindow;
+    // Also expose as a DOM alias so getElementById('messages-container') works
+    if (chatWindow && !document.getElementById('messages-container')) {
+      chatWindow.setAttribute('data-alias', 'messages-container');
+      // Monkey-patch getElementById only if messages-container is needed
+      const _origGetById = document.getElementById.bind(document);
+      document.getElementById = function(id) {
+        if (id === 'messages-container') return chatWindow;
+        return _origGetById(id);
+      };
+    }
     const chatInput  = document.getElementById('chat-input');
     const sendBtn    = document.getElementById('send-btn');
     let chatHistory = [];
