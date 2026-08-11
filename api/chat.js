@@ -45,8 +45,8 @@ CONSIGNES STRICTES DE FORMATAGE MATHÉMATIQUE (LATEX) :
 - Pour les équations en bloc, utilise $$ ... $$ sur une ligne séparée.`;
 
     // ── SELECT MODEL & BUILD MESSAGES ──────────────────────────────────
-    // DeepSeek-R1 for text reasoning, Llama-3.2-11b-vision for images
-    const model = imageBase64 ? 'llama-3.2-11b-vision-preview' : 'deepseek-r1-distill-llama-70b';
+    // Llama-3.3-70b-versatile for text reasoning, Llama-3.2-11b-vision for images
+    const model = imageBase64 ? 'llama-3.2-11b-vision-preview' : 'llama-3.3-70b-versatile';
 
     const formattedMessages = [
       { role: 'system', content: SYSTEM_PROMPT }
