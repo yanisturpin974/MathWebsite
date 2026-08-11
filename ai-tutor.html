@@ -590,6 +590,9 @@
     .auth-msg-box.error { display: block; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.35); color: #fca5a5; }
     .auth-msg-box.success { display: block; background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.35); color: #6ee7b7; }
 
+    .auth-error-banner { font-size: 0.82rem; padding: 0.65rem 0.85rem; border-radius: 0.75rem; margin-bottom: 1rem; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.35); color: #fca5a5; text-align: left; line-height: 1.4; }
+    .auth-error-banner.hidden { display: none; }
+
     .auth-close-btn {
       position: absolute;
       top: 1.25rem;
@@ -1850,6 +1853,7 @@
         </div>
 
         <div id="auth-msg-box" class="auth-msg-box"></div>
+        <div id="auth-error-msg" class="auth-error-banner hidden"></div>
 
         <form id="auth-form" onsubmit="handleAuthSubmit(event)">
           <div class="auth-form-group">
@@ -1857,9 +1861,15 @@
             <input type="email" id="auth-email" class="auth-input" placeholder="ton@email.com" required autocomplete="email" />
           </div>
 
-          <div class="auth-form-group">
+          <div class="auth-form-group" style="margin-bottom: 0.4rem;">
             <label class="auth-form-label" for="auth-password">Mot de passe</label>
             <input type="password" id="auth-password" class="auth-input" placeholder="••••••••" required minlength="6" autocomplete="current-password" />
+          </div>
+
+          <div style="text-align: right; margin-bottom: 1.1rem;">
+            <a href="#" onclick="handleForgotPassword(event)" style="font-size: 0.76rem; color: var(--text-muted); text-decoration: underline; transition: color 0.2s;">
+              Mot de passe oublié ?
+            </a>
           </div>
 
           <button type="submit" id="auth-submit-btn" class="auth-submit-btn">
@@ -2391,12 +2401,50 @@
     }
 
     // ── AUTH MODAL HANDLERS ───────────────────────────────────────
+    function showAuthError(msg) {
+      const msgBox = document.getElementById('auth-msg-box');
+      const errBanner = document.getElementById('auth-error-msg');
+      if (msgBox) {
+        msgBox.className = 'auth-msg-box error';
+        msgBox.textContent = msg;
+        msgBox.style.display = 'block';
+      }
+      if (errBanner) {
+        errBanner.textContent = msg;
+        errBanner.classList.remove('hidden');
+        errBanner.style.display = 'block';
+      }
+    }
+
+    function showAuthSuccess(msg) {
+      const msgBox = document.getElementById('auth-msg-box');
+      const errBanner = document.getElementById('auth-error-msg');
+      if (msgBox) {
+        msgBox.className = 'auth-msg-box success';
+        msgBox.textContent = msg;
+        msgBox.style.display = 'block';
+      }
+      if (errBanner) {
+        errBanner.classList.add('hidden');
+        errBanner.style.display = 'none';
+      }
+    }
+
+    function clearAuthMessages() {
+      const msgBox = document.getElementById('auth-msg-box');
+      const errBanner = document.getElementById('auth-error-msg');
+      if (msgBox) msgBox.style.display = 'none';
+      if (errBanner) {
+        errBanner.classList.add('hidden');
+        errBanner.style.display = 'none';
+      }
+    }
+
     function showAuthModal(tab = 'login', customMsg = '') {
       switchAuthTab(tab);
       const modal = document.getElementById('auth-modal');
-      const msgBox = document.getElementById('auth-msg-box');
-      if (customMsg) { msgBox.className = 'auth-msg-box success'; msgBox.textContent = customMsg; }
-      else { msgBox.style.display = 'none'; }
+      if (customMsg) { showAuthSuccess(customMsg); }
+      else { clearAuthMessages(); }
       modal.style.display = 'flex';
       setTimeout(() => { const emailEl = document.getElementById('auth-email'); if (emailEl) emailEl.focus(); }, 100);
     }
@@ -2420,8 +2468,7 @@
       const loginTabBtn  = document.getElementById('tab-login');
       const signupTabBtn = document.getElementById('tab-signup');
       const submitBtn    = document.getElementById('auth-submit-btn');
-      const msgBox       = document.getElementById('auth-msg-box');
-      msgBox.style.display = 'none';
+      clearAuthMessages();
       if (tab === 'login') {
         loginTabBtn.classList.add('active'); signupTabBtn.classList.remove('active');
         submitBtn.textContent = 'Se connecter →';
@@ -2436,21 +2483,26 @@
       const email     = document.getElementById('auth-email').value.trim();
       const password  = document.getElementById('auth-password').value;
       const submitBtn = document.getElementById('auth-submit-btn');
-      const msgBox    = document.getElementById('auth-msg-box');
       if (!email || !password) return;
-      if (!_supabase) { msgBox.className = 'auth-msg-box error'; msgBox.textContent = 'Service indisponible.'; return; }
+      if (!_supabase) { showAuthError('Service indisponible.'); return; }
 
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Patientez...';
-      msgBox.style.display = 'none';
+      submitBtn.textContent = currentAuthTab === 'login' ? 'Connexion en cours...' : 'Création du compte...';
+      clearAuthMessages();
 
       try {
         if (currentAuthTab === 'login') {
           const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
           if (error) {
-            const msg = error.message || '';
-            if (msg.toLowerCase().includes('email not confirmed') || msg.toLowerCase().includes('not confirmed')) {
-              hideAuthModal(); openConfirmModal(email); return;
+            console.error("Auth Error:", error);
+            const msg = (error.message || '').toLowerCase();
+            if (msg.includes('invalid login credentials') || msg.includes('invalid credentials')) {
+              showAuthError('❌ Adresse e-mail ou mot de passe incorrect.');
+              return;
+            }
+            if (msg.includes('email not confirmed') || msg.includes('not confirmed')) {
+              showAuthError('✉️ Compte non confirmé. Vérifiez votre boîte mail.');
+              return;
             }
             throw error;
           }
@@ -2460,7 +2512,10 @@
             email, password,
             options: { emailRedirectTo: 'https://simplemathsacademy.com/ai-tutor.html' }
           });
-          if (error) throw error;
+          if (error) {
+            console.error("Auth Error:", error);
+            throw error;
+          }
           if (data && data.user) {
             await _supabase.from('profiles').upsert(
               { id: data.user.id, email: data.user.email || email, messages_sent: 0, is_premium: false },
@@ -2471,11 +2526,51 @@
           }
         }
       } catch (err) {
-        msgBox.className = 'auth-msg-box error';
-        msgBox.textContent = err.message || 'Erreur d\'authentification. Vérifiez vos identifiants.';
+        console.error("Auth Error:", err);
+        showAuthError(err.message || 'Erreur d\'authentification. Vérifiez vos identifiants.');
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = currentAuthTab === 'login' ? 'Se connecter →' : 'Créer mon compte →';
+      }
+    }
+
+    async function handleForgotPassword(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      clearAuthMessages();
+      let email = document.getElementById('auth-email').value.trim();
+
+      if (!email) {
+        email = prompt("Entrez votre adresse e-mail pour réinitialiser votre mot de passe :");
+        if (!email) return;
+        email = email.trim();
+        const emailInput = document.getElementById('auth-email');
+        if (emailInput) emailInput.value = email;
+      }
+
+      if (!email) {
+        showAuthError('Veuillez saisir votre adresse e-mail.');
+        return;
+      }
+
+      if (!_supabase) {
+        showAuthError('Service indisponible.');
+        return;
+      }
+
+      try {
+        const { error } = await _supabase.auth.resetPasswordForEmail(email, {
+          redirectTo: 'https://simplemathsacademy.com/ai-tutor.html'
+        });
+
+        if (error) {
+          console.error("Password Reset Error:", error);
+          showAuthError(error.message || 'Impossible d\'envoyer l\'email de réinitialisation.');
+        } else {
+          showAuthSuccess('Un lien de réinitialisation a été envoyé à votre adresse e-mail.');
+        }
+      } catch (err) {
+        console.error("Password Reset Error:", err);
+        showAuthError(err.message || 'Une erreur est survenue.');
       }
     }
 
