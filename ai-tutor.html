@@ -1622,7 +1622,7 @@
 
       <!-- MESSAGE COUNTER BADGE -->
       <div class="msg-counter" id="msg-counter" aria-live="polite">
-        <span id="counter-text">Messages restants : 10 / 10</span>
+        <span id="counter-text">Essai gratuit : 1 / 1 msg</span>
         <div class="msg-counter-pips" id="counter-pips"></div>
       </div>
 
@@ -1987,9 +1987,9 @@
       const diffHours = Math.floor(diffMs / 3600000);
       const diffDays  = Math.floor(diffMs / 86400000);
       if (diffMins < 1)   return "À l\'instant";
-      if (diffMins < 60)  return \`Il y a \${diffMins}min\`;
-      if (diffHours < 24) return \`Il y a \${diffHours}h\`;
-      if (diffDays < 7)   return \`Il y a \${diffDays}j\`;
+      if (diffMins < 60)  return `Il y a \${diffMins}min`;
+      if (diffHours < 24) return `Il y a \${diffHours}h`;
+      if (diffDays < 7)   return `Il y a \${diffDays}j`;
       return d.toLocaleDateString('fr-BE', { day:'2-digit', month:'2-digit' });
     }
 
@@ -2011,22 +2011,22 @@
       const el = document.getElementById('sidebar-history');
       if (!el) return;
       if (!conversations || conversations.length === 0) {
-        el.innerHTML = \`<div class="sidebar-section-label">Conversations</div><div class="sidebar-empty">Aucune conversation encore.<br>Envoyez votre premier message !</div>\`;
+        el.innerHTML = `<div class="sidebar-section-label">Conversations</div><div class="sidebar-empty">Aucune conversation encore.<br>Envoyez votre premier message !</div>`;
         return;
       }
-      el.innerHTML = \`<div class="sidebar-section-label">Conversations</div>\` +
-        conversations.map(c => \`
+      el.innerHTML = `<div class="sidebar-section-label">Conversations</div>` +
+        conversations.map(c => `
           <div class="sidebar-conv-item \${c.id === currentConversationId ? 'active' : ''}"
                onclick="loadConversation('\${c.id}')"
                data-id="\${c.id}">
             <span class="sidebar-conv-title">\${escapeHtml(c.title)}</span>
             <span class="sidebar-conv-date">\${formatRelativeDate(c.updated_at)}</span>
           </div>
-        \`).join('');
+        `).join('');
     }
 
     async function startNewChat() {
-      chatWindow.innerHTML = \`
+      chatWindow.innerHTML = `
         <div class="welcome-card" id="welcome-card">
           <h3>👋 Bonjour ! Je suis SMA-Alpha.</h3>
           <p>Je suis là pour te <strong>guider</strong> dans ta réflexion | pas pour te donner les réponses directement. Pose-moi ton problème de maths !</p>
@@ -2036,7 +2036,7 @@
             <button class="chip" onclick="sendChip(this)">Problème de trigonométrie</button>
             <button class="chip" onclick="sendChip(this)">Exercice de logique EXMD</button>
           </div>
-        </div>\`;
+        </div>`;
       chatHistory = [];
       currentConversationId = null;
       clearImage();
@@ -2125,6 +2125,10 @@
       };
       reader.readAsDataURL(file);
     }
+    
+    function triggerPhotoUpload() {
+      document.getElementById('photo-input').click();
+    }
 
     function clearImage() {
       pendingImageBase64 = null;
@@ -2147,21 +2151,24 @@
 
       if (currentUser) {
         const isPremium = userProfile && userProfile.is_premium;
-        el.innerHTML = \`
-          <div class="sidebar-user-info">
-            <span class="sidebar-user-avatar">👤</span>
-            <div class="sidebar-user-details">
-              <span class="sidebar-user-email" title="\${currentUser.email}">\${currentUser.email}</span>
-              \${isPremium ? '<span class="badge-premium-member" style="font-size:0.65rem;padding:0.1rem 0.45rem;">💎 Premium</span>' : ''}
-            </div>
-          </div>
-          <button onclick="handleLogout()" class="sidebar-logout-btn">Déconnexion</button>
-        \`;
+        const emailSafe = (currentUser.email || '').replace(/"/g, '&quot;');
+        const premiumBadge = isPremium
+          ? '<span class="badge-premium-member" style="font-size:0.65rem;padding:0.1rem 0.45rem;">💎 Premium</span>'
+          : '';
+        el.innerHTML =
+          '<div class="sidebar-user-info">' +
+            '<span class="sidebar-user-avatar">👤</span>' +
+            '<div class="sidebar-user-details">' +
+              '<span class="sidebar-user-email" title="' + emailSafe + '">' + emailSafe + '</span>' +
+              premiumBadge +
+            '</div>' +
+          '</div>' +
+          '<button onclick="handleLogout()" class="sidebar-logout-btn">Déconnexion</button>';
         // Hide upgrade buttons for premium users
         if (upgradeWrap) upgradeWrap.style.display = isPremium ? 'none' : 'block';
         if (upgradeHeaderBtn) upgradeHeaderBtn.style.display = isPremium ? 'none' : 'inline-flex';
       } else {
-        el.innerHTML = \`<button onclick="showAuthModal('login')" class="sidebar-login-btn">Se connecter / S'inscrire</button>\`;
+        el.innerHTML = `<button onclick="showAuthModal('login')" class="sidebar-login-btn">Se connecter / S'inscrire</button>`;
         if (upgradeWrap) upgradeWrap.style.display = 'block';
         if (upgradeHeaderBtn) upgradeHeaderBtn.style.display = 'none';
       }
@@ -2233,8 +2240,8 @@
     async function syncRealtimeChannel() {
       if (!currentUser || !_supabase || realtimeChannel) return;
       realtimeChannel = _supabase
-        .channel(\`public:profiles:\${currentUser.id}\`)
-        .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'profiles', filter: \`id=eq.\${currentUser.id}\` }, (payload) => {
+        .channel(`public:profiles:\${currentUser.id}`)
+        .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'profiles', filter: `id=eq.\${currentUser.id}` }, (payload) => {
           if (!payload.new) return;
           userProfile = payload.new;
           if (payload.new.is_premium) { unlockInputArea(); hidePaywallModal(); updateHeaderBadge('💎 Membre Premium'); }
@@ -2297,12 +2304,12 @@
       // 1. Header Auth Controls (for guests only)
       if (authHeaderContainer) {
         if (!currentUser) {
-          authHeaderContainer.innerHTML = \`
+          authHeaderContainer.innerHTML = `
             <button onclick="showAuthModal('login')" class="auth-header-btn">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
               <span>Se connecter</span>
             </button>
-          \`;
+          `;
         } else {
           authHeaderContainer.innerHTML = ''; // User info in sidebar footer
         }
@@ -2325,7 +2332,7 @@
         const remaining = Math.max(0, HARD_LIMIT - sent);
         counterText.textContent = sent >= HARD_LIMIT
           ? 'Quota quotidien atteint (10/10 msgs)'
-          : \`Messages restants : \${remaining} / \${HARD_LIMIT}\`;
+          : `Messages restants : \${remaining} / \${HARD_LIMIT}`;
         pipsEl.innerHTML = '';
         for (let i = 0; i < HARD_LIMIT; i++) {
           const pip = document.createElement('span');
@@ -2341,7 +2348,7 @@
         const remaining = Math.max(0, GUEST_TRIAL_LIMIT - guestMessageCount);
         counterText.textContent = guestMessageCount >= GUEST_TRIAL_LIMIT
           ? 'Essai gratuit terminé (1/1 msg)'
-          : \`Essai gratuit : \${remaining} / \${GUEST_TRIAL_LIMIT} msg (Inscrivez-vous pour 10 msgs/24h)\`;
+          : `Essai gratuit : \${remaining} / \${GUEST_TRIAL_LIMIT} msg (Inscrivez-vous pour 10 msgs/24h)`;
         pipsEl.innerHTML = '';
         for (let i = 0; i < GUEST_TRIAL_LIMIT; i++) {
           const pip = document.createElement('span');
@@ -2575,7 +2582,7 @@
 
         if (!response.ok) {
           const errText = await response.text();
-          throw new Error(\`HTTP \${response.status} — \${errText || 'Erreur serveur'}\`);
+          throw new Error(`HTTP \${response.status} — \${errText || 'Erreur serveur'}`);
         }
 
         const data = await response.json();
@@ -2592,7 +2599,7 @@
 
       } catch (err) {
         typingEl.remove();
-        appendMessage('ai', \`❌ Désolé, une erreur est survenue : \${err.message}. Réessaie dans quelques secondes.\`, true);
+        appendMessage('ai', `❌ Désolé, une erreur est survenue : \${err.message}. Réessaie dans quelques secondes.`, true);
       } finally {
         isLoading = false;
         if (!chatInput.disabled) {
@@ -2605,7 +2612,7 @@
     // ── APPEND MESSAGE ────────────────────────────────────────────
     function appendMessage(role, content, isError = false, imageBase64 = null) {
       const row = document.createElement('div');
-      row.className = \`message-row \${role}\`;
+      row.className = `message-row \${role}`;
 
       if (role === 'ai') {
         const avatar = document.createElement('div');
@@ -2615,11 +2622,11 @@
       }
 
       const bubble = document.createElement('div');
-      bubble.className = \`bubble \${role}\${isError ? ' error-bubble' : ''}\`;
+      bubble.className = `bubble \${role}\${isError ? ' error-bubble' : ''}`;
 
       if (imageBase64 && role === 'user') {
         const imgEl = document.createElement('img');
-        imgEl.src   = \`data:image/jpeg;base64,\${imageBase64}\`;
+        imgEl.src   = `data:image/jpeg;base64,\${imageBase64}`;
         imgEl.className = 'msg-image-thumb';
         bubble.appendChild(imgEl);
         if (content) {
@@ -2659,10 +2666,10 @@
       avatar.textContent = '🧠';
       const bubble = document.createElement('div');
       bubble.className = 'typing-bubble';
-      bubble.innerHTML = \`
+      bubble.innerHTML = `
         <span>SMA-Alpha réfléchit</span>
         <div class="typing-dots"><span></span><span></span><span></span></div>
-      \`;
+      `;
       row.appendChild(avatar);
       row.appendChild(bubble);
       chatWindow.appendChild(row);
@@ -2800,8 +2807,19 @@
 
     sendBtn.addEventListener('click', sendMessage);
 
-    // Photo upload
-    document.getElementById('photo-input').addEventListener('change', handlePhotoUpload);
+    // Photo upload — trigger file dialog on label click (works with label[for] but also explicit JS fallback)
+    const photoInputEl = document.getElementById('photo-input');
+    const photoLabelEl = document.querySelector('label[for="photo-input"]');
+    if (photoInputEl) photoInputEl.addEventListener('change', handlePhotoUpload);
+    if (photoLabelEl) {
+      photoLabelEl.addEventListener('click', (e) => {
+        // Only trigger if input not disabled
+        if (!chatInput.disabled) {
+          photoInputEl.click();
+        }
+        e.preventDefault();
+      });
+    }
 
     // ── DOM CONTENT LOADED ────────────────────────────────────────
     window.addEventListener('DOMContentLoaded', async () => {
