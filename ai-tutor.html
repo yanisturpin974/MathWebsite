@@ -2461,39 +2461,41 @@
 
     // ── AUTH MODAL HANDLERS ───────────────────────────────────────
     function showAuthError(msg) {
+      clearAuthMessages();
+      const errorEl = document.getElementById('auth-error-msg');
+      if (errorEl) {
+        errorEl.innerText = msg;
+        errorEl.classList.remove('hidden');
+        errorEl.style.display = 'block';
+        return;
+      }
       const msgBox = document.getElementById('auth-msg-box');
-      const errBanner = document.getElementById('auth-error-msg');
       if (msgBox) {
         msgBox.className = 'auth-msg-box error';
-        msgBox.textContent = msg;
+        msgBox.innerText = msg;
         msgBox.style.display = 'block';
-      }
-      if (errBanner) {
-        errBanner.textContent = msg;
-        errBanner.classList.remove('hidden');
-        errBanner.style.display = 'block';
       }
     }
 
     function showAuthSuccess(msg) {
+      clearAuthMessages();
       const msgBox = document.getElementById('auth-msg-box');
-      const errBanner = document.getElementById('auth-error-msg');
       if (msgBox) {
         msgBox.className = 'auth-msg-box success';
-        msgBox.textContent = msg;
+        msgBox.innerText = msg;
         msgBox.style.display = 'block';
-      }
-      if (errBanner) {
-        errBanner.classList.add('hidden');
-        errBanner.style.display = 'none';
       }
     }
 
     function clearAuthMessages() {
       const msgBox = document.getElementById('auth-msg-box');
       const errBanner = document.getElementById('auth-error-msg');
-      if (msgBox) msgBox.style.display = 'none';
+      if (msgBox) {
+        msgBox.innerText = '';
+        msgBox.style.display = 'none';
+      }
       if (errBanner) {
+        errBanner.innerText = '';
         errBanner.classList.add('hidden');
         errBanner.style.display = 'none';
       }
