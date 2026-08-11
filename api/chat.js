@@ -1,5 +1,5 @@
 // api/chat.js — Vercel Serverless Function
-// OpenAI API — gpt-4o-mini (multimodal: text + image Vision)
+// Groq API — DeepSeek-R1 (deepseek-r1-distill-llama-70b) & Llama 3.2 Vision
 
 export default async function handler(req, res) {
   // ── CORS ──────────────────────────────────────────────────────────
@@ -10,10 +10,10 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Méthode non autorisée' });
 
   // ── API KEY ────────────────────────────────────────────────────────
-  const apiKey = process.env.OPENAI_API_KEY;
+  const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
-    console.error('[api/chat] OPENAI_API_KEY manquante sur Vercel');
-    return res.status(500).json({ error: 'Clé OPENAI_API_KEY manquante sur Vercel' });
+    console.error('[api/chat] GROQ_API_KEY manquante sur Vercel');
+    return res.status(500).json({ error: 'Clé GROQ_API_KEY manquante sur Vercel' });
   }
 
   try {
@@ -44,7 +44,10 @@ CONSIGNES STRICTES DE FORMATAGE MATHÉMATIQUE (LATEX) :
 - Laisse toujours un espace avant et après une formule inline $ ... $.
 - Pour les équations en bloc, utilise $$ ... $$ sur une ligne séparée.`;
 
-    // ── FORMAT MESSAGES FOR OPENAI ─────────────────────────────────────
+    // ── SELECT MODEL & BUILD MESSAGES ──────────────────────────────────
+    // DeepSeek-R1 for text reasoning, Llama-3.2-11b-vision for images
+    const model = imageBase64 ? 'llama-3.2-11b-vision-preview' : 'deepseek-r1-distill-llama-70b';
+
     const formattedMessages = [
       { role: 'system', content: SYSTEM_PROMPT }
     ];
@@ -78,31 +81,34 @@ CONSIGNES STRICTES DE FORMATAGE MATHÉMATIQUE (LATEX) :
       }
     });
 
-    // ── OPENAI API CALL ───────────────────────────────────────────────
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    // ── GROQ API CALL (OPENAI COMPATIBLE) ─────────────────────────────
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model,
         messages: formattedMessages,
-        temperature: 0.7,
-        max_tokens: 1000
+        temperature: 0.6,
+        max_tokens: 1024
       })
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error(`[api/chat] OpenAI API ${response.status}:`, errorText);
+      console.error(`[api/chat] Groq API ${response.status}:`, errorText);
       return res.status(response.status).json({
-        error: `Erreur API OpenAI (${response.status}) : ${errorText}`
+        error: `Erreur API Groq (${response.status}) : ${errorText}`
       });
     }
 
     const data = await response.json();
-    const replyText = data.choices?.[0]?.message?.content || "Désolé, je n'ai pas pu générer de réponse.";
+    let replyText = data.choices?.[0]?.message?.content || "Désolé, je n'ai pas pu générer de réponse.";
+
+    // Strip internal reasoning <think>...</think> tags if present in DeepSeek-R1 output
+    replyText = replyText.replace(/<think>[\s\S]*?<\/think>/gi, '').trim();
 
     return res.status(200).json({ reply: replyText });
 
