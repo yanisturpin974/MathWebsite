@@ -1867,7 +1867,7 @@
           </div>
 
           <div style="text-align: right; margin-bottom: 1.1rem;">
-            <a href="#" onclick="handleForgotPassword(event)" style="font-size: 0.76rem; color: var(--text-muted); text-decoration: underline; transition: color 0.2s;">
+            <a href="#" onclick="showForgotPasswordModal(event)" style="font-size: 0.76rem; color: var(--text-muted); text-decoration: underline; transition: color 0.2s;">
               Mot de passe oublié ?
             </a>
           </div>
@@ -1919,6 +1919,61 @@
           3. Reviens ici pour te connecter et utiliser l'IA !
         </div>
         <button onclick="closeConfirmModal()" class="auth-submit-btn" style="width: 100%;">J'ai compris →</button>
+      </div>
+    </div>
+
+    <!-- FORGOT PASSWORD MODAL (REQUEST RESET LINK) -->
+    <div id="forgot-password-modal" class="auth-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-label="Mot de passe oublié">
+      <div class="auth-card">
+        <button class="auth-close-btn" onclick="hideForgotPasswordModal()" aria-label="Fermer">&times;</button>
+        <div style="font-size: 2.2rem; margin-bottom: 0.5rem; text-align: center;">🔑</div>
+        <h2 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.25rem; font-weight: 800; text-align: center; font-family: 'Inter', sans-serif;">Mot de passe oublié ?</h2>
+        <p style="color: #94A3B8; margin-bottom: 1.25rem; line-height: 1.5; font-size: 0.84rem; text-align: center;">
+          Entre ton adresse e-mail pour recevoir un lien de réinitialisation.
+        </p>
+
+        <div id="forgot-msg-box" class="auth-msg-box" style="display:none;"></div>
+
+        <form id="forgot-form" onsubmit="handleForgotPasswordSubmit(event)">
+          <div class="auth-form-group">
+            <label class="auth-form-label" for="forgot-email">Adresse E-mail</label>
+            <input type="email" id="forgot-email" class="auth-input" placeholder="ton@email.com" required autocomplete="email" />
+          </div>
+
+          <button type="submit" id="forgot-submit-btn" class="auth-submit-btn" style="margin-top: 0.5rem;">
+            Envoyer le lien de réinitialisation →
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- RESET PASSWORD MODAL (UPDATE PASSWORD) -->
+    <div id="reset-password-modal" class="auth-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-label="Nouveau mot de passe">
+      <div class="auth-card" style="border-color: rgba(6, 182, 212, 0.6);">
+        <button class="auth-close-btn" onclick="hideResetPasswordModal()" aria-label="Fermer">&times;</button>
+        <div style="font-size: 2.5rem; margin-bottom: 0.5rem; text-align: center;">🔐</div>
+        <h2 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.25rem; font-weight: 800; text-align: center; font-family: 'Inter', sans-serif;">Nouveau mot de passe</h2>
+        <p style="color: #94A3B8; margin-bottom: 1.25rem; line-height: 1.5; font-size: 0.84rem; text-align: center;">
+          Saisis ton nouveau mot de passe pour mettre à jour ton compte.
+        </p>
+
+        <div id="reset-pwd-msg-box" class="auth-msg-box" style="display:none;"></div>
+
+        <form id="reset-password-form" onsubmit="handleResetPasswordSubmit(event)">
+          <div class="auth-form-group">
+            <label class="auth-form-label" for="reset-new-password">Nouveau mot de passe</label>
+            <input type="password" id="reset-new-password" class="auth-input" placeholder="Nouveau mot de passe (min. 6 car.)" required minlength="6" autocomplete="new-password" />
+          </div>
+
+          <div class="auth-form-group">
+            <label class="auth-form-label" for="reset-confirm-password">Confirmer le mot de passe</label>
+            <input type="password" id="reset-confirm-password" class="auth-input" placeholder="Répéter le mot de passe" required minlength="6" autocomplete="new-password" />
+          </div>
+
+          <button type="submit" id="reset-pwd-submit-btn" class="auth-submit-btn" style="margin-top: 0.5rem;">
+            Mettre à jour le mot de passe →
+          </button>
+        </form>
       </div>
     </div>
 
@@ -2281,6 +2336,10 @@
 
     if (_supabase) {
       _supabase.auth.onAuthStateChange(async (event, session) => {
+        if (event === 'PASSWORD_RECOVERY') {
+          showResetPasswordModal();
+          return;
+        }
         if (event === 'INITIAL_SESSION') return;
         if (session && session.user) {
           currentUser = session.user;
@@ -2514,7 +2573,16 @@
           });
           if (error) {
             console.error("Auth Error:", error);
+            const msg = (error.message || '').toLowerCase();
+            if (msg.includes('user already registered') || msg.includes('already registered') || msg.includes('already exists')) {
+              showAuthError("❌ Un compte existe déjà avec cette adresse e-mail. Veuillez basculer sur l'onglet 'Se connecter'.");
+              return;
+            }
             throw error;
+          }
+          if (data && data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+            showAuthError("❌ Un compte existe déjà avec cette adresse e-mail. Veuillez basculer sur l'onglet 'Se connecter'.");
+            return;
           }
           if (data && data.user) {
             await _supabase.from('profiles').upsert(
@@ -2527,10 +2595,198 @@
         }
       } catch (err) {
         console.error("Auth Error:", err);
-        showAuthError(err.message || 'Erreur d\'authentification. Vérifiez vos identifiants.');
+        const msg = (err.message || '').toLowerCase();
+        if (msg.includes('user already registered') || msg.includes('already registered') || msg.includes('already exists')) {
+          showAuthError("❌ Un compte existe déjà avec cette adresse e-mail. Veuillez basculer sur l'onglet 'Se connecter'.");
+        } else {
+          showAuthError(err.message || 'Erreur d\'authentification. Vérifiez vos identifiants.');
+        }
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = currentAuthTab === 'login' ? 'Se connecter →' : 'Créer mon compte →';
+      }
+    }
+
+    // ── FORGOT PASSWORD HANDLERS ──────────────────────────────────
+    function showForgotPasswordModal(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      hideAuthModal();
+      const forgotModal = document.getElementById('forgot-password-modal');
+      const forgotEmail = document.getElementById('forgot-email');
+      const authEmail = document.getElementById('auth-email');
+      const msgBox = document.getElementById('forgot-msg-box');
+      if (msgBox) msgBox.style.display = 'none';
+      if (authEmail && authEmail.value.trim() && forgotEmail) {
+        forgotEmail.value = authEmail.value.trim();
+      }
+      if (forgotModal) forgotModal.style.display = 'flex';
+      setTimeout(() => { if (forgotEmail) forgotEmail.focus(); }, 100);
+    }
+
+    function hideForgotPasswordModal() {
+      const modal = document.getElementById('forgot-password-modal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    async function handleForgotPasswordSubmit(e) {
+      e.preventDefault();
+      const emailInput = document.getElementById('forgot-email');
+      const email = emailInput ? emailInput.value.trim() : '';
+      const submitBtn = document.getElementById('forgot-submit-btn');
+      const msgBox = document.getElementById('forgot-msg-box');
+
+      if (!email) {
+        if (msgBox) {
+          msgBox.className = 'auth-msg-box error';
+          msgBox.textContent = 'Veuillez entrer une adresse e-mail valide.';
+          msgBox.style.display = 'block';
+        }
+        return;
+      }
+
+      if (!_supabase) {
+        if (msgBox) {
+          msgBox.className = 'auth-msg-box error';
+          msgBox.textContent = 'Service indisponible.';
+          msgBox.style.display = 'block';
+        }
+        return;
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Envoi en cours...';
+      }
+      if (msgBox) msgBox.style.display = 'none';
+
+      try {
+        const { error } = await _supabase.auth.resetPasswordForEmail(email, {
+          redirectTo: 'https://simplemathsacademy.com/ai-tutor.html'
+        });
+
+        if (error) {
+          console.error("Password Reset Error:", error);
+          if (msgBox) {
+            msgBox.className = 'auth-msg-box error';
+            msgBox.textContent = error.message || "Erreur lors de l'envoi de l'e-mail.";
+            msgBox.style.display = 'block';
+          }
+        } else {
+          if (msgBox) {
+            msgBox.className = 'auth-msg-box success';
+            msgBox.textContent = "✉️ Un lien de réinitialisation a été envoyé à votre adresse e-mail. Vérifiez votre boîte de réception.";
+            msgBox.style.display = 'block';
+          }
+        }
+      } catch (err) {
+        console.error("Password Reset Error:", err);
+        if (msgBox) {
+          msgBox.className = 'auth-msg-box error';
+          msgBox.textContent = err.message || 'Une erreur est survenue.';
+          msgBox.style.display = 'block';
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Envoyer le lien de réinitialisation →';
+        }
+      }
+    }
+
+    // ── RESET PASSWORD HANDLERS (UPDATE PASSWORD) ──────────────────
+    function showResetPasswordModal() {
+      const modal = document.getElementById('reset-password-modal');
+      const msgBox = document.getElementById('reset-pwd-msg-box');
+      if (msgBox) msgBox.style.display = 'none';
+      if (modal) modal.style.display = 'flex';
+      setTimeout(() => {
+        const input = document.getElementById('reset-new-password');
+        if (input) input.focus();
+      }, 100);
+    }
+
+    function hideResetPasswordModal() {
+      const modal = document.getElementById('reset-password-modal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    async function handleResetPasswordSubmit(e) {
+      e.preventDefault();
+      const newPwdInput = document.getElementById('reset-new-password');
+      const confirmPwdInput = document.getElementById('reset-confirm-password');
+      const newPwd = newPwdInput ? newPwdInput.value : '';
+      const confirmPwd = confirmPwdInput ? confirmPwdInput.value : '';
+      const submitBtn = document.getElementById('reset-pwd-submit-btn');
+      const msgBox = document.getElementById('reset-pwd-msg-box');
+
+      if (!newPwd || newPwd.length < 6) {
+        if (msgBox) {
+          msgBox.className = 'auth-msg-box error';
+          msgBox.textContent = 'Le mot de passe doit contenir au moins 6 caractères.';
+          msgBox.style.display = 'block';
+        }
+        return;
+      }
+
+      if (newPwd !== confirmPwd) {
+        if (msgBox) {
+          msgBox.className = 'auth-msg-box error';
+          msgBox.textContent = '❌ Les mots de passe ne correspondent pas.';
+          msgBox.style.display = 'block';
+        }
+        return;
+      }
+
+      if (!_supabase) {
+        if (msgBox) {
+          msgBox.className = 'auth-msg-box error';
+          msgBox.textContent = 'Service indisponible.';
+          msgBox.style.display = 'block';
+        }
+        return;
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Mise à jour en cours...';
+      }
+      if (msgBox) msgBox.style.display = 'none';
+
+      try {
+        const { error } = await _supabase.auth.updateUser({ password: newPwd });
+
+        if (error) {
+          console.error("Password Update Error:", error);
+          if (msgBox) {
+            msgBox.className = 'auth-msg-box error';
+            msgBox.textContent = error.message || 'Erreur lors de la mise à jour du mot de passe.';
+            msgBox.style.display = 'block';
+          }
+        } else {
+          if (msgBox) {
+            msgBox.className = 'auth-msg-box success';
+            msgBox.textContent = '✅ Ton mot de passe a été mis à jour avec succès !';
+            msgBox.style.display = 'block';
+          }
+          setTimeout(() => {
+            hideResetPasswordModal();
+            if (window.history && window.history.replaceState) {
+              window.history.replaceState(null, null, window.location.pathname);
+            }
+          }, 2000);
+        }
+      } catch (err) {
+        console.error("Password Update Error:", err);
+        if (msgBox) {
+          msgBox.className = 'auth-msg-box error';
+          msgBox.textContent = err.message || 'Une erreur est survenue.';
+          msgBox.style.display = 'block';
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Mettre à jour le mot de passe →';
+        }
       }
     }
 
