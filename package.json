@@ -2,6 +2,7 @@
   "name": "mathsite",
   "version": "1.0.0",
   "description": "Math Site",
+  "type": "module",
   "scripts": {
     "dev": "npx --yes live-server ."
   },
