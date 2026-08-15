@@ -1,14 +1,12 @@
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 
-// DÉSACTIVER LE PARSER AUTOMATIQUE DE VERCEL (OBLIGATOIRE POUR STRIPE WEBHOOKS)
 export const config = {
   api: {
     bodyParser: false,
   },
 };
 
-// Helper pour extraire le Buffer brut
 async function buffer(readable) {
   const chunks = [];
   for await (const chunk of readable) {
@@ -28,7 +26,12 @@ export default async function handler(req, res) {
   const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!stripeSecret || !webhookSecret || !supabaseUrl || !supabaseServiceKey) {
-    console.error("Variables Vercel manquantes");
+    console.error("VARIABLES VERCEL MANQUANTES :", {
+      hasStripeSecret: !!stripeSecret,
+      hasWebhookSecret: !!webhookSecret,
+      hasSupabaseUrl: !!supabaseUrl,
+      hasServiceKey: !!supabaseServiceKey
+    });
     return res.status(500).json({ error: "Variables d'environnement Vercel manquantes" });
   }
 
@@ -46,7 +49,6 @@ export default async function handler(req, res) {
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
-  // Traitement des abonnements et achats
   if (event.type === 'checkout.session.completed' || event.type === 'customer.subscription.created') {
     const session = event.data.object;
     const customerEmail = session.customer_details?.email || session.customer_email || session.email;
@@ -59,7 +61,7 @@ export default async function handler(req, res) {
         .eq('email', customerEmail);
 
       if (error) {
-        console.error("Erreur Update Supabase :", error);
+        console.error("Erreur Supabase Update :", error);
         return res.status(500).json({ error: error.message });
       }
     }
