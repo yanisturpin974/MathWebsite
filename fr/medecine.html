@@ -201,9 +201,13 @@
 </head>
 
 <body>
-  <!-- Vacation Banner (To activate on June 28th, change style="display: none;" to style="display: block;") -->
-  <div class="vacation-banner" style="display: none;" data-i18n="vacationBanner">
-    🌴 SESSION AOÛT : Je suis actuellement en préparation intensive (Off-grid) jusqu’au 10/07. Inscrivez-vous dès maintenant pour bloquer votre place pour le Bootcamp d’août !
+  <!-- Sprint Urgency Top Banner -->
+  <div class="sprint-urgency-banner" id="sprint-urgency-banner">
+    <div class="sprint-urgency-content">
+      <span class="urgency-pulse-dot">🔴</span>
+      <span class="urgency-text" data-i18n="sprintBannerText">⚠️ J-17 avant l'examen | Plus que 2 places disponibles pour le Sprint Final.</span>
+      <a href="#pricing" class="urgency-banner-link" data-i18n="sprintBannerCta">Réserver ma place →</a>
+    </div>
   </div>
 
   <div class="container">
@@ -220,6 +224,9 @@
         <a href="/fr/medecine.html"
           style="color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s;"
           data-i18n="navMedecine"><span class="nav-opt-text">Objectif </span>Médecine</a>
+        <a href="#pricing"
+          style="color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s;"
+          data-i18n="navPricing">Tarifs</a>
         <a href="#contact"
           style="color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s;"
           data-i18n="navContact">Contact</a>
@@ -233,12 +240,12 @@
 
     <!-- Hero Section -->
     <section class="hero">
-      <div class="hero-badge" data-i18n="heroBadge">🎓 Préparation Concours Médecine Belgique 2026</div>
+      <div class="hero-badge" data-i18n="heroBadge">🔥 SPRINT FINAL | OBJECTIF 27 AOÛT</div>
       <h1 data-i18n="heroTitle">
-        Concours Médecine &amp; Dentisterie 2026 | Validez votre réussite en Août.
+        Objectif 27 Août | Le Sprint Final pour réussir.
       </h1>
       <p style="font-size: 1.35rem; color: var(--text-main); font-weight: 400; max-width: 750px; margin: 0 auto 2rem;" data-i18n="heroSubtitle">
-        Coaching ciblé sur le raisonnement scientifique et les QCM pour le second concours EXMD. Rejoignez l’élite.
+        Dernière ligne droite pour Polytechnique et Médecine. Coaching intensif de 15 jours pour transformer vos lacunes en points de réussite.
       </p>
       <div class="hero-tags">
         <span class="path-tag">Médecine / Dentaire</span>
@@ -593,18 +600,18 @@
   <section class="section section-bg" id="pricing">
     <div class="container center-text">
       <div class="section-header">
-        <h2 data-i18n="pricingTitle">Tarifs</h2>
-        <p data-i18n="pricingSubtitle">Un investissement rentable pour votre réussite.</p>
+        <h2 data-i18n="pricingTitle">Tarifs Sprint Final</h2>
+        <p data-i18n="pricingSubtitle">Sessions quotidiennes jusqu'au 26 août.</p>
       </div>
 
       <!-- Urgency notice -->
       <div class="pricing-notice pricing-notice-urgency" data-i18n="groupWarning">
-        ⚠️ Attention : Places limitées à 5 étudiants par session.
+        ⚠️ J-17 avant l'examen | Plus que 2 places disponibles pour le Sprint Final.
       </div>
 
       <!-- Summer Bootcamp Badge -->
       <div class="pricing-notice pricing-notice-summer" data-i18n="summerBootcampBadge">
-        ☀️ BOOTCAMP D'ÉTÉ : Inscriptions ouvertes pour la session du 14 Juillet au 25 Août.
+        ⚡ SPRINT FINAL : Coaching intensif de 15 jours pour Polytechnique et Médecine.
       </div>
 
       <!-- 2026 Pricing Grid: Group + Individual + Soldout -->
@@ -613,39 +620,28 @@
         <!-- Group Offers Card (FEATURED) -->
         <div class="pricing-card pricing-group-featured">
           <div class="pricing-badge pricing-badge-group" data-i18n="groupBadge">⚠️ PLACES LIMITÉES | 5 MAX</div>
-          <div class="promo-limited-tag" style="margin-bottom: 1.25rem;">🤝 BOOTCAMP MÉDECINE (MAX 5)</div>
+          <div class="promo-limited-tag" style="margin-bottom: 1.25rem;" data-i18n="groupTitle">🤝 SPRINT FINAL GROUPE (MAX 5)</div>
 
-          <!-- Option 1: Session Unique -->
+          <!-- Option 1: Séance Focus (3h) -->
           <div class="price-row">
             <div class="price-row-info">
-              <span class="price-row-name" data-i18n="grp1Name">Session Unique (3h)</span>
+              <span class="price-row-name" data-i18n="grp1Name">Séance 'Focus' (3h)</span>
               <span class="price-row-detail" data-i18n="grp1Detail">par élève | max 5 étudiants</span>
             </div>
             <div class="price-row-amount">
-              <span class="price-main">85€</span>
+              <span class="price-main">95€</span>
             </div>
           </div>
 
-          <!-- Option 2: Pack Module -->
-          <div class="price-row">
-            <div class="price-row-info">
-              <span class="price-row-name" data-i18n="grp2Name">Pack Module (10h)</span>
-              <span class="price-row-detail" data-i18n="grp2Detail">25€/h | Préparation intensive</span>
-            </div>
-            <div class="price-row-amount">
-              <span class="price-main">250€</span>
-            </div>
-          </div>
-
-          <!-- Option 3: Pack All-Access (FEATURED) -->
+          <!-- Option 2: Pack SPRINT FINAL (15h) (FEATURED) -->
           <div class="price-row price-row-featured">
-            <div class="price-row-popular" data-i18n="mostPopular">⭐ Le Plus Populaire</div>
+            <div class="price-row-popular" data-i18n="mostPopular">⭐ Indispensable pour réussir</div>
             <div class="price-row-info">
-              <span class="price-row-name" data-i18n="grp3Name">Pack All-Access (30h)</span>
-              <span class="price-row-detail" data-i18n="groupDetails">10 jours de préparation intensive | <span class="price-saving price-saving-blue">Économisez 480€</span></span>
+              <span class="price-row-name" data-i18n="grp3Name">Pack SPRINT FINAL (15h)</span>
+              <span class="price-row-detail" data-i18n="groupDetails">Couverture complète des points critiques | Sessions quotidiennes jusqu'au 26 août | <span class="price-saving price-saving-blue">Économisez 285€ par rapport au tarif individuel.</span></span>
             </div>
             <div class="price-row-amount">
-              <span class="price-main" style="color: #007aff; font-weight: 800;">720€</span>
+              <span class="price-main" style="color: #007aff; font-weight: 800;">390€</span>
             </div>
           </div>
 
@@ -660,43 +656,42 @@
         <!-- Individual Sessions Card -->
         <div class="pricing-card pricing-standard">
           <div class="pricing-badge pricing-badge-promo" data-i18n="stdBadge">COURS INDIVIDUELS</div>
-          <div class="promo-limited-tag" data-i18n="promoLimited">⏳ Offre limitée</div>
+          <div class="promo-limited-tag" data-i18n="promoLimited">⚡ Tarif Urgence</div>
 
-          <!-- Option 1 -->
+          <!-- Option 1: Session 1h (45€) -->
           <div class="price-row">
             <div class="price-row-info">
-              <span class="price-row-name" data-i18n="std1Name">Séance individuelle</span>
+              <span class="price-row-name" data-i18n="std1Name">Séance 1h</span>
               <span class="price-row-detail">
-                <span class="anchor-price" data-i18n="anchorPrice">50€/h</span>
-                <span data-i18n="std1Detail"> | Cours unique, sans engagement</span>
+                <span data-i18n="std1Detail"> | Cours individuel sur-mesure</span>
               </span>
             </div>
             <div class="price-row-amount">
-              <span class="price-main">40€</span>
+              <span class="price-main">45€</span>
               <span class="price-per" data-i18n="perHour">/h</span>
             </div>
           </div>
 
-          <!-- Option 2 • Best Seller (Pack Réussite 5h) -->
+          <!-- Option 2 • Pack 5h (200€) -->
           <div class="price-row price-row-featured">
-            <div class="price-row-popular" data-i18n="mostPopular">⭐ Le Plus Populaire</div>
+            <div class="price-row-popular" data-i18n="mostPopularIndiv">⭐ Le Plus Populaire</div>
             <div class="price-row-info">
-              <span class="price-row-name" data-i18n="std2Name">Pack Réussite | 5h</span>
-              <span class="price-row-detail" data-i18n="std2Detail">35€/h | Économisez 75€ sur le tarif plein</span>
+              <span class="price-row-name" data-i18n="std2Name">Pack 5h</span>
+              <span class="price-row-detail" data-i18n="std2Detail">40€/h | Économisez 25€ sur le tarif plein</span>
             </div>
             <div class="price-row-amount">
-              <span class="price-main" style="color: #007aff; font-weight: 800;">175€</span>
+              <span class="price-main" style="color: #007aff; font-weight: 800;">200€</span>
             </div>
           </div>
 
-          <!-- Option 3 • Pack Excellence (10h) -->
+          <!-- Option 3 • Pack 10h (380€) -->
           <div class="price-row">
             <div class="price-row-info">
-              <span class="price-row-name" data-i18n="std3Name">Pack Excellence | 10h</span>
-              <span class="price-row-detail" data-i18n="std3Detail">30€/h | Économisez 200€ sur le tarif plein</span>
+              <span class="price-row-name" data-i18n="std3Name">Pack 10h</span>
+              <span class="price-row-detail" data-i18n="std3Detail">38€/h | Économisez 70€ sur le tarif plein</span>
             </div>
             <div class="price-row-amount">
-              <span class="price-main">300€</span>
+              <span class="price-main">380€</span>
             </div>
           </div>
 
@@ -891,7 +886,7 @@
     <a href="https://wa.me/32490219347?text=Bonjour%2C%20j%27ai%20vu%20votre%20site%20Simple%20Maths%20Academy..."
       target="_blank" class="whatsapp-float">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-          d="M12.004 0C5.385 0 0 5.385 0 12.004c0 2.115.553 4.167 1.603 5.967L0 24l6.196-1.583A11.942 11.942 0 0012.004 24c6.618 0 12.004-5.385 12.004-12.004S18.622 0 12.004 0zm0 21.986c-1.803 0-3.571-.486-5.116-1.405l-.367-.217-3.8.971.996-3.705-.238-.378A9.973 9.973 0 012.023 12.004c0-5.503 4.48-9.982 9.981-9.982 5.5 0 9.98 4.479 9.98 9.982s-4.48 9.982-9.98 9.982zM17.485 14.5c-.302-.152-1.785-.881-2.062-.981-.277-.101-.48-.152-.68.152-.202.304-.781.981-.958 1.182-.178.202-.355.228-.657.076-1.403-.708-2.618-1.554-3.585-2.83-.245-.325.244-.306.828-1.472.101-.202.05-.38-.026-.531-.075-.152-.68-1.642-.931-2.247-.245-.589-.494-.509-.68-.518-.178-.009-.382-.012-.582-.012-.202 0-.53.076-.806.38-.277.304-1.058 1.035-1.058 2.523s1.083 2.924 1.235 3.125c.152.202 2.122 3.238 5.143 4.542.72.308 1.282.493 1.723.631.724.23 1.385.198 1.9.12.576-.088 1.785-.73 2.036-1.436.252-.707.252-1.314.178-1.436-.077-.123-.277-.2-.58-.352z" />
+        <path d="M12.004 0C5.385 0 0 5.385 0 12.004c0 2.115.553 4.167 1.603 5.967L0 24l6.196-1.583A11.942 11.942 0 0012.004 24c6.618 0 12.004-5.385 12.004-12.004S18.622 0 12.004 0zm0 21.986c-1.803 0-3.571-.486-5.116-1.405l-.367-.217-3.8.971.996-3.705-.238-.378A9.973 9.973 0 012.023 12.004c0-5.503 4.48-9.982 9.981-9.982 5.5 0 9.98 4.479 9.98 9.982s-4.48 9.982-9.98 9.982zM17.485 14.5c-.302-.152-1.785-.881-2.062-.981-.277-.101-.48-.152-.68.152-.202.304-.781.981-.958 1.182-.178.202-.355.228-.657.076-1.403-.708-2.618-1.554-3.585-2.83-.245-.325.244-.306.828-1.472.101-.202.05-.38-.026-.531-.075-.152-.68-1.642-.931-2.247-.245-.589-.494-.509-.68-.518-.178-.009-.382-.012-.582-.012-.202 0-.53.076-.806.38-.277.304-1.058 1.035-1.058 2.523s1.083 2.924 1.235 3.125c.152.202 2.122 3.238 5.143 4.542.72.308 1.282.493 1.723.631.724.23 1.385.198 1.9.12.576-.088 1.785-.73 2.036-1.436.252-.707.252-1.314.178-1.436-.077-.123-.277-.2-.58-.352z" />
       </svg>
     </a>
   </div>
@@ -902,11 +897,12 @@
 
     const translations = {
       fr: {
-        logoText: "Simple Maths Academy | Visez l’Excellence.",
-        navMethod: "Ma Méthode",
+        sprintBannerText: "⚠️ J-17 avant l'examen | Plus que 2 places disponibles pour le Sprint Final.",
+        sprintBannerCta: "Réserver ma place →",
+        logoText: "Simple Maths Academy | Visez l’Excellence",
         navPolytech: "<span class=\"nav-opt-text\">Objectif </span>Polytech",
         navMedecine: "<span class=\"nav-opt-text\">Objectif </span>Médecine",
-        navCta: "Réserver mon bilan (15 min) | 100% Gratuit",
+        navPricing: "Tarifs",
         navContact: "Contact",
         portalPolytechTitle: "Objectif Polytechnique",
         portalPolytechDesc: "Algèbre, Analyse, Géométrie. Préparation intensive à l'examen d'admission Ingénieur Civil.",
@@ -914,13 +910,13 @@
         portalMedecineTitle: "Objectif Médecine",
         portalMedecineDesc: "Logique, Mathématiques, Physique. Réussissez le concours d’entrée EXMD.",
         portalMedecineBtn: "Voir le programme Médecine",
-        heroBadge: "🎓 Préparation Concours Médecine Belgique 2026",
-        heroTitle: "Concours Médecine &amp; Dentisterie 2026 | Validez votre réussite en Août.",
-        heroSubtitle: "Coaching ciblé sur le raisonnement scientifique et les QCM pour le second concours EXMD. Rejoignez l’élite.",
+        heroBadge: "🔥 SPRINT FINAL | OBJECTIF 27 AOÛT",
+        heroTitle: "Objectif 27 Août | Le Sprint Final pour réussir.",
+        heroSubtitle: "Dernière ligne droite pour Polytechnique et Médecine. Coaching intensif de 15 jours pour transformer vos lacunes en points de réussite.",
         heroCta: "Réserver mon bilan (15 min) | 100% Gratuit",
         spotBadge: "🔒 Classes limitées à 5 élèves pour un suivi personnalisé.",
         whyMe: "Notre Approche",
-        whyMeDesc1: "Expert en mathématiques spécialisé dans la préparation du Concours d'Entrée Médecine &amp; Dentisterie (EXMD) en Belgique.",
+        whyMeDesc1: "Expert en mathématiques spécialisé dans les examens d'admission Polytechnique et Médecine en Belgique.",
         whyMeDesc2: "Je transforme les concepts les plus complexes en méthodes claires et actionnables.",
         methodTitle: "Ma Méthode",
         methodS1Title: "Évaluation",
@@ -936,26 +932,26 @@
         spec2Title: "Concours Médecine &amp; Dentaire",
         spec2Desc: "Entraînement intensif sur les thèmes mathématiques du concours médecine belge (ULB, UCL, VUB, Liège).",
         specCta: "Réserver mon bilan (15 min) | 100% Gratuit",
-        scheduleTitle: "Programme de préparation Médecine 2026",
-        scheduleSubtitle: "Deux modules intensifs pour maximiser vos chances avant l'examen.",
+        scheduleTitle: "Programme Sprint Final 2026",
+        scheduleSubtitle: "Deux modules intensifs pour maximiser vos chances avant l'examen du 27 Août.",
         mod1Tag: "MODULE 1",
         mod1Title: "⚡ Le Rush de Juin",
         mod1Target: '"10 Jours pour Réussir" (Prépa Juillet)',
         mod1Dates: "Du 15 au 26 Juin 2026",
         mod1Focus: "Sessions intensives quotidiennes (matin ou soir) pour valider votre examen de Juillet.",
         mod1Week1Title: "Semaine 1 :",
-        mod1Week1Desc: "Algèbre, Trigonométrie &amp; Stats (Opérations réelles, Équations/Systèmes, Règle de trois, Trigonométrie circulaire, Moyenne et Écart-type)",
+        mod1Week1Desc: "Nombres Complexes, Polynômes, Algèbre Linéaire, Trigonométrie",
         mod1Week2Title: "Semaine 2 :",
-        mod1Week2Desc: "Analyse &amp; Géométrie (Étude de fonctions, Exponentielles/Logarithmes, Dérivées/Intégrales, Vecteurs et Géométrie analytique plane)",
+        mod1Week2Desc: "Analyse (Dérivées/Limites), Calcul Intégral, Géométrie Analytique &amp; Synthétique",
         mod2Tag: "MODULE 2",
-        mod2Title: "🏃 Le Marathon d'Été",
-        mod2Target: "Prépa épreuves d'Août",
-        mod2Dates: "Dès le 14 Juillet jusqu'aux examens d'Août",
-        mod2Focus: "Ateliers hebdomadaires + Sprint final intensif avant les examens officiels.",
-        mod2Week1Title: "Juillet/Août :",
-        mod2Week1Desc: "Ateliers thématiques hebdomadaires par chapitre.",
-        mod2Week2Title: "24 &amp; 25 Août :",
-        mod2Week2Desc: "Sprint Final (Simulations d'examens réels basées sur les annales du Concours Médecine).",
+        mod2Title: "🏃 Sprint Final d'Août",
+        mod2Target: "Prépa épreuves du 27 Août",
+        mod2Dates: "Du 12 au 26 Août",
+        mod2Focus: "Sessions quotidiennes + simulations intensives avant l'examen officiel du 27 août.",
+        mod2Week1Title: "Du 12 au 23 Août :",
+        mod2Week1Desc: "Sessions quotidiennes intensives par thèmes critiques.",
+        mod2Week2Title: "24, 25 &amp; 26 Août :",
+        mod2Week2Desc: "Sprint Final (Simulations d'examens réels basées sur les annales Polytech et EXMD).",
         subjectAlgebra: "Algèbre",
         subjectAnalysis: "Analyse",
         subjectGeoTrig: "Géométrie &amp; Trigonométrie",
@@ -964,53 +960,49 @@
         expertTitle: "Pourquoi nous choisir ?",
         expertSubtitle: "Une méthode construite spécifiquement pour les exigences de l'examen d'admission.",
         expert1Title: "Méthode Ciblée",
-        expert1Desc: "Focus exclusif sur les types de questions du concours médecine des années précédentes. Utilisation des annales officielles pour des exercices 100% réalistes.",
+        expert1Desc: "Focus exclusif sur les types de questions des examens d'admission Polytech et Médecine des années précédentes. Utilisation du syllabus officiel pour des exercices 100% réalistes.",
         expert2Title: "Petits Groupes (max 5)",
         expert2Desc: "Maximum 5 élèves par session pour garantir un suivi personnalisé et des réponses à chaque question.",
         expert3Title: "100% En Ligne",
         expert3Desc: "Cours via tableau blanc numérique interactif",
-        pricingTitle: "Tarifs Bootcamp 2026",
-        pricingSubtitle: "Choisissez la formule qui correspond à votre objectif.",
-
+        pricingTitle: "Tarifs Sprint Final",
+        pricingSubtitle: "Sessions quotidiennes jusqu'au 26 août.",
+        groupWarning: "⚠️ J-17 avant l'examen | Plus que 2 places disponibles pour le Sprint Final.",
         groupBadge: "⚠️ PLACES LIMITÉES | 5 MAX",
-        groupTitle: "BOOTCAMP MÉDECINE (MAX 5)",
-        grp1Name: "Session Unique (3h)",
+        groupTitle: "🤝 SPRINT FINAL GROUPE (MAX 5)",
+        grp1Name: "Séance 'Focus' (3h)",
         grp1Detail: "par élève | max 5 étudiants",
-        grp2Name: "Pack Module (10h)",
-        grp2Detail: "25€/h | <span class=\"price-saving\">Économisez 33€</span>",
-        grp3Name: "Pack All-Access (30h)",
-        groupDetails: "10 jours de préparation intensive | <span class=\"price-saving price-saving-blue\">Économisez 480€</span><br><span style=\"font-size:0.75rem;opacity:0.85;\">Soit 24€/h | Excellence & Vitesse QCM</span>",
+        grp3Name: "Pack SPRINT FINAL (15h)",
+        groupDetails: "Couverture complète des points critiques | Sessions quotidiennes jusqu'au 26 août | <span class=\"price-saving price-saving-blue\">Économisez 285€ par rapport au tarif individuel.</span>",
         groupCta: "Réserver mon bilan (15 min) | 100% Gratuit",
         stdBadge: "COURS INDIVIDUELS",
-        promoLimited: "⏳ Offre limitée",
-        anchorPrice: "50€/h",
-        std1Name: "Séance individuelle",
-        std1Detail: " | Cours unique, sans engagement",
-        std2Name: "Pack Réussite | 5h",
-        std2Detail: "35€/h | <span class=\"price-saving\">Économisez 25€</span>",
-        std3Name: "Pack Excellence | 10h",
-        std3Detail: "30€/h | <span class=\"price-saving\">Économisez 100€</span>",
-        mostPopular: "⭐ Le Plus Populaire",
+        promoLimited: "⚡ Tarif Urgence",
+        std1Name: "Séance 1h",
+        std1Detail: " | Cours individuel sur-mesure",
+        std2Name: "Pack 5h",
+        std2Detail: "40€/h | Économisez 25€ sur le tarif plein",
+        std3Name: "Pack 10h",
+        std3Detail: "38€/h | Économisez 70€ sur le tarif plein",
+        mostPopular: "⭐ Indispensable pour réussir",
+        mostPopularIndiv: "⭐ Le Plus Populaire",
         perHour: "/h",
         pricingCta: "Réserver mon bilan (15 min) | 100% Gratuit",
-        finalTitle: "Prêt à intégrer les meilleures formations ?",
-        finalSubtitle: "Réservez votre place au Bootcamp dès maintenant. 100% sans engagement.",
-        finalCta: "Réserver mon bilan (15 min) | 100% Gratuit",
         contactTitle: "Prêt à réussir ?",
-        contactSubtitle: "Réservez votre place au Bootcamp ou posez-moi vos questions.",
+        contactSubtitle: "Réservez votre bilan gratuit de 15 min ou posez-moi vos questions.",
         formName: "Nom",
         formEmail: "Email",
-        levelOpt1: "Choisissez votre parcours",
-        levelO1: "Bootcamp Juin 2026 (épreuves Juillet)",
-        levelO2: "Bootcamp Été 2026 (épreuves Août)",
-        levelO3: "Coaching individuel",
-        levelO4: "Les deux sessions",
-        levelO5: "Autre",
-        formMsg: "Décrivez vos objectifs et difficultés en maths",
+        levelOpt1: "Choisissez votre niveau",
+        levelO1: "L1 / B1 (Bachelier)",
+        levelO2: "L2 / B2",
+        levelO3: "L3 / B3",
+        levelO4: "Master",
+        levelO5: "Lycée / CESS",
+        formMsg: "Décrivez vos difficultés en maths",
         formSubmit: "Envoyer",
         formSending: "Envoi en cours...",
         formSuccess: "Message envoyé !",
         formError: "Oops ! Un problème est survenu. Veuillez réessayer.",
+        finalCta: "Réserver mon Bilan de 15 min Gratuit",
         footerPrivacy: "Politique de confidentialité",
         footerTerms: "Conditions d'utilisation",
         footerRefund: "Politique d'annulation",
@@ -1025,23 +1017,13 @@
         pricingDesc2: "Les 3 premiers étudiants inscrits ont bénéficié de cette offre exceptionnelle.",
         soldOutLabel: "ÉPUISÉ<br><span style='font-size:0.75rem;font-weight:600;letter-spacing:0.05em;'>OFFRE TERMINÉE</span>",
         soldOutBtn: "Complet | Non Disponible",
-        qualityPromise: "Méthode basée sur les annales de l'ULB, UCL, VUB et Liège. Fiches de synthèse quotidiennes incluses.",
         seoSummaryTitle: "Description du Service | Simple Maths Academy",
-        summerBootcampBadge: "☀️ BOOTCAMP D'ÉTÉ : Inscriptions ouvertes pour la session du 14 Juillet au 25 Août.",
-        vacationMessage: "",
-        completedStamp: "SESSION TERMINÉE",
-        seoDescriptionText: `
-          <p><strong>Simple Maths Academy</strong> offre une préparation intensive et spécialisée de haut niveau pour le concours d'entrée en Médecine et Dentisterie (EXMD) en Belgique. Conçu pour répondre aux exigences strictes fixées par les universités belges | l'Université Libre de Bruxelles (<strong>ULB</strong>), l'Université Catholique de Louvain (<strong>UCL</strong>), l'Université de Liège (<strong>ULiège</strong>), l'Université de Mons (<strong>UMons</strong>), et la Vrije Universiteit Brussel (<strong>VUB</strong>) | , notre programme garantit une maîtrise complète de la partie mathématique et logique de l'examen.</p>
-          <p>Notre programme rigoureux aborde systématiquement toutes les thématiques clés du concours. En <strong>Algèbre supérieure</strong>, nous travaillons en profondeur les équations, les systèmes d'équations du second degré, les polynômes, les suites numériques et la règle de trois. En <strong>Analyse (Calculus)</strong>, nous assurons la maîtrise parfaite de l'étude de fonctions, des limites, des dérivées, du calcul intégral, ainsi que des fonctions exponentielles et logarithmiques. La <strong>Trigonométrie</strong> inclut l'étude complète du cercle trigonométrique, des identités et des équations trigonométriques. En <strong>Géométrie</strong>, nous étudions les vecteurs, la géométrie analytique plane et la géométrie spatiale. Enfin, un accent tout particulier est mis sur la <strong>Logique et le Raisonnement</strong>, ainsi que sur les notions essentielles de <strong>Statistique et de Probabilités</strong> (moyenne, écart-type, lois de probabilité).</p>
-          <p>Grâce à notre simulateur interactif et à l'analyse rigoureuse des questions des années précédentes des universités de l'ULB, UCL, ULiège, UMons et VUB, nos étudiants apprennent à résoudre rapidement et sans erreur les QCM du concours. Les cours en petits groupes limités à 5 participants se déroulent en ligne sur un tableau blanc virtuel, assurant une interactivité maximale et un encadrement d'élite. Simple Maths Academy est le tremplin idéal pour surmonter le numerus clausus et réussir vos études de médecine.</p>
-        `,
+        seoDescriptionText: "<p><strong>Simple Maths Academy</strong> offre une préparation intensive et spécialisée de haut niveau pour le concours d'entrée en Médecine et Dentisterie (EXMD) en Belgique...</p>",
         resourcesTitle: "Ressources Gratuites",
         resourcesHeadline: "Guide de Réussite EXMD",
         resourcesDesc: "Maîtriser la partie logique et physique du concours | Checklist des pièges classiques et astuces QCM.",
         resourcesCta: "Recevoir le PDF Gratuit",
-        resourcesCtaLink: "https://wa.me/32490219347?text=Bonjour%20Simple%20Maths%20Academy%2C%20je%20souhaiterais%20recevoir%20le%20Guide%20de%20R%C3%A9ussite%20M%C3%A9decine%20gratuitement.",
         resourcesSubtext: "Le kit vous sera envoyé instantanément sur WhatsApp.",
-        vacationBanner: "🌴 SESSION AOÛT : Je suis actuellement en préparation intensive (Off-grid) jusqu’au 10/07. Inscrivez-vous dès maintenant pour bloquer votre place pour le Bootcamp d’août !",
         statSuccess: "de réussite",
         statDegreeVal: "Master",
         statDegree: "de mathématiques",
@@ -1057,11 +1039,12 @@
         faqA3: "Un simple ordinateur avec micro et une connexion internet. Mon tableau blanc interactif gère le reste."
       },
       en: {
-        logoText: "Simple Maths Academy | Visez l’Excellence.",
-        navMethod: "My Method",
-        navPolytech: "<span class=\"nav-opt-text\">Objectif </span>Polytech",
-        navMedecine: "<span class=\"nav-opt-text\">Objectif </span>Médecine",
-        navCta: "Book my assessment (15 min) | 100% Free",
+        sprintBannerText: "⚠️ 17 Days Until Exam | Only 2 spots left for the Final Sprint.",
+        sprintBannerCta: "Reserve my spot →",
+        logoText: "Simple Maths Academy | Visez l’Excellence",
+        navPolytech: "<span class=\"nav-opt-text\">Objective </span>Polytech",
+        navMedecine: "<span class=\"nav-opt-text\">Objective </span>Medicine",
+        navPricing: "Pricing",
         navContact: "Contact",
         portalPolytechTitle: "Objective Polytechnique",
         portalPolytechDesc: "Algebra, Calculus, Geometry. Intensive preparation for the Civil Engineering entrance exam.",
@@ -1069,13 +1052,13 @@
         portalMedecineTitle: "Objective Medicine",
         portalMedecineDesc: "Logic, Mathematics, Physics. Pass the EXMD medical entrance exam.",
         portalMedecineBtn: "View Medicine Program",
-        heroBadge: "🎓 Simple Maths Academy",
-        heroTitle: "Medicine &amp; Dentistry Entrance Exam 2026 | Validate your success in August.",
-        heroSubtitle: "Targeted coaching on scientific reasoning and MCQs for the second EXMD exam. Join the elite.",
+        heroBadge: "🔥 FINAL SPRINT | AUGUST 27 OBJECTIVE",
+        heroTitle: "Objective August 27 | The Final Sprint to Succeed.",
+        heroSubtitle: "Final stretch for Polytechnique and Medicine. 15-day intensive coaching to turn your gaps into passing points.",
         heroCta: "Book my assessment (15 min) | 100% Free",
         spotBadge: "🔒 Small groups (max 5) for personalized support.",
         whyMe: "Our Approach",
-        whyMeDesc1: "Expert in mathematics specialized in the Belgian Medical &amp; Dentistry entrance exam (EXMD).",
+        whyMeDesc1: "Expert in mathematics specialized in Belgian Polytechnique entrance exams.",
         whyMeDesc2: "I transform the most complex concepts into clear, actionable methods.",
         methodTitle: "My Method",
         methodS1Title: "Assessment",
@@ -1091,26 +1074,26 @@
         spec2Title: "Medicine &amp; Dentistry Entrance Exam",
         spec2Desc: "Intensive training on the math topics of the Belgian medicine entrance exam (ULB, UCL, VUB, Liège).",
         specCta: "Book my assessment (15 min) | 100% Free",
-        scheduleTitle: "Medicine Preparation Programme 2026",
-        scheduleSubtitle: "Two intensive modules to maximise your chances before the exam.",
+        scheduleTitle: "Final Sprint Programme 2026",
+        scheduleSubtitle: "Two intensive modules to maximise your chances before the August 27 exam.",
         mod1Tag: "MODULE 1",
         mod1Title: "⚡ The June Rush",
         mod1Target: '"10 Days to Succeed" (July Prep)',
         mod1Dates: "From June 15 to 26, 2026",
         mod1Focus: "Intensive daily sessions (morning or evening) to validate your July exam.",
         mod1Week1Title: "Week 1:",
-        mod1Week1Desc: "Algebra, Trigonometry &amp; Stats (Real numbers, Equations/Systems, Rule of three, Circular trigonometry, Mean &amp; Standard deviation)",
+        mod1Week1Desc: "Complex Numbers, Polynomials, Linear Algebra, Trigonometry",
         mod1Week2Title: "Week 2:",
-        mod1Week2Desc: "Calculus &amp; Geometry (Function analysis, Exponentials/Logarithms, Derivatives/Integrals, Vectors &amp; Analytic plane geometry)",
+        mod1Week2Desc: "Calculus (Derivatives/Limits), Integral Calculus, Analytic &amp; Synthetic Geometry",
         mod2Tag: "MODULE 2",
-        mod2Title: "🏃 The Summer Marathon",
-        mod2Target: "Prep for August exams",
-        mod2Dates: "From July 14 until August exams",
-        mod2Focus: "Weekly workshops + Intensive final sprint before the official exams.",
-        mod2Week1Title: "July/August:",
-        mod2Week1Desc: "Weekly thematic workshops per chapter.",
-        mod2Week2Title: "August 24 &amp; 25:",
-        mod2Week2Desc: "Final Sprint (Real exam simulations based on past Medical exam papers).",
+        mod2Title: "🏃 August Final Sprint",
+        mod2Target: "Prep for August 27 exams",
+        mod2Dates: "From August 12 to 26",
+        mod2Focus: "Daily sessions + intensive simulations before the official August 27 exam.",
+        mod2Week1Title: "August 12 to 23:",
+        mod2Week1Desc: "Daily intensive sessions on critical topics.",
+        mod2Week2Title: "August 24, 25 &amp; 26:",
+        mod2Week2Desc: "Final Sprint (Real exam simulations based on past Polytech and EXMD papers).",
         subjectAlgebra: "Algebra",
         subjectAnalysis: "Calculus",
         subjectGeoTrig: "Geometry &amp; Trigonometry",
@@ -1119,28 +1102,22 @@
         expertTitle: "Why us?",
         expertSubtitle: "A method built specifically for the demands of the entrance exam.",
         expert1Title: "Targeted Method",
-        expert1Desc: "Exclusive focus on past medical entrance exam question types. Uses official past papers for 100% realistic exercises.",
+        expert1Desc: "Exclusive focus on past Polytech and Medicine entrance exam question types. Uses the official syllabus for 100% realistic exercises.",
         expert2Title: "Small Groups (max 5)",
         expert2Desc: "Maximum 5 students per session to guarantee personalised support and answers to every question.",
         expert3Title: "100% Online",
         expert3Desc: "Lessons via interactive digital whiteboard",
-        pricingTitle: "2026 Bootcamp Pricing",
-        pricingSubtitle: "Choose the format that fits your goal.",
-
+        pricingTitle: "Final Sprint Pricing",
+        pricingSubtitle: "Daily intensive sessions until August 26.",
+        groupWarning: "⚠️ 17 Days Until Exam | Only 2 spots left for the Final Sprint.",
         groupBadge: "⚠️ LIMITED SPOTS | 5 MAX",
-        groupTitle: "BOOTCAMP MÉDECINE (MAX 5)",
-        grp1Name: "Single Session (3h)",
+        groupTitle: "🤝 GROUP FINAL SPRINT (MAX 5)",
+        grp1Name: "'Focus' Session (3h)",
         grp1Detail: "per student | max 5 students",
-        grp2Name: "Module Pack (10h)",
-        grp2Detail: "€25/h | <span class=\"price-saving\">Save €33</span>",
-        grp3Name: "All-Access Pack (30h)",
-        groupDetails: "10 days of intensive preparation | <span class=\"price-saving price-saving-blue\">Save €480</span><br><span style=\"font-size:0.75rem;opacity:0.85;\">Equivalent to 24€/h | Excellence & MCQ Speed</span>",
+        grp3Name: "FINAL SPRINT Pack (15h)",
+        groupDetails: "Complete coverage of critical topics | Daily sessions until August 26 | <span class=\"price-saving price-saving-blue\">Save €285 compared to individual rate.</span>",
         groupCta: "Book my assessment (15 min) | 100% Free",
         stdBadge: "INDIVIDUAL COACHING",
-        promoLimited: "⏳ Limited Offer",
-        anchorPrice: "€50/h",
-        std1Name: "Single Session",
-        std1Detail: " | One-off lesson, no commitment",
         std2Name: "Success Pack | 5h",
         std2Detail: "€35/h | <span class=\"price-saving\">Save €25</span>",
         std3Name: "Excellence Pack | 10h",

@@ -201,44 +201,43 @@
 </head>
 
 <body>
-  <!-- Vacation Banner (To activate on June 28th, change style="display: none;" to style="display: block;") -->
-  <div class="vacation-banner" style="display: none;" data-i18n="vacationBanner">
-    🌴 SESSION AOÛT : Je suis actuellement en préparation intensive (Off-grid) jusqu’au 10/07. Inscrivez-vous dès maintenant pour bloquer votre place pour le Bootcamp d’août !
+  <!-- Sprint Urgency Top Banner -->
+  <div class="sprint-urgency-banner" id="sprint-urgency-banner">
+    <div class="sprint-urgency-content">
+      <span class="urgency-pulse-dot">🔴</span>
+      <span class="urgency-text" data-i18n="sprintBannerText">⚠️ 17 Days Until Exam | Only 2 spots left for the Final Sprint.</span>
+      <a href="#pricing" class="urgency-banner-link" data-i18n="sprintBannerCta">Reserve my spot →</a>
+    </div>
   </div>
 
   <div class="container">
     <!-- Navigation -->
     <nav>
-      <a href="/en/index.html" class="logo">
-        <img src="../assets/logo-transparent.png" alt="Logo Simple Maths Academy - Expert Polytechnique" class="logo-icon" />
-        <span class="logo-text" data-i18n="logoText">Simple Maths Academy | Visez l’Excellence.</span>
+      <a href="/index.html" class="logo">
+        <img src="assets/logo-transparent.png" alt="Logo Simple Maths Academy - Expert Polytechnique" class="logo-icon" />
+        <span class="logo-text" data-i18n="logoText">Simple Maths Academy | Aim for Excellence</span>
       </a>
       <div style="display: flex; align-items: center; gap: 1.5rem">
-        <a href="/en/index.html"
-          style="color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s;"
-          data-i18n="navPolytech"><span class="nav-opt-text">Objectif </span>Polytech</a>
-        <a href="/en/medecine.html"
-          style="color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s;"
-          data-i18n="navMedecine"><span class="nav-opt-text">Objectif </span>Médecine</a>
-        <a href="#contact"
-          style="color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s;"
-          data-i18n="navContact">Contact</a>
+        <a href="/index.html" style="color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s;" data-i18n="navPolytech"><span class="nav-opt-text">Polytech </span>Prep</a>
+        <a href="/medecine.html" style="color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s;" data-i18n="navMedecine"><span class="nav-opt-text">Medicine </span>Prep</a>
+        <a href="#pricing" style="color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s;">Pricing</a>
+        <a href="#contact" style="color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.2s;" data-i18n="navContact">Contact</a>
         <div class="lang-switcher">
-          <span id="lang-fr" onclick="setLanguage('fr')" class="lang-btn lang-active">FR</span>
+          <span id="lang-fr" onclick="setLanguage('fr')" class="lang-btn lang-inactive">FR</span>
           <span style="color: var(--text-muted); opacity: 0.5; margin: 0 0.25rem">|</span>
-          <span id="lang-en" onclick="setLanguage('en')" class="lang-btn lang-inactive">EN</span>
+          <span id="lang-en" onclick="setLanguage('en')" class="lang-btn lang-active">EN</span>
         </div>
       </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-      <div class="hero-badge" data-i18n="heroBadge">🎓 Simple Maths Academy</div>
+      <div class="hero-badge" data-i18n="heroBadge">🔥 FINAL SPRINT | AUGUST 27 OBJECTIVE</div>
       <h1 data-i18n="heroTitle">
-        Objectif Polytechnique 2026 | Réussissez votre Seconde Session.
+        Objective August 27 | The Final Sprint to Succeed.
       </h1>
       <p style="font-size: 1.35rem; color: var(--text-main); font-weight: 400; max-width: 750px; margin: 0 auto 2rem;" data-i18n="heroSubtitle">
-        Échec en juillet ? Ne perdez pas votre année. Coaching intensif pour les épreuves d’août. Places limitées à 5 étudiants.
+        Final stretch for Polytechnique and Medicine. 15-day intensive coaching to turn your gaps into passing points.
       </p>
       <div class="hero-tags">
         <span class="path-tag">Polytechnique</span>
@@ -593,18 +592,18 @@
   <section class="section section-bg" id="pricing">
     <div class="container center-text">
       <div class="section-header">
-        <h2 data-i18n="pricingTitle">Tarifs</h2>
-        <p data-i18n="pricingSubtitle">Un investissement rentable pour votre réussite.</p>
+        <h2 data-i18n="pricingTitle">Final Sprint Pricing</h2>
+        <p data-i18n="pricingSubtitle">Daily intensive sessions until August 26.</p>
       </div>
 
       <!-- Urgency notice -->
       <div class="pricing-notice pricing-notice-urgency" data-i18n="groupWarning">
-        ⚠️ Attention : Places limitées à 5 étudiants par session.
+        ⚠️ 17 Days Until Exam | Only 2 spots left for the Final Sprint.
       </div>
 
       <!-- Summer Bootcamp Badge -->
       <div class="pricing-notice pricing-notice-summer" data-i18n="summerBootcampBadge">
-        ☀️ BOOTCAMP D'ÉTÉ : Inscriptions ouvertes pour la session du 14 Juillet au 25 Août.
+        ⚡ FINAL SPRINT: 15-day intensive coaching for Polytechnique and Medicine.
       </div>
 
       <!-- 2026 Pricing Grid: Group + Individual + Soldout -->
@@ -612,40 +611,29 @@
 
         <!-- Group Offers Card (FEATURED) -->
         <div class="pricing-card pricing-group-featured">
-          <div class="pricing-badge pricing-badge-group" data-i18n="groupBadge">⚠️ PLACES LIMITÉES | 5 MAX</div>
-          <div class="promo-limited-tag" style="margin-bottom: 1.25rem;">🤝 BOOTCAMP POLYTECH 2026</div>
+          <div class="pricing-badge pricing-badge-group" data-i18n="groupBadge">⚠️ LIMITED SPOTS | 5 MAX</div>
+          <div class="promo-limited-tag" style="margin-bottom: 1.25rem;" data-i18n="groupTitle">🤝 GROUP FINAL SPRINT (MAX 5)</div>
 
-          <!-- Option 1: Session Unique -->
+          <!-- Option 1: Séance Focus (3h) -->
           <div class="price-row">
             <div class="price-row-info">
-              <span class="price-row-name" data-i18n="grp1Name">Session Unique (3h)</span>
-              <span class="price-row-detail" data-i18n="grp1Detail">par élève | max 5 étudiants</span>
+              <span class="price-row-name" data-i18n="grp1Name">'Focus' Session (3h)</span>
+              <span class="price-row-detail" data-i18n="grp1Detail">per student | max 5 students</span>
             </div>
             <div class="price-row-amount">
-              <span class="price-main">85€</span>
+              <span class="price-main">€95</span>
             </div>
           </div>
 
-          <!-- Option 2: Pack Module -->
-          <div class="price-row">
-            <div class="price-row-info">
-              <span class="price-row-name" data-i18n="grp2Name">Pack Module (10h)</span>
-              <span class="price-row-detail" data-i18n="grp2Detail">25€/h | Préparation intensive</span>
-            </div>
-            <div class="price-row-amount">
-              <span class="price-main">250€</span>
-            </div>
-          </div>
-
-          <!-- Option 3: Pack All-Access (FEATURED) -->
+          <!-- Option 2: Pack SPRINT FINAL (15h) (FEATURED) -->
           <div class="price-row price-row-featured">
-            <div class="price-row-popular" data-i18n="mostPopular">⭐ Le Plus Populaire</div>
+            <div class="price-row-popular" data-i18n="mostPopular">⭐ Essential for Success</div>
             <div class="price-row-info">
-              <span class="price-row-name" data-i18n="grp3Name">Pack All-Access (30h)</span>
-              <span class="price-row-detail" data-i18n="groupDetails">10 jours de préparation intensive | <span class="price-saving price-saving-blue">Économisez 480€</span></span>
+              <span class="price-row-name" data-i18n="grp3Name">FINAL SPRINT Pack (15h)</span>
+              <span class="price-row-detail" data-i18n="groupDetails">Complete coverage of critical topics | Daily sessions until August 26 | <span class="price-saving price-saving-blue">Save €285 compared to individual rate.</span></span>
             </div>
             <div class="price-row-amount">
-              <span class="price-main" style="color: #007aff; font-weight: 800;">720€</span>
+              <span class="price-main" style="color: #007aff; font-weight: 800;">€390</span>
             </div>
           </div>
 
@@ -653,50 +641,49 @@
             class="btn btn-large btn-pulse btn-cta-blue"
             style="width: 100%; display: flex; justify-content: center; margin-top: auto;"
             data-i18n="groupCta">
-            Réserver mon bilan (15 min)
+            Book my assessment (15 min)
           </a>
         </div>
 
         <!-- Individual Sessions Card -->
         <div class="pricing-card pricing-standard">
-          <div class="pricing-badge pricing-badge-promo" data-i18n="stdBadge">COURS INDIVIDUELS</div>
-          <div class="promo-limited-tag" data-i18n="promoLimited">⏳ Offre limitée</div>
+          <div class="pricing-badge pricing-badge-promo" data-i18n="stdBadge">INDIVIDUAL COACHING</div>
+          <div class="promo-limited-tag" data-i18n="promoLimited">⚡ Urgency Rate</div>
 
-          <!-- Option 1 -->
+          <!-- Option 1: Session 1h (€45) -->
           <div class="price-row">
             <div class="price-row-info">
-              <span class="price-row-name" data-i18n="std1Name">Séance individuelle</span>
+              <span class="price-row-name" data-i18n="std1Name">1-Hour Session</span>
               <span class="price-row-detail">
-                <span class="anchor-price" data-i18n="anchorPrice">50€/h</span>
-                <span data-i18n="std1Detail"> | Cours unique, sans engagement</span>
+                <span data-i18n="std1Detail"> | Tailored individual lesson</span>
               </span>
             </div>
             <div class="price-row-amount">
-              <span class="price-main">40€</span>
+              <span class="price-main">€45</span>
               <span class="price-per" data-i18n="perHour">/h</span>
             </div>
           </div>
 
-          <!-- Option 2 • Best Seller (Pack Réussite 5h) -->
+          <!-- Option 2 • Pack 5h (€200) -->
           <div class="price-row price-row-featured">
-            <div class="price-row-popular" data-i18n="mostPopular">⭐ Le Plus Populaire</div>
+            <div class="price-row-popular" data-i18n="mostPopularIndiv">⭐ Most Popular</div>
             <div class="price-row-info">
-              <span class="price-row-name" data-i18n="std2Name">Pack Réussite | 5h</span>
-              <span class="price-row-detail" data-i18n="std2Detail">35€/h | Économisez 75€ sur le tarif plein</span>
+              <span class="price-row-name" data-i18n="std2Name">5-Hour Pack</span>
+              <span class="price-row-detail" data-i18n="std2Detail">€40/h | Save €25 off base rate</span>
             </div>
             <div class="price-row-amount">
-              <span class="price-main" style="color: #007aff; font-weight: 800;">175€</span>
+              <span class="price-main" style="color: #007aff; font-weight: 800;">€200</span>
             </div>
           </div>
 
-          <!-- Option 3 • Pack Excellence (10h) -->
+          <!-- Option 3 • Pack 10h (€380) -->
           <div class="price-row">
             <div class="price-row-info">
-              <span class="price-row-name" data-i18n="std3Name">Pack Excellence | 10h</span>
-              <span class="price-row-detail" data-i18n="std3Detail">30€/h | Économisez 200€ sur le tarif plein</span>
+              <span class="price-row-name" data-i18n="std3Name">10-Hour Pack</span>
+              <span class="price-row-detail" data-i18n="std3Detail">€38/h | Save €70 off base rate</span>
             </div>
             <div class="price-row-amount">
-              <span class="price-main">300€</span>
+              <span class="price-main">€380</span>
             </div>
           </div>
 
@@ -704,7 +691,7 @@
             class="btn btn-large btn-pulse btn-cta-blue"
             style="width: 100%; display: flex; justify-content: center; margin-top: auto;"
             data-i18n="pricingCta">
-            Réserver mon bilan (15 min)
+            Book my assessment (15 min)
           </a>
         </div>
 
