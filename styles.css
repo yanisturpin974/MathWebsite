@@ -1695,16 +1695,6 @@ footer {
   color: #fbbf24;
 }
 
-/* Summer Bootcamp notice badge styling */
-.pricing-notice-summer {
-  background: linear-gradient(90deg, rgba(245, 158, 11, 0.08), rgba(0, 122, 255, 0.08)) !important;
-  border: 1px solid rgba(0, 122, 255, 0.3) !important;
-  color: #60a5fa !important;
-  font-weight: 700;
-  box-shadow: 0 0 15px rgba(0, 122, 255, 0.1);
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-}
 
 .center-text {
   text-align: center;
@@ -1809,10 +1799,6 @@ footer {
   margin-bottom: 1.25rem;
 }
 
-.pricing-notice-summer {
-  margin-top: 0 !important;
-  margin-bottom: 2.5rem !important;
-}
 
 /* Pricing card saving text styles */
 .price-saving {
