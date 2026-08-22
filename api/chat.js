@@ -1,5 +1,6 @@
 // api/chat.js — Vercel Serverless Function
 // Groq API — DeepSeek-R1 (deepseek-r1-distill-llama-70b) & Llama 3.2 Vision
+import { createClient } from '@supabase/supabase-js';
 
 export default async function handler(req, res) {
   // ── CORS ──────────────────────────────────────────────────────────
@@ -23,11 +24,36 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Messages invalides : tableau non vide requis.' });
     }
 
+    // ── FETCH KNOWLEDGE BASE FROM SUPABASE ─────────────────────────────
+    let fullCourseText = '';
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+    if (supabaseUrl && supabaseServiceKey) {
+      try {
+        const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
+        const { data: courseData, error: courseErr } = await supabaseAdmin
+          .from('knowledge_base')
+          .select('chapter_title, content');
+
+        if (courseErr) {
+          console.error('[api/chat] Erreur Supabase knowledge_base :', courseErr);
+        } else if (courseData && courseData.length > 0) {
+          fullCourseText = courseData
+            .map(c => `=== COURS OFFICIEL : ${c.chapter_title} ===\n${c.content}`)
+            .join('\n\n');
+        }
+      } catch (sbErr) {
+        console.error('[api/chat] Erreur lecture Supabase knowledge_base :', sbErr);
+      }
+    }
+
     // ── SYSTEM PROMPT ─────────────────────────────────────────────────
     const SYSTEM_PROMPT = `Tu es SMA-Alpha, le professeur virtuel de mathématiques d'élite de Simple Maths Academy (Polytechnique & Médecine EXMD).
 
 CONTEXTE : Tu connais parfaitement les examens belges : EXMD (Médecine/Dentisterie), Polytechnique (ULB, UCL, VUB, Liège), et les cursus B1/BA1. Tu connais les annales, les pièges récurrents, et les formules les plus discriminantes de ces concours.
 
+${fullCourseText ? `BASE DE CONNAISSANCES & COURS OFFICIEL (UTILISE CE COURS COMME RÉFÉRENCE ABSOLUE) :\n${fullCourseText}\n` : ''}
 COMPORTEMENT — MÉTHODE SOCRATIQUE :
 - Ne donne JAMAIS la solution ou la réponse directe à un calcul. Pose des questions guidées et fournis des indices progressifs pour mener l'élève à la résolution autonome.
 - Si l'élève pose une question fermée ou demande un résultat, recentre en posant la première question de démarche.
